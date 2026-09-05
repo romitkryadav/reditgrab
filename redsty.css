@@ -309,6 +309,11 @@ code {
   position: relative;
 }
 
+.hero-section.hero--result-mode {
+  padding-top: 1.5rem;
+  padding-bottom: 1.5rem;
+}
+
 .hero-container {
   display: flex;
   flex-direction: column;
@@ -349,6 +354,37 @@ code {
   line-height: 1.55;
   max-width: 620px;
   margin: 0 auto;
+}
+
+.btn-download-another {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  width: 100%;
+  max-width: 760px;
+  margin: 1rem auto 0;
+  padding: 0.75rem 1rem;
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  background: transparent;
+  color: var(--text-muted);
+  font: inherit;
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.btn-download-another:hover,
+.btn-download-another:focus-visible {
+  border-color: var(--text-subtle);
+  background: var(--bg-card-hover);
+  color: var(--text-primary);
+}
+
+.hero-section.hero--result-mode .btn-download-another {
+  margin-top: 0.75rem;
 }
 
 /* Ambient Glow Container */

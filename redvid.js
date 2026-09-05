@@ -14,7 +14,10 @@
   const btnPaste = document.getElementById('btn-paste');
   const btnClear = document.getElementById('btn-clear');
   const downloaderBox = document.getElementById('downloader-box');
+  const heroSection = document.getElementById('hero-section');
+  const heroHeader = document.querySelector('.hero-header');
   const themeToggle = document.getElementById('theme-toggle');
+  const btnDownloadAnother = document.getElementById('btn-download-another');
 
   // Status & Error Elements
   const statusContainer = document.getElementById('status-container');
@@ -63,8 +66,6 @@
   const btnSwitchStreamMode = document.getElementById('btn-switch-stream-mode');
   const labelSwitchStream = document.getElementById('label-switch-stream');
   const btnOpenRawVideo = document.getElementById('btn-open-raw-video');
-  const btnStreamWorker = document.getElementById('btn-stream-worker');
-  const btnStreamDirect = document.getElementById('btn-stream-direct');
 
   // Remote Production Cloudflare Worker URL
   const REMOTE_WORKER_URL = 'https://whdp.romitkr361.workers.dev';
@@ -255,6 +256,13 @@
     statusContainer.classList.remove('hidden');
     btnSubmit.disabled = true;
 
+    // If user was previously viewing a result card (hero/input hidden),
+    // bring them back so the loading spinner under the input is visible.
+    if (heroHeader) heroHeader.classList.remove('hidden');
+    if (downloaderBox) downloaderBox.classList.remove('hidden');
+    if (heroSection) heroSection.classList.remove('hero--result-mode');
+    if (btnDownloadAnother) btnDownloadAnother.classList.add('hidden');
+
     // Reset video & audio players
     videoPlayer.pause();
     videoPlayer.removeAttribute('src');
@@ -396,16 +404,6 @@
 
   function setStreamMode(newMode) {
     streamMode = newMode;
-
-    if (btnStreamWorker && btnStreamDirect) {
-      if (streamMode === 'worker') {
-        btnStreamWorker.classList.add('active');
-        btnStreamDirect.classList.remove('active');
-      } else {
-        btnStreamDirect.classList.add('active');
-        btnStreamWorker.classList.remove('active');
-      }
-    }
 
     if (currentPostData && selectedVariant) {
       applyCurrentStreamSource();
@@ -803,9 +801,15 @@
       try { videoPlayer.pause(); } catch {}
     }
 
-    // Now that everything is ready, reveal the result card + fire any pending reveal
+    // Now that everything is ready, reveal the result card + fire any pending reveal,
+    // hide the hero title + input box, and show the "Download Another Video" button.
     renderPendingResultCard(true);
     hideGlobalMergeProgress();
+
+    if (heroHeader) heroHeader.classList.add('hidden');
+    if (downloaderBox) downloaderBox.classList.add('hidden');
+    if (heroSection) heroSection.classList.add('hero--result-mode');
+    if (btnDownloadAnother) btnDownloadAnother.classList.remove('hidden');
   }
 
   async function muxWithMP4Box(MP4Box, videoBuffer, audioBuffer, onProgressTick) {
@@ -1056,7 +1060,6 @@
       abortMergeIfCancelled();
       isMerging = false;
       showFinalDownloadButton(merged, finalFilename);
-      try { triggerBlobDownload(merged, finalFilename); } catch {}
 
     } catch (err) {
       // Graceful fallback: if MP4Box mux failed and we haven't tried MediaRecorder yet (and not an abort/cancel), do that now
@@ -1087,7 +1090,7 @@
   }
 
   async function startMergeDownloadLegacy(videoBlob, audioBlob, finalFilename) {
-    // Fallback legacy MediaRecorder-based merge
+    // Fallback legacy MediaRecorder-based merge — SILENT, no audible playback, accelerated rate
     if (!window.MediaRecorder) {
       throw new Error('Neither MP4Box nor MediaRecorder available in this browser.');
     }
@@ -1120,7 +1123,11 @@
     const aurl = URL.createObjectURL(audioBlob);
     mergeVideoEl = document.createElement('video');
     mergeAudioEl = document.createElement('audio');
+    // SILENT: mute + zero volume on BOTH elements. Never attach to DOM so speakers can't be driven.
     mergeVideoEl.muted = true;
+    mergeVideoEl.volume = 0;
+    mergeAudioEl.muted = true;
+    mergeAudioEl.volume = 0;
     mergeVideoEl.playsInline = true;
     mergeAudioEl.playsInline = true;
     mergeVideoEl.setAttribute('playsinline', '');
@@ -1129,10 +1136,20 @@
     mergeAudioEl.setAttribute('webkit-playsinline', '');
     mergeVideoEl.preload = 'auto';
     mergeAudioEl.preload = 'auto';
+    // NEVER appendChild; keep off-DOM so no render/audio sink can leak.
     mergeVideoEl._objectUrl = vurl;
     mergeAudioEl._objectUrl = aurl;
     mergeVideoEl.src = vurl;
     mergeAudioEl.src = aurl;
+
+    // Accelerated playback: process ~2x faster than real time when the browser allows it
+    // (captureStream() follows playbackRate in Chrome/Firefox/Edge/Safari).
+    // Conservative 1.5x is widely supported; 4x breaks on some codecs.
+    const FAST_RATE = 1.5;
+    try { mergeVideoEl.playbackRate = FAST_RATE; } catch {}
+    try { mergeVideoEl.defaultPlaybackRate = FAST_RATE; } catch {}
+    try { mergeAudioEl.playbackRate = FAST_RATE; } catch {}
+    try { mergeAudioEl.defaultPlaybackRate = FAST_RATE; } catch {}
 
     await Promise.all([
       new Promise((res, rej) => {
@@ -1152,21 +1169,35 @@
 
     const combined = new MediaStream();
     const vStream = captureMediaStream(mergeVideoEl);
-    const aStream = captureMediaStream(mergeAudioEl);
+    // Capture audio via *muted* element first (Chrome captures silent tracks from muted <audio> directly).
+    let aStream = captureMediaStream(mergeAudioEl);
     if (!vStream || vStream.getVideoTracks().length === 0) throw new Error('Could not capture video stream.');
     vStream.getVideoTracks().forEach(t => combined.addTrack(t));
+
+    let actx = null;
     if (aStream && aStream.getAudioTracks().length > 0) {
       aStream.getAudioTracks().forEach(t => combined.addTrack(t));
     } else {
       try {
-        const actx = new (window.AudioContext || window.webkitAudioContext)();
+        // Need AudioContext route. Pre-emptively drop volume to 0 again (defense-in-depth).
+        mergeAudioEl.volume = 0;
+        mergeAudioEl.muted = true;
+        actx = new (window.AudioContext || window.webkitAudioContext)();
         if (actx.state === 'suspended') await actx.resume();
         const src = actx.createMediaElementSource(mergeAudioEl);
+        // createMediaElementSource() by spec DISCONNECTS the element from the default audio
+        // destination (speakers). We only connect to MediaStreamDestination for the recorder.
+        // But also add an explicit GainNode at -Infinity as a second safeguard.
+        const silentGain = actx.createGain();
+        silentGain.gain.value = 0;
         const dest = actx.createMediaStreamDestination();
-        src.connect(dest);
+        src.connect(silentGain);
+        silentGain.connect(dest);
         dest.stream.getAudioTracks().forEach(t => combined.addTrack(t));
         mergeAudioEl._audioCtx = actx;
-      } catch {}
+      } catch (e) {
+        actx && actx.close().catch(() => {});
+      }
     }
 
     const chunks = [];
@@ -1184,6 +1215,7 @@
       };
     });
     mergeRecorder.start(250);
+    // Start playback SILENTLY (both elements off-DOM, muted, volume=0, AudioContext routed only through gain=0 → MediaStreamDestination).
     try { mergeAudioEl.play().catch(() => {}); mergeVideoEl.play().catch(() => {}); } catch {}
     mergeVideoEl.onended = () => { if (mergeRecorder && mergeRecorder.state !== 'inactive') { try { mergeRecorder.stop(); } catch {} } };
     mergeAudioEl.onended = mergeVideoEl.onended;
@@ -1199,7 +1231,6 @@
     if (mergeTimer) { clearInterval(mergeTimer); mergeTimer = null; }
     isMerging = false;
     showFinalDownloadButton(blob, fixedFilename);
-    try { triggerBlobDownload(blob, fixedFilename); } catch {}
   }
 
   function triggerBlobDownload(blob, filename) {
@@ -1367,14 +1398,6 @@
       });
     });
 
-    // Stream Mode Switcher buttons
-    if (btnStreamWorker) {
-      btnStreamWorker.addEventListener('click', () => setStreamMode('worker'));
-    }
-    if (btnStreamDirect) {
-      btnStreamDirect.addEventListener('click', () => setStreamMode('direct'));
-    }
-
     // In-Player Fallback Action Button
     if (btnSwitchStreamMode) {
       btnSwitchStreamMode.addEventListener('click', () => {
@@ -1403,6 +1426,57 @@
         if (mergeAbortController) { try { mergeAbortController.abort(); } catch {} }
         isMerging = false;
         cleanupMerge(true);
+        // Also ensure input box + hero re-appear if user cancels processing
+        if (heroHeader) heroHeader.classList.remove('hidden');
+        if (downloaderBox) downloaderBox.classList.remove('hidden');
+        if (heroSection) heroSection.classList.remove('hero--result-mode');
+        if (btnDownloadAnother) btnDownloadAnother.classList.add('hidden');
+      });
+    }
+
+    // Download Another Video CTA (single button shown in result info side)
+    if (btnDownloadAnother) {
+      btnDownloadAnother.addEventListener('click', () => {
+        // Reset processing/mux state (stop recorder, revoke URLs, cancel any pending work)
+        mergeCancelled = true;
+        if (mergeAbortController) { try { mergeAbortController.abort(); } catch {} }
+        cleanupMerge(true);
+        revokeMergedFinalUrl();
+        mergedFinalBlob = null;
+        mergedFinalFilename = '';
+        currentPostData = null;
+        renderResultData = null;
+        resultCardPending = false;
+        isMerging = false;
+
+        // Hide result card + progress panels
+        if (resultCard) resultCard.classList.add('hidden');
+        if (mergeProgressContainer) mergeProgressContainer.classList.add('hidden');
+        if (btnFinalMerged) btnFinalMerged.classList.add('hidden');
+        hideGlobalMergeProgress();
+        hideError();
+
+        // Re-show the hero title + input box
+        if (heroHeader) heroHeader.classList.remove('hidden');
+        if (downloaderBox) downloaderBox.classList.remove('hidden');
+        if (heroSection) heroSection.classList.remove('hero--result-mode');
+        if (btnDownloadAnother) btnDownloadAnother.classList.add('hidden');
+
+        // Clear + focus the input for a new URL
+        if (urlInput) {
+          urlInput.value = '';
+          try { urlInput.focus(); } catch {}
+        }
+        updateInputControls();
+
+        // Scroll back to the input for quick re-paste
+        if (heroSection) {
+          try { heroSection.scrollIntoView({ behavior: 'smooth', block: 'start' }); } catch {}
+        } else if (downloadForm) {
+          try { downloadForm.scrollIntoView({ behavior: 'smooth', block: 'start' }); } catch {}
+        } else {
+          try { window.scrollTo({ top: 0, behavior: 'smooth' }); } catch {}
+        }
       });
     }
 
