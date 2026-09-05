@@ -1,0 +1,1568 @@
+/* ==========================================================================
+   Reddit Video Downloader - Elegant Dark Theme Stylesheet
+   Pure CSS, Responsive, Accessible, Mobile-first, Zero External Dependencies
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   Design Tokens & CSS Variables (Default: Elegant Dark)
+   -------------------------------------------------------------------------- */
+:root {
+  /* Elegant Dark Color Palette */
+  --bg-primary: #0F0F10;
+  --bg-secondary: #121214;
+  --bg-card: #161618;
+  --bg-card-hover: #1C1C1F;
+  --bg-input: #1A1A1C;
+  --bg-input-focus: #202024;
+  --bg-footer: #0B0B0C;
+  
+  /* Borders */
+  --border-color: #27272A;
+  --border-subtle: rgba(39, 39, 42, 0.6);
+  --border-focus: #FF4500;
+  --border-focus-glow: rgba(255, 69, 0, 0.3);
+
+  /* Typography Colors */
+  --text-primary: #FFFFFF;
+  --text-secondary: #E4E4E7;
+  --text-muted: #A1A1AA;
+  --text-subtle: #71717A;
+
+  /* Brand Accents */
+  --reddit-orange: #FF4500;
+  --reddit-orange-hover: #FF5714;
+  --reddit-orange-alpha: rgba(255, 69, 0, 0.15);
+  --reddit-orange-glow: rgba(255, 69, 0, 0.3);
+  --reddit-gradient: linear-gradient(135deg, #FF4500 0%, #FF8C00 100%);
+  --reddit-blue: #0079D3;
+
+  /* Status Colors */
+  --color-success: #10B981;
+  --color-success-bg: rgba(16, 185, 129, 0.12);
+  --color-error: #EF4444;
+  --color-error-bg: rgba(239, 68, 68, 0.14);
+  --color-warning: #F59E0B;
+  --color-warning-bg: rgba(245, 158, 11, 0.12);
+
+  /* Elevation Shadows */
+  --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.4);
+  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.5), 0 2px 4px -2px rgba(0, 0, 0, 0.4);
+  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.6), 0 4px 6px -4px rgba(0, 0, 0, 0.4);
+  --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.7), 0 8px 10px -6px rgba(0, 0, 0, 0.5);
+  --shadow-ambient: 0 0 30px -5px rgba(255, 69, 0, 0.2);
+
+  /* Geometry */
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 14px;
+  --radius-xl: 18px;
+  --radius-full: 9999px;
+
+  /* Fonts & Transitions */
+  --font-family: -apple-system, BlinkMacSystemFont, "Inter", "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
+  --transition-fast: 0.15s cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-normal: 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Light Theme (Preserved for switchable contrast) */
+[data-theme="light"] {
+  --bg-primary: #F8FAFC;
+  --bg-secondary: #FFFFFF;
+  --bg-card: #FFFFFF;
+  --bg-card-hover: #F1F5F9;
+  --bg-input: #F8FAFC;
+  --bg-input-focus: #FFFFFF;
+  --bg-footer: #F1F5F9;
+  
+  --border-color: #E2E8F0;
+  --border-subtle: rgba(226, 232, 240, 0.8);
+  --border-focus: #FF4500;
+  --border-focus-glow: rgba(255, 69, 0, 0.2);
+
+  --text-primary: #0F172A;
+  --text-secondary: #334155;
+  --text-muted: #64748B;
+  --text-subtle: #94A3B8;
+
+  --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.08), 0 2px 4px -2px rgba(0, 0, 0, 0.04);
+  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.08), 0 4px 6px -4px rgba(0, 0, 0, 0.03);
+  --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.04);
+  --shadow-ambient: 0 0 25px -5px rgba(255, 69, 0, 0.15);
+}
+
+/* --------------------------------------------------------------------------
+   Reset & Base Styles
+   -------------------------------------------------------------------------- */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: 16px;
+  scroll-behavior: smooth;
+  height: 100%;
+}
+
+body {
+  font-family: var(--font-family);
+  background-color: var(--bg-primary);
+  color: var(--text-secondary);
+  line-height: 1.6;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  transition: background-color var(--transition-normal), color var(--transition-normal);
+}
+
+.container {
+  width: 100%;
+  max-width: 1040px;
+  margin: 0 auto;
+  padding: 0 1.25rem;
+}
+
+code {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace;
+  font-size: 0.88em;
+  background-color: rgba(255, 255, 255, 0.06);
+  padding: 0.18em 0.45em;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--border-color);
+  color: #FF8C00;
+}
+
+/* --------------------------------------------------------------------------
+   Site Header
+   -------------------------------------------------------------------------- */
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background-color: var(--bg-secondary);
+  border-bottom: 1px solid var(--border-subtle);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  transition: background-color var(--transition-normal), border-color var(--transition-normal);
+}
+
+.header-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 68px;
+}
+
+.brand-link {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  text-decoration: none;
+  color: var(--text-primary);
+  font-weight: 700;
+  font-size: 1.125rem;
+  letter-spacing: -0.02em;
+}
+
+.brand-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  border-radius: var(--radius-full);
+  background-color: transparent;
+  flex-shrink: 0;
+}
+
+.brand-icon img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  border-radius: inherit;
+}
+
+.brand-text {
+  letter-spacing: -0.015em;
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+.brand-muted {
+  color: var(--text-subtle);
+  font-weight: 400;
+}
+
+.badge-worker {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-size: 0.72rem;
+  font-weight: 600;
+  padding: 0.2rem 0.55rem;
+  background-color: var(--reddit-orange-alpha);
+  color: var(--reddit-orange);
+  border-radius: var(--radius-full);
+  border: 1px solid rgba(255, 69, 0, 0.25);
+  letter-spacing: 0.01em;
+  text-decoration: none;
+  transition: background-color var(--transition-fast), border-color var(--transition-fast), transform var(--transition-fast);
+}
+
+.badge-worker:hover {
+  background-color: rgba(255, 69, 0, 0.2);
+  border-color: rgba(255, 69, 0, 0.45);
+  transform: translateY(-1px);
+}
+
+.worker-pulse-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background-color: #10B981;
+  box-shadow: 0 0 6px rgba(16, 185, 129, 0.8);
+  animation: pulseWorkerDot 2s infinite ease-in-out;
+  display: inline-block;
+  flex-shrink: 0;
+}
+
+@keyframes pulseWorkerDot {
+  0%, 100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.5;
+    transform: scale(0.85);
+  }
+}
+
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+}
+
+.nav-anchor-link {
+  color: var(--text-muted);
+  text-decoration: none;
+  font-size: 0.9rem;
+  font-weight: 500;
+  transition: color var(--transition-fast);
+  display: none;
+}
+
+@media (min-width: 640px) {
+  .nav-anchor-link {
+    display: inline-block;
+  }
+}
+
+.nav-anchor-link:hover {
+  color: var(--text-primary);
+}
+
+.btn-icon {
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  color: var(--text-muted);
+  width: 38px;
+  height: 38px;
+  border-radius: var(--radius-md);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.btn-icon:hover {
+  background: var(--bg-card-hover);
+  color: var(--text-primary);
+  border-color: var(--text-subtle);
+}
+
+/* Theme toggle icon switcher */
+[data-theme="dark"] .sun-icon {
+  display: block;
+}
+[data-theme="dark"] .moon-icon {
+  display: none;
+}
+[data-theme="light"] .sun-icon {
+  display: none;
+}
+[data-theme="light"] .moon-icon {
+  display: block;
+}
+
+/* --------------------------------------------------------------------------
+   Hero & Downloader Box
+   -------------------------------------------------------------------------- */
+.hero-section {
+  padding: 3.75rem 0 3rem;
+  position: relative;
+}
+
+.hero-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.hero-header {
+  text-align: center;
+  max-width: 700px;
+  margin-bottom: 2.5rem;
+}
+
+.hero-title {
+  font-size: 2.5rem;
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  color: var(--text-primary);
+  margin-bottom: 0.85rem;
+  line-height: 1.15;
+}
+
+.hero-accent {
+  color: var(--reddit-orange);
+  background: var(--reddit-gradient);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+@media (min-width: 640px) {
+  .hero-title {
+    font-size: 3.25rem;
+  }
+}
+
+.hero-desc {
+  font-size: 1.125rem;
+  color: var(--text-muted);
+  line-height: 1.55;
+  max-width: 620px;
+  margin: 0 auto;
+}
+
+/* Ambient Glow Container */
+.downloader-glow-wrap {
+  position: relative;
+  width: 100%;
+  max-width: 760px;
+}
+
+.downloader-glow-wrap::before {
+  content: "";
+  position: absolute;
+  inset: -3px;
+  background: var(--reddit-gradient);
+  border-radius: 22px;
+  filter: blur(14px);
+  opacity: 0.22;
+  transition: opacity 0.4s ease, filter 0.4s ease;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.downloader-glow-wrap:focus-within::before {
+  opacity: 0.42;
+  filter: blur(18px);
+}
+
+/* Downloader Card Container */
+.downloader-card {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  background-color: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-xl);
+  padding: 1.75rem;
+  box-shadow: var(--shadow-xl);
+  transition: border-color var(--transition-fast), box-shadow var(--transition-fast);
+}
+
+.downloader-card.drag-over {
+  border-color: var(--reddit-orange);
+  background-color: var(--bg-card-hover);
+  box-shadow: 0 0 0 4px var(--reddit-orange-alpha), var(--shadow-xl);
+}
+
+.download-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+/* Input Wrapper & Controls */
+.input-field-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+  background-color: var(--bg-input);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-lg);
+  padding: 0.35rem 0.5rem;
+  transition: all var(--transition-fast);
+  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.25);
+}
+
+.input-field-wrapper:focus-within {
+  border-color: var(--reddit-orange);
+  background-color: var(--bg-input-focus);
+  box-shadow: 0 0 0 4px var(--reddit-orange-alpha), inset 0 1px 2px rgba(0, 0, 0, 0.2);
+}
+
+.input-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-left: 0.75rem;
+  color: var(--text-subtle);
+}
+
+.reddit-input {
+  flex: 1;
+  background: transparent;
+  border: none;
+  padding: 0.95rem 0.75rem;
+  font-size: 1.05rem;
+  color: var(--text-primary);
+  font-family: inherit;
+  outline: none;
+  min-width: 0;
+}
+
+.reddit-input::placeholder {
+  color: var(--text-subtle);
+}
+
+.input-buttons {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding-right: 0.35rem;
+}
+
+.btn-input-action {
+  background: var(--bg-card-hover);
+  border: 1px solid var(--border-color);
+  color: var(--text-muted);
+  padding: 0.45rem 0.75rem;
+  border-radius: var(--radius-md);
+  font-size: 0.85rem;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.btn-input-action:hover {
+  background: var(--border-color);
+  color: var(--text-primary);
+}
+
+.form-submit-row {
+  display: flex;
+  justify-content: center;
+}
+
+.btn-submit {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.65rem;
+  width: 100%;
+  background: var(--reddit-orange);
+  color: #FFFFFF;
+  border: none;
+  border-radius: var(--radius-md);
+  padding: 1rem 2.25rem;
+  font-size: 1.075rem;
+  font-weight: 700;
+  cursor: pointer;
+  letter-spacing: -0.01em;
+  box-shadow: 0 4px 14px rgba(255, 69, 0, 0.35);
+  transition: all var(--transition-fast);
+}
+
+@media (min-width: 640px) {
+  .btn-submit {
+    width: auto;
+    min-width: 250px;
+  }
+}
+
+.btn-submit:hover:not(:disabled) {
+  background-color: var(--reddit-orange-hover);
+  transform: translateY(-1px);
+  box-shadow: 0 6px 20px rgba(255, 69, 0, 0.5);
+}
+
+.btn-submit:active:not(:disabled) {
+  transform: scale(0.98);
+}
+
+.btn-submit:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+  box-shadow: none;
+  transform: none;
+}
+
+/* Examples Row */
+.examples-row {
+  margin-top: 1.25rem;
+  padding-top: 1.25rem;
+  border-top: 1px solid var(--border-subtle);
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.examples-label {
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: var(--text-subtle);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.example-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.example-chip {
+  background: var(--bg-input);
+  border: 1px solid var(--border-color);
+  color: var(--text-muted);
+  font-size: 0.78rem;
+  font-family: inherit;
+  padding: 0.35rem 0.75rem;
+  border-radius: var(--radius-full);
+  cursor: pointer;
+  white-space: nowrap;
+  transition: all var(--transition-fast);
+}
+
+.example-chip:hover {
+  border-color: var(--reddit-orange);
+  color: var(--reddit-orange);
+  background: var(--reddit-orange-alpha);
+}
+
+/* --------------------------------------------------------------------------
+   Dynamic Status & Loading State
+   -------------------------------------------------------------------------- */
+.status-container {
+  width: 100%;
+  max-width: 760px;
+  margin-top: 1.5rem;
+  background-color: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-lg);
+  padding: 1.25rem 1.5rem;
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+  box-shadow: var(--shadow-md);
+  animation: fadeIn 0.3s ease;
+}
+
+.loading-spinner {
+  width: 28px;
+  height: 28px;
+  border: 3px solid var(--border-color);
+  border-top-color: var(--reddit-orange);
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+  flex-shrink: 0;
+}
+
+.status-content {
+  flex: 1;
+}
+
+.status-message {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-bottom: 0.4rem;
+}
+
+.progress-track {
+  width: 100%;
+  height: 5px;
+  background-color: var(--bg-input);
+  border-radius: var(--radius-full);
+  overflow: hidden;
+}
+
+.progress-bar {
+  height: 100%;
+  width: 25%;
+  background: var(--reddit-gradient);
+  border-radius: var(--radius-full);
+  transition: width 0.4s ease;
+}
+
+/* --------------------------------------------------------------------------
+   Alert / Error Notification
+   -------------------------------------------------------------------------- */
+.error-banner {
+  width: 100%;
+  max-width: 760px;
+  margin-top: 1.5rem;
+  background-color: var(--color-error-bg);
+  border: 1px solid var(--color-error);
+  border-radius: var(--radius-lg);
+  padding: 1rem 1.25rem;
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+  color: var(--color-error);
+  box-shadow: var(--shadow-sm);
+  animation: shake 0.35s ease;
+}
+
+.error-icon {
+  flex-shrink: 0;
+}
+
+.error-text {
+  flex: 1;
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: var(--text-primary);
+}
+
+.error-close-btn {
+  background: transparent;
+  border: none;
+  font-size: 1.4rem;
+  line-height: 1;
+  color: var(--text-muted);
+  cursor: pointer;
+  padding: 0.25rem;
+  transition: color var(--transition-fast);
+}
+
+.error-close-btn:hover {
+  color: var(--color-error);
+}
+
+/* --------------------------------------------------------------------------
+   Result Card & Video Preview (Elegant Dark Refinements)
+   -------------------------------------------------------------------------- */
+.result-card {
+  width: 100%;
+  max-width: 760px;
+  margin-top: 2rem;
+  background-color: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-xl);
+  overflow: hidden;
+  box-shadow: var(--shadow-xl);
+  display: flex;
+  flex-direction: column;
+  animation: slideUp 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@media (min-width: 768px) {
+  .result-card {
+    flex-direction: row;
+  }
+}
+
+.result-media-side {
+  background-color: #000000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  min-height: 260px;
+  border-bottom: 1px solid var(--border-color);
+}
+
+@media (min-width: 768px) {
+  .result-media-side {
+    width: 44%;
+    flex-shrink: 0;
+    border-bottom: none;
+    border-right: 1px solid var(--border-color);
+  }
+}
+
+.video-container {
+  width: 100%;
+  height: 100%;
+  min-height: 260px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: #000000;
+  overflow: hidden;
+}
+
+.video-player {
+  width: 100%;
+  max-height: 480px;
+  display: block;
+  background-color: #000000;
+}
+
+/* In-player Error Recovery Overlay */
+.video-error-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(15, 15, 16, 0.92);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 1.5rem;
+  text-align: center;
+  z-index: 10;
+  animation: fadeIn 0.25s ease;
+}
+
+.video-error-icon {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background-color: rgba(245, 158, 11, 0.12);
+  border: 1px solid rgba(245, 158, 11, 0.35);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #F59E0B;
+  margin-bottom: 0.75rem;
+}
+
+.video-error-title {
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 0.35rem;
+}
+
+.video-error-desc {
+  font-size: 0.82rem;
+  color: var(--text-muted);
+  max-width: 280px;
+  line-height: 1.45;
+  margin-bottom: 1rem;
+}
+
+.video-error-actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+.btn-video-fallback {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.45rem 0.85rem;
+  font-size: 0.78rem;
+  font-weight: 600;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--border-color);
+  background-color: var(--bg-card);
+  color: var(--text-primary);
+  text-decoration: none;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.btn-video-fallback:hover {
+  background-color: var(--bg-card-hover);
+  border-color: var(--reddit-orange);
+  color: var(--reddit-orange);
+}
+
+/* Stream Source Switcher Bar */
+.stream-source-bar {
+  width: 100%;
+  background: rgba(15, 15, 16, 0.95);
+  border-top: 1px solid var(--border-color);
+  padding: 0.4rem 0.75rem;
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.75rem;
+  z-index: 5;
+}
+
+.stream-label {
+  color: var(--text-subtle);
+  font-weight: 600;
+  margin-right: 0.2rem;
+}
+
+.stream-btn {
+  background: transparent;
+  border: 1px solid var(--border-color);
+  color: var(--text-muted);
+  font-size: 0.72rem;
+  font-weight: 600;
+  padding: 0.25rem 0.6rem;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.stream-btn:hover {
+  color: var(--text-primary);
+  border-color: var(--text-subtle);
+}
+
+.stream-btn.active {
+  background-color: var(--reddit-orange-alpha);
+  border-color: var(--reddit-orange);
+  color: var(--reddit-orange);
+}
+
+.result-info-side {
+  padding: 1.75rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  flex: 1;
+}
+
+.badges-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 0.35rem;
+}
+
+.badge-sub {
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: var(--text-muted);
+  background-color: var(--border-color);
+  padding: 0.2rem 0.6rem;
+  border-radius: var(--radius-sm);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.badge-author {
+  font-size: 0.8rem;
+  color: var(--text-subtle);
+}
+
+.badge-audio-status {
+  font-size: 0.72rem;
+  font-weight: 700;
+  background-color: var(--color-success-bg);
+  color: var(--color-success);
+  padding: 0.2rem 0.55rem;
+  border-radius: var(--radius-full);
+}
+
+.badge-audio-status.no-audio {
+  background-color: var(--color-warning-bg);
+  color: var(--color-warning);
+}
+
+.result-title {
+  font-size: 1.25rem;
+  font-weight: 700;
+  line-height: 1.35;
+  color: var(--text-primary);
+  word-break: break-word;
+  letter-spacing: -0.02em;
+}
+
+.metadata-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0.75rem;
+  background-color: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  padding: 0.85rem 1rem;
+}
+
+.meta-item {
+  display: flex;
+  flex-direction: column;
+}
+
+.meta-label {
+  font-size: 0.72rem;
+  color: var(--text-subtle);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  font-weight: 600;
+}
+
+.meta-val {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+/* Quality Selector Group */
+.quality-selector-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.selector-label {
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--text-muted);
+}
+
+.quality-buttons-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+}
+
+.btn-quality-chip {
+  background: var(--bg-input);
+  border: 1px solid var(--border-color);
+  color: var(--text-muted);
+  font-size: 0.8rem;
+  font-weight: 600;
+  padding: 0.35rem 0.75rem;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.btn-quality-chip:hover {
+  border-color: var(--text-muted);
+  color: var(--text-primary);
+}
+
+.btn-quality-chip.active {
+  background: var(--reddit-orange);
+  color: #FFFFFF;
+  border-color: var(--reddit-orange);
+}
+
+/* Download Actions - Elegant Dark Style */
+.download-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+  margin-top: 0.25rem;
+}
+
+.btn-download {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.85rem 1.25rem;
+  border-radius: var(--radius-md);
+  font-size: 0.95rem;
+  font-weight: 700;
+  text-decoration: none;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+/* High contrast primary white button from Elegant Dark design snippet */
+.btn-download.primary {
+  background-color: #FFFFFF;
+  color: #000000;
+  box-shadow: 0 4px 12px rgba(255, 255, 255, 0.1);
+}
+
+.btn-download.primary:hover {
+  background-color: #E4E4E7;
+  transform: translateY(-1px);
+  box-shadow: 0 6px 16px rgba(255, 255, 255, 0.15);
+}
+
+/* Secondary dark button from Elegant Dark design snippet */
+.btn-download.secondary {
+  background-color: var(--border-color);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  color: #FFFFFF;
+}
+
+.btn-download.secondary:hover {
+  background-color: #3F3F46;
+  transform: translateY(-1px);
+}
+
+.btn-permalink {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.35rem;
+  font-size: 0.85rem;
+  color: var(--text-subtle);
+  text-decoration: none;
+  padding: 0.4rem 0;
+  transition: color var(--transition-fast);
+}
+
+.btn-permalink:hover {
+  color: var(--reddit-orange);
+}
+
+.stream-notice {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.5rem;
+  font-size: 0.8rem;
+  color: var(--text-subtle);
+  line-height: 1.4;
+  border-top: 1px solid var(--border-subtle);
+  padding-top: 0.75rem;
+}
+
+.stream-notice svg {
+  flex-shrink: 0;
+  margin-top: 0.15rem;
+}
+
+/* --------------------------------------------------------------------------
+   Content Blocks & Guides (Subtle Section Dividers)
+   -------------------------------------------------------------------------- */
+.content-section {
+  padding: 4rem 0;
+  border-top: 1px solid var(--border-color);
+  background-color: var(--bg-secondary);
+  transition: background-color var(--transition-normal);
+}
+
+.content-block {
+  margin-bottom: 2.75rem;
+  max-width: 820px;
+}
+
+.content-block:last-child {
+  margin-bottom: 0;
+}
+
+.content-block h2 {
+  font-size: 1.65rem;
+  font-weight: 700;
+  letter-spacing: -0.025em;
+  color: var(--text-primary);
+  margin-bottom: 0.9rem;
+}
+
+.content-block p {
+  color: var(--text-muted);
+  font-size: 1.025rem;
+  margin-bottom: 1rem;
+  line-height: 1.7;
+}
+
+.steps-list {
+  padding-left: 1.25rem;
+  color: var(--text-muted);
+  font-size: 1.025rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.steps-list li strong {
+  color: var(--text-primary);
+}
+
+/* --------------------------------------------------------------------------
+   FAQ Section (Elegant Dark Cards)
+   -------------------------------------------------------------------------- */
+.faq-section {
+  padding: 4rem 0;
+  border-top: 1px solid var(--border-color);
+  background-color: var(--bg-primary);
+}
+
+.faq-heading {
+  font-size: 2rem;
+  font-weight: 800;
+  letter-spacing: -0.025em;
+  color: var(--text-primary);
+  text-align: center;
+  margin-bottom: 2.5rem;
+}
+
+.faq-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.25rem;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+@media (min-width: 640px) {
+  .faq-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.faq-card {
+  background-color: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-lg);
+  padding: 1.6rem;
+  box-shadow: var(--shadow-sm);
+  transition: border-color var(--transition-fast), transform var(--transition-fast);
+}
+
+.faq-card:hover {
+  border-color: #3F3F46;
+  transform: translateY(-2px);
+}
+
+.faq-question {
+  font-size: 1.075rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 0.65rem;
+  letter-spacing: -0.015em;
+}
+
+.faq-answer {
+  font-size: 0.95rem;
+  color: var(--text-muted);
+  line-height: 1.6;
+}
+
+/* --------------------------------------------------------------------------
+   Developer & Architecture Section
+   -------------------------------------------------------------------------- */
+.api-doc-section {
+  padding: 3.5rem 0;
+  border-top: 1px solid var(--border-color);
+  background-color: var(--bg-secondary);
+}
+
+.api-card {
+  background-color: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-xl);
+  padding: 1.75rem;
+  box-shadow: var(--shadow-md);
+  max-width: 860px;
+  margin: 0 auto;
+}
+
+.api-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 0.75rem;
+}
+
+.api-header h3 {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+.worker-live-tag {
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+  font-size: 0.82rem;
+  color: var(--text-muted);
+  margin-top: 0.25rem;
+}
+
+.worker-url-link {
+  color: var(--text-primary);
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  text-decoration: none;
+  border-bottom: 1px dashed var(--border-color);
+  transition: color var(--transition-fast), border-color var(--transition-fast);
+}
+
+.worker-url-link:hover {
+  color: var(--reddit-orange);
+  border-color: var(--reddit-orange);
+}
+
+.link-highlight {
+  color: var(--reddit-orange);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.link-highlight:hover {
+  color: var(--reddit-orange-hover);
+}
+
+.badge-code {
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: #10B981;
+  background-color: rgba(16, 185, 129, 0.12);
+  padding: 0.25rem 0.6rem;
+  border-radius: var(--radius-sm);
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  transition: background-color var(--transition-fast);
+}
+
+.badge-code:hover {
+  background-color: rgba(16, 185, 129, 0.22);
+}
+
+.api-desc {
+  color: var(--text-muted);
+  font-size: 0.95rem;
+  margin-bottom: 1.25rem;
+}
+
+.endpoints-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+}
+
+.endpoint-item {
+  background-color: var(--bg-input);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  padding: 0.85rem 1rem;
+}
+
+.endpoint-title-row {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  word-break: break-all;
+}
+
+.http-method {
+  display: inline-block;
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: #FFFFFF;
+  background-color: #0284C7;
+  padding: 0.15rem 0.45rem;
+  border-radius: var(--radius-sm);
+  margin-right: 0.25rem;
+  flex-shrink: 0;
+}
+
+.endpoint-item code {
+  font-weight: 600;
+}
+
+.endpoint-item p {
+  font-size: 0.85rem;
+  color: var(--text-subtle);
+  margin-top: 0.35rem;
+}
+
+/* --------------------------------------------------------------------------
+   Site Footer (Elegant Dark Feature Columns & Copyright)
+   -------------------------------------------------------------------------- */
+.site-footer {
+  margin-top: auto;
+  border-top: 1px solid #18181B;
+  background-color: var(--bg-footer);
+  padding: 3rem 0 2rem;
+}
+
+.footer-inner {
+  display: flex;
+  flex-direction: column;
+  gap: 2.25rem;
+}
+
+.footer-features-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+  padding-bottom: 2rem;
+  border-bottom: 1px solid #18181B;
+}
+
+.footer-links-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+  padding-bottom: 2rem;
+  border-bottom: 1px solid #18181B;
+}
+
+.footer-link-group {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.65rem;
+}
+
+.footer-link-title {
+  margin: 0 0 0.15rem;
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.footer-link-group a {
+  color: var(--text-subtle);
+  font-size: 0.825rem;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.footer-link-group a:hover,
+.footer-link-group a:focus-visible {
+  color: var(--text-primary);
+}
+
+@media (max-width: 639px) {
+  .footer-links-grid {
+    gap: 1.5rem 1rem;
+  }
+}
+
+@media (min-width: 640px) {
+  .footer-features-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 900px) {
+  .footer-features-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+.footer-feature-item {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.footer-feature-title {
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  letter-spacing: -0.01em;
+}
+
+.footer-feature-desc {
+  font-size: 0.825rem;
+  color: var(--text-subtle);
+  line-height: 1.5;
+}
+
+.footer-feature-brand {
+  justify-content: flex-end;
+  align-items: flex-start;
+}
+
+.footer-brand-tag {
+  font-size: 0.825rem;
+  font-weight: 600;
+  color: var(--text-muted);
+}
+
+.footer-status-dots {
+  display: flex;
+  gap: 0.35rem;
+  margin-top: 0.5rem;
+}
+
+.status-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background-color: #27272A;
+}
+
+.status-dot:first-child {
+  background-color: #22C55E;
+  box-shadow: 0 0 6px rgba(34, 197, 94, 0.5);
+}
+
+.footer-bottom-row {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  text-align: center;
+}
+
+.footer-copy {
+  font-size: 0.875rem;
+  color: var(--text-muted);
+}
+
+.footer-copy strong {
+  color: var(--text-primary);
+}
+
+.footer-disclaimer {
+  font-size: 0.775rem;
+  color: var(--text-subtle);
+  max-width: 720px;
+  margin: 0 auto;
+  line-height: 1.5;
+}
+
+/* --------------------------------------------------------------------------
+   Utility & Animation Classes
+   -------------------------------------------------------------------------- */
+.hidden {
+  display: none !important;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  20%, 60% { transform: translateX(-6px); }
+  40%, 80% { transform: translateX(6px); }
+}
+
+/* --------------------------------------------------------------------------
+   Navigation — Desktop & Mobile Hamburger Menu
+   -------------------------------------------------------------------------- */
+
+/* Desktop: show links, hide hamburger */
+.nav-desktop {
+  display: none;
+  align-items: center;
+  gap: 1.25rem;
+}
+@media (min-width: 640px) {
+  .nav-desktop { display: flex; }
+}
+
+/* Hamburger button — visible only on mobile */
+.nav-hamburger {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  width: 38px;
+  height: 38px;
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  color: var(--text-muted);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  flex-shrink: 0;
+  padding: 0;
+}
+.nav-hamburger:hover {
+  background: var(--bg-card-hover);
+  color: var(--text-primary);
+}
+@media (min-width: 640px) {
+  .nav-hamburger { display: none; }
+}
+
+/* Hamburger icon lines */
+.nav-hamburger .bar {
+  display: block;
+  width: 18px;
+  height: 2px;
+  background: currentColor;
+  border-radius: 2px;
+  transition: transform var(--transition-fast), opacity var(--transition-fast);
+  transform-origin: center;
+}
+
+/* Open state — animate to X */
+.nav-hamburger[aria-expanded="true"] .bar:nth-child(1) {
+  transform: translateY(7px) rotate(45deg);
+}
+.nav-hamburger[aria-expanded="true"] .bar:nth-child(2) {
+  opacity: 0;
+  transform: scaleX(0);
+}
+.nav-hamburger[aria-expanded="true"] .bar:nth-child(3) {
+  transform: translateY(-7px) rotate(-45deg);
+}
+
+/* Mobile dropdown panel */
+.nav-mobile-panel {
+  display: none;
+  flex-direction: column;
+  background-color: var(--bg-card);
+  border-bottom: 1px solid var(--border-color);
+  padding: 0.5rem 0 0.75rem;
+  animation: slideDown 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.nav-mobile-panel.open { display: flex; }
+
+@media (min-width: 640px) {
+  .nav-mobile-panel { display: none !important; }
+}
+
+.nav-mobile-panel a {
+  display: block;
+  padding: 0.8rem 1.5rem;
+  color: var(--text-muted);
+  font-size: 1rem;
+  font-weight: 500;
+  text-decoration: none;
+  border-left: 3px solid transparent;
+  transition: color var(--transition-fast), border-color var(--transition-fast), background-color var(--transition-fast);
+}
+.nav-mobile-panel a:hover {
+  color: var(--text-primary);
+  background-color: var(--bg-card-hover);
+  border-left-color: var(--reddit-orange);
+}
+
+@keyframes slideDown {
+  from { opacity: 0; transform: translateY(-6px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
