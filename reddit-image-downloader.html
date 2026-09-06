@@ -16,7 +16,7 @@
     <meta property="og:title" content="Reddit Image Downloader – Download Reddit Images in High Quality" />
     <meta property="og:description" content="Free Reddit Image Downloader for saving images from public Reddit posts. Paste a Reddit post URL, find available images, preview them, and download them easily." />
     <meta property="og:site_name" content="Reddit Image Downloader" />
-
+    <meta property="og:author" content="Romit kr Yadav" />
     <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content="Reddit Image Downloader – Download Reddit Images in High Quality" />
@@ -27,7 +27,7 @@
     <meta name="theme-color" content="#0f172a" media="(prefers-color-scheme: dark)" />
 
     <!-- Stylesheet -->
-    <link rel="stylesheet" href="https://reditgrab.com/redimg.css" />
+    <link rel="stylesheet" href="/redimg.css" />
   </head>
   <body data-theme="dark">
     <!-- Skip to main content for accessibility -->
@@ -50,6 +50,22 @@
           <a href="#faq" class="nav-link">FAQ</a>
           <a href="https://reditgrab.com/" class="nav-link">Video Downloader</a>
           <a href="https://reditgrab.com/reddit-dp-downloader.html" class="nav-link">DP Downloader</a>
+          <button type="button" class="btn-icon" id="theme-toggle-btn" aria-label="Toggle dark/light theme" title="Toggle theme">
+            <svg class="sun-icon" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2">
+              <circle cx="12" cy="12" r="5"></circle>
+              <line x1="12" y1="1" x2="12" y2="3"></line>
+              <line x1="12" y1="21" x2="12" y2="23"></line>
+              <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+              <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+              <line x1="1" y1="12" x2="3" y2="12"></line>
+              <line x1="21" y1="12" x2="23" y2="12"></line>
+              <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+              <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+            </svg>
+            <svg class="moon-icon" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+            </svg>
+          </button>
         </nav>
 
         <!-- Hamburger button (mobile only) -->
@@ -87,85 +103,96 @@
       })();
     </script>
 
-    <main id="main-content" class="main-layout">
-      <!-- Hero Section -->
+    <main class="main-content" id="main-content">
+      <!-- Hero Downloader Section -->
       <section class="hero-section" id="hero-section">
-        <div class="hero-content">
-          <h1 class="hero-title">Reddit Image Downloader</h1>
-          <p class="hero-subtitle">Download images from public Reddit posts in high quality.</p>
-                 </div>
-      </section>
+        <div class="container hero-container">
+          <div class="hero-header">
+            <h1 class="hero-title">Reddit Image Downloader</h1>
+            <p class="hero-desc">Download images from public Reddit posts in high quality.</p><div style="height: 30px;"></div>
+            <nav class="tool-tabs" aria-label="Downloader tools">
+              <a class="tool-tab" href="https://reditgrab.com/" aria-label="Video Downloader" title="Video Downloader">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="14" height="14" rx="2"></rect><path d="m17 10 4-2v8l-4-2z"></path></svg>
+              </a>
+              <a class="tool-tab active" href="https://reditgrab.com/reddit-image-downloader.html" aria-current="page" aria-label="Image Downloader" title="Image Downloader">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="4" width="18" height="16" rx="2"></rect><circle cx="8.5" cy="9" r="1.5"></circle><path d="m4 17 5-5 3 3 2-2 6 4"></path></svg>
+              </a>
+              <a class="tool-tab" href="https://reditgrab.com/reddit-dp-downloader.html" aria-label="DP Downloader" title="DP Downloader">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="8" r="3"></circle><path d="M5 20c.6-3.4 3.1-5 7-5s6.4 1.6 7 5"></path></svg>
+              </a>
+            </nav>
+          </div>
 
-      <!-- Main Downloader Tool -->
-      <section class="tool-section" id="downloader-tool-section" aria-label="Reddit Downloader Tool">
-        <div class="downloader-glow-wrap">
-        <div class="tool-card">
-          <form id="reddit-form" class="downloader-form" novalidate>
-            <label for="reddit-url-input" class="sr-only">Paste Reddit post URL</label>
-            <div class="input-wrapper">
-              <div class="input-icon-box" aria-hidden="true">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                  <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/>
-                  <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/>
-                </svg>
+          <!-- Downloader Box Card -->
+          <div class="downloader-glow-wrap" id="downloader-tool-section">
+            <div class="tool-card">
+              <form id="reddit-form" class="downloader-form" novalidate>
+                <label for="reddit-url-input" class="sr-only">Paste Reddit post URL</label>
+                <div class="input-wrapper">
+                  <div class="input-icon-box" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                      <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/>
+                      <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/>
+                    </svg>
+                  </div>
+                  <input
+                    type="url"
+                    id="reddit-url-input"
+                    name="redditUrl"
+                    class="url-input"
+                    placeholder="Paste Reddit post, gallery, or image URL (reddit.com/r/..., redd.it, or i.redd.it)..."
+                    autocomplete="off"
+                    spellcheck="false"
+                    required
+                  />
+                  <button type="button" id="clear-btn" class="input-action-btn hidden" aria-label="Clear input" title="Clear input">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                      <path d="M18 6 6 18"/>
+                      <path d="m6 6 12 12"/>
+                    </svg>
+                  </button>
+                  <button type="button" id="paste-btn" class="input-action-btn" aria-label="Paste from clipboard" title="Paste URL from clipboard">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                      <rect width="8" height="4" x="8" y="2" rx="1" ry="1"/>
+                      <path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/>
+                    </svg>
+                    <span class="btn-text-desktop">Paste</span>
+                  </button>
+                </div>
+
+                <div class="form-actions">
+                  <button type="submit" id="submit-btn" class="submit-btn">
+                    <span class="submit-btn-text" id="submit-btn-text">Get Images</span>
+                    <svg class="submit-btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                      <path d="m9 18 6-6-6-6"/>
+                    </svg>
+                  </button>
+                </div>
+              </form>
+
+              <!-- Loading Indicator Box -->
+              <div id="loading-container" class="loading-container hidden" role="status" aria-live="polite">
+                <div class="spinner" aria-hidden="true"></div>
+                <div class="loading-content">
+                  <div class="loading-primary-text" id="loading-primary-text">Finding Reddit images...</div>
+                  <div class="loading-sub-text" id="loading-sub-text">Checking post metadata...</div>
+                </div>
               </div>
-              <input
-                type="url"
-                id="reddit-url-input"
-                name="redditUrl"
-                class="url-input"
-                placeholder="Paste Reddit post, gallery, or image URL (reddit.com/r/..., redd.it, or i.redd.it)..."
-                autocomplete="off"
-                spellcheck="false"
-                required
-              />
-              <button type="button" id="clear-btn" class="input-action-btn hidden" aria-label="Clear input" title="Clear input">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                  <path d="M18 6 6 18"/>
-                  <path d="m6 6 12 12"/>
-                </svg>
-              </button>
-              <button type="button" id="paste-btn" class="input-action-btn" aria-label="Paste from clipboard" title="Paste URL from clipboard">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                  <rect width="8" height="4" x="8" y="2" rx="1" ry="1"/>
-                  <path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/>
-                </svg>
-                <span class="btn-text-desktop">Paste</span>
-              </button>
-            </div>
 
-            <div class="form-actions">
-              <button type="submit" id="submit-btn" class="submit-btn">
-                <span class="submit-btn-text" id="submit-btn-text">Get Images</span>
-                <svg class="submit-btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                  <path d="m9 18 6-6-6-6"/>
+              <!-- Error Alert Banner -->
+              <div id="error-banner" class="error-banner hidden" role="alert">
+                <svg class="error-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <circle cx="12" cy="12" r="10"/>
+                  <line x1="12" x2="12" y1="8" y2="12"/>
+                  <line x1="12" x2="12.01" y1="16" y2="16"/>
                 </svg>
-              </button>
-            </div>
-          </form>
-
-          <!-- Loading Indicator Box -->
-          <div id="loading-container" class="loading-container hidden" role="status" aria-live="polite">
-            <div class="spinner" aria-hidden="true"></div>
-            <div class="loading-content">
-              <div class="loading-primary-text" id="loading-primary-text">Finding Reddit images...</div>
-              <div class="loading-sub-text" id="loading-sub-text">Checking post metadata...</div>
+                <div class="error-message" id="error-message-text">Please enter a valid Reddit post URL.</div>
+                <button type="button" id="error-dismiss-btn" class="error-dismiss-btn" aria-label="Dismiss error notification">
+                  &times;
+                </button>
+              </div>
             </div>
           </div>
-
-          <!-- Error Alert Banner -->
-          <div id="error-banner" class="error-banner hidden" role="alert">
-            <svg class="error-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-              <circle cx="12" cy="12" r="10"/>
-              <line x1="12" x2="12" y1="8" y2="12"/>
-              <line x1="12" x2="12.01" y1="16" y2="16"/>
-            </svg>
-            <div class="error-message" id="error-message-text">Please enter a valid Reddit post URL.</div>
-            <button type="button" id="error-dismiss-btn" class="error-dismiss-btn" aria-label="Dismiss error notification">
-              &times;
-            </button>
-          </div>
-        </div>
         </div>
       </section>
 
@@ -233,7 +260,6 @@
           </div>
         </div>
       </section>
-
       <!-- Informational Section: How to Download Images from Reddit -->
       <section class="content-section" id="how-it-works">
         <div class="section-header">
@@ -351,40 +377,41 @@
         </div>
       </section>
 
-      <!-- Informational Section: Supported Reddit Images -->
-      <section class="content-section" id="supported-images">
-        <div class="section-header">
-          <h2 class="section-title">Supported Reddit Images</h2>
-          <p class="section-desc">Understand which media formats and Reddit link types can be retrieved.</p>
-        </div>
+      <!-- Info Content Section (matches index page style) -->
+      <section class="content-section" id="how-it-works">
+        <div class="container">
+          <div class="content-block">
+            <h2>Which Reddit Posts This Works On</h2>
+            <p>This tool reads public Reddit post data only. It works with standard <code>reddit.com</code> links, <code>old.reddit.com</code> links, <code>new.reddit.com</code> links, mobile app share links, and <code>redd.it</code> short links (which redirect to the full post before any images are fetched).
 
-        <div class="media-support-box">
-          <div class="support-column">
-            <h3 class="support-heading text-success">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
-              Supported Media Formats
-            </h3>
-            <ul class="support-list">
-              <li><strong>i.redd.it</strong> single image posts</li>
-              <li><strong>Reddit Galleries</strong> containing up to 20 images</li>
-              <li><strong>Standard formats:</strong> JPG, JPEG, PNG, WEBP</li>
-              <li><strong>Static/Animated GIF</strong> image files</li>
-              <li><strong>Desktop & Mobile links:</strong> reddit.com, old.reddit.com, new.reddit.com, and redd.it shortlinks</li>
-            </ul>
+Supported formats include <strong>i.redd.it</strong> single-image posts, multi-image Reddit Galleries (up to 20 photos), JPG, JPEG, PNG, WEBP, and static or animated GIF image files.
+
+It does not work on posts inside private communities, quarantined subreddits, or anything that requires you to be logged in to view — the tool has no way to authenticate as you, and it isn't built to get around that. It also does not handle video (v.redd.it), audio streams, external YouTube/Imgur video clips, or TikTok links. For videos use the Reddit Video Downloader; for a profile picture specifically, use the Reddit DP Downloader.</p>
           </div>
 
-          <div class="support-column">
-            <h3 class="support-heading text-danger">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="18" x2="6" y1="6" y2="18"/><line x1="6" x2="18" y1="6" y2="18"/></svg>
-              Unsupported Media
-            </h3>
-            <ul class="support-list">
-              <li><strong>Reddit Videos (v.redd.it):</strong> Video streams and MP4 media are not treated as static photos.</li>
-              <li><strong>Audio streams</strong> and external podcast links</li>
-              <li><strong>Private Subreddits</strong> or quarantined communities requiring authentication</li>
-              <li><strong>Deleted posts:</strong> If a creator or moderator removed the submission, the source file is no longer available.</li>
-              <li><strong>Third-party video hosts:</strong> YouTube, Imgur video clips, or TikTok links</li>
-            </ul>
+          <div class="content-block">
+            <h2>What Happens After You Paste a Link</h2>
+            <p>The tool reads the public post data behind the link and looks for Reddit-hosted image attachments. If it finds one or more images, you'll get a preview grid showing original dimensions and formats so you can confirm it's the right post before downloading anything. From there you can save individual photos or use Download All to save every image in the gallery at once. Nothing downloads automatically — you choose what to save after seeing the preview.</p>
+          </div>
+
+          <div class="content-block">
+            <h2>Image Quality and File Formats</h2>
+            <p>You'll get the highest resolution Reddit has publicly stored for that post — this depends entirely on what the original uploader submitted. The tool never recompresses, watermarks, or artificially upscales; it resolves preview thumbnail paths (such as <code>preview.redd.it</code>) straight back to the untouched original master files hosted on <code>i.redd.it</code>. Output formats are the same as the original upload: JPG, JPEG, PNG, WEBP, or GIF.</p>
+          </div>
+
+          <div class="content-block">
+            <h2>Why Some Reddit Images Can't Be Downloaded</h2>
+            <p>Images cannot be retrieved when: the submission has been deleted by the creator or removed by moderators, the post links to an external restricted host (not an official Reddit CDN), the post is actually a video (<code>v.redd.it</code>) rather than a static photo, the subreddit is private or requires login, or Reddit's edge network is temporarily enforcing bot/CDN limits on the requesting IP. In every case the tool reports the actual status rather than inventing a result.</p>
+          </div>
+
+          <div class="content-block">
+            <h2>What This Tool Won't Do</h2>
+            <p>It only works on public content. It can't reach images from private subreddits, posts requiring login, quarantined communities, or anything that's been permanently deleted — there's no way around Reddit's own access controls here, and there shouldn't be. It will never fabricate a URL, guess a filename, or serve a synthetic placeholder when the real source can't be verified.</p>
+          </div>
+
+          <div class="content-block">
+            <h2>Use It On Phone or On Desktop</h2>
+            <p>The steps are the same either way: open Reddit, find the post, copy the link (the Share button on mobile, the address bar on desktop), and paste it above. On mobile the Paste button inside the input box can pull directly from your clipboard with one tap. No app or browser extension to install on either platform.</p>
           </div>
         </div>
       </section>
@@ -469,25 +496,6 @@
         </div>
       </section>
 
-      <!-- Educational / SEO Content: Technical Guide -->
-      <section class="content-section" id="seo-guide">
-        <div class="section-header">
-          <h2 class="section-title">How It Works & Technical Architecture</h2>
-          <p class="section-desc">Understanding public metadata extraction, SSRF security, and edge delivery.</p>
-        </div>
-
-        <div class="prose-content">
-          <p>Reddit organizes public posts using hierarchical URL routes such as <code>/r/{subreddit}/comments/{post_id}/{slug}/</code>. When a post contains photographic media or multi-image galleries, Reddit stores metadata describing the media's unique identification key, dimensions, and MIME format.</p>
-          <p>Our Cloudflare Worker performs serverless edge resolution:</p>
-          <ul>
-            <li><strong>URL Sanitization:</strong> Normalizes incoming URLs and strictly checks domain integrity to prevent open redirect and proxy abuse.</li>
-            <li><strong>Public Metadata Parsing:</strong> Examines public JSON feeds and OpenGraph tags to locate the original master media assets.</li>
-            <li><strong>URL Upgrading:</strong> Converts downsampled thumbnail references (e.g. <code>preview.redd.it</code>) directly to the original master source files hosted on <code>i.redd.it</code>.</li>
-            <li><strong>Strict Hostname Allowlisting:</strong> Outbound requests strictly enforce an allowlist of official Reddit media CDNs, preventing Server-Side Request Forgery (SSRF).</li>
-            <li><strong>Safe Content-Disposition:</strong> Images are returned as clean attachment streams with predictable filenames, safeguarding users from malicious file extensions.</li>
-          </ul>
-        </div>
-      </section>
     </main>
 
     <!-- Lightbox Image Preview Modal -->
@@ -577,6 +585,6 @@
     </footer>
 
     <!-- Client Application Script -->
-    <script src="https://reditgrab.com/redimg.js" defer></script>
+    <script src="/redimg.js" defer></script>
   </body>
 </html>

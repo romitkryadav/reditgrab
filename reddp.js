@@ -83,7 +83,7 @@ const API_BASE_URL = (typeof window !== 'undefined' && window.location && (
   }
 
   function initTheme() {
-    const savedTheme = getSafeStorage('reddit_dp_theme');
+    const savedTheme = getSafeStorage('reddit_downloader_theme');
     if (savedTheme === 'dark' || savedTheme === 'light') {
       applyTheme(savedTheme);
     } else {
@@ -96,7 +96,7 @@ const API_BASE_URL = (typeof window !== 'undefined' && window.location && (
     if (document && document.documentElement) {
       document.documentElement.setAttribute('data-theme', theme);
     }
-    setSafeStorage('reddit_dp_theme', theme);
+    setSafeStorage('reddit_downloader_theme', theme);
     updateThemeIcon(theme);
   }
 

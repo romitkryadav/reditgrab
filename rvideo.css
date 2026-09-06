@@ -126,6 +126,11 @@ body {
   padding: 0 1.25rem;
 }
 
+.orange-tool-link,
+.orange-tool-link:hover {
+  color: var(--reddit-orange);
+}
+
 code {
   font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace;
   font-size: 0.88em;
@@ -380,7 +385,7 @@ code {
    Hero & Downloader Box
    -------------------------------------------------------------------------- */
 .hero-section {
-  padding: 1.75rem 0 3rem;
+  padding: 1.75rem 0 0;
   position: relative;
 }
 
@@ -390,10 +395,17 @@ code {
   align-items: center;
 }
 
+.tool-tabs { display: flex; align-items: center; justify-content: center; gap: 0.4rem; width: fit-content; margin: 0 auto 0.4rem; padding: 0.4rem; background: var(--bg-card); border: 1px solid var(--border-color); border-radius: var(--radius-full); box-shadow: var(--shadow-md); }
+.tool-tab { display: inline-flex; align-items: center; justify-content: center; width: 64px; height: 56px; border-radius: var(--radius-full); color: var(--text-muted); text-decoration: none; transition: color var(--transition-fast), background-color var(--transition-fast), box-shadow var(--transition-fast); }
+.tool-tab svg { width: 32px; height: 32px; fill: none; stroke: currentColor; stroke-width: 1.7; stroke-linecap: round; stroke-linejoin: round; }
+.tool-tab:hover { color: var(--text-primary); background: var(--bg-card-hover); }
+.tool-tab.active { color: #FFFFFF; background: var(--reddit-gradient); box-shadow: 0 4px 14px var(--reddit-orange-glow); }
+@media (max-width: 639px) { .tool-tabs { gap: 0.25rem; padding: 0.3rem; } .tool-tab { width: 56px; height: 48px; } .tool-tab svg { width: 28px; height: 28px; } }
+
 .hero-header {
   text-align: center;
   max-width: 700px;
-  margin-bottom: 2.5rem;
+  margin-bottom: 0.4rem;
 }
 
 .hero-title {
@@ -1259,9 +1271,309 @@ code {
   animation: toastSlideUp 0.25s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-@keyframes toastSlideUp {
-  from { opacity: 0; transform: translateY(16px); }
-  to { opacity: 1; transform: translateY(0); }
+@keyframes slideDown {
+  from { opacity: 0; transform: translateY(-6px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* --------------------------------------------------------------------------
+   Recent Updates Section
+   -------------------------------------------------------------------------- */
+.updates-section {
+  padding: 3rem 0;
+  border-top: 1px solid var(--border-color);
+  background-color: var(--bg-secondary);
+  transition: background-color var(--transition-normal);
+}
+
+.updates-card {
+  background-color: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-xl);
+  padding: 2rem;
+  box-shadow: var(--shadow-lg);
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.updates-header {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1.75rem;
+}
+
+.updates-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 52px;
+  height: 52px;
+  border-radius: var(--radius-full);
+  background-color: var(--reddit-orange-alpha);
+  color: var(--reddit-orange);
+  flex-shrink: 0;
+}
+
+.updates-title {
+  font-size: 1.65rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: var(--text-primary);
+  margin: 0;
+}
+
+.updates-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  max-height: 360px;
+  overflow-y: auto;
+  padding-right: 0.5rem;
+  position: relative;
+}
+
+.updates-list::-webkit-scrollbar {
+  width: 6px;
+}
+
+.updates-list::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.updates-list::-webkit-scrollbar-thumb {
+  background-color: var(--reddit-orange);
+  border-radius: var(--radius-full);
+  opacity: 0.6;
+}
+
+.updates-list::-webkit-scrollbar-thumb:hover {
+  opacity: 0.9;
+}
+
+.update-item {
+  background-color: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-lg);
+  padding: 1.25rem 1.5rem;
+  line-height: 1.6;
+  transition: border-color var(--transition-fast), background-color var(--transition-fast);
+}
+
+.update-item:hover {
+  border-color: var(--text-subtle);
+  background-color: var(--bg-card-hover);
+}
+
+.update-date {
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-right: 0.35rem;
+}
+
+.update-text {
+  font-size: 1.025rem;
+  color: var(--text-muted);
+}
+
+.update-text a {
+  color: var(--reddit-orange);
+  text-decoration: none;
+  font-weight: 600;
+  transition: color var(--transition-fast);
+}
+
+.update-text a:hover {
+  color: var(--reddit-orange-hover);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+@media (max-width: 639px) {
+  .updates-card {
+    padding: 1.5rem 1.25rem;
+  }
+
+  .updates-icon {
+    width: 44px;
+    height: 44px;
+  }
+
+  .updates-icon svg {
+    width: 18px;
+    height: 18px;
+  }
+
+  .updates-title {
+    font-size: 1.35rem;
+  }
+
+  .updates-list {
+    max-height: 340px;
+  }
+
+  .update-item {
+    padding: 1rem 1.15rem;
+  }
+
+  .update-date,
+  .update-text {
+    font-size: 0.925rem;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   How to Download Steps Section
+   -------------------------------------------------------------------------- */
+.steps-section {
+  padding: 4rem 0;
+  border-top: 1px solid var(--border-color);
+  background-color: var(--bg-primary);
+  transition: background-color var(--transition-normal);
+}
+
+.section-header {
+  text-align: center;
+  max-width: 720px;
+  margin: 0 auto 3rem;
+}
+
+.section-title {
+  font-size: 2rem;
+  font-weight: 800;
+  letter-spacing: -0.025em;
+  color: var(--text-primary);
+  margin-bottom: 0.75rem;
+  line-height: 1.2;
+}
+
+.section-subtitle {
+  font-size: 1.05rem;
+  color: var(--text-muted);
+  line-height: 1.6;
+}
+
+.steps-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+  max-width: 1040px;
+  margin: 0 auto;
+}
+
+@media (min-width: 768px) {
+  .steps-grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.25rem;
+  }
+}
+
+.step-card {
+  position: relative;
+  background-color: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-xl);
+  padding: 2rem 1.75rem 1.75rem;
+  box-shadow: var(--shadow-md);
+  text-align: center;
+  transition: all var(--transition-normal);
+}
+
+.step-card:hover {
+  border-color: var(--text-subtle);
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-xl);
+}
+
+.step-number {
+  position: absolute;
+  top: -14px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 32px;
+  height: 32px;
+  border-radius: var(--radius-full);
+  background: var(--reddit-gradient);
+  color: #FFFFFF;
+  font-size: 0.85rem;
+  font-weight: 800;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 12px rgba(255, 69, 0, 0.35);
+  z-index: 1;
+}
+
+.step-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 72px;
+  height: 72px;
+  border-radius: var(--radius-xl);
+  background-color: var(--reddit-orange-alpha);
+  color: var(--reddit-orange);
+  margin: 0.5rem 0 1.25rem;
+  transition: all var(--transition-normal);
+}
+
+.step-card:hover .step-icon {
+  background-color: var(--reddit-orange);
+  color: #FFFFFF;
+  transform: scale(1.08);
+}
+
+.step-card h3 {
+  font-size: 1.15rem;
+  font-weight: 700;
+  letter-spacing: -0.015em;
+  color: var(--text-primary);
+  margin-bottom: 0.65rem;
+  line-height: 1.35;
+}
+
+.step-card p {
+  font-size: 0.95rem;
+  color: var(--text-muted);
+  line-height: 1.6;
+  margin: 0;
+}
+
+@media (max-width: 767px) {
+  .steps-section {
+    padding: 3rem 0;
+  }
+
+  .section-title {
+    font-size: 1.6rem;
+  }
+
+  .section-subtitle {
+    font-size: 0.95rem;
+  }
+
+  .section-header {
+    margin-bottom: 2.25rem;
+  }
+
+  .steps-grid {
+    gap: 2.25rem;
+  }
+
+  .step-card {
+    padding: 1.75rem 1.5rem 1.5rem;
+  }
+
+  .step-icon {
+    width: 64px;
+    height: 64px;
+  }
+
+  .step-icon svg {
+    width: 28px;
+    height: 28px;
+  }
 }
 
 .stream-notice {
@@ -1345,46 +1657,72 @@ code {
   margin-bottom: 2.5rem;
 }
 
-.faq-grid {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 1.25rem;
-  max-width: 900px;
+.faq-list {
+  max-width: 800px;
   margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
 }
 
-@media (min-width: 640px) {
-  .faq-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
-
-.faq-card {
+.faq-item {
   background-color: var(--bg-card);
   border: 1px solid var(--border-color);
   border-radius: var(--radius-lg);
-  padding: 1.6rem;
-  box-shadow: var(--shadow-sm);
-  transition: border-color var(--transition-fast), transform var(--transition-fast);
+  overflow: hidden;
+  transition: border-color var(--transition-fast);
 }
 
-.faq-card:hover {
+.faq-item:hover {
   border-color: #3F3F46;
-  transform: translateY(-2px);
 }
 
 .faq-question {
-  font-size: 1.075rem;
+  width: 100%;
+  background: none;
+  border: none;
+  padding: 1.15rem 1.5rem;
+  text-align: left;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  font-size: 1.05rem;
   font-weight: 700;
   color: var(--text-primary);
-  margin-bottom: 0.65rem;
+  cursor: pointer;
   letter-spacing: -0.015em;
+  transition: background-color var(--transition-fast);
+  font-family: inherit;
+  line-height: 1.4;
+}
+
+.faq-question:hover {
+  background-color: var(--bg-card-hover);
+}
+
+.faq-icon {
+  width: 1.25rem;
+  height: 1.25rem;
+  color: var(--text-subtle);
+  transition: transform var(--transition-normal);
+  flex-shrink: 0;
+}
+
+.faq-item.active .faq-icon {
+  transform: rotate(180deg);
 }
 
 .faq-answer {
+  padding: 0 1.5rem 1.25rem;
   font-size: 0.95rem;
   color: var(--text-muted);
-  line-height: 1.6;
+  line-height: 1.65;
+  display: none;
+}
+
+.faq-item.active .faq-answer {
+  display: block;
 }
 
 /* --------------------------------------------------------------------------

@@ -26,7 +26,7 @@
   <link rel="icon" type="image/png" href="https://reditgrab.com/reditgrab-favicon.png">
 
   <!-- Pure CSS stylesheet -->
-  <link rel="stylesheet" href="https://reditgrab.com/rvideo.css">
+  <link rel="stylesheet" href="rvideo.css">
 
   <!-- Schema.org Structured Data -->
   <script type="application/ld+json">
@@ -123,7 +123,7 @@
   <!-- Top Navigation / Header -->
   <header class="site-header" id="site-header">
     <div class="header-inner container">
-      <a href="https://reditgrab.com/" class="brand-link" id="brand-link">
+      <a href="/" class="brand-link" id="brand-link">
         <div class="brand-icon" aria-hidden="true">
           <img src="https://reditgrab.com/reditgrab.png" alt="" width="48" height="48">
         </div>
@@ -131,10 +131,10 @@
       </a>
 
       <nav class="nav-desktop" aria-label="Primary navigation">
-        <a href="#how-it-works" class="nav-anchor-link">How It Works</a>
-        <a href="#faq-section" class="nav-anchor-link">FAQ</a>
-        <a href="https://reditgrab.com/reddit-image-downloader.html" class="nav-anchor-link">Image Downloader</a>
-        <a href="https://reditgrab.com/reddit-dp-downloader.html" class="nav-anchor-link">DP Downloader</a>
+        <a href="/reddit-image-downloader" class="nav-anchor-link">Image Downloader</a>
+        <a href="/reddit-dp-downloader" class="nav-anchor-link">DP Downloader</a>
+        <a href="/about" class="nav-anchor-link">About</a>
+        <a href="/contact" class="nav-anchor-link">Contact</a>
         <button type="button" class="btn-icon" id="theme-toggle" aria-label="Toggle dark/light theme" title="Toggle theme">
           <svg class="sun-icon" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2">
             <circle cx="12" cy="12" r="5"></circle>
@@ -161,10 +161,10 @@
     </div>
 
     <nav class="nav-mobile-panel" id="nav-mobile-panel" aria-label="Mobile navigation">
-      <a href="#how-it-works">How It Works</a>
-      <a href="#faq-section">FAQ</a>
-      <a href="https://reditgrab.com/reddit-image-downloader.html">Image Downloader</a>
-      <a href="https://reditgrab.com/reddit-dp-downloader.html">DP Downloader</a>
+      <a href="/reddit-image-downloader">Image Downloader</a>
+      <a href="/reddit-dp-downloader">DP Downloader</a>
+      <a href="/about">About</a>
+      <a href="/contact">Contact</a>
     </nav>
   </header>
 
@@ -191,8 +191,19 @@
     <section class="hero-section" id="hero-section">
       <div class="container hero-container">
         <div class="hero-header">
-          <h1 class="hero-title" id="hero-heading">Download Reddit Videos in <span class="hero-accent">Full HD</span></h1>
-          <p class="hero-desc">Save videos from public Reddit posts instantly. High-quality MP4 exports with audio, powered by Cloudflare Workers.</p>
+          <h1 class="hero-title" id="hero-heading">Reddit Video Downloader</h1>
+                    <p class="hero-desc">Save videos from public Reddit Videos instantly. High-quality MP4 exports with audio.</p><div style="height: 30px;"></div>
+          <nav class="tool-tabs" aria-label="Downloader tools">
+            <a class="tool-tab active" href="/" aria-current="page" aria-label="Video Downloader" title="Video Downloader">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="14" height="14" rx="2"></rect><path d="m17 10 4-2v8l-4-2z"></path></svg>
+            </a>
+            <a class="tool-tab" href="/reddit-image-downloader" aria-label="Image Downloader" title="Image Downloader">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="4" width="18" height="16" rx="2"></rect><circle cx="8.5" cy="9" r="1.5"></circle><path d="m4 17 5-5 3 3 2-2 6 4"></path></svg>
+            </a>
+            <a class="tool-tab" href="/reddit-dp-downloader" aria-label="DP Downloader" title="DP Downloader">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="8" r="3"></circle><path d="M5 20c.6-3.4 3.1-5 7-5s6.4 1.6 7 5"></path></svg>
+            </a>
+          </nav>
         </div>
 
         <!-- Downloader Box Card -->
@@ -210,8 +221,8 @@
                 type="url" 
                 id="reddit-url-input" 
                 class="reddit-input" 
-                placeholder="Paste Reddit Post URL" 
-                aria-label="Paste Reddit Post URL" 
+                placeholder="Paste Reddit Video URL" 
+                aria-label="Paste Reddit Video URL" 
                 autocomplete="off" 
                 spellcheck="false"
                 required
@@ -398,7 +409,7 @@
                   <line x1="12" y1="15" x2="12" y2="3"></line>
                 </svg>
                 <span class="spinner-inline hidden" id="dl-spinner-backup" aria-hidden="true"></span>
-                <span id="label-download-backup">RapidSave</span>
+                <span id="label-download-backup">Backup</span>
               </button>
 
               <button type="button" class="btn-download another-video" id="btn-another-video" title="Download another Reddit video">
@@ -434,59 +445,118 @@
       </div>
     </section>
 
+    <!-- Recent Updates Section -->
+    <section class="updates-section" id="recent-updates">
+      <div class="container">
+        <div class="updates-card">
+          <div class="updates-header">
+            <div class="updates-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"></path>
+                <path d="M13.73 21a2 2 0 0 1-3.46 0"></path>
+              </svg>
+            </div>
+            <h2 class="updates-title">Recent Updates</h2>
+          </div>
+          <div class="updates-list">
+            
+            <div class="update-item">
+              <span class="update-date">5 September 2026:</span>
+              <span class="update-text">🚀 RedditGrab.com is officially live! Built and launched by <strong><a href="https://instagram.com/RomitKrYadav">Romit Kr Yadav</a></strong>.</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="steps-section" id="how-it-works-guide" aria-labelledby="stepsHeading">
+      <div class="container">
+        <div class="section-header">
+          <h2 class="section-title" id="stepsHeading">How to Download Reddit Videos</h2>
+          <p class="section-subtitle">Downloading videos from Reddit is quick and easy with ReditGrab. Follow these three simple steps.</p>
+        </div>
+
+        <div class="steps-grid">
+          <article class="step-card">
+            <div class="step-number">1</div>
+            <div class="step-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" width="32" height="32" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path>
+                <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path>
+              </svg>
+            </div>
+            <h3>Copy the Reddit Post Link</h3>
+            <p>Open any public Reddit video post on the app or website. Tap Share and select "Copy Link", or copy the URL from your browser address bar.</p>
+          </article>
+          <article class="step-card">
+            <div class="step-number">2</div>
+            <div class="step-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" width="32" height="32" fill="none" stroke="currentColor" stroke-width="2">
+                <rect x="3" y="5" width="14" height="14" rx="2"></rect>
+                <path d="m17 10 4-2v8l-4-2z"></path>
+              </svg>
+            </div>
+            <h3>Paste &amp; Fetch the Video</h3>
+            <p>Paste the copied Reddit link into the input box above and click "Get Video". Our Cloudflare Worker will instantly detect and load the media.</p>
+          </article>
+          <article class="step-card">
+            <div class="step-number">3</div>
+            <div class="step-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" width="32" height="32" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                <polyline points="7 10 12 15 17 10"></polyline>
+                <line x1="12" y1="15" x2="12" y2="3"></line>
+              </svg>
+            </div>
+            <h3>Preview &amp; Download</h3>
+            <p>Preview the video in the player, pick your preferred quality, and click Download to save the MP4 directly to your device.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
     <!-- Informational Content Sections -->
     <section class="content-section" id="how-it-works">
       <div class="container">
         <div class="content-block">
-          <h2>What Is a Reddit Video Downloader?</h2>
+          <h2>Which Reddit Posts This Works On</h2>
           <p>
-            A Reddit Video Downloader is a specialized utility that retrieves publicly accessible video media from Reddit posts. 
-            When creators upload video content to Reddit, the platform encodes and hosts the media across their global Content Delivery Network (CDN) using adaptive streaming protocols. 
-            Our tool analyzes the public post data, extracts the direct CDN media URLs, verifies stream availability, and enables you to save the highest publicly available video resolution to your device.
+           This tool reads public Reddit post data only. It works with standard <code>reddit.com</code> links, <code>old.reddit.com</code> links, mobile app share links, and <code>redd.it</code> short links (these redirect to the full post before the video is fetched).
+
+It does not work on posts inside private communities, quarantined subreddits, or anything that requires you to be logged in to view — the tool has no way to authenticate as you, and it isn't built to get around that.
+
+If you're trying to save a photo or gallery instead of a video, use the <a class="orange-tool-link" href="https://reditgrab.com/reddit-image-downloader" target="_blank" rel="noopener noreferrer">Reddit Image Downloader</a>. For a profile picture specifically, use the <a class="orange-tool-link" href="https://reditgrab.com/reddit-dp-downloader" target="_blank" rel="noopener noreferrer">Reddit DP Downloader</a>.</p>
+        </div>
+
+        <div class="content-block">
+          <h2>What Happens After You Paste a Link</h2>
+          <p>
+            The tool reads the public post data behind the link and looks for a Reddit-hosted video stream. If it finds one, you'll get a preview so you can confirm it's the right clip before downloading anything. From there you can save the video, or save the audio track on its own if the post has one. Nothing downloads automatically — you choose what to save after seeing the preview.
           </p>
         </div>
 
         <div class="content-block">
-          <h2>How to Download a Reddit Video</h2>
-          <ol class="steps-list">
-            <li><strong>Open a public Reddit video post:</strong> Locate the post on Reddit (mobile app or desktop browser).</li>
-            <li><strong>Copy the post URL:</strong> Click the Share button and select "Copy Link", or copy the address from your browser bar.</li>
-            <li><strong>Paste it into the downloader:</strong> Insert the copied link into the input field above.</li>
-            <li><strong>Click Download Video:</strong> The Cloudflare Worker validates the link and retrieves the public post metadata.</li>
-            <li><strong>Preview the detected video:</strong> Use the HTML5 video preview to verify the content and playback.</li>
-            <li><strong>Download the available media:</strong> Choose your preferred resolution and save the MP4 video or separate audio stream directly.</li>
-          </ol>
+          <h2>Video Quality and File Format</h2>
+          <p>
+            You'll get the highest resolution Reddit has publicly stored for that post — commonly 1080p, but it depends entirely on what the original uploader posted. This tool doesn't upscale or fabricate a higher resolution than the source has. Output is MP4.
+          </p>
+        </div>
+    
+
+        <div class="content-block">
+          <h2>Why Some Reddit Videos Have No Sound</h2>
+
+<p>Reddit stores video hosted at v.redd.it using DASH streaming, which keeps the video track and the audio track as two separate files. Some posts genuinely have no audio at all — this is common for clips converted from silent GIFs. When a post does have an audio track, it's available as a separate download alongside the video. (Variant A: "...it's combined into the video file automatically before download.")</p>
         </div>
 
         <div class="content-block">
-          <h2>Why Does a Reddit Video Sometimes Have No Sound?</h2>
-          <p>
-            Reddit uses Dynamic Adaptive Streaming over HTTP (DASH) for video hosting on <code>v.redd.it</code>. 
-            In DASH streaming architecture, the video frames (e.g., <code>DASH_1080.mp4</code>) and audio frequencies (e.g., <code>DASH_AUDIO_128.mp4</code>) are stored as two completely independent media tracks.
-          </p>
-          <p>
-            In addition, many Reddit videos are originally uploaded without sound or converted from silent GIFs. 
-            When an audio stream is legitimately detected in the DASH playlist, our downloader exposes the separate audio track for direct download. 
-            Unlike services that falsify metadata or return broken files, we remain technically honest: we never pretend separate streams are merged unless verified.
-          </p>
-        </div>
+          <h2>What This Tool Won't Do</h2>
+          <p>It only works on public content. It can't reach videos from private subreddits, posts requiring you to be logged in, quarantined communities, or anything that's been deleted or removed — there's no way around Reddit's own access controls here, and there shouldn't be. If a link doesn't resolve, that's usually why.
+</p>
 
-        <div class="content-block">
-          <h2>Can I Download Videos From Private Reddit Posts?</h2>
-          <p>
-            No. This tool operates strictly on public, unauthenticated Reddit data. 
-            It does not bypass Reddit logins, private community restrictions, quarantine barriers, or deleted posts. 
-            If a post requires user credentials or permissions, it cannot be downloaded.
-          </p>
-        </div>
-
-        <div class="content-block">
-          <h2>What Video Quality Can I Download?</h2>
-          <p>
-            You can download the highest video quality that Reddit publicly provides for that specific post. 
-            Standard resolutions include <strong>1080p (Full HD)</strong>, <strong>720p (HD)</strong>, <strong>480p</strong>, <strong>360p</strong>, and <strong>240p</strong>. 
-            Our system selects the highest available source quality by default without upscaling or fabricating artificial resolutions.
-          </p>
+<div class="content-block">
+          <h2>Use it On Phone or on Desktop</h2>
+<p>The steps are the same either way: open Reddit, find the post, copy the link (the Share button on mobile, the address bar on desktop), and paste it above. No app or extension to install on either platform.
+</p>
         </div>
       </div>
     </section>
@@ -495,45 +565,101 @@
     <section class="faq-section" id="faq-section">
       <div class="container">
         <h2 class="faq-heading">Frequently Asked Questions</h2>
-        <div class="faq-grid">
-          <div class="faq-card">
-            <h3 class="faq-question">What is a Reddit video downloader?</h3>
-            <p class="faq-answer">It is a web tool that fetches publicly exposed media URLs from Reddit posts and lets you download the native MP4 stream to your phone, tablet, or PC without installing any apps.</p>
+        <div class="faq-list">
+          <div class="faq-item">
+            <button type="button" class="faq-question" aria-expanded="false">
+              <span>What is a Reddit video downloader?</span>
+              <svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <polyline points="6 9 12 15 18 9"></polyline>
+              </svg>
+            </button>
+            <div class="faq-answer">
+              <p>It is a web tool that fetches publicly exposed media URLs from Reddit posts and lets you download the native MP4 stream to your phone, tablet, or PC without installing any apps.</p>
+            </div>
           </div>
 
-          <div class="faq-card">
-            <h3 class="faq-question">How do I download a Reddit video?</h3>
-            <p class="faq-answer">Copy the link of any public post from Reddit, paste it into the search box, click Download Video, preview the video, and click your desired download resolution.</p>
+          <div class="faq-item">
+            <button type="button" class="faq-question" aria-expanded="false">
+              <span>How do I download a Reddit video?</span>
+              <svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <polyline points="6 9 12 15 18 9"></polyline>
+              </svg>
+            </button>
+            <div class="faq-answer">
+              <p>Copy the link of any public post from Reddit, paste it into the search box, click Download Video, preview the video, and click your desired download resolution.</p>
+            </div>
           </div>
 
-          <div class="faq-card">
-            <h3 class="faq-question">Can I download Reddit videos with sound?</h3>
-            <p class="faq-answer">Yes. Our downloader automatically merges the video and audio into a single MP4 file so you can watch and download with full synchronized sound without separate files.</p>
+          <div class="faq-item">
+            <button type="button" class="faq-question" aria-expanded="false">
+              <span>Can I download Reddit videos with sound?</span>
+              <svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <polyline points="6 9 12 15 18 9"></polyline>
+              </svg>
+            </button>
+            <div class="faq-answer">
+              <p>Yes. Our downloader automatically merges the video and audio into a single MP4 file so you can watch and download with full synchronized sound without separate files.</p>
+            </div>
           </div>
 
-          <div class="faq-card">
-            <h3 class="faq-question">Why does my Reddit video have no audio?</h3>
-            <p class="faq-answer">Some Reddit posts are uploaded as silent videos or animated GIFs without an audio track. If the original post has audio, our system automatically merges it into your video.</p>
+          <div class="faq-item">
+            <button type="button" class="faq-question" aria-expanded="false">
+              <span>Why does my Reddit video have no audio?</span>
+              <svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <polyline points="6 9 12 15 18 9"></polyline>
+              </svg>
+            </button>
+            <div class="faq-answer">
+              <p>Some Reddit posts are uploaded as silent videos or animated GIFs without an audio track. If the original post has audio, our system automatically merges it into your video.</p>
+            </div>
           </div>
 
-          <div class="faq-card">
-            <h3 class="faq-question">Can I download videos from private subreddits?</h3>
-            <p class="faq-answer">No. We strictly honor privacy settings and access controls. Videos from private or quarantined subreddits that require authentication cannot be accessed.</p>
+          <div class="faq-item">
+            <button type="button" class="faq-question" aria-expanded="false">
+              <span>Can I download videos from private subreddits?</span>
+              <svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <polyline points="6 9 12 15 18 9"></polyline>
+              </svg>
+            </button>
+            <div class="faq-answer">
+              <p>No. We strictly honor privacy settings and access controls. Videos from private or quarantined subreddits that require authentication cannot be accessed.</p>
+            </div>
           </div>
 
-          <div class="faq-card">
-            <h3 class="faq-question">Does the downloader reduce video quality?</h3>
-            <p class="faq-answer">No. We extract the original streams directly from Reddit's media servers without re-compressing, watermarking, or reducing the resolution.</p>
+          <div class="faq-item">
+            <button type="button" class="faq-question" aria-expanded="false">
+              <span>Does the downloader reduce video quality?</span>
+              <svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <polyline points="6 9 12 15 18 9"></polyline>
+              </svg>
+            </button>
+            <div class="faq-answer">
+              <p>No. We extract the original streams directly from Reddit's media servers without re-compressing, watermarking, or reducing the resolution.</p>
+            </div>
           </div>
 
-          <div class="faq-card">
-            <h3 class="faq-question">Is the Reddit video downloader free?</h3>
-            <p class="faq-answer">Yes, it is 100% free with unlimited public downloads and requires no accounts, subscriptions, or API keys.</p>
+          <div class="faq-item">
+            <button type="button" class="faq-question" aria-expanded="false">
+              <span>Is the Reddit video downloader free?</span>
+              <svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <polyline points="6 9 12 15 18 9"></polyline>
+              </svg>
+            </button>
+            <div class="faq-answer">
+              <p>Yes, it is 100% free with unlimited public downloads and requires no accounts, subscriptions, or API keys.</p>
+            </div>
           </div>
 
-          <div class="faq-card">
-            <h3 class="faq-question">Does the website store downloaded videos?</h3>
-            <p class="faq-answer">No. Media streams are piped directly from Reddit's public CDN to your client browser through the Cloudflare Worker. We do not store, copy, or retain any videos on our servers.</p>
+          <div class="faq-item">
+            <button type="button" class="faq-question" aria-expanded="false">
+              <span>Does the website store downloaded videos?</span>
+              <svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <polyline points="6 9 12 15 18 9"></polyline>
+              </svg>
+            </button>
+            <div class="faq-answer">
+              <p>No. Media streams are piped directly from Reddit's public CDN to your client browser through the Cloudflare Worker. We do not store, copy, or retain any videos on our servers.</p>
+            </div>
           </div>
         </div>
       </div>
@@ -545,21 +671,21 @@
     <div class="container footer-inner">
       <div class="footer-links-grid">
         <div class="footer-link-group">
-          <h2 class="footer-link-title">Tools</h2>
-          <a href="#downloader-box">Reddit Video Downloader</a>
-          <a href="#how-it-works">How It Works</a>
-          <a href="#faq-section">FAQ</a>
+          <h2 class="footer-link-title">Other Tools</h2>
+          <a href="https://threadsgrab.com">Threads Video Downloader</a>
+          <a href="https://fbviddl.com">Facebook Video Downloader</a>
+          <a href="https://twitter.threadsgrab.com/">Twitter Video Downloader</a>
         </div>
         <div class="footer-link-group">
           <h2 class="footer-link-title">Legal</h2>
-          <a href="#site-footer">Privacy</a>
-          <a href="#site-footer">Terms of Service</a>
-          <a href="#footer-disclaimer">Disclaimer</a>
+          <a href="/privacy">Privacy</a>
+          <a href="/disclaimer">Disclaimer</a>
         </div>
         <div class="footer-link-group">
           <h2 class="footer-link-title">Company</h2>
-          <a href="#brand-link">About ReditGrab</a>
-          <a href="contact.html">Contact</a>
+          <a href="/about">About</a>
+          <a href="/contact">Contact</a>
+          <a href="/blog">Blog</a>
         </div>
       </div>
       <div class="footer-bottom-row">
@@ -574,6 +700,6 @@
   </footer>
 
   <!-- Vanilla JavaScript -->
-  <script src="https://reditgrab.com/rvideo.js"></script>
+  <script src="/rvideo.js"></script>
 </body>
 </html>

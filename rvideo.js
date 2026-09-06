@@ -1266,5 +1266,29 @@
     initEvents();
     updateInputControls();
     checkWorkerHealth();
+
+    // FAQ Accordion Toggle
+    document.querySelectorAll('.faq-item').forEach(item => {
+      const questionBtn = item.querySelector('.faq-question');
+      if (questionBtn) {
+        questionBtn.addEventListener('click', () => {
+          const wasActive = item.classList.contains('active');
+          document.querySelectorAll('.faq-item').forEach(other => {
+            if (other !== item) {
+              other.classList.remove('active');
+              const otherBtn = other.querySelector('.faq-question');
+              if (otherBtn) otherBtn.setAttribute('aria-expanded', 'false');
+            }
+          });
+          if (!wasActive) {
+            item.classList.add('active');
+            questionBtn.setAttribute('aria-expanded', 'true');
+          } else {
+            item.classList.remove('active');
+            questionBtn.setAttribute('aria-expanded', 'false');
+          }
+        });
+      }
+    });
   });
 })();

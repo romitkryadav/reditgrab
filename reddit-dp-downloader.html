@@ -13,7 +13,7 @@
   <meta property="og:title" content="Reddit DP Downloader – Download Reddit Profile Pictures">
   <meta property="og:description" content="Free Reddit DP Downloader for viewing and downloading publicly accessible Reddit profile pictures. Enter a Reddit username or profile URL to check for an available avatar.">
   <meta property="og:image" content="https://reditgrab.com/og-image.png">
-
+  <meta property="og:author" content="Romit kr Yadav">
   <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:url" content="https://reditgrab.com/reddit-dp-downloader.html">
@@ -25,7 +25,7 @@
   <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23ff4500'><path d='M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 3c1.66 0 3 1.34 3 3s-1.34 3-3 3-3-1.34-3-3 1.34-3 3-3zm0 14.2c-2.5 0-4.71-1.28-6-3.22.03-1.99 4-3.08 6-3.08 1.99 0 5.97 1.09 6 3.08-1.29 1.94-3.5 3.22-6 3.22z'/></svg>">
 
   <!-- Pure CSS stylesheet -->
-  <link rel="stylesheet" href="https://reditgrab.com/reddp.css">
+  <link rel="stylesheet" href="/reddp.css">
 </head>
 <body data-theme="dark">
 
@@ -41,11 +41,23 @@
 
       <!-- Desktop nav -->
       <nav class="nav-desktop" aria-label="Primary navigation">
-        <a href="#how-it-works" class="nav-links-item">How It Works</a>
-        <a href="#features" class="nav-links-item">Features</a>
-        <a href="#faqs" class="nav-links-item">FAQ</a>
         <a href="https://reditgrab.com/" class="nav-links-item">Video Downloader</a>
         <a href="https://reditgrab.com/reddit-image-downloader.html" class="nav-links-item">Image Downloader</a>
+        <a href="/about" class="nav-links-item">About</a>
+        <a href="/contact" class="nav-links-item">Contact</a>
+        <button type="button" class="btn-icon" id="theme-toggle-btn" aria-label="Toggle dark/light theme" title="Toggle theme">
+          <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="12" cy="12" r="5"></circle>
+            <line x1="12" y1="1" x2="12" y2="3"></line>
+            <line x1="12" y1="21" x2="12" y2="23"></line>
+            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+            <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+            <line x1="1" y1="12" x2="3" y2="12"></line>
+            <line x1="21" y1="12" x2="23" y2="12"></line>
+            <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+            <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+          </svg>
+        </button>
       </nav>
 
       <!-- Hamburger button (mobile only) -->
@@ -90,7 +102,19 @@
     <section class="hero-section" id="hero-section">
       <div class="container">
         <h1 class="hero-title" id="main-title">Reddit DP Downloader</h1>
-        <p class="hero-subtitle">Download publicly available Reddit profile pictures in high quality.</p>
+          <p class="hero-subtitle">Download publicly available Reddit profile pictures in high quality.</p>
+        <nav class="tool-tabs" aria-label="Downloader tools">
+          <a class="tool-tab" href="/" aria-label="Video Downloader" title="Video Downloader">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="14" height="14" rx="2"></rect><path d="m17 10 4-2v8l-4-2z"></path></svg>
+          </a>
+          <a class="tool-tab" href="/reddit-image-downloader.html" aria-label="Image Downloader" title="Image Downloader">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="4" width="18" height="16" rx="2"></rect><circle cx="8.5" cy="9" r="1.5"></circle><path d="m4 17 5-5 3 3 2-2 6 4"></path></svg>
+          </a>
+          <a class="tool-tab active" href="/reddit-dp-downloader.html" aria-current="page" aria-label="DP Downloader" title="DP Downloader">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="8" r="3"></circle><path d="M5 20c.6-3.4 3.1-5 7-5s6.4 1.6 7 5"></path></svg>
+          </a>
+        </nav>
+       
 
         <!-- Search Card (Main Tool) -->
         <div class="downloader-glow-wrap">
@@ -254,119 +278,44 @@
       </div>
     </section>
 
-    <!-- Features Section -->
-    <section class="content-section" id="features">
+    <!-- Info Content Section (matches index page style) -->
+    <section class="content-section" id="how-it-works">
       <div class="container">
-        <h2 class="section-title">Reddit DP Downloader Features</h2>
-        <p class="section-subtitle">Engineered for speed, privacy, and technical accuracy with zero bloat.</p>
+        <div class="content-block">
+          <h2>Which Reddit Profiles This Works On</h2>
+          <p>This tool reads publicly exposed Reddit profile metadata only. It accepts plain usernames (e.g., <code>spez</code>), the <code>u/username</code> format, and full profile URLs from <code>reddit.com</code>, <code>old.reddit.com</code>, and mobile share links.
 
-        <div class="features-grid">
-          <!-- Feature 1 -->
-          <div class="feature-card">
-            <div class="feature-icon-wrap" aria-hidden="true">
-              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M20 6 9 17l-5-5"></path>
-              </svg>
-            </div>
-            <h3 class="feature-title">Free to Use</h3>
-            <p class="feature-text">No account required, no payment needed, and no registration hurdles. Instant access for everyone.</p>
-          </div>
+It does not work on users who have restricted their profile visibility, accounts marked 18+ (NSFW), or any profile that requires a Reddit login to load — the tool has no way to authenticate as you, and it will never try to bypass Reddit's own access controls.
 
-          <!-- Feature 2 -->
-          <div class="feature-card">
-            <div class="feature-icon-wrap" aria-hidden="true">
-              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <circle cx="12" cy="12" r="10"></circle>
-                <line x1="2" y1="12" x2="22" y2="12"></line>
-                <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
-              </svg>
-            </div>
-            <h3 class="feature-title">Public Profiles</h3>
-            <p class="feature-text">Works only with publicly accessible profile information. Respects user privacy and platform access boundaries.</p>
-          </div>
+If you're trying to save a post image or gallery instead of a profile picture, use the Reddit Image Downloader. For Reddit-hosted videos specifically, use the Reddit Video Downloader.</p>
+        </div>
 
-          <!-- Feature 3 -->
-          <div class="feature-card">
-            <div class="feature-icon-wrap" aria-hidden="true">
-              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
-              </svg>
-            </div>
-            <h3 class="feature-title">High Quality</h3>
-            <p class="feature-text">Uses the highest publicly accessible avatar version when available, without artificial upscaling or alteration.</p>
-          </div>
+        <div class="content-block">
+          <h2>What Happens After You Enter a Username</h2>
+          <p>Our Cloudflare Worker normalizes the input, validates the username structure, and then queries publicly accessible profile metadata sources — including public Reddit JSON endpoints, OpenGraph tags, and verified Reddit CDN hosts — to locate an avatar asset. If a valid profile picture is found, you'll get a high-resolution preview so you can confirm it's the right user before anything downloads.</p>
+        </div>
 
-          <!-- Feature 4 -->
-          <div class="feature-card">
-            <div class="feature-icon-wrap" aria-hidden="true">
-              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <rect x="5" y="2" width="14" height="20" rx="2" ry="2"></rect>
-                <line x1="12" y1="18" x2="12.01" y2="18"></line>
-              </svg>
-            </div>
-            <h3 class="feature-title">Mobile Friendly</h3>
-            <p class="feature-text">Optimized responsive layout works seamlessly on mobile phones (320px+), tablets, laptops, and desktop displays.</p>
-          </div>
+        <div class="content-block">
+          <h2>Picture Quality and File Format</h2>
+          <p>You'll receive the highest-quality publicly available avatar version Reddit has for that account — typically 512×512 or 256×256 PNG, depending on what the user originally uploaded. This tool never upscales, recompresses, or synthesizes a placeholder image. If the only asset available is Reddit's standard default Snoo rendering, the tool will tell you honestly rather than invent a fake result.</p>
+        </div>
 
-          <!-- Feature 5 -->
-          <div class="feature-card">
-            <div class="feature-icon-wrap" aria-hidden="true">
-              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
-              </svg>
-            </div>
-            <h3 class="feature-title">No Fake Results</h3>
-            <p class="feature-text">Technically honest tool. If an avatar cannot be publicly retrieved, the tool clearly informs you instead of generating a fake image.</p>
-          </div>
+        <div class="content-block">
+          <h2>Why a Reddit DP May Not Be Available</h2>
+          <p>Reddit's profile architecture evolves regularly, and not every avatar is reachable through public web requests. A profile picture cannot be retrieved when: the user restricted public visibility or the account is marked 18+, the profile has been deleted, deactivated, or banned, Reddit's edge network requires interactive CAPTCHA verification for automated requests, or the account uses the standard platform Snoo placeholder that is rendered client-side instead of being served as a static image file. In all of these cases, the tool reports the avatar as unavailable instead of fabricating a result.</p>
+        </div>
 
-          <!-- Feature 6 -->
-          <div class="feature-card">
-            <div class="feature-icon-wrap" aria-hidden="true">
-              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"></path>
-              </svg>
-            </div>
-            <h3 class="feature-title">Edge Powered</h3>
-            <p class="feature-text">Built using Cloudflare Workers for lightning-fast worldwide response times and zero server tracking.</p>
-          </div>
+        <div class="content-block">
+          <h2>What This Tool Won't Do</h2>
+          <p>It only works with publicly accessible profile data. It cannot bypass login walls, access private/restricted accounts, or recover permanently deleted avatars — there is no way around Reddit's own access rules here, and there shouldn't be. It also never fabricates, guesses, or AI-generates a profile picture. If a real avatar can't be verified from Reddit's public servers, you will be told so directly.</p>
+        </div>
+
+        <div class="content-block">
+          <h2>Use It On Phone or On Desktop</h2>
+          <p>The workflow is identical on both. On mobile, open the Reddit profile, tap Share, choose Copy Link, and paste it above. On desktop, copy the URL directly from the address bar. No app, extension, or account of any kind is required on either platform.</p>
         </div>
       </div>
     </section>
-
-    <!-- How This Tool Works & Technical Honesty Section -->
-    <section class="content-section" id="how-tool-works">
-      <div class="container">
-        <div class="info-card">
-          <h2 class="section-title" style="text-align: left; margin-bottom: 1rem;">How This Tool Works</h2>
-          <p>Reddit DP Downloader is an independent utility designed to help users view and download their own or publicly available profile avatars from Reddit's public web presence.</p>
-          <p>When you provide a Reddit username or profile URL, our serverless edge worker performs the following steps:</p>
-          <ul class="info-list">
-            <li><strong>Input Validation:</strong> Strictly validates the Reddit username structure to eliminate malformed characters, script injections, and non-Reddit hostnames.</li>
-            <li><strong>Public Metadata Inspection:</strong> Queries publicly exposed profile metadata (such as public Reddit JSON endpoints, OpenGraph tags, and public Snoovatar assets).</li>
-            <li><strong>MIME & Host Allowlisting:</strong> Verifies that any discovered media originates exclusively from verified Reddit CDN domains (such as <code>styles.redditmedia.com</code> or <code>preview.redd.it</code>).</li>
-            <li><strong>Direct Attachment Delivery:</strong> Streams the unmodified original image with appropriate download headers and safe filenames.</li>
-          </ul>
-
-          <h2 class="section-title" style="text-align: left; margin: 2rem 0 1rem;">Why a Reddit DP May Not Be Available</h2>
-          <p>Reddit's modern web architecture frequently evolves, and not all profile pictures are publicly retrievable via public web requests. A profile avatar might not be available if:</p>
-          <ul class="info-list">
-            <li><strong>Profile Privacy & Restrictions:</strong> The user has restricted public visibility, is marked 18+ (NSFW), or requires platform login to view.</li>
-            <li><strong>Deleted or Suspended Accounts:</strong> The Reddit profile has been permanently deleted, deactivated, or banned.</li>
-            <li><strong>Automated Access Mitigation:</strong> Reddit's edge network periodically restricts automated public page requests or requires interactive human verification (CAPTCHA).</li>
-            <li><strong>Default Snoo Placeholders:</strong> The account uses standard platform defaults that are rendered client-side rather than served as static avatar image files.</li>
-          </ul>
-          <p>In adherence to our policy of <strong>technical honesty</strong>, we never fabricate URLs, guess filenames, or generate synthetic placeholders when a profile picture cannot be verified.</p>
-        </div>
-      </div>
-    </section>
-
-    <!-- Optional Ad Container (Between Sections) -->
-    <div class="container">
-      <div class="ad-container" id="ad-slot-content" aria-label="Advertisement placeholder">
-        <span class="ad-label">Advertisement</span>
-        <div class="ad-slot-placeholder">Display Area (728×90 / 300×250)</div>
-      </div>
-    </div>
 
     <!-- FAQ Section -->
     <section class="content-section" id="faqs">
@@ -493,20 +442,20 @@
     <div class="container footer-inner">
       <div class="footer-links-grid">
         <div class="footer-link-group">
-          <h2 class="footer-link-title">Tools</h2>
-          <a href="index.html">Reddit Video Downloader</a>
-          <a href="reddit-image-downloader.html">Image Downloader</a>
-          <a href="reddit-dp-downloader.html">DP Downloader</a>
+          <h2 class="footer-link-title"> Other Tools</h2>
+          <a href="https://threadsgrab.com/threads-profile-picture-downloader">Threads dp Downloader</a>
+          <a href="https://fbvidl.com/facebook-dp-downloader">Facebook DP Downloader</a>
+          <a href="https://twitter.threadsgrab.com/twitter-dp-downloader">Twitter DP Downloader</a>
         </div>
         <div class="footer-link-group">
           <h2 class="footer-link-title">Legal</h2>
-          <a href="privacy.html">Privacy</a>
-          <a href="disclaimer.html">Disclaimer</a>
+          <a href="/privacy">Privacy</a>
+          <a href="/disclaimer">Disclaimer</a>
         </div>
         <div class="footer-link-group">
           <h2 class="footer-link-title">Company</h2>
-          <a href="about.html">About ReditGrab</a>
-          <a href="contact.html">Contact</a>
+          <a href="/about">About</a>
+          <a href="/contact">Contact</a>
         </div>
       </div>
       <div class="footer-bottom-row">
@@ -517,6 +466,6 @@
   </footer>
 
   <!-- Vanilla JavaScript -->
-  <script src="https://reditgrab.com/reddp.js" defer></script>
+  <script src="reddp.js" defer></script>
 </body>
 </html>
