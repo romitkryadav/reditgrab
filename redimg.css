@@ -229,18 +229,18 @@ code {
 .hero-section {
   text-align: center;
   margin-bottom: 2rem;
-  padding: 3.75rem 0 1rem;
+  padding: 0 0 1rem;
 }
 
 .hero-title {
-  font-size: 2.5rem;
+  font-size: 2rem;
   font-weight: 800;
   letter-spacing: -0.03em;
   color: var(--text-primary);
   line-height: 1.15;
   margin-bottom: 0.85rem;
 }
-@media (min-width: 640px) { .hero-title { font-size: 3rem; } }
+@media (min-width: 640px) { .hero-title { font-size: 2.35rem; } }
 
 .hero-subtitle {
   font-size: 1.125rem;
@@ -269,7 +269,37 @@ code {
    -------------------------------------------------------------------------- */
 .tool-section { margin-bottom: 2.5rem; }
 
+.downloader-glow-wrap {
+  position: relative;
+  width: 100%;
+  max-width: 760px;
+  margin: 0 auto;
+}
+
+.downloader-glow-wrap::before {
+  content: "";
+  position: absolute;
+  inset: -3px;
+  background: var(--reddit-gradient);
+  border-radius: 22px;
+  filter: blur(14px);
+  opacity: 0.22;
+  transition: opacity 0.4s ease, filter 0.4s ease;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.downloader-glow-wrap:focus-within::before {
+  opacity: 0.42;
+  filter: blur(18px);
+}
+
 .tool-card {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  max-width: 620px;
+  margin: 0 auto;
   background-color: var(--bg-card);
   border: 1px solid var(--border-color);
   border-radius: var(--radius-xl);
@@ -1068,6 +1098,63 @@ code {
   border-top: 1px solid #18181B;
   background-color: var(--bg-footer);
   padding: 3rem 0 2rem;
+}
+
+.footer-inner {
+  display: flex;
+  flex-direction: column;
+  gap: 2.25rem;
+}
+
+.footer-links-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+  padding-bottom: 2rem;
+  border-bottom: 1px solid #18181B;
+}
+
+.footer-link-group {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.65rem;
+}
+
+.footer-link-title {
+  margin: 0 0 0.15rem;
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.footer-link-group a {
+  color: var(--text-subtle);
+  font-size: 0.825rem;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.footer-link-group a:hover,
+.footer-link-group a:focus-visible {
+  color: var(--text-primary);
+}
+
+.footer-bottom-row {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  text-align: center;
+}
+
+.footer-copy { font-size: 0.875rem; color: var(--text-muted); }
+.footer-copy strong { color: var(--text-primary); }
+.footer-disclaimer { font-size: 0.775rem; color: var(--text-subtle); max-width: 720px; margin: 0 auto; line-height: 1.5; }
+
+@media (max-width: 639px) {
+  .footer-links-grid { gap: 1.5rem 1rem; }
 }
 
 .footer-container {

@@ -315,23 +315,7 @@
     const permalinkParam = permalink ? `&permalink=${encodeURIComponent(permalink)}` : '';
     const nameParam = filename ? `&filename=${encodeURIComponent(filename)}` : '';
 
-    // If audio is present, always request merged stream
-    if (cleanAudioUrl) {
-      if (base === '') {
-        // App server FFmpeg merge pipeline
-        return `/api/reddit-download?url=${encodeURIComponent(rawMediaUrl)}${audioParam}${permalinkParam}${nameParam}`;
-      } else {
-        // On static hosting (uploaded to website), use RapidSave merged MP4 service directly:
-        // RapidSave merges audio & video and returns the merged .mp4 file directly to the device
-        const postLink = permalink || 'https://www.reddit.com/';
-        return `https://sd.rapidsave.com/download.php?permalink=${encodeURIComponent(postLink)}&video_url=${encodeURIComponent(rawMediaUrl)}&audio_url=${encodeURIComponent(cleanAudioUrl)}`;
-      }
-    }
-
-    if (base === '') {
-      return `/api/reddit-download?url=${encodeURIComponent(rawMediaUrl)}${nameParam}`;
-    }
-    return rawMediaUrl;
+    return `${base}/api/reddit-download?url=${encodeURIComponent(rawMediaUrl)}${audioParam}${permalinkParam}${nameParam}`;
   }
 
   /* --------------------------------------------------------------------------
@@ -884,17 +868,13 @@
     activeDownloadState.permalink = currentPostData?.post?.permalink || 'https://www.reddit.com';
 
     if (labelDownloadVideo) {
-      labelDownloadVideo.textContent = hasAudio
-        ? `Download Merged Video (${qualityLabel})`
-        : `Download Video (${qualityLabel})`;
+      labelDownloadVideo.textContent = 'Download';
     }
 
     if (btnDownloadMergedBackup) {
       if (hasAudio) {
         btnDownloadMergedBackup.classList.remove('hidden');
-        activeDownloadState.backupUrl = activeApiBase === ''
-          ? `https://sd.rapidsave.com/download.php?permalink=${encodeURIComponent(currentPostData?.post?.permalink || 'https://www.reddit.com/')}&video_url=${encodeURIComponent(variant.videoUrl)}&audio_url=${encodeURIComponent(cleanAudio)}`
-          : `${activeApiBase}/api/reddit-download?url=${encodeURIComponent(variant.videoUrl)}&audioUrl=${encodeURIComponent(cleanAudio)}&permalink=${encodeURIComponent(currentPostData?.post?.permalink || '')}&filename=${encodeURIComponent(variantFilename)}`;
+        activeDownloadState.backupUrl = `https://sd.rapidsave.com/download.php?permalink=${encodeURIComponent(currentPostData?.post?.permalink || 'https://www.reddit.com/')}&video_url=${encodeURIComponent(variant.videoUrl)}&audio_url=${encodeURIComponent(cleanAudio)}`;
       } else {
         btnDownloadMergedBackup.classList.add('hidden');
         activeDownloadState.backupUrl = '';

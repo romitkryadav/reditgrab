@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Reddit Video Downloader – Download Reddit Videos as MP4</title>
+  <title>ReditGrab – Download Reddit Videos as MP4</title>
   <meta name="description" content="Download videos from public Reddit posts. Paste a Reddit post URL to preview the video and download the highest publicly available quality.">
   <meta name="keywords" content="reddit video downloader, reddit downloader, download reddit videos, reddit video download, reddit mp4 downloader, download reddit mp4, reddit video saver, reddit video download online, reddit video downloader no app">
   <meta name="robots" content="index, follow">
@@ -12,13 +12,13 @@
   <!-- Open Graph / Facebook -->
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://reditgrab.com/">
-  <meta property="og:title" content="Reddit Video Downloader – Download Reddit Videos as MP4">
+  <meta property="og:title" content="ReditGrab – Download Reddit Videos as MP4">
   <meta property="og:description" content="Download videos from public Reddit posts in the highest available quality. Fast, free, and secure.">
   <meta property="og:image" content="https://reditgrab.com/preview-card.png">
-  <meta property="author" content="Romit Kr Yadav">
+  <meta property="author"="Romit Kr Yadav">
   <!-- Twitter -->
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Reddit Video Downloader – Download Reddit Videos as MP4">
+  <meta name="twitter:title" content="ReditGrab – Download Reddit Videos as MP4">
   <meta name="twitter:description" content="Download videos from public Reddit posts in the highest available quality.">
   <meta name="twitter:image" content="https://reditgrab.com/preview-card.png">
 
@@ -26,7 +26,7 @@
   <link rel="icon" type="image/png" href="https://reditgrab.com/reditgrab-favicon.png">
 
   <!-- Pure CSS stylesheet -->
-  <link rel="stylesheet" href="https://reditgrab.com/rvideo.css">
+  <link rel="stylesheet" href="https://reditgrab.com/redsty.css">
 
   <!-- Schema.org Structured Data -->
   <script type="application/ld+json">
@@ -35,7 +35,7 @@
     "@graph": [
       {
         "@type": "WebApplication",
-        "name": "Reddit Video Downloader",
+        "name": "ReditGrab",
         "url": "https://reditgrab.com/",
         "description": "Download videos from public Reddit posts in the highest available quality as MP4.",
         "applicationCategory": "MultimediaApplication",
@@ -130,6 +130,7 @@
         <span class="brand-text">ReditGrab</span>
       </a>
 
+      <!-- Desktop nav -->
       <nav class="nav-desktop" aria-label="Primary navigation">
         <a href="#how-it-works" class="nav-anchor-link">How It Works</a>
         <a href="#faq-section" class="nav-anchor-link">FAQ</a>
@@ -153,6 +154,7 @@
         </button>
       </nav>
 
+      <!-- Hamburger button (mobile only) -->
       <button class="nav-hamburger" id="nav-hamburger" aria-expanded="false" aria-controls="nav-mobile-panel" aria-label="Open navigation menu">
         <span class="bar"></span>
         <span class="bar"></span>
@@ -160,6 +162,7 @@
       </button>
     </div>
 
+    <!-- Mobile dropdown panel -->
     <nav class="nav-mobile-panel" id="nav-mobile-panel" aria-label="Mobile navigation">
       <a href="#how-it-works">How It Works</a>
       <a href="#faq-section">FAQ</a>
@@ -176,6 +179,7 @@
         var open = panel.classList.toggle('open');
         btn.setAttribute('aria-expanded', open ? 'true' : 'false');
       });
+      // Close when a link is tapped
       panel.querySelectorAll('a').forEach(function (a) {
         a.addEventListener('click', function () {
           panel.classList.remove('open');
@@ -196,7 +200,7 @@
         </div>
 
         <!-- Downloader Box Card -->
-        <div class="downloader-glow-wrap" id="downloader-glow-wrap">
+        <div class="downloader-glow-wrap">
           <div class="downloader-card" id="downloader-box">
           <form id="download-form" class="download-form" novalidate>
             <div class="input-field-wrapper" id="url-input-container">
@@ -240,11 +244,29 @@
                   <polyline points="7 10 12 15 17 10"></polyline>
                   <line x1="12" y1="15" x2="12" y2="3"></line>
                 </svg>
-                <span class="btn-text">Get Video</span>
+                <span class="btn-text">Download Video</span>
+              </button>
+            </div>
+
+            <!-- Merge / Processing progress (shown under input bar during processing/download/mux) -->
+            <div class="merge-global-container hidden" id="merge-global-container">
+              <div class="merge-global-header">
+                <span class="merge-global-text" id="merge-global-text">Preparing…</span>
+                <span class="merge-global-percent" id="merge-global-percent">0%</span>
+              </div>
+              <div class="merge-global-track"><div class="merge-global-bar" id="merge-global-bar"></div></div>
+              <button type="button" class="merge-global-cancel hidden" id="merge-global-cancel" title="Cancel processing">
+                <svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2">
+                  <line x1="18" y1="6" x2="6" y2="18"></line>
+                  <line x1="6" y1="6" x2="18" y2="18"></line>
+                </svg>
+                <span>Cancel</span>
               </button>
             </div>
           </form>
 
+          <!-- Quick Example Post Links -->
+          
         </div>
         </div>
 
@@ -285,20 +307,12 @@
                 preload="metadata"
                 controlslist="nodownload"
                 referrerpolicy="no-referrer"
+                crossorigin="anonymous"
               >
                 Your browser does not support HTML5 video preview.
               </video>
               <!-- Hidden audio element for synchronized playback preview if audio is separate -->
-              <audio id="audio-synced" preload="auto" playsinline referrerpolicy="no-referrer"></audio>
-
-              <!-- In-player Unmute Notification Button (if browser restricts autoplay audio) -->
-              <button type="button" class="btn-enable-audio hidden" id="btn-enable-audio" title="Click to unmute video audio">
-                <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2">
-                  <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon>
-                  <path d="M19.07 4.93a10 10 0 0 1 0 14.14M15.54 8.46a5 5 0 0 1 0 7.07"></path>
-                </svg>
-                <span>Click to Unmute Audio</span>
-              </button>
+              <audio id="audio-synced" preload="metadata" referrerpolicy="no-referrer" crossorigin="anonymous"></audio>
 
               <!-- In-player Fallback Alert for Browser Playback Issues -->
               <div class="video-error-overlay hidden" id="video-error-overlay">
@@ -319,13 +333,14 @@
                     </svg>
                     <span id="label-switch-stream">Switch to Worker Proxy</span>
                   </button>
-                  <button type="button" class="btn-video-fallback" id="btn-retry-player">
+                  <a href="#" class="btn-video-fallback" id="btn-open-raw-video" target="_blank" rel="noopener">
                     <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2">
-                      <path d="M21.5 2v6h-6M2.5 22v-6h6"></path>
-                      <path d="M19.07 4.93A10 10 0 0 0 3 12M4.93 19.07A10 10 0 0 0 21 12"></path>
+                      <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+                      <polyline points="15 3 21 3 21 9"></polyline>
+                      <line x1="10" y1="14" x2="21" y2="3"></line>
                     </svg>
-                    <span>Reload Player</span>
-                  </button>
+                    <span>Open in New Tab</span>
+                  </a>
                 </div>
               </div>
 
@@ -333,26 +348,16 @@
           </div>
 
           <div class="result-info-side">
-            <div class="result-top-bar" id="result-top-bar">
-              <button type="button" class="btn-back-input" id="btn-another-video-top" title="Download another video">
-                <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.2">
-                  <line x1="19" y1="12" x2="5" y2="12"></line>
-                  <polyline points="12 19 5 12 12 5"></polyline>
-                </svg>
-                <span>Download Another Video</span>
-              </button>
-            </div>
-
-            <div class="result-header hidden">
+            <div class="result-header">
               <div class="badges-row">
                 <span class="badge-sub" id="result-subreddit">r/example</span>
                 <span class="badge-author" id="result-author">u/user</span>
-                <span class="badge-audio-status" id="badge-audio-status">Merged Video + Audio</span>
+                <span class="badge-audio-status" id="badge-audio-status">Video + Audio Available</span>
               </div>
               <h2 class="result-title" id="result-title">Example Reddit Post</h2>
             </div>
 
-            <div class="metadata-grid hidden">
+            <div class="metadata-grid">
               <div class="meta-item">
                 <span class="meta-label">Resolution</span>
                 <span class="meta-val" id="result-resolution">1080 × 1920</span>
@@ -372,63 +377,95 @@
             </div>
 
             <!-- Quality selection if multiple variants exist -->
-            <div class="quality-selector-group hidden" id="quality-selector-group">
+            <div class="quality-selector-group" id="quality-selector-group">
               <span class="selector-label">Available Qualities:</span>
               <div class="quality-buttons-row" id="quality-buttons-row">
                 <!-- Injected via JavaScript -->
               </div>
             </div>
 
-            <!-- Download Action Buttons (Strictly in-page, zero new tabs) -->
+            <!-- Download Action Buttons -->
             <div class="download-actions" id="download-actions">
-              <button type="button" class="btn-download primary" id="btn-download-video">
-                <svg class="dl-icon-normal" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2">
+              <a href="#" class="btn-download primary" id="btn-download-video" target="_blank" rel="noopener">
+                <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2">
                   <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
                   <polyline points="7 10 12 15 17 10"></polyline>
                   <line x1="12" y1="15" x2="12" y2="3"></line>
                 </svg>
-                <span class="spinner-inline hidden" id="dl-spinner-primary" aria-hidden="true"></span>
-                <span id="label-download-video">Download</span>
-              </button>
+                <span id="label-download-video">Download Video (1080p)</span>
+              </a>
 
-              <button type="button" class="btn-download secondary hidden" id="btn-download-merged-backup" title="RapidSave backup download">
-                <svg class="dl-icon-normal" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2">
-                  <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
-                  <polyline points="7 10 12 15 17 10"></polyline>
-                  <line x1="12" y1="15" x2="12" y2="3"></line>
+              <a href="#" class="btn-download merge hidden" id="btn-merge-download">
+                <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2">
+                  <rect x="2" y="4" width="20" height="16" rx="2" ry="2"></rect>
+                  <polygon points="10 9 15 12 10 15 10 9"></polygon>
+                  <line x1="2" y1="8.5" x2="22" y2="8.5" stroke-dasharray="2 2" opacity="0.4"></line>
                 </svg>
-                <span class="spinner-inline hidden" id="dl-spinner-backup" aria-hidden="true"></span>
-                <span id="label-download-backup">RapidSave</span>
-              </button>
+                <span id="label-merge-download">Merge & Download MP4 (Video + Audio)</span>
+              </a>
 
-              <button type="button" class="btn-download another-video" id="btn-another-video" title="Download another Reddit video">
-                <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.2">
-                  <polyline points="1 4 1 10 7 10"></polyline>
-                  <path d="M3.51 15a9 9 0 1 0 2.13-9.36L1 10"></path>
+              <div class="merge-progress-container hidden" id="merge-progress-container">
+                <div class="merge-progress-header">
+                  <span class="merge-progress-text" id="merge-progress-text">Preparing merge…</span>
+                  <button type="button" class="btn-cancel-merge" id="btn-cancel-merge" title="Cancel merge">
+                    <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2">
+                      <line x1="18" y1="6" x2="6" y2="18"></line>
+                      <line x1="6" y1="6" x2="18" y2="18"></line>
+                    </svg>
+                  </button>
+                </div>
+                <div class="merge-progress-track">
+                  <div class="merge-progress-bar" id="merge-progress-bar"></div>
+                </div>
+                <p class="merge-progress-hint" id="merge-progress-hint">Downloading both streams first…</p>
+                <a href="#" class="btn-download final-merge hidden" id="btn-final-merged-download">
+                  <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                    <polyline points="7 10 12 15 17 10"></polyline>
+                    <line x1="12" y1="15" x2="12" y2="3"></line>
+                  </svg>
+                  <span id="label-final-merged">Download Final MP4</span>
+                </a>
+              </div>
+
+              <a href="#" class="btn-download secondary hidden" id="btn-download-audio" target="_blank" rel="noopener">
+                <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M9 18V5l12-2v13"></path>
+                  <circle cx="6" cy="18" r="3"></circle>
+                  <circle cx="18" cy="16" r="3"></circle>
                 </svg>
-                <span>Download Another Video</span>
-              </button>
+                <span>Download Audio (MP4)</span>
+              </a>
 
-              <button type="button" class="btn-permalink" id="btn-copy-post-link" title="Copy original Reddit post link to clipboard">
-                <span id="label-copy-link">Copy Post Link</span>
+              <a href="#" class="btn-permalink" id="btn-permalink" target="_blank" rel="noopener noreferrer">
+                <span>View on Reddit</span>
                 <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2">
-                  <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
-                  <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                  <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+                  <polyline points="15 3 21 3 21 9"></polyline>
+                  <line x1="10" y1="14" x2="21" y2="3"></line>
                 </svg>
-              </button>
-
-              <!-- Hidden download iframe ensures downloads trigger silently without opening tabs -->
-              <iframe id="hidden-download-iframe" style="display:none;width:0;height:0;border:0;" aria-hidden="true"></iframe>
+              </a>
             </div>
 
-            <!-- Merged Stream Status Notice -->
+            <!-- Technical Notice about separate streams -->
             <div class="stream-notice" id="stream-notice">
               <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2">
-                <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
-                <polyline points="22 4 12 14.01 9 11.01"></polyline>
+                <circle cx="12" cy="12" r="10"></circle>
+                <line x1="12" y1="16" x2="12" y2="12"></line>
+                <line x1="12" y1="8" x2="12.01" y2="8"></line>
               </svg>
-              <span id="stream-notice-text">Video and audio tracks are automatically merged into a single high-definition MP4 with full sound.</span>
+              <span id="stream-notice-text">Reddit stores video and audio as separate DASH streams. Both streams are verified and downloadable above.</span>
             </div>
+
+            <!-- Download Another Video CTA -->
+            <button type="button" class="btn-download-another hidden" id="btn-download-another">
+              <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4"></path>
+                <polyline points="10 17 15 12 10 7"></polyline>
+                <line x1="15" y1="12" x2="3" y2="12"></line>
+              </svg>
+              <span>Download Another Video</span>
+            </button>
           </div>
         </div>
       </div>
@@ -508,12 +545,12 @@
 
           <div class="faq-card">
             <h3 class="faq-question">Can I download Reddit videos with sound?</h3>
-            <p class="faq-answer">Yes. Our downloader automatically merges the video and audio into a single MP4 file so you can watch and download with full synchronized sound without separate files.</p>
+            <p class="faq-answer">Yes. If the post includes an audio stream, the downloader detects it. Both the video stream and the audio stream are made available for download.</p>
           </div>
 
           <div class="faq-card">
             <h3 class="faq-question">Why does my Reddit video have no audio?</h3>
-            <p class="faq-answer">Some Reddit posts are uploaded as silent videos or animated GIFs without an audio track. If the original post has audio, our system automatically merges it into your video.</p>
+            <p class="faq-answer">Some Reddit videos are uploaded without audio, or are converted from silent GIF files. Furthermore, Reddit separates video and audio in DASH streaming. If no audio stream was provided by the author, the video is inherently silent.</p>
           </div>
 
           <div class="faq-card">
@@ -538,6 +575,8 @@
         </div>
       </div>
     </section>
+
+   
   </main>
 
   <!-- Site Footer -->
@@ -570,10 +609,12 @@
           Disclaimer: This tool is not affiliated with, endorsed by, or associated with Reddit, Inc. All trademarks and media belong to their respective copyright holders. Only publicly accessible media is processed.
         </p>
       </div>
-    </div>
   </footer>
 
   <!-- Vanilla JavaScript -->
-  <script src="https://reditgrab.com/rvideo.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mp4box@0.5.2/dist/mp4box.all.min.js"
+          onerror="window.__mp4boxLoadFailed=true;"
+          referrerpolicy="no-referrer"></script>
+  <script src="https://reditgrab.com/redvid.js"></script>
 </body>
 </html>

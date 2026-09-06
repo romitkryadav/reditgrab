@@ -196,16 +196,16 @@ code {
    Hero Section
    -------------------------------------------------------------------------- */
 .hero-section {
-  padding: 3.75rem 0 2rem;
+  padding: 1.75rem 0 2rem;
   text-align: center;
 }
 
 .hero-title {
-  font-size: 2.5rem; font-weight: 800;
+  font-size: 2rem; font-weight: 800;
   line-height: 1.15; letter-spacing: -0.03em;
   color: var(--text-primary); margin-bottom: 0.85rem;
 }
-@media (min-width: 640px) { .hero-title { font-size: 3.25rem; } }
+@media (min-width: 640px) { .hero-title { font-size: 2.35rem; } }
 
 .hero-subtitle {
   font-size: 1.125rem; color: var(--text-muted);
@@ -213,17 +213,56 @@ code {
 }
 
 /* Search Card */
+.downloader-glow-wrap {
+  position: relative;
+  width: 100%;
+  max-width: 760px;
+  margin: 0 auto;
+}
+
+.downloader-glow-wrap::before {
+  content: "";
+  position: absolute;
+  inset: -3px;
+  background: var(--reddit-gradient);
+  border-radius: 22px;
+  filter: blur(14px);
+  opacity: 0.22;
+  transition: opacity 0.4s ease, filter 0.4s ease;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.downloader-glow-wrap:focus-within::before {
+  opacity: 0.42;
+  filter: blur(18px);
+}
+
 .search-card {
+  background-color: var(--bg-card);
   background-color: var(--bg-card);
   border: 1px solid var(--border-color);
   border-radius: var(--radius-xl);
   padding: 1.75rem;
   box-shadow: var(--shadow-xl);
-  max-width: 620px;
+  max-width: 760px;
   margin: 0 auto;
+  position: relative;
+  z-index: 1;
 }
 
-.search-form { display: flex; flex-direction: column; gap: 1rem; }
+.search-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+@media (min-width: 640px) {
+  .search-form {
+    flex-direction: row;
+    align-items: stretch;
+  }
+}
 
 /* Input wrapper styled like redsty.css .input-field-wrapper */
 .input-wrapper {
@@ -235,6 +274,12 @@ code {
   padding: 0.35rem 0.5rem;
   transition: all var(--transition-fast);
   box-shadow: inset 0 2px 4px rgba(0,0,0,0.25);
+}
+
+@media (min-width: 640px) {
+  .input-wrapper {
+    flex: 1;
+  }
 }
 .input-wrapper:focus-within {
   border-color: var(--border-focus);
@@ -266,8 +311,16 @@ code {
   font-weight: 700; font-size: 1.05rem;
   white-space: nowrap; cursor: pointer;
   display: inline-flex; align-items: center; justify-content: center; gap: 0.5rem;
+  min-width: 190px;
   box-shadow: 0 4px 14px rgba(255,69,0,0.35);
   transition: all var(--transition-fast);
+}
+
+@media (max-width: 639px) {
+  .btn-primary {
+    width: 100%;
+    min-width: 0;
+  }
 }
 .btn-primary:hover:not(:disabled) {
   background-color: var(--reddit-orange-hover);
@@ -676,6 +729,18 @@ code {
   padding: 3rem 0 2rem;
   transition: background-color var(--transition-normal);
 }
+
+.footer-inner { display: flex; flex-direction: column; gap: 2.25rem; }
+.footer-links-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; padding-bottom: 2rem; border-bottom: 1px solid #18181B; }
+.footer-link-group { display: flex; flex-direction: column; align-items: flex-start; gap: 0.65rem; }
+.footer-link-title { margin: 0 0 0.15rem; font-size: 0.8rem; font-weight: 700; color: var(--text-primary); letter-spacing: 0.08em; text-transform: uppercase; }
+.footer-link-group a { color: var(--text-subtle); font-size: 0.825rem; text-decoration: none; transition: color 0.2s ease; }
+.footer-link-group a:hover, .footer-link-group a:focus-visible { color: var(--text-primary); }
+.footer-bottom-row { display: flex; flex-direction: column; gap: 0.5rem; text-align: center; }
+.footer-copy { font-size: 0.875rem; color: var(--text-muted); }
+.footer-copy strong { color: var(--text-primary); }
+.footer-disclaimer { font-size: 0.775rem; color: var(--text-subtle); max-width: 720px; margin: 0 auto; line-height: 1.5; }
+@media (max-width: 639px) { .footer-links-grid { gap: 1.5rem 1rem; } }
 
 .footer-top {
   display: flex; flex-direction: column; gap: 1.5rem;
