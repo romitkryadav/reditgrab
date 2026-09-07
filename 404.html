@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Page Not Found | ReditGrab</title>
+  <meta name="description" content="The ReditGrab page you requested could not be found. Return to the homepage or choose another public-media tool.">
+  <meta name="robots" content="noindex, follow">
+  <link rel="stylesheet" href="redsty.css">
+  <style>
+    .not-found-page {
+      min-height: calc(100vh - 180px);
+      display: grid;
+      place-items: center;
+      padding: 4rem 1.25rem;
+      text-align: center;
+    }
+
+    .not-found-content {
+      max-width: 620px;
+    }
+
+    .not-found-code {
+      color: var(--reddit-orange);
+      font-size: clamp(4rem, 15vw, 8rem);
+      font-weight: 800;
+      line-height: 1;
+      margin-bottom: 1rem;
+    }
+
+    .not-found-content h1 {
+      color: var(--text-primary);
+      font-size: clamp(1.8rem, 5vw, 2.5rem);
+      margin-bottom: 0.75rem;
+    }
+
+    .not-found-content p {
+      color: var(--text-muted);
+      line-height: 1.7;
+      margin-bottom: 1.5rem;
+    }
+
+    .not-found-links {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 0.75rem;
+    }
+
+    .not-found-links a {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 42px;
+      padding: 0.65rem 1rem;
+      border: 1px solid var(--reddit-orange);
+      border-radius: var(--radius-md);
+      background-color: var(--reddit-orange);
+      color: #fff;
+      font-weight: 600;
+      text-decoration: none;
+      transition: background-color var(--transition-fast), transform var(--transition-fast);
+    }
+
+    .not-found-links a:hover,
+    .not-found-links a:focus-visible {
+      background-color: var(--reddit-orange-hover);
+      transform: translateY(-1px);
+    }
+  </style>
+</head>
+<body data-theme="dark">
+  <header class="site-header" id="site-header">
+    <div class="header-inner container">
+      <a href="/" class="brand-link" id="brand-link" aria-label="ReditGrab Home">
+        <div class="brand-icon" aria-hidden="true">
+          <img src="https://reditgrab.com/reditgrab.png" alt="" width="48" height="48">
+        </div>
+        <span class="brand-text">ReditGrab</span>
+      </a>
+
+      <nav class="nav-desktop" aria-label="Primary navigation">
+        <a href="/reddit-image-downloader" class="nav-anchor-link">Image Downloader</a>
+        <a href="/reddit-dp-downloader" class="nav-anchor-link">DP Downloader</a>
+        <a href="/about" class="nav-anchor-link">About</a>
+        <a href="/contact" class="nav-anchor-link">Contact</a>
+        <button type="button" class="btn-icon" id="theme-toggle" aria-label="Toggle dark/light theme" title="Toggle theme">
+          <svg class="sun-icon" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line></svg>
+          <svg class="moon-icon" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+        </button>
+      </nav>
+
+      <button class="nav-hamburger" id="nav-hamburger" aria-expanded="false" aria-controls="nav-mobile-panel" aria-label="Open navigation menu">
+        <span class="bar"></span><span class="bar"></span><span class="bar"></span>
+      </button>
+    </div>
+
+    <nav class="nav-mobile-panel" id="nav-mobile-panel" aria-label="Mobile navigation">
+      <a href="/reddit-image-downloader">Image Downloader</a>
+      <a href="/reddit-dp-downloader">DP Downloader</a>
+      <a href="/about">About</a>
+      <a href="/contact">Contact</a>
+    </nav>
+  </header>
+
+  <main class="not-found-page" id="main-content">
+    <section class="not-found-content" aria-labelledby="not-found-title">
+      <div class="not-found-code" aria-hidden="true">404</div>
+      <h1 id="not-found-title">Page not found</h1>
+      <p>The page you requested does not exist or may have moved. Choose a ReditGrab tool to continue.</p>
+      <nav class="not-found-links" aria-label="Helpful links">
+        <a href="/">Video Downloader</a>
+        <a href="/reddit-image-downloader">Image Downloader</a>
+        <a href="/reddit-dp-downloader">DP Downloader</a>
+      </nav>
+    </section>
+  </main>
+
+  <footer class="site-footer" id="site-footer">
+    <div class="container footer-inner">
+      <div class="footer-bottom-row">
+        <p class="footer-copy">&copy; 2026 <strong>ReditGrab</strong>. All rights reserved.</p>
+        <p class="footer-disclaimer">Disclaimer: This tool is not affiliated with, endorsed by, or associated with Reddit, Inc.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    (function () {
+      var btn = document.getElementById('nav-hamburger');
+      var panel = document.getElementById('nav-mobile-panel');
+      var theme = document.getElementById('theme-toggle');
+      var saved = localStorage.getItem('reddit_downloader_theme');
+      document.body.setAttribute('data-theme', saved || 'dark');
+      theme.addEventListener('click', function () {
+        var next = document.body.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+        document.body.setAttribute('data-theme', next);
+        localStorage.setItem('reddit_downloader_theme', next);
+      });
+      btn.addEventListener('click', function () {
+        var open = panel.classList.toggle('open');
+        btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+      });
+      panel.querySelectorAll('a').forEach(function (link) {
+        link.addEventListener('click', function () {
+          panel.classList.remove('open');
+          btn.setAttribute('aria-expanded', 'false');
+        });
+      });
+    })();
+  </script>
+</body>
+</html>
