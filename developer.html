@@ -1,0 +1,674 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Developer & Author | ReditGrab</title>
+
+<meta name="description"
+ content="Meet Romit Kr Yadav, the independent developer and author behind ReditGrab, a collection of simple and useful tools for publicly accessible Reddit media.">
+
+  <meta name="author" content="Romit Kr Yadav">
+  <meta name="robots" content="index, follow">
+
+  <link rel="canonical" href="https://reditgrab.com/developer">
+
+  <!-- Open Graph -->
+
+  <meta property="og:type" content="profile">
+  <meta property="og:url" content="https://reditgrab.com/developer">
+  <meta property="og:title" content="Developer & Author | ReditGrab">
+  <meta property="og:description"
+    content="Meet Romit Kr Yadav, the independent developer and author behind ReditGrab.">
+  <meta property="og:site_name" content="ReditGrab">
+  <meta property="og:image" content="https://reditgrab.com/preview-card.png">
+
+  <!-- Twitter -->
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Developer & Author | ReditGrab">
+  <meta name="twitter:description"
+    content="Meet Romit Kr Yadav, the independent developer and author behind ReditGrab.">
+  <meta name="twitter:image" content="https://reditgrab.com/preview-card.png">
+
+  <!-- Favicon -->
+
+  <link rel="icon" type="image/png" href="https://reditgrab.com/reditgrab-favicon.png">
+
+  <!-- Main stylesheet -->
+
+  <link rel="stylesheet" href="redsty.css">
+
+  <!-- Person Structured Data -->
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Romit Kr Yadav",
+    "url": "https://reditgrab.com/developer",
+    "image": "https://threadsgrab.com/romitkryadav.webp",
+    "jobTitle": "Independent Web Developer",
+    "description": "Independent web developer and creator of ReditGrab.",
+    "sameAs": [
+      "YOUR_INSTAGRAM_URL",
+      "YOUR_PORTFOLIO_URL"
+    ]
+  }
+  </script>
+
+  <style>
+    .developer-page {
+      padding: 3rem 0 4rem;
+    }
+
+    .developer-shell {
+      max-width: 820px;
+      margin: 0 auto;
+    }
+
+    .developer-hero {
+      text-align: center;
+      margin-bottom: 2rem;
+    }
+
+    .developer-hero .hero-title {
+      margin-bottom: 0.75rem;
+    }
+
+    .developer-hero .hero-desc {
+      margin: 0 auto;
+      max-width: 650px;
+    }
+
+    .developer-card {
+      background-color: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-lg);
+      padding: 1.5rem;
+      box-shadow: var(--shadow-md);
+    }
+
+    .developer-card + .developer-card {
+      margin-top: 1rem;
+    }
+
+    .developer-card h2 {
+      color: var(--text-primary);
+      font-size: 1.2rem;
+      margin-bottom: 0.7rem;
+    }
+
+    .developer-card p {
+      color: var(--text-muted);
+      line-height: 1.7;
+      margin-bottom: 0.9rem;
+    }
+
+    .developer-card p:last-child {
+      margin-bottom: 0;
+    }
+
+    .developer-card a {
+      color: var(--reddit-orange);
+    }
+
+    .developer-profile {
+      display: flex;
+      align-items: flex-start;
+      gap: 1.25rem;
+      margin-bottom: 1rem;
+    }
+
+    .developer-profile img {
+      width: 96px;
+      height: 96px;
+      min-width: 96px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 2px solid var(--border-color);
+    }
+
+    .developer-profile-info h2 {
+      margin: 0 0 0.3rem;
+    }
+
+    .developer-role {
+      color: var(--text-muted);
+      font-size: 0.95rem;
+    }
+
+    .developer-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.7rem;
+      margin-top: 1.25rem;
+    }
+
+    .developer-links a {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0.65rem 1rem;
+      background-color: var(--reddit-orange);
+      border: 1px solid var(--reddit-orange);
+      border-radius: 8px;
+      color: #fff;
+      text-decoration: none;
+      transition: background-color 0.2s ease, transform 0.2s ease;
+    }
+
+    .developer-links a:hover,
+    .developer-links a:focus-visible {
+      background-color: var(--reddit-orange-hover);
+      transform: translateY(-1px);
+    }
+
+    .developer-note {
+      font-size: 0.9rem;
+    }
+
+    @media (max-width: 600px) {
+      .developer-page {
+        padding: 2rem 0 3rem;
+      }
+
+      .developer-profile {
+        align-items: center;
+      }
+
+      .developer-profile img {
+        width: 80px;
+        height: 80px;
+        min-width: 80px;
+      }
+
+      .developer-card {
+        padding: 1.25rem;
+      }
+    }
+  </style>
+
+</head>
+
+<body data-theme="dark">
+
+  <!-- Header -->
+
+  <header class="site-header" id="site-header">
+
+```
+<div class="header-inner container">
+
+  <a href="/" class="brand-link" id="brand-link" aria-label="ReditGrab Home">
+
+    <div class="brand-icon" aria-hidden="true">
+      <img
+        src="https://reditgrab.com/reditgrab.png"
+        alt=""
+        width="48"
+        height="48">
+    </div>
+
+    <span class="brand-text">ReditGrab</span>
+
+  </a>
+
+  <!-- Desktop Navigation -->
+  <nav class="nav-desktop" aria-label="Primary navigation">
+
+    <a href="/#how-it-works" class="nav-anchor-link">
+      How It Works
+    </a>
+
+    <a href="/#faq-section" class="nav-anchor-link">
+      FAQ
+    </a>
+
+    <a href="/reddit-image-downloader" class="nav-anchor-link">
+      Image Downloader
+    </a>
+
+    <a href="/reddit-dp-downloader" class="nav-anchor-link">
+      DP Downloader
+    </a>
+
+    <button
+      type="button"
+      class="btn-icon"
+      id="theme-toggle"
+      aria-label="Toggle dark/light theme"
+      title="Toggle theme">
+
+      <svg
+        class="sun-icon"
+        viewBox="0 0 24 24"
+        width="18"
+        height="18"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2">
+
+        <circle cx="12" cy="12" r="5"></circle>
+        <line x1="12" y1="1" x2="12" y2="3"></line>
+        <line x1="12" y1="21" x2="12" y2="23"></line>
+        <line x1="1" y1="12" x2="3" y2="12"></line>
+        <line x1="21" y1="12" x2="23" y2="12"></line>
+
+      </svg>
+
+      <svg
+        class="moon-icon"
+        viewBox="0 0 24 24"
+        width="18"
+        height="18"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2">
+
+        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+
+      </svg>
+
+    </button>
+
+  </nav>
+
+  <!-- Mobile Menu Button -->
+  <button
+    class="nav-hamburger"
+    id="nav-hamburger"
+    aria-expanded="false"
+    aria-controls="nav-mobile-panel"
+    aria-label="Open navigation menu">
+
+    <span class="bar"></span>
+    <span class="bar"></span>
+    <span class="bar"></span>
+
+  </button>
+
+</div>
+
+<!-- Mobile Navigation -->
+<nav
+  class="nav-mobile-panel"
+  id="nav-mobile-panel"
+  aria-label="Mobile navigation">
+
+  <a href="/#how-it-works">
+    How It Works
+  </a>
+
+  <a href="/#faq-section">
+    FAQ
+  </a>
+
+  <a href="/reddit-image-downloader">
+    Image Downloader
+  </a>
+
+  <a href="/reddit-dp-downloader">
+    DP Downloader
+  </a>
+
+</nav>
+```
+
+  </header>
+
+  <!-- Main Content -->
+
+  <main class="developer-page" id="main-content">
+
+```
+<div class="container developer-shell">
+
+  <!-- Hero -->
+  <section class="developer-hero">
+
+    <h1 class="hero-title">
+      Developer <span class="hero-accent">&amp; Author</span>
+    </h1>
+
+    <p class="hero-desc">
+      Meet the independent developer behind ReditGrab and its collection
+      of simple web tools.
+    </p>
+
+  </section>
+
+
+  <!-- About Developer -->
+  <article class="developer-card">
+
+    <div class="developer-profile">
+
+      <img
+        src="https://reditgrab.com/romitkryadav.png"
+        alt="Romit Kr Yadav"
+        width="96"
+        height="96"
+        loading="lazy">
+
+      <div class="developer-profile-info">
+
+        <h2>
+          Romit Kr Yadav
+        </h2>
+
+        <span class="developer-role">
+          Independent Web Developer &amp; Creator
+        </span>
+
+      </div>
+
+    </div>
+
+
+    <p>
+      Hi, I'm Romit Kr Yadav, an independent web developer and the creator
+      of ReditGrab. I build simple and useful web tools designed to make
+      everyday online tasks easier and more accessible.
+    </p>
+
+    <p>
+      ReditGrab is one of my independent projects. I built it with a focus
+      on straightforward tools for working with publicly accessible Reddit
+      media, including videos, images, and profile pictures.
+    </p>
+
+    <p>
+      I work on the development, design, performance, maintenance, and
+      continuous improvement of ReditGrab. My goal is to keep the website
+      simple to use, fast, mobile-friendly, and easy to understand.
+    </p>
+
+    <p>
+      Beyond ReditGrab, I enjoy experimenting with web technologies,
+      building independent projects, improving user experiences, and
+      turning ideas into practical websites and online tools.
+    </p>
+
+
+    <!-- Social / Portfolio Links -->
+    <div class="developer-links">
+
+      <a
+        href="https://www.instagram.com/romitkryadav/"
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label="Romit Kr Yadav on Instagram">
+
+        Instagram
+
+      </a>
+
+      <a
+        href="https://romitkryadav.fbviddl.com/"
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label="Romit Kr Yadav portfolio">
+
+        Portfolio
+
+      </a>
+
+    </div>
+
+  </article>
+
+
+  <!-- About ReditGrab -->
+  <article class="developer-card">
+
+    <h2>
+      About ReditGrab
+    </h2>
+
+    <p>
+      ReditGrab is an independent web project built to provide simple
+      tools for publicly accessible Reddit media. Depending on the
+      supported URL and available media, users can submit a public Reddit
+      link, preview available content, and download supported media.
+    </p>
+
+    <p>
+      The website is designed around a simple workflow with minimal
+      unnecessary steps. Performance, usability, responsive design, and
+      straightforward navigation are key parts of the project.
+    </p>
+
+    <p>
+      ReditGrab is an independent service and is not affiliated with,
+      endorsed by, sponsored by, or associated with Reddit, Inc.
+    </p>
+
+  </article>
+
+
+  <!-- Development Philosophy -->
+  <article class="developer-card">
+
+    <h2>
+      Why I Built ReditGrab
+    </h2>
+
+    <p>
+      Many online tools are unnecessarily complicated, filled with
+      distracting elements, or difficult to use on mobile devices. I
+      wanted to build something more straightforward.
+    </p>
+
+    <p>
+      ReditGrab focuses on a clear user experience: enter a supported
+      public Reddit URL, process the request, and access the available
+      media. The project continues to evolve as I improve its design,
+      functionality, performance, and reliability.
+    </p>
+
+  </article>
+
+
+  <!-- Contact -->
+  <article class="developer-card">
+
+    <h2>
+      Contact
+    </h2>
+
+    <p>
+      If you have a question about ReditGrab, want to report an issue,
+      or have feedback about the website, please visit the
+      <a href="/contact">Contact</a> page.
+    </p>
+
+    <p class="developer-note">
+      For technical or website-related inquiries, providing the relevant
+      page URL and a short description of the issue can help us understand
+      the problem more quickly.
+    </p>
+
+  </article>
+
+</div>
+```
+
+  </main>
+
+  <!-- Footer -->
+
+  <footer class="site-footer" id="site-footer">
+
+```
+<div class="container footer-inner">
+
+  <div class="footer-links-grid">
+
+    <!-- Tools -->
+    <div class="footer-link-group">
+
+      <h2 class="footer-link-title">
+        Tools
+      </h2>
+
+      <a href="/">
+        Reddit Video Downloader
+      </a>
+
+      <a href="/reddit-image-downloader">
+        Image Downloader
+      </a>
+
+      <a href="/reddit-dp-downloader">
+        DP Downloader
+      </a>
+
+    </div>
+
+
+    <!-- Legal -->
+    <div class="footer-link-group">
+
+      <h2 class="footer-link-title">
+        Legal
+      </h2>
+
+      <a href="/privacy">
+        Privacy
+      </a>
+
+      <a href="/disclaimer">
+        Disclaimer
+      </a>
+
+    </div>
+
+
+    <!-- Company -->
+    <div class="footer-link-group">
+
+      <h2 class="footer-link-title">
+        Company
+      </h2>
+
+      <a href="/about">
+        About ReditGrab
+      </a>
+
+      <a href="/contact">
+        Contact
+      </a>
+
+      <a href="/developer">
+        Developer &amp; Author
+      </a>
+
+    </div>
+
+  </div>
+
+
+  <!-- Footer Bottom -->
+  <div class="footer-bottom-row">
+
+    <p class="footer-copy">
+      © 2026 <strong>ReditGrab</strong>. All rights reserved.
+    </p>
+
+    <p class="footer-disclaimer">
+      Disclaimer: This tool is not affiliated with, endorsed by, or
+      associated with Reddit, Inc. Only publicly accessible media is
+      processed.
+    </p>
+
+  </div>
+
+</div>
+```
+
+  </footer>
+
+  <!-- Scripts -->
+
+  <script>
+    (function () {
+
+      var btn = document.getElementById('nav-hamburger');
+      var panel = document.getElementById('nav-mobile-panel');
+      var theme = document.getElementById('theme-toggle');
+
+      var saved = localStorage.getItem('reddit_downloader_theme');
+
+      document.body.setAttribute(
+        'data-theme',
+        saved || 'dark'
+      );
+
+
+      /* Theme Toggle */
+      if (theme) {
+
+        theme.addEventListener('click', function () {
+
+          var next =
+            document.body.getAttribute('data-theme') === 'dark'
+              ? 'light'
+              : 'dark';
+
+          document.body.setAttribute(
+            'data-theme',
+            next
+          );
+
+          localStorage.setItem(
+            'reddit_downloader_theme',
+            next
+          );
+
+        });
+
+      }
+
+
+      /* Mobile Navigation */
+      if (btn && panel) {
+
+        btn.addEventListener('click', function () {
+
+          var open = panel.classList.toggle('open');
+
+          btn.setAttribute(
+            'aria-expanded',
+            open ? 'true' : 'false'
+          );
+
+        });
+
+
+        panel.querySelectorAll('a').forEach(function (link) {
+
+          link.addEventListener('click', function () {
+
+            panel.classList.remove('open');
+
+            btn.setAttribute(
+              'aria-expanded',
+              'false'
+            );
+
+          });
+
+        });
+
+      }
+
+    })();
+  </script>
+
+</body>
+
+</html>

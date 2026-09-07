@@ -4,8 +4,8 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Reddit Video Downloader – Download Reddit Videos as MP4</title>
-  <meta name="description" content="Download videos from public Reddit posts. Paste a Reddit post URL to preview the video and download the highest publicly available quality.">
-  <meta name="keywords" content="reddit video downloader, reddit downloader, download reddit videos, reddit video download, reddit mp4 downloader, download reddit mp4, reddit video saver, reddit video download online, reddit video downloader no app">
+  <meta name="description" content="Download videos from public Reddit posts in high quality. Paste a Reddit post URL to preview the video and save it as an MP4 when available.">
+  <meta name="author" content="Romit Kr Yadav">
   <meta name="robots" content="index, follow">
   <link rel="canonical" href="https://reditgrab.com/">
 
@@ -13,20 +13,20 @@
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://reditgrab.com/">
   <meta property="og:title" content="Reddit Video Downloader – Download Reddit Videos as MP4">
-  <meta property="og:description" content="Download videos from public Reddit posts in the highest available quality. Fast, free, and secure.">
+  <meta property="og:description" content="Download videos from public Reddit posts in high quality. Preview the video and save it as an MP4 when available.">
   <meta property="og:image" content="https://reditgrab.com/preview-card.png">
-  <meta property="author" content="Romit Kr Yadav">
+  <meta property="og:site_name" content="ReditGrab">
   <!-- Twitter -->
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Reddit Video Downloader – Download Reddit Videos as MP4">
-  <meta name="twitter:description" content="Download videos from public Reddit posts in the highest available quality.">
+  <meta name="twitter:description" content="Download videos from public Reddit posts in high quality. Preview the video and save it as an MP4 when available.">
   <meta name="twitter:image" content="https://reditgrab.com/preview-card.png">
 
   <!-- Favicon -->
   <link rel="icon" type="image/png" href="https://reditgrab.com/reditgrab-favicon.png">
 
   <!-- Pure CSS stylesheet -->
-  <link rel="stylesheet" href="rvideo.css">
+  <link rel="stylesheet" href="/rvideo.css">
 
   <!-- Schema.org Structured Data -->
   <script type="application/ld+json">
@@ -35,16 +35,26 @@
     "@graph": [
       {
         "@type": "WebApplication",
+        "@id": "https://reditgrab.com/#webapplication",
         "name": "Reddit Video Downloader",
         "url": "https://reditgrab.com/",
-        "description": "Download videos from public Reddit posts in the highest available quality as MP4.",
+        "description": "Download videos from public Reddit posts in high quality as MP4 when available.",
         "applicationCategory": "MultimediaApplication",
         "operatingSystem": "All",
         "offers": {
           "@type": "Offer",
           "price": "0",
           "priceCurrency": "USD"
+        },
+        "publisher": {
+          "@id": "https://reditgrab.com/#organization"
         }
+      },
+      {
+        "@type": "Organization",
+        "@id": "https://reditgrab.com/#organization",
+        "name": "ReditGrab",
+        "url": "https://reditgrab.com/"
       },
       {
         "@type": "FAQPage",
@@ -54,7 +64,7 @@
             "name": "What is a Reddit video downloader?",
             "acceptedAnswer": {
               "@type": "Answer",
-              "text": "A Reddit video downloader is a tool that retrieves publicly accessible video and audio streams from Reddit posts and allows you to download them in standard MP4 format."
+              "text": "It is a web tool that fetches publicly exposed media URLs from Reddit posts and lets you download the native MP4 stream to your phone, tablet, or PC without installing any apps."
             }
           },
           {
@@ -62,7 +72,7 @@
             "name": "How do I download a Reddit video?",
             "acceptedAnswer": {
               "@type": "Answer",
-              "text": "1. Copy the URL of any public Reddit post with a video. 2. Paste it into the input field. 3. Click Download Video. 4. Preview the detected video and click the download button."
+              "text": "Copy the link of any public post from Reddit, paste it into the search box, click Download Video, preview the video, and click your desired download resolution."
             }
           },
           {
@@ -70,7 +80,7 @@
             "name": "Can I download Reddit videos with sound?",
             "acceptedAnswer": {
               "@type": "Answer",
-              "text": "Yes, when an audio stream is publicly available for the post, the tool detects it and lets you download both the video and audio tracks, or play them in synchronized harmony."
+              "text": "Yes, when the Reddit post has a separate audio track and the active download path supports merging, the video and audio can be combined into a single MP4. Some posts may only provide a video stream without audio."
             }
           },
           {
@@ -78,7 +88,7 @@
             "name": "Why does my Reddit video have no audio?",
             "acceptedAnswer": {
               "@type": "Answer",
-              "text": "Reddit DASH streaming separates video and audio into distinct files. Some Reddit videos are created without an audio track (silent or GIF conversions). If audio is available, our tool provides it as a separate audio stream."
+              "text": "Some Reddit posts are uploaded as silent videos or animated GIFs without an audio track. When a post has a separate audio track, the downloader can combine it with the video when the active download path supports merging."
             }
           },
           {
@@ -86,7 +96,7 @@
             "name": "Can I download videos from private subreddits?",
             "acceptedAnswer": {
               "@type": "Answer",
-              "text": "No. The downloader strictly works with publicly accessible Reddit posts. It does not bypass logins, authentication, or private subreddit permissions."
+              "text": "No. We strictly honor privacy settings and access controls. Videos from private or quarantined subreddits that require authentication cannot be accessed."
             }
           },
           {
@@ -94,7 +104,7 @@
             "name": "Does the downloader reduce video quality?",
             "acceptedAnswer": {
               "@type": "Answer",
-              "text": "No. The downloader directly provides the original highest quality stream provided by Reddit (up to 1080p, 720p, etc.) without re-encoding or compression."
+              "text": "No. We extract the original streams directly from Reddit's media servers without re-compressing, watermarking, or reducing the resolution."
             }
           },
           {
@@ -102,7 +112,7 @@
             "name": "Is the Reddit video downloader free?",
             "acceptedAnswer": {
               "@type": "Answer",
-              "text": "Yes, it is 100% free with no registration, no subscriptions, and no hidden fees."
+              "text": "Yes. ReditGrab is free to use for downloading publicly accessible Reddit videos. No account or subscription is required."
             }
           },
           {
@@ -110,7 +120,7 @@
             "name": "Does the website store downloaded videos?",
             "acceptedAnswer": {
               "@type": "Answer",
-              "text": "No. The Cloudflare Worker streams the public media directly from Reddit's CDN to your device without storing or archiving any video files."
+              "text": "No. ReditGrab does not intentionally store downloaded Reddit videos on its servers. Public media is streamed or processed through the download request and sent to the user's browser."
             }
           }
         ]
@@ -118,6 +128,16 @@
     ]
   }
   </script>
+  <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-LEBSQ97VK4"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-LEBSQ97VK4');
+</script>
+
 </head>
 <body data-theme="dark">
   <!-- Top Navigation / Header -->
@@ -192,7 +212,7 @@
       <div class="container hero-container">
         <div class="hero-header">
           <h1 class="hero-title" id="hero-heading">Reddit Video Downloader</h1>
-                    <p class="hero-desc">Save videos from public Reddit Videos instantly. High-quality MP4 exports with audio.</p><div style="height: 30px;"></div>
+          <p class="hero-desc">Preview videos from public Reddit posts and save them as MP4 files when available.</p><div style="height: 30px;"></div>
           <nav class="tool-tabs" aria-label="Downloader tools">
             <a class="tool-tab active" href="/" aria-current="page" aria-label="Video Downloader" title="Video Downloader">
               <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="14" height="14" rx="2"></rect><path d="m17 10 4-2v8l-4-2z"></path></svg>
@@ -235,7 +255,7 @@
                   </svg>
                   <span>Paste</span>
                 </button>
-                <button type="button" class="btn-input-action hidden" id="btn-clear" title="Clear input">
+                <button type="button" class="btn-input-action hidden" id="btn-clear" aria-label="Clear Reddit URL input" title="Clear input">
                   <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2">
                     <line x1="18" y1="6" x2="6" y2="18"></line>
                     <line x1="6" y1="6" x2="18" y2="18"></line>
@@ -438,7 +458,7 @@
                 <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
                 <polyline points="22 4 12 14.01 9 11.01"></polyline>
               </svg>
-              <span id="stream-notice-text">Video and audio tracks are automatically merged into a single high-definition MP4 with full sound.</span>
+              <span id="stream-notice-text">When an audio track is available, the video and audio can be combined into a single MP4.</span>
             </div>
           </div>
         </div>
@@ -462,7 +482,7 @@
             
             <div class="update-item">
               <span class="update-date">5 September 2026:</span>
-              <span class="update-text">🚀 RedditGrab.com is officially live! Built and launched by <strong><a href="https://instagram.com/RomitKrYadav">Romit Kr Yadav</a></strong>.</span>
+              <span class="update-text">🚀 ReditGrab.com is officially live! Built and launched by <strong><a href="https://instagram.com/RomitKrYadav">Romit Kr Yadav</a></strong>.</span>
             </div>
           </div>
         </div>
@@ -537,7 +557,7 @@ If you're trying to save a photo or gallery instead of a video, use the <a class
         <div class="content-block">
           <h2>Video Quality and File Format</h2>
           <p>
-            You'll get the highest resolution Reddit has publicly stored for that post — commonly 1080p, but it depends entirely on what the original uploader posted. This tool doesn't upscale or fabricate a higher resolution than the source has. Output is MP4.
+            The downloader uses the highest available quality it can retrieve from the public Reddit media source. The available resolution depends on the original video uploaded to Reddit. This tool doesn't upscale or fabricate a higher resolution than the source has. Output is MP4.
           </p>
         </div>
     
@@ -545,18 +565,18 @@ If you're trying to save a photo or gallery instead of a video, use the <a class
         <div class="content-block">
           <h2>Why Some Reddit Videos Have No Sound</h2>
 
-<p>Reddit stores video hosted at v.redd.it using DASH streaming, which keeps the video track and the audio track as two separate files. Some posts genuinely have no audio at all — this is common for clips converted from silent GIFs. When a post does have an audio track, it's available as a separate download alongside the video. (Variant A: "...it's combined into the video file automatically before download.")</p>
+<p>Reddit stores video hosted at v.redd.it using DASH streaming, which keeps the video track and the audio track as two separate files. Some posts genuinely have no audio at all — this is common for clips converted from silent GIFs. When a post does have an audio track, the downloader can combine it with the video for a single MP4 when the active download path supports merging.</p>
         </div>
 
         <div class="content-block">
           <h2>What This Tool Won't Do</h2>
           <p>It only works on public content. It can't reach videos from private subreddits, posts requiring you to be logged in, quarantined communities, or anything that's been deleted or removed — there's no way around Reddit's own access controls here, and there shouldn't be. If a link doesn't resolve, that's usually why.
 </p>
+        </div>
 
-<div class="content-block">
+        <div class="content-block">
           <h2>Use it On Phone or on Desktop</h2>
-<p>The steps are the same either way: open Reddit, find the post, copy the link (the Share button on mobile, the address bar on desktop), and paste it above. No app or extension to install on either platform.
-</p>
+          <p>The steps are the same either way: open Reddit, find the post, copy the link (the Share button on mobile, the address bar on desktop), and paste it above. No app or extension to install on either platform.</p>
         </div>
       </div>
     </section>
@@ -598,7 +618,7 @@ If you're trying to save a photo or gallery instead of a video, use the <a class
               </svg>
             </button>
             <div class="faq-answer">
-              <p>Yes. Our downloader automatically merges the video and audio into a single MP4 file so you can watch and download with full synchronized sound without separate files.</p>
+              <p>Yes, when the Reddit post has a separate audio track and the active download path supports merging, the video and audio can be combined into a single MP4. Some posts may only provide a video stream without audio.</p>
             </div>
           </div>
 
@@ -610,7 +630,7 @@ If you're trying to save a photo or gallery instead of a video, use the <a class
               </svg>
             </button>
             <div class="faq-answer">
-              <p>Some Reddit posts are uploaded as silent videos or animated GIFs without an audio track. If the original post has audio, our system automatically merges it into your video.</p>
+              <p>Some Reddit posts are uploaded as silent videos or animated GIFs without an audio track. When a post has a separate audio track, the downloader can combine it with the video when the active download path supports merging.</p>
             </div>
           </div>
 
@@ -646,7 +666,7 @@ If you're trying to save a photo or gallery instead of a video, use the <a class
               </svg>
             </button>
             <div class="faq-answer">
-              <p>Yes, it is 100% free with unlimited public downloads and requires no accounts, subscriptions, or API keys.</p>
+              <p>Yes. ReditGrab is free to use for downloading publicly accessible Reddit videos. No account or subscription is required.</p>
             </div>
           </div>
 
@@ -658,7 +678,7 @@ If you're trying to save a photo or gallery instead of a video, use the <a class
               </svg>
             </button>
             <div class="faq-answer">
-              <p>No. Media streams are piped directly from Reddit's public CDN to your client browser through the Cloudflare Worker. We do not store, copy, or retain any videos on our servers.</p>
+              <p>No. ReditGrab does not intentionally store downloaded Reddit videos on its servers. Public media is streamed or processed through the download request and sent to the user's browser.</p>
             </div>
           </div>
         </div>

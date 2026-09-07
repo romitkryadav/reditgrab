@@ -4,28 +4,152 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Reddit DP Downloader – Download Reddit Profile Pictures</title>
-  <meta name="description" content="Free Reddit DP Downloader for viewing and downloading publicly accessible Reddit profile pictures. Enter a Reddit username or profile URL to check for an available avatar.">
-  <link rel="canonical" href="https://reditgrab.com/reddit-dp-downloader.html">
+  <meta name="description" content="Download publicly available Reddit profile pictures by username or profile URL. Preview the available avatar, check its details, and save it free.">
+  <meta name="author" content="Romit Kr Yadav">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://reditgrab.com/reddit-dp-downloader">
 
   <!-- Open Graph / Facebook -->
   <meta property="og:type" content="website">
-  <meta property="og:url" content="https://reditgrab.com/reddit-dp-downloader.html">
+  <meta property="og:url" content="https://reditgrab.com/reddit-dp-downloader">
   <meta property="og:title" content="Reddit DP Downloader – Download Reddit Profile Pictures">
-  <meta property="og:description" content="Free Reddit DP Downloader for viewing and downloading publicly accessible Reddit profile pictures. Enter a Reddit username or profile URL to check for an available avatar.">
+  <meta property="og:description" content="Download publicly available Reddit profile pictures by username or profile URL. Preview the available avatar, check its details, and save it free.">
   <meta property="og:image" content="https://reditgrab.com/og-image.png">
-  <meta property="og:author" content="Romit kr Yadav">
+  <meta property="og:site_name" content="ReditGrab">
+  <meta property="author" content="Romit Kr Yadav">
   <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:url" content="https://reditgrab.com/reddit-dp-downloader.html">
+  <meta name="twitter:url" content="https://reditgrab.com/reddit-dp-downloader">
   <meta name="twitter:title" content="Reddit DP Downloader – Download Reddit Profile Pictures">
-  <meta name="twitter:description" content="Free Reddit DP Downloader for viewing and downloading publicly accessible Reddit profile pictures. Enter a Reddit username or profile URL to check for an available avatar.">
+  <meta name="twitter:description" content="Download publicly available Reddit profile pictures by username or profile URL. Preview the available avatar, check its details, and save it free.">
+  <meta name="twitter:image" content="https://reditgrab.com/og-image.png">
 
   <!-- Favicon and Theme Color -->
   <meta name="theme-color" content="#ff4500">
-  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23ff4500'><path d='M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 3c1.66 0 3 1.34 3 3s-1.34 3-3 3-3-1.34-3-3 1.34-3 3-3zm0 14.2c-2.5 0-4.71-1.28-6-3.22.03-1.99 4-3.08 6-3.08 1.99 0 5.97 1.09 6 3.08-1.29 1.94-3.5 3.22-6 3.22z'/></svg>">
+ <link rel="icon" type="image/png" href="https://reditgrab.com/reditgrab-favicon.png">
 
   <!-- Pure CSS stylesheet -->
   <link rel="stylesheet" href="/reddp.css">
+
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "WebApplication",
+          "@id": "https://reditgrab.com/reddit-dp-downloader#webapplication",
+          "name": "ReditGrab Reddit DP Downloader",
+          "url": "https://reditgrab.com/reddit-dp-downloader",
+          "description": "Download publicly available Reddit profile pictures by username or profile URL, preview the available avatar, and save it when Reddit exposes the image publicly.",
+          "applicationCategory": "UtilitiesApplication",
+          "operatingSystem": "Any",
+          "offers": {
+            "@type": "Offer",
+            "price": "0",
+            "priceCurrency": "USD"
+          },
+          "publisher": {
+            "@id": "https://reditgrab.com/#organization"
+          }
+        },
+        {
+          "@type": "Organization",
+          "@id": "https://reditgrab.com/#organization",
+          "name": "ReditGrab",
+          "url": "https://reditgrab.com/"
+        },
+        {
+          "@type": "BreadcrumbList",
+          "@id": "https://reditgrab.com/reddit-dp-downloader#breadcrumb",
+          "itemListElement": [
+            {
+              "@type": "ListItem",
+              "position": 1,
+              "name": "Home",
+              "item": "https://reditgrab.com/"
+            },
+            {
+              "@type": "ListItem",
+              "position": 2,
+              "name": "Reddit DP Downloader",
+              "item": "https://reditgrab.com/reddit-dp-downloader"
+            }
+          ]
+        },
+        {
+          "@type": "FAQPage",
+          "@id": "https://reditgrab.com/reddit-dp-downloader#faqs",
+          "mainEntity": [
+            {
+              "@type": "Question",
+              "name": "Can I download any Reddit profile picture?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "No. This tool only functions when a profile image is publicly accessible through open web protocols. If an account is private, suspended, deleted, or restricted by Reddit's access controls, the picture cannot and will not be retrieved."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "Do I need a Reddit account?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "No. You do not need to register, log in, or connect your Reddit account. The service operates completely anonymously without credentials or user tracking."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "Can I enter a Reddit username instead of a URL?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Yes. You can enter just the username (e.g., spez), the prefixed username (u/spez), or the complete profile link (https://www.reddit.com/user/spez/). The tool automatically normalizes and validates the input."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "Can I download the original Reddit avatar?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Yes, provided that Reddit publicly exposes a higher-quality or original version. We prioritize original source media, followed by high-resolution and standard avatars. We never artificially upscale low-resolution images."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "Why can't I find some Reddit profile pictures?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Reddit regularly updates its profile architecture, frontend components, and bot defense mechanisms. When Reddit blocks automated page fetches or requires login sessions to render user avatars, public discovery is prevented. In such cases, our tool reports that the avatar is unavailable rather than showing fake data."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "Does this work on mobile?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Yes. The website is fully mobile-first and responsive, optimized for smartphones, tablets, laptops, and large desktop screens."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "Is this an official Reddit tool?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "No. Reddit DP Downloader is an independent utility and is not affiliated with, sponsored by, or endorsed by Reddit, Inc."
+              }
+            }
+          ]
+        }
+      ]
+    }
+  </script>
+  <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-LEBSQ97VK4"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-LEBSQ97VK4');
+</script>
 </head>
 <body data-theme="dark">
 
@@ -42,7 +166,8 @@
       <!-- Desktop nav -->
       <nav class="nav-desktop" aria-label="Primary navigation">
         <a href="https://reditgrab.com/" class="nav-links-item">Video Downloader</a>
-        <a href="https://reditgrab.com/reddit-image-downloader.html" class="nav-links-item">Image Downloader</a>
+        <a href="/reddit-image-downloader" class="nav-links-item">Image Downloader</a>
+        <a href="/reddit-dp-downloader" class="nav-links-item active" aria-current="page">DP Downloader</a>
         <a href="/about" class="nav-links-item">About</a>
         <a href="/contact" class="nav-links-item">Contact</a>
         <button type="button" class="btn-icon" id="theme-toggle-btn" aria-label="Toggle dark/light theme" title="Toggle theme">
@@ -70,11 +195,9 @@
 
     <!-- Mobile dropdown panel -->
     <nav class="nav-mobile-panel" id="nav-mobile-panel" aria-label="Mobile navigation">
-      <a href="#how-it-works">How It Works</a>
-      <a href="#features">Features</a>
-      <a href="#faqs">FAQ</a>
       <a href="https://reditgrab.com/">Video Downloader</a>
-      <a href="https://reditgrab.com/reddit-image-downloader.html">Image Downloader</a>
+      <a href="/reddit-image-downloader">Image Downloader</a>
+      <a href="/reddit-dp-downloader">DP Downloader</a>
     </nav>
   </header>
 
@@ -102,15 +225,15 @@
     <section class="hero-section" id="hero-section">
       <div class="container">
         <h1 class="hero-title" id="main-title">Reddit DP Downloader</h1>
-          <p class="hero-subtitle">Download publicly available Reddit profile pictures in high quality.</p>
+          <p class="hero-subtitle">Find and download publicly available Reddit profile pictures by username or profile URL.</p>
         <nav class="tool-tabs" aria-label="Downloader tools">
           <a class="tool-tab" href="/" aria-label="Video Downloader" title="Video Downloader">
             <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="14" height="14" rx="2"></rect><path d="m17 10 4-2v8l-4-2z"></path></svg>
           </a>
-          <a class="tool-tab" href="/reddit-image-downloader.html" aria-label="Image Downloader" title="Image Downloader">
+          <a class="tool-tab" href="/reddit-image-downloader" aria-label="Image Downloader" title="Image Downloader">
             <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="4" width="18" height="16" rx="2"></rect><circle cx="8.5" cy="9" r="1.5"></circle><path d="m4 17 5-5 3 3 2-2 6 4"></path></svg>
           </a>
-          <a class="tool-tab active" href="/reddit-dp-downloader.html" aria-current="page" aria-label="DP Downloader" title="DP Downloader">
+          <a class="tool-tab active" href="/reddit-dp-downloader" aria-current="page" aria-label="DP Downloader" title="DP Downloader">
             <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="8" r="3"></circle><path d="M5 20c.6-3.4 3.1-5 7-5s6.4 1.6 7 5"></path></svg>
           </a>
         </nav>
@@ -189,7 +312,7 @@
         <div class="profile-layout">
           <!-- Avatar Preview (Click to Enlarge) -->
           <div class="avatar-preview-wrap" id="avatar-preview-wrap" title="Click to enlarge image" tabindex="0" role="button" aria-label="Click to enlarge avatar">
-            <img id="result-avatar-img" class="avatar-img" src="" alt="Reddit Profile Avatar" loading="eager">
+            <img id="result-avatar-img" class="avatar-img" src="" alt="Reddit profile picture" loading="eager">
             <div class="zoom-hint">
               <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                 <circle cx="11" cy="11" r="8"></circle>
@@ -219,7 +342,7 @@
             <div class="meta-tags-list">
               <span class="meta-pill" id="result-dim-pill">512 × 512 px</span>
               <span class="meta-pill" id="result-format-pill">PNG</span>
-              <span class="meta-pill">Original CDN</span>
+              <span class="meta-pill">Reddit CDN</span>
             </div>
 
             <!-- Action Buttons -->
@@ -272,14 +395,14 @@
           <div class="step-card" id="step-3">
             <div class="step-number" aria-hidden="true">3</div>
             <h3 class="step-card-title">Preview and Download</h3>
-            <p class="step-card-text">Inspect the full-resolution preview, check image dimensions and format, and click "Download DP" to save the authentic image file directly to your device.</p>
+            <p class="step-card-text">Inspect the available preview, check image dimensions and format, and click "Download DP" to save the publicly served image file to your device.</p>
           </div>
         </div>
       </div>
     </section>
 
     <!-- Info Content Section (matches index page style) -->
-    <section class="content-section" id="how-it-works">
+    <section class="content-section" id="features">
       <div class="container">
         <div class="content-block">
           <h2>Which Reddit Profiles This Works On</h2>
@@ -287,18 +410,43 @@
 
 It does not work on users who have restricted their profile visibility, accounts marked 18+ (NSFW), or any profile that requires a Reddit login to load — the tool has no way to authenticate as you, and it will never try to bypass Reddit's own access controls.
 
-If you're trying to save a post image or gallery instead of a profile picture, use the Reddit Image Downloader. For Reddit-hosted videos specifically, use the Reddit Video Downloader.</p>
+If you're trying to save a post image or gallery instead of a profile picture, use the <a href="https://reditgrab.com/reddit-image-downloader.html">Reddit Image Downloader</a>. For Reddit-hosted videos specifically, use the <a href="https://reditgrab.com/">Reddit Video Downloader</a>.</p>
         </div>
 
         <div class="content-block">
-          <h2>What Happens After You Enter a Username</h2>
-          <p>Our Cloudflare Worker normalizes the input, validates the username structure, and then queries publicly accessible profile metadata sources — including public Reddit JSON endpoints, OpenGraph tags, and verified Reddit CDN hosts — to locate an avatar asset. If a valid profile picture is found, you'll get a high-resolution preview so you can confirm it's the right user before anything downloads.</p>
-        </div>
+          <h2>What You Can (and Can't) Find</h2>
+
+<p>This only works with profile pictures Reddit already serves publicly, without needing a login. That covers most active, public accounts, but not everything.</p></div>
+<div class="content-block">
+<h3>A picture won't be found if:</h3>
+<ul>
+  <li>The account is private, restricted, or age-gated behind a login.</li>
+  <li>The account has been deleted or suspended.</li>
+  <li>Reddit's bot protection is temporarily blocking automated lookups.</li>
+  <li>The account is using a default Snoo icon that Reddit renders in-browser rather than serving as an actual image file.</li>
+</ul>
+<p>
+When any of these apply, the tool says so directly instead of showing a placeholder or a guess.</p> </div>
 
         <div class="content-block">
-          <h2>Picture Quality and File Format</h2>
-          <p>You'll receive the highest-quality publicly available avatar version Reddit has for that account — typically 512×512 or 256×256 PNG, depending on what the user originally uploaded. This tool never upscales, recompresses, or synthesizes a placeholder image. If the only asset available is Reddit's standard default Snoo rendering, the tool will tell you honestly rather than invent a fake result.</p>
-        </div>
+          <h2>Reddit Avatars vs. Uploaded Profile Pictures</h2>
+<p>Reddit accounts show one of two things where a profile picture would normally go: a Snoovatar (Reddit's customizable default character) or a photo the user actually uploaded. Both can appear in search results here if Reddit exposes them publicly, but a purely client-side default icon — one that isn't backed by a real image file on Reddit's servers — has nothing for this tool (or any tool) to retrieve. That's a Reddit platform detail, not a limitation specific to this page.</p> </div>
+
+        <div class="content-block">
+          <h2>Reading Your Result</h2>
+
+<p>The result panel shows more than just the image, so you know exactly what you're getting:</p>
+<ul>
+  <li>
+Dimensions and format — the actual size and file type Reddit is serving, not an estimate.</li>
+  <li>
+Source label — confirms the image is coming from Reddit's own CDN, not a cached or reconstructed copy.</li>
+  <li>
+Open Original — lets you view the file directly at its source URL before deciding to save it.
+</li>
+</ul>
+<p>If a listed size looks small, that's the size Reddit is publicly serving for that account — this tool doesn't upscale or regenerate a higher-resolution version.</p>
+</div>
 
         <div class="content-block">
           <h2>Why a Reddit DP May Not Be Available</h2>
@@ -306,13 +454,8 @@ If you're trying to save a post image or gallery instead of a profile picture, u
         </div>
 
         <div class="content-block">
-          <h2>What This Tool Won't Do</h2>
-          <p>It only works with publicly accessible profile data. It cannot bypass login walls, access private/restricted accounts, or recover permanently deleted avatars — there is no way around Reddit's own access rules here, and there shouldn't be. It also never fabricates, guesses, or AI-generates a profile picture. If a real avatar can't be verified from Reddit's public servers, you will be told so directly.</p>
-        </div>
-
-        <div class="content-block">
-          <h2>Use It On Phone or On Desktop</h2>
-          <p>The workflow is identical on both. On mobile, open the Reddit profile, tap Share, choose Copy Link, and paste it above. On desktop, copy the URL directly from the address bar. No app, extension, or account of any kind is required on either platform.</p>
+          <h2>Using This Responsibly</h2>
+          <p>A public profile picture is visible to anyone browsing Reddit, but "visible" isn't the same as "yours to reuse." The image still belongs to whoever posted it. Use downloaded pictures for personal reference rather than republishing or impersonating someone, and don't use this tool to build a record of a specific person without their knowledge.</p>
         </div>
       </div>
     </section>
@@ -369,7 +512,7 @@ If you're trying to save a post image or gallery instead of a profile picture, u
               </svg>
             </button>
             <div class="faq-answer">
-              <p>Yes, provided that Reddit publicly exposes a higher-quality or original version. We prioritize original source media, followed by high-resolution and standard avatars. We never artificially upscale low-resolution images.</p>
+              <p>Yes, provided that Reddit publicly exposes a higher-quality or original version. We use the best publicly available source, followed by other available avatar versions. We never artificially upscale low-resolution images.</p>
             </div>
           </div>
 
@@ -428,7 +571,7 @@ If you're trying to save a post image or gallery instead of a profile picture, u
         </button>
       </div>
       <div class="modal-body">
-        <img id="modal-avatar-img" class="modal-avatar-img" src="" alt="Enlarged Reddit Avatar">
+        <img id="modal-avatar-img" class="modal-avatar-img" src="" alt="Reddit profile picture">
       </div>
       <div class="modal-footer">
         <a href="#" class="btn-secondary" id="modal-open-original-btn" target="_blank" rel="noopener noreferrer">Open Original</a>

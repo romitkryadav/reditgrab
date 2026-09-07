@@ -3,31 +3,150 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Reddit Image Downloader – Download Reddit Images in High Quality</title>
-    <meta name="description" content="Free Reddit Image Downloader for saving images from public Reddit posts. Paste a Reddit post URL, find available images, preview them, and download them easily." />
-    <meta name="keywords" content="Reddit image downloader, Download Reddit images, Reddit picture downloader, Reddit photo downloader, Download images from Reddit, Reddit gallery downloader, Reddit image download, Save Reddit images" />
-    <meta name="author" content="Reddit Image Downloader" />
+    <title>Reddit Image Downloader – Download Images from Reddit</title>
+    <meta name="description" content="Download images from Reddit posts and galleries in high quality. Paste a Reddit URL, preview available images, and save them instantly for free." />
+    <meta name="author" content="Romit kr Yadav" />
     <meta name="robots" content="index, follow" />
-    <link rel="canonical" href="https://reditgrab.com/reddit-image-downloader.html" />
+    <link rel="canonical" href="https://reditgrab.com/reddit-image-downloader" />
 
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website" />
-    <meta property="og:url" content="https://reditgrab.com/reddit-image-downloader.html" />
-    <meta property="og:title" content="Reddit Image Downloader – Download Reddit Images in High Quality" />
-    <meta property="og:description" content="Free Reddit Image Downloader for saving images from public Reddit posts. Paste a Reddit post URL, find available images, preview them, and download them easily." />
-    <meta property="og:site_name" content="Reddit Image Downloader" />
-    <meta property="og:author" content="Romit kr Yadav" />
+    <meta property="og:url" content="https://reditgrab.com/reddit-image-downloader" />
+    <meta property="og:title" content="Reddit Image Downloader – Download Images from Reddit" />
+    <meta property="og:description" content="Download images from Reddit posts and galleries in high quality. Paste a Reddit URL, preview available images, and save them instantly for free." />
+    <meta property="og:site_name" content="ReditGrab" />
+    <meta property="author" content="Romit kr Yadav" />
     <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="Reddit Image Downloader – Download Reddit Images in High Quality" />
-    <meta name="twitter:description" content="Free Reddit Image Downloader for saving images from public Reddit posts. Paste a Reddit post URL, find available images, preview them, and download them easily." />
+    <meta name="twitter:title" content="Reddit Image Downloader – Download Images from Reddit" />
+    <meta name="twitter:description" content="Download images from Reddit posts and galleries in high quality. Paste a Reddit URL, preview available images, and save them instantly for free." />
 
     <!-- Theme & Icons -->
     <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)" />
     <meta name="theme-color" content="#0f172a" media="(prefers-color-scheme: dark)" />
-
+    <link rel="icon" type="image/png" href="https://reditgrab.com/reditgrab-favicon.png">
     <!-- Stylesheet -->
     <link rel="stylesheet" href="/redimg.css" />
+
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@graph": [
+          {
+            "@type": "WebApplication",
+            "@id": "https://reditgrab.com/reddit-image-downloader#webapplication",
+            "name": "ReditGrab Reddit Image Downloader",
+            "url": "https://reditgrab.com/reddit-image-downloader",
+            "description": "Download images from public Reddit posts and galleries by pasting a Reddit URL, previewing available images, and saving them individually or together.",
+            "applicationCategory": "UtilitiesApplication",
+            "operatingSystem": "Any",
+            "offers": {
+              "@type": "Offer",
+              "price": "0",
+              "priceCurrency": "USD"
+            },
+            "publisher": {
+              "@id": "https://reditgrab.com/#organization"
+            }
+          },
+          {
+            "@type": "Organization",
+            "@id": "https://reditgrab.com/#organization",
+            "name": "ReditGrab",
+            "url": "https://reditgrab.com/"
+          },
+          {
+            "@type": "BreadcrumbList",
+            "@id": "https://reditgrab.com/reddit-image-downloader#breadcrumb",
+            "itemListElement": [
+              {
+                "@type": "ListItem",
+                "position": 1,
+                "name": "Home",
+                "item": "https://reditgrab.com/"
+              },
+              {
+                "@type": "ListItem",
+                "position": 2,
+                "name": "Reddit Image Downloader",
+                "item": "https://reditgrab.com/reddit-image-downloader"
+              }
+            ]
+          },
+          {
+            "@type": "FAQPage",
+            "@id": "https://reditgrab.com/reddit-image-downloader#faq",
+            "mainEntity": [
+              {
+                "@type": "Question",
+                "name": "Can I download images from Reddit?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Yes. Publicly accessible images posted to Reddit on public subreddits can be downloaded. The tool inspects public media data and provides access to the highest-quality Reddit-hosted file available."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "Does this Reddit Image Downloader require an account?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "No account or registration is required. You do not need to log into Reddit, provide credentials, or install browser extensions. The service runs purely on public web requests."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "Can I download Reddit gallery images?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Yes. Reddit gallery posts with multiple images are supported. The tool extracts each picture in order, displays individual cards with resolution details, and provides both individual download buttons and a Download All option."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "What image quality will I get?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "You receive the highest publicly available quality uploaded by the creator. When Reddit generates responsive preview thumbnails, the tool resolves the path to the highest-quality Reddit-hosted file available on i.redd.it."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "Can I use this on mobile?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Yes. The web application works on mobile. In the Reddit app on iOS or Android, tap Share, choose Copy Link, open this website in Safari or Chrome, and tap Paste."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "Why can't some Reddit images be downloaded?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Some submissions cannot be processed if they have been deleted by the user or moderators, if they link to external restricted hosts, or if the post is a video (v.redd.it). Additionally, Reddit may occasionally enforce temporary network limits on certain data center IP ranges."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "Does this work with private Reddit posts?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "No. We respect privacy and access controls. Posts in private subreddits or requiring an active login cannot and will not be accessed."
+                }
+              }
+            ]
+          }
+        ]
+      }
+    </script>
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-LEBSQ97VK4"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-LEBSQ97VK4');
+</script>
   </head>
   <body data-theme="dark">
     <!-- Skip to main content for accessibility -->
@@ -38,18 +157,15 @@
       <div class="header-container">
         <a href="https://reditgrab.com/" class="brand-logo" aria-label="ReditGrab Home">
           <div class="brand-icon" aria-hidden="true">
-            <img src="https://reditgrab.com/reditgrab.png" alt="" width="48" height="48">
+            <img src="https://reditgrab.com/reditgrab.png" alt="ReditGrab" width="48" height="48">
           </div>
           <span class="brand-text">ReditGrab</span>
         </a>
 
         <!-- Desktop nav -->
         <nav class="nav-desktop header-nav" aria-label="Primary navigation">
-          <a href="#how-it-works" class="nav-link">How It Works</a>
-          <a href="#features" class="nav-link">Features</a>
-          <a href="#faq" class="nav-link">FAQ</a>
           <a href="https://reditgrab.com/" class="nav-link">Video Downloader</a>
-          <a href="https://reditgrab.com/reddit-dp-downloader.html" class="nav-link">DP Downloader</a>
+          <a href="https://reditgrab.com/reddit-dp-downloader" class="nav-link">DP Downloader</a>
           <button type="button" class="btn-icon" id="theme-toggle-btn" aria-label="Toggle dark/light theme" title="Toggle theme">
             <svg class="sun-icon" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2">
               <circle cx="12" cy="12" r="5"></circle>
@@ -78,11 +194,8 @@
 
       <!-- Mobile dropdown panel -->
       <nav class="nav-mobile-panel" id="nav-mobile-panel" aria-label="Mobile navigation">
-        <a href="#how-it-works">How It Works</a>
-        <a href="#features">Features</a>
-        <a href="#faq">FAQ</a>
         <a href="https://reditgrab.com/">Video Downloader</a>
-        <a href="https://reditgrab.com/reddit-dp-downloader.html">DP Downloader</a>
+        <a href="/reddit-dp-downloader">DP Downloader</a>
       </nav>
     </header>
 
@@ -109,15 +222,15 @@
         <div class="container hero-container">
           <div class="hero-header">
             <h1 class="hero-title">Reddit Image Downloader</h1>
-            <p class="hero-desc">Download images from public Reddit posts in high quality.</p><div style="height: 30px;"></div>
+            <p class="hero-desc">Download images from public Reddit posts and galleries. Preview available files before saving individual images or the full gallery.</p><div style="height: 30px;"></div>
             <nav class="tool-tabs" aria-label="Downloader tools">
               <a class="tool-tab" href="https://reditgrab.com/" aria-label="Video Downloader" title="Video Downloader">
                 <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="14" height="14" rx="2"></rect><path d="m17 10 4-2v8l-4-2z"></path></svg>
               </a>
-              <a class="tool-tab active" href="https://reditgrab.com/reddit-image-downloader.html" aria-current="page" aria-label="Image Downloader" title="Image Downloader">
+              <a class="tool-tab active" href="https://reditgrab.com/reddit-image-downloader" aria-current="page" aria-label="Image Downloader" title="Image Downloader">
                 <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="4" width="18" height="16" rx="2"></rect><circle cx="8.5" cy="9" r="1.5"></circle><path d="m4 17 5-5 3 3 2-2 6 4"></path></svg>
               </a>
-              <a class="tool-tab" href="https://reditgrab.com/reddit-dp-downloader.html" aria-label="DP Downloader" title="DP Downloader">
+              <a class="tool-tab" href="https://reditgrab.com/reddit-dp-downloader" aria-label="DP Downloader" title="DP Downloader">
                 <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="8" r="3"></circle><path d="M5 20c.6-3.4 3.1-5 7-5s6.4 1.6 7 5"></path></svg>
               </a>
             </nav>
@@ -250,8 +363,8 @@
               <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" x2="12" y1="16" y2="12"/><line x1="12" x2="12.01" y1="8" y2="8"/></svg>
             </div>
             <div class="instruction-text">
-              <strong>How to get this image in Original 4K Quality:</strong>
-              <p>Right-click or tap-and-hold the image in the Reddit preview above, select <strong>"Copy image address"</strong>, and click below to download the uncompressed master file.</p>
+              <strong>How to get this image in the highest available quality:</strong>
+              <p>Right-click or tap-and-hold the image in the Reddit preview above, select <strong>"Copy image address"</strong>, and click below to download the highest-quality Reddit-hosted file available.</p>
             </div>
             <button type="button" id="embed-paste-btn" class="embed-paste-btn">
               <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><rect width="8" height="4" x="8" y="2" rx="1" ry="1"/><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/></svg>
@@ -302,116 +415,46 @@
               </svg>
             </div>
             <h3 class="step-title">Preview and Download Images</h3>
-            <p class="step-text">Inspect original dimensions and formats in the preview grid, zoom in with the lightbox modal, and download individual photos or all images at once.</p>
-          </div>
-        </div>
-      </section>
-
-      <!-- Informational Section: Reddit Image Downloader Features -->
-      <section class="content-section" id="features">
-        <div class="section-header">
-          <h2 class="section-title">Reddit Image Downloader Features</h2>
-          <p class="section-desc">Designed with speed, strict privacy, and maximum image fidelity in mind.</p>
-        </div>
-
-        <div class="features-grid">
-          <div class="feature-card">
-            <div class="feature-icon-box" aria-hidden="true">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <path d="m12 3-1.912 5.813a2 2 0 0 1-1.275 1.275L3 12l5.813 1.912a2 2 0 0 1 1.275 1.275L12 21l1.912-5.813a2 2 0 0 1 1.275-1.275L21 12l-5.813-1.912a2 2 0 0 1-1.275-1.275L12 3Z"/>
-              </svg>
-            </div>
-            <h3 class="feature-title">Original Quality Preservation</h3>
-            <p class="feature-text">We never recompress, watermark, or artificially downscale images. When preview URLs are detected, the backend restores the true untouched <code>i.redd.it</code> source file.</p>
-          </div>
-
-          <div class="feature-card">
-            <div class="feature-icon-box" aria-hidden="true">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <rect width="18" height="18" x="3" y="3" rx="2"/><path d="M3 9h18"/><path d="M9 21V9"/>
-              </svg>
-            </div>
-            <h3 class="feature-title">Multi-Image Gallery Support</h3>
-            <p class="feature-text">Reddit posts containing multiple pictures or albums are automatically detected. Every item in the gallery is extracted in its original sequence.</p>
-          </div>
-
-          <div class="feature-card">
-            <div class="feature-icon-box" aria-hidden="true">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10"/>
-              </svg>
-            </div>
-            <h3 class="feature-title">Zero Account & No Tracking</h3>
-            <p class="feature-text">No registration, login, or personal profile needed. We do not store user IP addresses, track your browsing, or sell your search history.</p>
-          </div>
-
-          <div class="feature-card">
-            <div class="feature-icon-box" aria-hidden="true">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/>
-              </svg>
-            </div>
-            <h3 class="feature-title">Fullscreen Modal Lightbox</h3>
-            <p class="feature-text">Inspect high-resolution details in an accessible modal with keyboard arrows (←/→) and Escape-to-close before initiating the download.</p>
-          </div>
-
-          <div class="feature-card">
-            <div class="feature-icon-box" aria-hidden="true">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <rect width="14" height="20" x="5" y="2" rx="2" ry="2"/><path d="M12 18h.01"/>
-              </svg>
-            </div>
-            <h3 class="feature-title">100% Mobile & Desktop Friendly</h3>
-            <p class="feature-text">Optimized with large touch targets, responsive fluid grid typography, lazy image loading, and zero bulky framework overhead.</p>
-          </div>
-
-          <div class="feature-card">
-            <div class="feature-icon-box" aria-hidden="true">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <path d="m18 8 4 4-4 4"/><path d="M6 16l-4-4 4-4"/><line x1="14" x2="10" y1="4" y2="20"/>
-              </svg>
-            </div>
-            <h3 class="feature-title">Cloudflare Edge Architecture</h3>
-            <p class="feature-text">Powered by Cloudflare Workers and static Cloudflare Pages. Built with strict SSRF defenses, strict host allowlists, and safe Content-Disposition headers.</p>
+            <p class="step-text">Inspect image dimensions and formats in the preview grid, zoom in with the lightbox modal, and download individual photos or all images at once.</p>
           </div>
         </div>
       </section>
 
       <!-- Info Content Section (matches index page style) -->
-      <section class="content-section" id="how-it-works">
+      <section class="content-section" id="features">
         <div class="container">
           <div class="content-block">
-            <h2>Which Reddit Posts This Works On</h2>
-            <p>This tool reads public Reddit post data only. It works with standard <code>reddit.com</code> links, <code>old.reddit.com</code> links, <code>new.reddit.com</code> links, mobile app share links, and <code>redd.it</code> short links (which redirect to the full post before any images are fetched).
-
-Supported formats include <strong>i.redd.it</strong> single-image posts, multi-image Reddit Galleries (up to 20 photos), JPG, JPEG, PNG, WEBP, and static or animated GIF image files.
-
-It does not work on posts inside private communities, quarantined subreddits, or anything that requires you to be logged in to view — the tool has no way to authenticate as you, and it isn't built to get around that. It also does not handle video (v.redd.it), audio streams, external YouTube/Imgur video clips, or TikTok links. For videos use the Reddit Video Downloader; for a profile picture specifically, use the Reddit DP Downloader.</p>
+            <h2>What You Can Paste</h2>
+            <p>This works with a standard <code>reddit.com</code> post link, <code>old.reddit.com</code> or <code>new.reddit.com</code> links, a <code>redd.it</code> short link, or the link to a Reddit-hosted image itself if you've already got it (right-click an image on Reddit, choose "Copy image address", then paste it here). Short links are followed to the real post before anything is fetched.</p>
+            <p>It reads public post data only: no login, no browser extension, and no account on either end.</p>
           </div>
 
           <div class="content-block">
-            <h2>What Happens After You Paste a Link</h2>
-            <p>The tool reads the public post data behind the link and looks for Reddit-hosted image attachments. If it finds one or more images, you'll get a preview grid showing original dimensions and formats so you can confirm it's the right post before downloading anything. From there you can save individual photos or use Download All to save every image in the gallery at once. Nothing downloads automatically — you choose what to save after seeing the preview.</p>
+            <h2>Before You Download, You'll See It</h2>
+            <p>Nothing downloads the moment you hit "Get Images." You'll get a preview grid first, with actual dimensions, file format, and the number of images in the post, so you can confirm it's the right post before saving anything.</p>
+            <p><strong>Single images vs. galleries.</strong> A post with one photo shows one preview card. A Reddit gallery with up to 20 images shows every image in its original posting order, each with its own download button, plus a "Download All" option if you want the full set.</p>
           </div>
 
           <div class="content-block">
-            <h2>Image Quality and File Formats</h2>
-            <p>You'll get the highest resolution Reddit has publicly stored for that post — this depends entirely on what the original uploader submitted. The tool never recompresses, watermarks, or artificially upscales; it resolves preview thumbnail paths (such as <code>preview.redd.it</code>) straight back to the untouched original master files hosted on <code>i.redd.it</code>. Output formats are the same as the original upload: JPG, JPEG, PNG, WEBP, or GIF.</p>
+            <h2>Image Quality, Honestly</h2>
+            <p>Reddit often shows a resized, recompressed preview in the feed, which is what a plain right-click save usually grabs. This tool resolves that preview path back to the file Reddit actually has stored for the post, rather than handing you the compressed version.</p>
+            <p>That's different from guaranteeing a resolution. Whatever the original uploader posted is the ceiling: this tool doesn't upscale, restore, sharpen, or otherwise invent detail that isn't already in Reddit's copy.</p>
           </div>
 
           <div class="content-block">
-            <h2>Why Some Reddit Images Can't Be Downloaded</h2>
-            <p>Images cannot be retrieved when: the submission has been deleted by the creator or removed by moderators, the post links to an external restricted host (not an official Reddit CDN), the post is actually a video (<code>v.redd.it</code>) rather than a static photo, the subreddit is private or requires login, or Reddit's edge network is temporarily enforcing bot/CDN limits on the requesting IP. In every case the tool reports the actual status rather than inventing a result.</p>
+            <h2>What Won't Work</h2>
+            <ul class="steps-list">
+              <li>Posts in private or quarantined subreddits, or anything that needs you to be logged in to view. There's no way to authenticate as you, and this tool doesn't try to get around that.</li>
+              <li>Deleted or removed posts.</li>
+              <li>Images hosted on an external, non-Reddit site rather than <code>i.redd.it</code>.</li>
+              <li>Reddit videos (<code>v.redd.it</code>). Use the <a href="https://reditgrab.com/">Reddit Video Downloader</a> for those.</li>
+            </ul>
+            <p>When something can't be fetched, you'll get the actual reason, such as deleted, private, video, or not an image, rather than a generic error.</p>
           </div>
 
           <div class="content-block">
-            <h2>What This Tool Won't Do</h2>
-            <p>It only works on public content. It can't reach images from private subreddits, posts requiring login, quarantined communities, or anything that's been permanently deleted — there's no way around Reddit's own access controls here, and there shouldn't be. It will never fabricate a URL, guess a filename, or serve a synthetic placeholder when the real source can't be verified.</p>
-          </div>
-
-          <div class="content-block">
-            <h2>Use It On Phone or On Desktop</h2>
-            <p>The steps are the same either way: open Reddit, find the post, copy the link (the Share button on mobile, the address bar on desktop), and paste it above. On mobile the Paste button inside the input box can pull directly from your clipboard with one tap. No app or browser extension to install on either platform.</p>
+            <h2>Phone or Desktop</h2>
+            <p>The steps are the same either way. On Reddit's mobile app, tap Share, then Copy Link and paste it here. On desktop, copy the link from your browser's address bar. No installation is needed on either platform. For profile pictures, use the <a href="https://reditgrab.com/reddit-dp-downloader.html">Reddit DP Downloader</a>.</p>
           </div>
         </div>
       </section>
@@ -430,7 +473,7 @@ It does not work on posts inside private communities, quarantined subreddits, or
               <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
             </summary>
             <div class="faq-answer">
-              <p>Yes. Any publicly accessible image posted to Reddit on a public subreddit can be downloaded. Our tool inspects the public media headers and provides direct, uncompressed access to the original uploaded files.</p>
+              <p>Yes. Publicly accessible images posted to Reddit on public subreddits can be downloaded. The tool inspects public media data and provides access to the highest-quality Reddit-hosted file available.</p>
             </div>
           </details>
 
@@ -460,7 +503,7 @@ It does not work on posts inside private communities, quarantined subreddits, or
               <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
             </summary>
             <div class="faq-answer">
-              <p>You receive the highest publicly accessible quality uploaded by the creator. When Reddit generates responsive preview thumbnails, our Worker automatically resolves the path back to the original full-resolution master file on <code>i.redd.it</code>.</p>
+              <p>You receive the highest publicly available quality uploaded by the creator. When Reddit generates responsive preview thumbnails, the tool resolves the path to the highest-quality Reddit-hosted file available on <code>i.redd.it</code>.</p>
             </div>
           </details>
 
@@ -510,7 +553,7 @@ It does not work on posts inside private communities, quarantined subreddits, or
             <span id="modal-format" class="modal-badge uppercase">JPG</span>
           </div>
           <div class="modal-controls">
-            <a href="#" id="modal-open-btn" target="_blank" rel="noopener noreferrer" class="modal-action-btn secondary" title="Open original high-res image in a new tab">
+            <a href="#" id="modal-open-btn" target="_blank" rel="noopener noreferrer" class="modal-action-btn secondary" title="Open highest-quality available image in a new tab">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="width:16px;height:16px;">
                 <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/>
                 <polyline points="15 3 21 3 21 9"/>
@@ -561,20 +604,20 @@ It does not work on posts inside private communities, quarantined subreddits, or
       <div class="container footer-inner">
         <div class="footer-links-grid">
           <div class="footer-link-group">
-            <h2 class="footer-link-title">Tools</h2>
-            <a href="index.html">Reddit Video Downloader</a>
-            <a href="reddit-image-downloader.html">Image Downloader</a>
-            <a href="reddit-dp-downloader.html">DP Downloader</a>
+            <h2 class="footer-link-title">Other Tools</h2>
+            <a href="https://threadsgrab.com/threads-image-downloader">threads Image Downloader</a>
+            <a href="https://fbviddl.com/facebook-image-downloader">Facebook Image Downloader</a>
+            <a href="https://twitter.threadsgrab.com/twitter-image-downloader">Twitter Image Downloader</a>
           </div>
           <div class="footer-link-group">
             <h2 class="footer-link-title">Legal</h2>
-            <a href="privacy.html">Privacy</a>
-            <a href="disclaimer.html">Disclaimer</a>
+            <a href="/privacy">Privacy</a>
+            <a href="/disclaimer">Disclaimer</a>
           </div>
           <div class="footer-link-group">
             <h2 class="footer-link-title">Company</h2>
-            <a href="about.html">About ReditGrab</a>
-            <a href="contact.html">Contact</a>
+            <a href="/about">About ReditGrab</a>
+            <a href="/contact">Contact</a>
           </div>
         </div>
         <div class="footer-bottom-row">

@@ -486,6 +486,28 @@ code {
   border: 1px dashed var(--border-color);
   border-radius: var(--radius-md);
   background-color: var(--bg-card);
+
+.breadcrumb {
+  background-color: var(--bg-secondary);
+  border-bottom: 1px solid var(--border-subtle);
+  color: var(--text-muted);
+  font-size: 0.85rem;
+}
+
+.breadcrumb .container {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  min-height: 2.5rem;
+}
+
+.breadcrumb a {
+  color: var(--text-muted);
+}
+
+.breadcrumb a:hover {
+  color: var(--text-primary);
+}
   text-align: center; max-width: 728px;
   display: flex; flex-direction: column;
   align-items: center; justify-content: center;
