@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Understanding Reddit Video Resolutions | ReditGrab Blog</title>
+  <meta name="description" content="Why Reddit videos come in multiple resolutions, how quality tiers are encoded, and how to choose the right resolution when downloading.">
+  <meta name="author" content="Romit Kr Yadav">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://reditgrab.com/blog/understanding-reddit-video-resolutions">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://reditgrab.com/blog/understanding-reddit-video-resolutions">
+  <meta property="og:title" content="Understanding Reddit Video Resolutions">
+  <meta property="og:description" content="Why Reddit videos come in multiple resolutions, how quality tiers are encoded, and how to choose the right one when downloading.">
+  <meta property="og:site_name" content="ReditGrab">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Understanding Reddit Video Resolutions">
+  <meta name="twitter:description" content="Why Reddit videos come in multiple quality tiers and how to pick the right one for your needs.">
+  <link rel="icon" type="image/png" href="https://reditgrab.com/reditgrab-favicon.png">
+  <link rel="stylesheet" href="/redsty.css">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Article",
+        "@id": "https://reditgrab.com/blog/understanding-reddit-video-resolutions#article",
+        "headline": "Understanding Reddit Video Resolutions",
+        "description": "Why Reddit videos come in multiple resolutions, how quality tiers are encoded, and how to choose the right resolution when downloading.",
+        "author": { "@type": "Person", "name": "Romit Kr Yadav" },
+        "publisher": { "@id": "https://reditgrab.com/#organization" },
+        "datePublished": "2026-09-12",
+        "dateModified": "2026-09-12",
+        "mainEntityOfPage": { "@type": "WebPage", "@id": "https://reditgrab.com/blog/understanding-reddit-video-resolutions" }
+      },
+      {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://reditgrab.com/" },
+          { "@type": "ListItem", "position": 2, "name": "Blog", "item": "https://reditgrab.com/blog" },
+          { "@type": "ListItem", "position": 3, "name": "Understanding Reddit Video Resolutions", "item": "https://reditgrab.com/blog/understanding-reddit-video-resolutions" }
+        ]
+      }
+    ]
+  }
+  </script>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-LEBSQ97VK4"></script>
+  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-LEBSQ97VK4');</script>
+  <style>
+    .post-page{padding:2.5rem 0 5rem}.post-shell{max-width:740px;margin:0 auto}
+    .breadcrumb{display:flex;align-items:center;gap:.4rem;font-size:.82rem;color:var(--text-subtle);margin-bottom:2rem;flex-wrap:wrap}
+    .breadcrumb a{color:var(--text-muted);text-decoration:none}.breadcrumb a:hover{color:var(--reddit-orange)}.breadcrumb-sep{color:var(--text-subtle)}
+    .post-header{margin-bottom:2.25rem}
+    .post-kicker{display:inline-block;color:var(--reddit-orange);font-size:.75rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;margin-bottom:.75rem}
+    .post-title{font-size:clamp(1.65rem,4vw,2.2rem);font-weight:800;line-height:1.2;color:var(--text-primary);margin:0 0 1rem}
+    .post-meta-row{display:flex;align-items:center;gap:1rem;flex-wrap:wrap;color:var(--text-subtle);font-size:.82rem;border-bottom:1px solid var(--border-color);padding-bottom:1.25rem}
+    .post-meta-row strong{color:var(--text-muted)}
+    .post-body{color:var(--text-secondary);line-height:1.8;font-size:1.035rem}
+    .post-body h2{font-size:1.35rem;font-weight:700;color:var(--text-primary);margin:2.25rem 0 .75rem;padding-bottom:.4rem;border-bottom:1px solid var(--border-color)}
+    .post-body h3{font-size:1.1rem;font-weight:600;color:var(--text-primary);margin:1.75rem 0 .6rem}
+    .post-body p{margin:0 0 1.15rem}.post-body ul,.post-body ol{margin:.5rem 0 1.15rem 1.4rem}.post-body li{margin-bottom:.55rem;line-height:1.7}
+    .post-body code{background:var(--bg-card);border:1px solid var(--border-color);border-radius:var(--radius-sm);padding:.15em .45em;font-size:.88em;color:var(--reddit-orange);font-family:'Fira Code','Consolas',monospace}
+    .post-body strong{color:var(--text-primary);font-weight:600}.post-body a{color:var(--reddit-orange);text-decoration:none}.post-body a:hover{text-decoration:underline}
+    .callout{background:var(--bg-card);border:1px solid var(--border-color);border-left:3px solid var(--reddit-orange);border-radius:var(--radius-md);padding:1.1rem 1.35rem;margin:1.5rem 0}
+    .callout p{margin:0;color:var(--text-muted);font-size:.95rem}.callout strong{color:var(--text-primary)}
+    .res-table{width:100%;border-collapse:collapse;margin:1rem 0 1.5rem;font-size:.92rem}
+    .res-table th{text-align:left;padding:.6rem .9rem;background:var(--bg-card);color:var(--text-muted);font-weight:600;font-size:.8rem;text-transform:uppercase;letter-spacing:.05em;border-bottom:1px solid var(--border-color)}
+    .res-table td{padding:.65rem .9rem;border-bottom:1px solid var(--border-subtle);color:var(--text-secondary);vertical-align:top}
+    .res-table tr:last-child td{border-bottom:none}
+    .post-cta{background:var(--bg-card);border:1px solid var(--border-color);border-radius:var(--radius-lg);padding:1.75rem;margin:2.5rem 0;text-align:center}
+    .post-cta h3{color:var(--text-primary);font-size:1.15rem;margin:0 0 .6rem}.post-cta p{color:var(--text-muted);font-size:.93rem;margin:0 0 1.1rem}
+    .post-cta .btn-cta{display:inline-flex;align-items:center;gap:.5rem;background:var(--reddit-gradient);color:#fff;font-weight:700;font-size:.95rem;padding:.7rem 1.5rem;border-radius:var(--radius-full);text-decoration:none;transition:opacity .15s}
+    .post-cta .btn-cta:hover{opacity:.88;text-decoration:none}
+    .back-to-blog{display:inline-flex;align-items:center;gap:.4rem;color:var(--text-muted);font-size:.88rem;text-decoration:none;margin-top:2.5rem}
+    .back-to-blog:hover{color:var(--reddit-orange)}
+    @media(max-width:600px){.post-page{padding-top:1.75rem}}
+  </style>
+</head>
+<body data-theme="dark">
+  <header class="site-header" id="site-header">
+    <div class="header-inner container">
+      <a href="https://reditgrab.com/" class="brand-link"><div class="brand-icon" aria-hidden="true"><img src="https://reditgrab.com/reditgrab.png" alt="" width="48" height="48"></div><span class="brand-text">ReditGrab</span></a>
+      <nav class="nav-desktop" aria-label="Primary navigation">
+        <a href="https://reditgrab.com/" class="nav-anchor-link">Video Downloader</a>
+        <a href="https://reditgrab.com/reddit-image-downloader" class="nav-anchor-link">Image Downloader</a>
+        <a href="https://reditgrab.com/reddit-dp-downloader" class="nav-anchor-link">DP Downloader</a>
+        <a href="https://reditgrab.com/blog" class="nav-anchor-link">Blog</a>
+        <button type="button" class="btn-icon" id="theme-toggle" aria-label="Toggle dark/light theme"><svg class="sun-icon" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg><svg class="moon-icon" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg></button>
+      </nav>
+      <button class="nav-hamburger" id="nav-hamburger" aria-expanded="false" aria-controls="nav-mobile-panel" aria-label="Open navigation menu"><span class="bar"></span><span class="bar"></span><span class="bar"></span></button>
+    </div>
+    <nav class="nav-mobile-panel" id="nav-mobile-panel" aria-label="Mobile navigation">
+      <a href="https://reditgrab.com/">Video Downloader</a><a href="https://reditgrab.com/reddit-image-downloader">Image Downloader</a>
+      <a href="https://reditgrab.com/reddit-dp-downloader">DP Downloader</a><a href="https://reditgrab.com/blog">Blog</a>
+    </nav>
+  </header>
+  <script>(function(){var btn=document.getElementById('nav-hamburger');var panel=document.getElementById('nav-mobile-panel');var theme=document.getElementById('theme-toggle');var saved=localStorage.getItem('reddit_downloader_theme');document.body.setAttribute('data-theme',saved||'dark');theme.addEventListener('click',function(){var next=document.body.getAttribute('data-theme')==='dark'?'light':'dark';document.body.setAttribute('data-theme',next);localStorage.setItem('reddit_downloader_theme',next);});btn.addEventListener('click',function(){var open=panel.classList.toggle('open');btn.setAttribute('aria-expanded',open?'true':'false');});panel.querySelectorAll('a').forEach(function(a){a.addEventListener('click',function(){panel.classList.remove('open');btn.setAttribute('aria-expanded','false');});});})();</script>
+
+  <main class="post-page" id="main-content">
+    <div class="container post-shell">
+      <nav class="breadcrumb" aria-label="Breadcrumb">
+        <a href="https://reditgrab.com/">Home</a><span class="breadcrumb-sep" aria-hidden="true">›</span>
+        <a href="https://reditgrab.com/blog">Blog</a><span class="breadcrumb-sep" aria-hidden="true">›</span>
+        <span>Understanding Reddit Video Resolutions</span>
+      </nav>
+
+      <header class="post-header">
+        <span class="post-kicker">Quality</span>
+        <h1 class="post-title">Understanding Reddit Video Resolutions</h1>
+        <div class="post-meta-row">
+          <span>By <strong>Romit Kr Yadav</strong></span>
+          <span>September 12, 2026</span>
+          <span>4 minute read</span>
+        </div>
+      </header>
+
+      <article class="post-body">
+        <p>When you download a Reddit video with ReditGrab, you'll sometimes see a quality selector with multiple resolution options. Other times there's only one. The options that appear depend on how Reddit encoded the original upload — something that isn't always obvious from the post itself. This article explains how Reddit's video encoding pipeline works, what resolutions to expect, and how to choose the right one for your situation.</p>
+
+        <h2>How Reddit Encodes Uploaded Videos</h2>
+        <p>When a user uploads a video to Reddit, Reddit's processing pipeline re-encodes it into multiple quality tiers. This is standard practice for streaming platforms — instead of serving the same large file to every device, they create several smaller versions and let the player pick the one that fits the viewer's screen size and connection speed.</p>
+        <p>Reddit uses DASH (Dynamic Adaptive Streaming over HTTP) for this. Each quality tier is stored as a separate video file on <code>v.redd.it</code>. The names follow a predictable pattern: <code>DASH_360.mp4</code>, <code>DASH_480.mp4</code>, <code>DASH_720.mp4</code>, <code>DASH_1080.mp4</code>, and occasionally higher. These numbers refer to the vertical pixel count — the height of the video frame.</p>
+
+        <h2>Not Every Post Gets Every Tier</h2>
+        <p>The quality tiers available for a given post depend on the resolution of the original upload. Reddit doesn't upscale — it only generates tiers at or below the source resolution. So if someone uploads a 480p video, you won't see a 720p or 1080p option, because Reddit never created those files. The available tiers shown in ReditGrab's quality selector reflect exactly what Reddit has encoded for that specific post.</p>
+
+        <div class="callout">
+          <p><strong>Why a post might only show one quality option:</strong> Short clips originally recorded at 360p or 480p, GIF-converted videos, and older posts uploaded before Reddit added higher-tier encoding all tend to have fewer options. This is a source limitation, not a tool limitation.</p>
+        </div>
+
+        <h2>Quality Tier Reference</h2>
+        <table class="res-table">
+          <thead><tr><th>Tier</th><th>Resolution</th><th>Typical file size (30s clip)</th><th>Best for</th></tr></thead>
+          <tbody>
+            <tr><td><strong>360p</strong></td><td>640 × 360</td><td>3–8 MB</td><td>Quick sharing via messaging apps, low storage</td></tr>
+            <tr><td><strong>480p</strong></td><td>854 × 480</td><td>6–14 MB</td><td>Standard playback on phones, compact archives</td></tr>
+            <tr><td><strong>720p</strong></td><td>1280 × 720</td><td>12–28 MB</td><td>Balanced quality and file size, most use cases</td></tr>
+            <tr><td><strong>1080p</strong></td><td>1920 × 1080</td><td>25–60 MB</td><td>Large screen viewing, editing, archiving</td></tr>
+            <tr><td><strong>1440p / 4K</strong></td><td>2560 × 1440+</td><td>50–150+ MB</td><td>High-resolution originals (uncommon on Reddit)</td></tr>
+          </tbody>
+        </table>
+        <p>File sizes above are rough estimates for a 30-second H.264 clip — actual sizes vary based on content complexity, frame rate, and the specific encoding settings Reddit used at the time of upload.</p>
+
+        <h2>Vertical Videos and Portrait Orientation</h2>
+        <p>Reddit supports portrait-orientation uploads — common with phone-recorded clips shared from TikTok, Instagram Reels, or directly from a camera app. For these, the resolution numbers still refer to the larger dimension. A "1080p" vertical video is 1080 pixels wide and 1920 pixels tall, not the other way around. The aspect ratio displayed in ReditGrab's result card (e.g., 1080 × 1920) shows the actual frame dimensions so you know exactly what you're getting.</p>
+
+        <h2>Does Downloading Change the Quality?</h2>
+        <p>No. ReditGrab fetches the video stream directly from Reddit's CDN without re-encoding it. The file you download is byte-for-byte the same stream Reddit serves — same codec (H.264), same bitrate, same quality. The only processing that happens is the audio/video merge step for posts that have a separate audio track, and muxing two streams into an MP4 container doesn't affect video quality.</p>
+        <p>This also means downloading 1080p doesn't give you anything sharper than what Reddit encoded. If the original upload looked slightly soft at 1080p, the download will too — because it is that file, not a reconstruction or enhancement of it.</p>
+
+        <h2>Choosing the Right Quality</h2>
+        <h3>Download 1080p when:</h3>
+        <ul>
+          <li>You're archiving the clip long-term</li>
+          <li>You plan to edit or re-export the video</li>
+          <li>You'll play it back on a large TV or monitor</li>
+          <li>File size isn't a concern</li>
+        </ul>
+        <h3>Download 720p when:</h3>
+        <ul>
+          <li>You want a good balance of quality and file size</li>
+          <li>You're sharing via email, Slack, or a messaging platform that has upload limits</li>
+          <li>You're watching on a phone or small tablet screen where 1080p and 720p look identical</li>
+        </ul>
+        <h3>Download 360p or 480p when:</h3>
+        <ul>
+          <li>You only need a small reference copy</li>
+          <li>Storage space is very limited</li>
+          <li>You're sending to a device with a small screen over a slow connection</li>
+        </ul>
+
+        <h2>Why the 1080p Download Sometimes Fails or Stalls</h2>
+        <p>Larger files with audio merging involved take more processing time on the server side. If a 1080p download stalls or times out — especially for longer clips — dropping to 720p almost always resolves it. The 720p stream is smaller, the merge processes faster, and the output quality on most screens is indistinguishable from 1080p at normal viewing distances.</p>
+
+        <div class="post-cta">
+          <h3>Download a Reddit Video</h3>
+          <p>Paste any public Reddit video URL to see available quality tiers and download the one that fits your needs.</p>
+          <a href="https://reditgrab.com/" class="btn-cta">
+            <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+            Open Video Downloader
+          </a>
+        </div>
+      </article>
+      <a href="https://reditgrab.com/blog" class="back-to-blog"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="15 18 9 12 15 6"></polyline></svg>Back to Blog</a>
+    </div>
+  </main>
+
+  <footer class="site-footer" id="site-footer"><div class="container footer-inner"><div class="footer-links-grid"><div class="footer-link-group"><h2 class="footer-link-title">Tools</h2><a href="https://reditgrab.com/">Video Downloader</a><a href="https://reditgrab.com/reddit-image-downloader">Image Downloader</a><a href="https://reditgrab.com/reddit-dp-downloader">DP Downloader</a></div><div class="footer-link-group"><h2 class="footer-link-title">Other Tools</h2><a href="https://pinviddl.com/">Pinterest Video Downloader</a><a href="https://threadsgrab.com">Threads Video Downloader</a><a href="https://fbviddl.com">Facebook Video Downloader</a></div><div class="footer-link-group"><h2 class="footer-link-title">Legal</h2><a href="https://reditgrab.com/privacy">Privacy</a><a href="https://reditgrab.com/disclaimer">Disclaimer</a></div><div class="footer-link-group"><h2 class="footer-link-title">Company</h2><a href="https://reditgrab.com/about">About</a><a href="https://reditgrab.com/contact">Contact</a><a href="https://reditgrab.com/blog">Blog</a></div></div><div class="footer-bottom-row"><p class="footer-copy">&copy; 2026 <strong>ReditGrab</strong>. All rights reserved.</p><p class="footer-disclaimer">Not affiliated with Reddit, Inc. Only publicly accessible media is processed.</p></div></div></footer>
+</body>
+</html>
