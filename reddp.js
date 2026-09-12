@@ -3,11 +3,27 @@
  * Zero dependencies, high performance, accessible
  */
 
-// Cloudflare Worker API URL
-const WORKER_DEPLOYMENT_URL = "https://reddp.romitkr361.workers.dev";
+// Worker Pool — add more Cloudflare Worker URLs here to distribute traffic.
+// The pool is shuffled on load so each session hits a different worker first.
+const WORKER_POOL = [
+  "https://reddp.romitkr361.workers.dev",
+  "https://reddp2.ajeetkr0920.workers.dev/",  
+  // "https://reddp-worker3.yourdomain.workers.dev",
+];
 
-// Automatically route to the live Cloudflare Worker when deployed to Cloudflare Pages or external hosts,
-// or use relative paths when running directly on the worker or local development server.
+// Shuffle pool on page load for natural traffic distribution
+(function shufflePool() {
+  for (let i = WORKER_POOL.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [WORKER_POOL[i], WORKER_POOL[j]] = [WORKER_POOL[j], WORKER_POOL[i]];
+  }
+})();
+
+// Backwards-compat alias — always the first entry after shuffle
+const WORKER_DEPLOYMENT_URL = WORKER_POOL[0];
+
+// On localhost / workers.dev dev environments use relative same-origin paths,
+// otherwise default to the first worker in the pool.
 const API_BASE_URL = (typeof window !== 'undefined' && window.location && (
   window.location.hostname === 'localhost' ||
   window.location.hostname === '127.0.0.1' ||
@@ -506,12 +522,15 @@ const API_BASE_URL = (typeof window !== 'undefined' && window.location && (
 
     startLoading();
 
-    // Multi-tier candidate endpoints to ensure 100% connectivity:
-    // 1. Relative same-origin /api/ (handles local dev server, Cloudflare Pages _worker.js, and _redirects without cross-origin issues)
-    // 2. Direct Cloudflare Worker deployment
+    // Build endpoint list: same-origin first, then every worker in the
+    // (shuffled) pool. This means traffic spreads across all pool workers
+    // while same-origin Pages deployments still get priority.
     const endpointsToTry = [
       { base: '', url: `/api/reddit-dp?username=${encodeURIComponent(username)}` },
-      { base: WORKER_DEPLOYMENT_URL, url: `${WORKER_DEPLOYMENT_URL}/api/reddit-dp?username=${encodeURIComponent(username)}` }
+      ...WORKER_POOL.map(w => ({
+        base: w,
+        url: `${w}/api/reddit-dp?username=${encodeURIComponent(username)}`
+      }))
     ];
 
     let resultJson = null;

@@ -9,12 +9,28 @@
 // ==========================================================================
 // Configuration
 // ==========================================================================
-// Determine Worker API base URL:
-// On Cloudflare Pages (*.pages.dev or custom domain), dev server, or preview environments,
-// the /api/* endpoints are served directly from the same origin via _worker.js.
-// Default to '' (same-origin relative paths) so it always works seamlessly on any domain.
+// Worker Pool — list all your Cloudflare Worker URLs here.
+// The pool is shuffled on load so traffic spreads naturally across workers.
+// On Cloudflare Pages / same-origin deployments, the first call still goes
+// to the same-origin /api/* endpoint; the pool is only used as fallback.
+const WORKER_POOL = [
+  'https://reimg.romitkr5539.workers.dev',
+  'https://redimg2.ajeetkr0920.workers.dev/',  
+  // 'https://reimg-worker3.yourdomain.workers.dev',
+];
+
+// Shuffle pool entries on page load so each session distributes differently
+(function shufflePool() {
+  for (let i = WORKER_POOL.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [WORKER_POOL[i], WORKER_POOL[j]] = [WORKER_POOL[j], WORKER_POOL[i]];
+  }
+})();
+
+// On Cloudflare Pages / same-origin the API lives at ''.
+// On file:// (local dev without a server) fall back to the first pool worker.
 const API_BASE_URL = (typeof window !== 'undefined' && window.location.protocol === 'file:')
-  ? 'https://reimg.romitkr5539.workers.dev'
+  ? WORKER_POOL[0]
   : '';
 
 // State management
@@ -320,25 +336,32 @@ async function fetchRedditImages(redditUrl) {
     let result = null;
     let lastError = null;
 
-    const primaryBase = API_BASE_URL; // '' on same-origin / Pages
-    const fallbackBase = 'https://reimg.romitkr5539.workers.dev';
+    // ------------------------------------------------------------------------
+    // Tier 1: Try same-origin endpoint (works on Cloudflare Pages / any server)
+    // ------------------------------------------------------------------------
+    if (API_BASE_URL === '') {
+      try {
+        result = await fetchCandidate('');
+      } catch (err) {
+        console.warn('Same-origin endpoint failed:', err.message);
+        lastError = err;
+      }
+    }
 
     // ------------------------------------------------------------------------
-    // Tier 1: Try Primary Backend
+    // Tier 2: Try each worker in the (shuffled) pool until one succeeds
     // ------------------------------------------------------------------------
-    try {
-      result = await fetchCandidate(primaryBase);
-    } catch (err1) {
-      console.warn('Primary backend request failed:', err1.message);
-      lastError = err1;
-
-      // Tier 2: Try Fallback Worker Backend if primary is different
-      if (primaryBase !== fallbackBase) {
+    if (!result) {
+      for (let wi = 0; wi < WORKER_POOL.length; wi++) {
+        const workerUrl = WORKER_POOL[wi];
+        // Skip if it's the same as API_BASE_URL (already tried above)
+        if (workerUrl === API_BASE_URL) continue;
         try {
-          result = await fetchCandidate(fallbackBase);
-        } catch (err2) {
-          console.warn('Fallback worker backend failed:', err2.message);
-          lastError = err2;
+          result = await fetchCandidate(workerUrl);
+          break; // got a valid response — stop trying
+        } catch (err) {
+          console.warn(`Worker [${wi + 1}/${WORKER_POOL.length}] ${workerUrl} failed:`, err.message);
+          lastError = err;
         }
       }
     }

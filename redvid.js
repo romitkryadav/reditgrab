@@ -67,11 +67,29 @@
   const labelSwitchStream = document.getElementById('label-switch-stream');
   const btnOpenRawVideo = document.getElementById('btn-open-raw-video');
 
-  // Remote Production Cloudflare Worker URL
-  const REMOTE_WORKER_URL = 'https://whdp.romitkr361.workers.dev';
+  // ---------------------------------------------------------------------------
+  // Worker Pool — add / remove worker URLs here to scale traffic across
+  // multiple Cloudflare Workers. The pool is shuffled on page load so
+  // requests are naturally spread rather than always hammering the first entry.
+  // ---------------------------------------------------------------------------
+  const WORKER_POOL = [
+    'https://whdp.romitkr361.workers.dev',
+    'https://redvid.ajeetkr0920.workers.dev/',  
+    // 'https://worker3.yourdomain.workers.dev',
+  ];
 
-  // Dynamic API Base URL: auto-switches between remote worker and local endpoint
-  // When running on Cloudflare Pages or production host, default directly to the Worker URL
+  // Shuffle the pool on load so every user session hits a different worker first
+  (function shufflePool() {
+    for (let i = WORKER_POOL.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [WORKER_POOL[i], WORKER_POOL[j]] = [WORKER_POOL[j], WORKER_POOL[i]];
+    }
+  })();
+
+  // Kept for backwards-compat: first entry in the (shuffled) pool acts as primary
+  const REMOTE_WORKER_URL = WORKER_POOL[0];
+
+  // Dynamic API Base URL: auto-switches between the active worker and local endpoint
   const isLocalDev = typeof window !== 'undefined' && (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1');
   let activeApiBase = isLocalDev ? '' : REMOTE_WORKER_URL;
   let streamMode = 'worker'; // 'worker' (Anti-403 Proxy) or 'direct' (Reddit CDN)
@@ -1270,27 +1288,32 @@
       let response = null;
       let usedRemote = false;
 
-      // Tier 1: Try remote Cloudflare Worker
-      try {
-        const remoteUrl = `${REMOTE_WORKER_URL}/api/reddit-video?url=${encodeURIComponent(trimmedUrl)}`;
-        const remoteRes = await fetch(remoteUrl, {
-          method: 'GET',
-          headers: { 'Accept': 'application/json' }
-        });
+      // Tier 1: Try each worker in the (shuffled) pool until one succeeds
+      for (let wi = 0; wi < WORKER_POOL.length; wi++) {
+        const workerUrl = WORKER_POOL[wi];
+        try {
+          const remoteUrl = `${workerUrl}/api/reddit-video?url=${encodeURIComponent(trimmedUrl)}`;
+          const remoteRes = await fetch(remoteUrl, {
+            method: 'GET',
+            headers: { 'Accept': 'application/json' }
+          });
 
-        if (remoteRes.ok) {
-          response = remoteRes;
-          activeApiBase = REMOTE_WORKER_URL;
-          usedRemote = true;
-        } else {
-          console.warn('Remote worker responded with status', remoteRes.status, 'trying local endpoint...');
+          if (remoteRes.ok) {
+            response = remoteRes;
+            activeApiBase = workerUrl;
+            usedRemote = true;
+            break; // good response — stop trying other workers
+          } else {
+            console.warn(`Worker [${wi + 1}/${WORKER_POOL.length}] ${workerUrl} returned ${remoteRes.status}, trying next…`);
+          }
+        } catch (workerErr) {
+          console.warn(`Worker [${wi + 1}/${WORKER_POOL.length}] ${workerUrl} unreachable:`, workerErr);
         }
-      } catch (remoteErr) {
-        console.warn('Remote worker fetch failed or offline, falling back to local endpoint:', remoteErr);
       }
 
-      // Tier 2: Failover to local proxy endpoint
+      // Tier 2: Failover to local proxy endpoint if all workers in the pool failed
       if (!response) {
+        console.warn('All workers in pool failed — falling back to local endpoint.');
         const localUrl = `/api/reddit-video?url=${encodeURIComponent(trimmedUrl)}`;
         response = await fetch(localUrl, {
           method: 'GET',
@@ -1312,10 +1335,11 @@
         return;
       }
 
-      // Update worker health indicator if remote worker succeeded
+      // Update worker health indicator if a pool worker succeeded
       if (usedRemote) {
         const liveStatusText = document.getElementById('worker-live-status');
-        if (liveStatusText) liveStatusText.textContent = 'Connected (whdp.workers.dev)';
+        const shortName = activeApiBase.replace('https://', '');
+        if (liveStatusText) liveStatusText.textContent = `Connected (${shortName})`;
       }
 
       renderResult(jsonResult);
@@ -1334,26 +1358,33 @@
     const badge = document.getElementById('worker-status-badge');
     const liveStatusText = document.getElementById('worker-live-status');
 
-    try {
-      const startTime = performance.now();
-      const res = await fetch(`${REMOTE_WORKER_URL}/api/health`, {
+    // Probe every worker in the pool concurrently; pick the first one that
+    // responds healthy. This also keeps activeApiBase pointed at the fastest
+    // available worker for the session.
+    const probes = WORKER_POOL.map(async (url) => {
+      const t0 = performance.now();
+      const res = await fetch(`${url}/api/health`, {
         method: 'GET',
         headers: { 'Accept': 'application/json' }
       });
-      const latency = Math.round(performance.now() - startTime);
+      if (!res.ok) throw new Error(`${url} returned ${res.status}`);
+      return { url, latency: Math.round(performance.now() - t0) };
+    });
 
-      if (res.ok) {
-        if (badge) {
-          badge.innerHTML = `<span class="worker-pulse-dot" aria-hidden="true"></span> <span>whdp.romitkr361.workers.dev</span>`;
-          badge.title = `Cloudflare Worker Online (${latency}ms)`;
-        }
-        if (liveStatusText) {
-          liveStatusText.textContent = `Online (${latency}ms)`;
-        }
-        activeApiBase = REMOTE_WORKER_URL;
+    try {
+      // Promise.any resolves as soon as the first probe succeeds
+      const { url, latency } = await Promise.any(probes);
+      activeApiBase = url;
+      const shortName = url.replace('https://', '');
+      if (badge) {
+        badge.innerHTML = `<span class="worker-pulse-dot" aria-hidden="true"></span> <span>${shortName}</span>`;
+        badge.title = `Cloudflare Worker Online (${latency}ms) — ${WORKER_POOL.length} worker${WORKER_POOL.length > 1 ? 's' : ''} in pool`;
+      }
+      if (liveStatusText) {
+        liveStatusText.textContent = `Online (${latency}ms)`;
       }
     } catch {
-      // Local fallback is active
+      // All workers unreachable — fall back to local
       if (badge) {
         badge.innerHTML = `<span class="worker-pulse-dot" aria-hidden="true" style="background:#10B981;"></span> <span>Local / Edge Worker Ready</span>`;
       }
