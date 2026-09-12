@@ -79,50 +79,50 @@
             "mainEntity": [
               {
                 "@type": "Question",
-                "name": "Can I download images from Reddit?",
+                "name": "What's the difference between downloading from here vs. right-clicking on Reddit?",
                 "acceptedAnswer": {
                   "@type": "Answer",
-                  "text": "Yes. Publicly accessible images posted to Reddit on public subreddits can be downloaded. The tool inspects public media data and provides access to the highest-quality Reddit-hosted file available."
+                  "text": "Right-clicking on Reddit saves the feed preview — a resized, compressed copy. This tool traces the preview path back to the source file on i.redd.it, which is the actual uploaded version before Reddit scaled it down for the feed."
                 }
               },
               {
                 "@type": "Question",
-                "name": "Does this Reddit Image Downloader require an account?",
+                "name": "How many images can I download from a Reddit gallery at once?",
                 "acceptedAnswer": {
                   "@type": "Answer",
-                  "text": "No account or registration is required. You do not need to log into Reddit, provide credentials, or install browser extensions. The service runs purely on public web requests."
+                  "text": "Reddit allows up to 20 images per gallery post, and the tool extracts all of them in posting order. The Download All button downloads each file individually — they are not bundled into a ZIP."
                 }
               },
               {
                 "@type": "Question",
-                "name": "Can I download Reddit gallery images?",
+                "name": "What image formats are supported?",
                 "acceptedAnswer": {
                   "@type": "Answer",
-                  "text": "Yes. Reddit gallery posts with multiple images are supported. The tool extracts each picture in order, displays individual cards with resolution details, and provides both individual download buttons and a Download All option."
+                  "text": "The tool downloads whatever format the uploader submitted — JPEG, PNG, GIF, and WebP are all common on Reddit. No conversion happens; the file you save is in the original format Reddit is storing."
                 }
               },
               {
                 "@type": "Question",
-                "name": "What image quality will I get?",
+                "name": "Can I download animated GIFs from Reddit posts?",
                 "acceptedAnswer": {
                   "@type": "Answer",
-                  "text": "You receive the highest publicly available quality uploaded by the creator. When Reddit generates responsive preview thumbnails, the tool resolves the path to the highest-quality Reddit-hosted file available on i.redd.it."
+                  "text": "It depends on how the post was submitted. Reddit converts many GIFs to MP4 video at upload time — those belong in the Reddit Video Downloader. When a GIF is stored as an actual GIF file on i.redd.it, this tool will fetch and download it as-is."
                 }
               },
               {
                 "@type": "Question",
-                "name": "Can I use this on mobile?",
+                "name": "Do I need a Reddit account to download images?",
                 "acceptedAnswer": {
                   "@type": "Answer",
-                  "text": "Yes. The web application works on mobile. In the Reddit app on iOS or Android, tap Share, choose Copy Link, open this website in Safari or Chrome, and tap Paste."
+                  "text": "No Reddit account and no ReditGrab account is needed. The tool works purely through public data, reading the same post JSON that any visitor sees when browsing Reddit without being logged in."
                 }
               },
               {
                 "@type": "Question",
-                "name": "Why can't some Reddit images be downloaded?",
+                "name": "Why does a post I can see on Reddit fail to load here?",
                 "acceptedAnswer": {
                   "@type": "Answer",
-                  "text": "Some submissions cannot be processed if they have been deleted by the user or moderators, if they link to external restricted hosts, or if the post is a video (v.redd.it). Additionally, Reddit may occasionally enforce temporary network limits on certain data center IP ranges."
+                  "text": "The post might link to an image on an external host rather than Reddit's own i.redd.it storage. It might be gated behind an age verification requiring login, or Reddit's edge network may be applying temporary rate limits to automated requests."
                 }
               },
               {
@@ -130,7 +130,7 @@
                 "name": "Does this work with private Reddit posts?",
                 "acceptedAnswer": {
                   "@type": "Answer",
-                  "text": "No. We respect privacy and access controls. Posts in private subreddits or requiring an active login cannot and will not be accessed."
+                  "text": "No. Posts in private or quarantined subreddits require an authenticated session to read. This tool has no way to authenticate and makes no attempt to work around those restrictions."
                 }
               }
             ]
@@ -166,6 +166,8 @@
         <nav class="nav-desktop header-nav" aria-label="Primary navigation">
           <a href="https://reditgrab.com/" class="nav-link">Video Downloader</a>
           <a href="https://reditgrab.com/reddit-dp-downloader" class="nav-link">DP Downloader</a>
+          <a href="/contact" class="nav-link">Contact</a>
+          <a href="/blog" class="=nav-link">Blog</a>
           <button type="button" class="btn-icon" id="theme-toggle-btn" aria-label="Toggle dark/light theme" title="Toggle theme">
             <svg class="sun-icon" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2">
               <circle cx="12" cy="12" r="5"></circle>
@@ -196,6 +198,8 @@
       <nav class="nav-mobile-panel" id="nav-mobile-panel" aria-label="Mobile navigation">
         <a href="https://reditgrab.com/">Video Downloader</a>
         <a href="/reddit-dp-downloader">DP Downloader</a>
+        <a href="/contact">Contact</a>
+        <a href="/blog">Blog</a>
       </nav>
     </header>
 
@@ -377,7 +381,7 @@
       <section class="content-section" id="how-it-works">
         <div class="section-header">
           <h2 class="section-title">How to Download Images from Reddit</h2>
-          <p class="section-desc">Save individual images or full Reddit galleries in 3 simple steps.</p>
+          <p class="section-desc">Save individual photos or entire Reddit galleries — here's exactly how it works.</p>
         </div>
 
         <div class="steps-grid">
@@ -389,8 +393,8 @@
                 <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/>
               </svg>
             </div>
-            <h3 class="step-title">Copy Reddit Post URL</h3>
-            <p class="step-text">Navigate to any public Reddit post or gallery. Tap the Share icon or copy the URL directly from your browser's address bar.</p>
+            <h3 class="step-title">Grab the Post or Gallery Link</h3>
+            <p class="step-text">On Reddit's desktop site, copy the URL from your browser address bar. In the Reddit app, tap the Share button and choose Copy Link. Both single-image posts and multi-image gallery posts are supported.</p>
           </div>
 
           <div class="step-card" id="step-card-2">
@@ -401,8 +405,8 @@
                 <path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/>
               </svg>
             </div>
-            <h3 class="step-title">Paste It Into The Downloader</h3>
-            <p class="step-text">Paste the link into the input box above and click "Get Images". Our Cloudflare Worker securely inspects the public media metadata.</p>
+            <h3 class="step-title">Paste &amp; Let It Scan the Post</h3>
+            <p class="step-text">Drop the link into the input box and click "Get Images". The tool queries Reddit's public post data, resolves every image in the post back to its full-quality file on <code>i.redd.it</code>, and builds a preview grid — no guesswork, no compressed thumbnails.</p>
           </div>
 
           <div class="step-card" id="step-card-3">
@@ -414,8 +418,8 @@
                 <line x1="12" x2="12" y1="15" y2="3"/>
               </svg>
             </div>
-            <h3 class="step-title">Preview and Download Images</h3>
-            <p class="step-text">Inspect image dimensions and formats in the preview grid, zoom in with the lightbox modal, and download individual photos or all images at once.</p>
+            <h3 class="step-title">Pick What to Save</h3>
+            <p class="step-text">Each image card shows its pixel dimensions and file format. Click any card to open the lightbox for a full-size preview, download images one at a time, or hit "Download All" to grab every photo in the gallery as a batch.</p>
           </div>
         </div>
       </section>
@@ -424,37 +428,43 @@
       <section class="content-section" id="features">
         <div class="container">
           <div class="content-block">
-            <h2>What You Can Paste</h2>
-            <p>This works with a standard <code>reddit.com</code> post link, <code>old.reddit.com</code> or <code>new.reddit.com</code> links, a <code>redd.it</code> short link, or the link to a Reddit-hosted image itself if you've already got it (right-click an image on Reddit, choose "Copy image address", then paste it here). Short links are followed to the real post before anything is fetched.</p>
-            <p>It reads public post data only: no login, no browser extension, and no account on either end.</p>
+            <h2>Link Formats This Tool Accepts</h2>
+            <p>You can paste a standard <code>reddit.com/r/…</code> post URL, an <code>old.reddit.com</code> or <code>new.reddit.com</code> link, a <code>redd.it</code> short link, or — if you already have it — the direct <code>i.redd.it</code> image URL copied from a Reddit post. All of those resolve to the same underlying post data. The tool handles the redirect chain automatically, so you don't need to expand short links manually before pasting. For a full breakdown of every URL format, see <a href="/blog/choosing-the-right-reddit-link" class="orange-tool-link">Choosing the Right Reddit Link</a>.</p>
+            <p>The only hard requirement is that the post is publicly viewable — no account, no subscription, no NSFW age-gate that requires a Reddit login to pass. Read more about <a href="/blog/what-public-reddit-media-means" class="orange-tool-link">what "public" means on Reddit</a>.</p>
           </div>
 
           <div class="content-block">
-            <h2>Before You Download, You'll See It</h2>
-            <p>Nothing downloads the moment you hit "Get Images." You'll get a preview grid first, with actual dimensions, file format, and the number of images in the post, so you can confirm it's the right post before saving anything.</p>
-            <p><strong>Single images vs. galleries.</strong> A post with one photo shows one preview card. A Reddit gallery with up to 20 images shows every image in its original posting order, each with its own download button, plus a "Download All" option if you want the full set.</p>
+            <h2>Single Images vs. Reddit Gallery Posts</h2>
+            <p>Behaviour differs based on the post type, and the tool handles both automatically. A standard post with one attached photo returns a single preview card showing the image dimensions, format, and a direct download button.</p>
+            <p>A Reddit gallery — a post with multiple photos stacked in a swipeable carousel — shows all images in the order they appear in the post, each as its own card. Galleries on Reddit can contain up to 20 images. Every card has an individual download button, and a "Download All" button at the top of the results panel lets you save the entire set with one click. Nothing is batched into a ZIP — each file downloads separately so you keep individual filenames and formats. For the complete walkthrough, see <a href="/blog/download-reddit-images-and-galleries" class="orange-tool-link">How to Download Reddit Images and Galleries</a>. If you're curious about how gallery posts work on Reddit's side — the carousel format, URL structure, and limits — <a href="/blog/reddit-gallery-post-explained" class="orange-tool-link">this explains it</a>.</p>
           </div>
 
           <div class="content-block">
-            <h2>Image Quality, Honestly</h2>
-            <p>Reddit often shows a resized, recompressed preview in the feed, which is what a plain right-click save usually grabs. This tool resolves that preview path back to the file Reddit actually has stored for the post, rather than handing you the compressed version.</p>
-            <p>That's different from guaranteeing a resolution. Whatever the original uploader posted is the ceiling: this tool doesn't upscale, restore, sharpen, or otherwise invent detail that isn't already in Reddit's copy.</p>
+            <h2>Why the Quality Is Different From a Right-Click Save</h2>
+            <p>When Reddit displays images in a feed or post page, the browser loads a resized responsive preview rather than the source file. Right-clicking and saving that image gives you Reddit's compressed preview copy, typically at a lower resolution with more JPEG compression than the original.</p>
+            <p>This tool bypasses the preview layer by resolving the path directly to Reddit's stored <code>i.redd.it</code> source file. That's the highest-quality version Reddit holds — the one that was uploaded, not the one optimized for fast feed loading. The ceiling is still whatever the original poster uploaded; the tool retrieves the best Reddit has, not a fabricated higher resolution. See <a href="/blog/download-reddit-images-and-galleries" class="orange-tool-link">our image download guide</a> for a full explanation of how this works. If you want the technical detail on exactly how Reddit compresses images at upload and again for previews, <a href="/blog/does-reddit-compress-images" class="orange-tool-link">this post breaks it down</a>.</p>
           </div>
 
           <div class="content-block">
-            <h2>What Won't Work</h2>
+            <h2>File Formats You'll Get</h2>
+            <p>Reddit accepts JPEG, PNG, GIF, and WebP image uploads. The format of your downloaded file matches the format of the original upload — the tool doesn't convert between formats. Each preview card displays the format label alongside the pixel dimensions so you know what you're getting before you click download. If you need a different format, that conversion would need to happen after saving the file.</p>
+          </div>
+
+          <div class="content-block">
+            <h2>Posts This Tool Can't Process</h2>
             <ul class="steps-list">
-              <li>Posts in private or quarantined subreddits, or anything that needs you to be logged in to view. There's no way to authenticate as you, and this tool doesn't try to get around that.</li>
-              <li>Deleted or removed posts.</li>
-              <li>Images hosted on an external, non-Reddit site rather than <code>i.redd.it</code>.</li>
-              <li>Reddit videos (<code>v.redd.it</code>). Use the <a href="https://reditgrab.com/">Reddit Video Downloader</a> for those.</li>
+              <li>Posts from private or quarantined subreddits — these require a Reddit login to view and cannot be accessed through public data channels.</li>
+              <li>Posts that have been deleted by the author or removed by moderators.</li>
+              <li>Images hosted on external sites (Imgur, Flickr, external CDNs) rather than <code>i.redd.it</code> — Reddit only stores the link, not the file.</li>
+              <li>Reddit video posts at <code>v.redd.it</code> — those are handled by the <a href="https://reditgrab.com/">Reddit Video Downloader</a>.</li>
+              <li>Reddit profile pictures — use the <a href="https://reditgrab.com/reddit-dp-downloader">Reddit DP Downloader</a> for those.</li>
             </ul>
-            <p>When something can't be fetched, you'll get the actual reason, such as deleted, private, video, or not an image, rather than a generic error.</p>
+            <p>When a post falls into any of these categories, the tool surfaces a specific reason rather than a vague failure message. For a full breakdown of what counts as public content on Reddit, read <a href="/blog/what-public-reddit-media-means" class="orange-tool-link">What "Public Reddit Media" Actually Means</a>.</p>
           </div>
 
           <div class="content-block">
-            <h2>Phone or Desktop</h2>
-            <p>The steps are the same either way. On Reddit's mobile app, tap Share, then Copy Link and paste it here. On desktop, copy the link from your browser's address bar. No installation is needed on either platform. For profile pictures, use the <a href="https://reditgrab.com/reddit-dp-downloader.html">Reddit DP Downloader</a>.</p>
+            <h2>The Lightbox Preview</h2>
+            <p>Before downloading, you can click any image card to open it in a full-screen lightbox. The lightbox shows the image at its actual resolution, displays the pixel dimensions and format in the header, and lets you navigate between images in a gallery using arrow buttons or keyboard arrow keys. You can download directly from the lightbox or open the raw file URL in a new tab. Press Escape or click outside the image to close it. On mobile the workflow is essentially the same — the <a href="/blog/how-to-save-reddit-images-on-mobile" class="orange-tool-link">mobile guide for saving Reddit images</a> has the step-by-step for both iPhone and Android.</p>
           </div>
         </div>
       </section>
@@ -463,67 +473,67 @@
       <section class="content-section" id="faq">
         <div class="section-header">
           <h2 class="section-title">Frequently Asked Questions</h2>
-          <p class="section-desc">Clear answers regarding permissions, image quality, and technical operation.</p>
+          <p class="section-desc">Practical answers about image formats, gallery support, and how the tool works under the hood.</p>
         </div>
 
         <div class="faq-accordion" id="faq-accordion">
           <details class="faq-item" open>
             <summary class="faq-question">
-              <span>Can I download images from Reddit?</span>
+              <span>What's the difference between downloading from here vs. right-clicking on Reddit?</span>
               <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
             </summary>
             <div class="faq-answer">
-              <p>Yes. Publicly accessible images posted to Reddit on public subreddits can be downloaded. The tool inspects public media data and provides access to the highest-quality Reddit-hosted file available.</p>
+              <p>Right-clicking an image on Reddit saves the feed preview — a resized, more compressed copy Reddit loads for fast browsing. This tool traces the preview path back to the source file on <code>i.redd.it</code>, which is the actual uploaded version before Reddit scaled it down for the feed. The difference is most visible on high-resolution photos.</p>
             </div>
           </details>
 
           <details class="faq-item">
             <summary class="faq-question">
-              <span>Does this Reddit Image Downloader require an account?</span>
+              <span>How many images can I download from a Reddit gallery at once?</span>
               <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
             </summary>
             <div class="faq-answer">
-              <p>No account or registration is required. You do not need to log into Reddit, provide credentials, or install browser extensions. The service runs purely on public web requests.</p>
+              <p>Reddit allows up to 20 images per gallery post, and the tool extracts all of them in the original posting order. The "Download All" button downloads each file individually — they aren't bundled into a ZIP, so each image arrives as its own file with a clean filename. If a gallery post has fewer than 20 images, only those are shown.</p>
             </div>
           </details>
 
           <details class="faq-item">
             <summary class="faq-question">
-              <span>Can I download Reddit gallery images?</span>
+              <span>What image formats are supported?</span>
               <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
             </summary>
             <div class="faq-answer">
-              <p>Yes! Reddit gallery posts (albums with multiple images) are fully supported. The tool extracts each picture in order, displays individual cards with resolution details, and provides both individual download buttons and a "Download All" option.</p>
+              <p>The tool downloads whatever format the uploader submitted — JPEG, PNG, GIF, and WebP are all common on Reddit. The format is shown on each preview card before you download. No conversion happens; the file you save is in the original format Reddit is storing.</p>
             </div>
           </details>
 
           <details class="faq-item">
             <summary class="faq-question">
-              <span>What image quality will I get?</span>
+              <span>Can I download animated GIFs from Reddit posts?</span>
               <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
             </summary>
             <div class="faq-answer">
-              <p>You receive the highest publicly available quality uploaded by the creator. When Reddit generates responsive preview thumbnails, the tool resolves the path to the highest-quality Reddit-hosted file available on <code>i.redd.it</code>.</p>
+              <p>It depends on how the post was submitted. Reddit converts many GIFs to MP4 video at upload time to reduce file size — those end up as video posts at <code>v.redd.it</code>, not image posts, and belong in the <a href="https://reditgrab.com/">Reddit Video Downloader</a>. When a GIF is stored as an actual GIF file on <code>i.redd.it</code>, this tool will fetch and download it as-is.</p>
             </div>
           </details>
 
           <details class="faq-item">
             <summary class="faq-question">
-              <span>Can I use this on mobile?</span>
+              <span>Do I need a Reddit account to download images?</span>
               <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
             </summary>
             <div class="faq-answer">
-              <p>Absolutely. The web application is built mobile-first. In the Reddit app on iOS or Android, tap "Share", choose "Copy Link", open this website in Safari or Chrome, and tap "Paste".</p>
+              <p>No Reddit account and no ReditGrab account is needed. The tool works purely through public data — it reads the same post JSON that any visitor sees when browsing Reddit without being logged in. If a post is publicly viewable, it can be fetched here.</p>
             </div>
           </details>
 
           <details class="faq-item">
             <summary class="faq-question">
-              <span>Why can't some Reddit images be downloaded?</span>
+              <span>Why does a post I can see on Reddit fail to load here?</span>
               <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
             </summary>
             <div class="faq-answer">
-              <p>Some submissions cannot be processed if they have been deleted by the user or moderators, if they link to external restricted hosts, or if the post is a video (v.redd.it). Additionally, Reddit may occasionally enforce temporary network limits on certain data center IP ranges.</p>
+              <p>A few things can cause this. The post might link to an image on an external host rather than Reddit's own <code>i.redd.it</code> storage — Reddit only holds the link, not the file, so there's nothing to fetch. The post might be gated behind an age verification that requires you to be logged in, even though it's technically public. Or Reddit's edge network may be applying temporary rate limits to automated requests from certain IP ranges, in which case retrying after a short wait usually resolves it.</p>
             </div>
           </details>
 
@@ -533,7 +543,7 @@
               <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
             </summary>
             <div class="faq-answer">
-              <p>No. We respect privacy and access controls. Posts in private subreddits or requiring an active login cannot and will not be accessed.</p>
+              <p>No. Posts in private or quarantined subreddits sit behind Reddit's access controls and require an authenticated session to read. This tool has no way to authenticate as you and makes no attempt to work around those restrictions — the same privacy rules that Reddit enforces apply here.</p>
             </div>
           </details>
         </div>
@@ -608,6 +618,7 @@
             <a href="https://threadsgrab.com/threads-image-downloader">threads Image Downloader</a>
             <a href="https://fbviddl.com/facebook-image-downloader">Facebook Image Downloader</a>
             <a href="https://twitter.threadsgrab.com/twitter-image-downloader">Twitter Image Downloader</a>
+            <a href="https://pinviddl.com/">Pinterest Video Downloader</a>
           </div>
           <div class="footer-link-group">
             <h2 class="footer-link-title">Legal</h2>

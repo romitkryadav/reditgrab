@@ -82,50 +82,50 @@
           "mainEntity": [
             {
               "@type": "Question",
-              "name": "Can I download any Reddit profile picture?",
+              "name": "What's the difference between a Snoovatar and an uploaded profile picture?",
               "acceptedAnswer": {
                 "@type": "Answer",
-                "text": "No. This tool only functions when a profile image is publicly accessible through open web protocols. If an account is private, suspended, deleted, or restricted by Reddit's access controls, the picture cannot and will not be retrieved."
+                "text": "A Snoovatar is Reddit's customizable illustrated character built from layered SVG assets rendered on the client side. An uploaded profile picture is an actual image file the user submitted. This tool retrieves uploaded photos and Snoovatar variants backed by a real static image file. Snoovatars rendered purely in-browser without a downloadable file cannot be retrieved by any tool."
               }
             },
             {
               "@type": "Question",
-              "name": "Do I need a Reddit account?",
+              "name": "Can I look up a Reddit user by username without knowing their profile URL?",
               "acceptedAnswer": {
                 "@type": "Answer",
-                "text": "No. You do not need to register, log in, or connect your Reddit account. The service operates completely anonymously without credentials or user tracking."
+                "text": "Yes. Just type the username directly into the search box. No URL or u/ prefix is required, though both formats also work. The tool constructs the correct profile lookup path automatically."
               }
             },
             {
               "@type": "Question",
-              "name": "Can I enter a Reddit username instead of a URL?",
+              "name": "Why did the search return avatar unavailable for an active account?",
               "acceptedAnswer": {
                 "@type": "Answer",
-                "text": "Yes. You can enter just the username (e.g., spez), the prefixed username (u/spez), or the complete profile link (https://www.reddit.com/user/spez/). The tool automatically normalizes and validates the input."
+                "text": "Several things can cause this: the user has a Snoovatar without a backing static file, the profile visibility is set to restricted, Reddit's edge network returned a temporary bot-mitigation block, or the account has no profile picture set at all."
               }
             },
             {
               "@type": "Question",
-              "name": "Can I download the original Reddit avatar?",
+              "name": "What resolution will the downloaded profile picture be?",
               "acceptedAnswer": {
                 "@type": "Answer",
-                "text": "Yes, provided that Reddit publicly exposes a higher-quality or original version. We prioritize original source media, followed by high-resolution and standard avatars. We never artificially upscale low-resolution images."
+                "text": "The result card shows the exact pixel dimensions Reddit is publicly serving. Common sizes are 256x256, 512x512, and occasionally larger. The tool retrieves the best available version without upscaling or reconstructing a higher resolution."
               }
             },
             {
               "@type": "Question",
-              "name": "Why can't I find some Reddit profile pictures?",
+              "name": "Does this tool store or log the usernames I search?",
               "acceptedAnswer": {
                 "@type": "Answer",
-                "text": "Reddit regularly updates its profile architecture, frontend components, and bot defense mechanisms. When Reddit blocks automated page fetches or requires login sessions to render user avatars, public discovery is prevented. In such cases, our tool reports that the avatar is unavailable rather than showing fake data."
+                "text": "No. Each lookup is a stateless request to Reddit's public profile data. ReditGrab does not store search history, usernames searched, or any personally identifiable data."
               }
             },
             {
               "@type": "Question",
-              "name": "Does this work on mobile?",
+              "name": "Can I download a Reddit profile picture on my phone?",
               "acceptedAnswer": {
                 "@type": "Answer",
-                "text": "Yes. The website is fully mobile-first and responsive, optimized for smartphones, tablets, laptops, and large desktop screens."
+                "text": "Yes. Open reditgrab.com/reddit-dp-downloader in any mobile browser, type the username, and tap Find DP. On iOS the download saves to Files or Photos. On Android it goes to the Downloads folder. No app installation required."
               }
             },
             {
@@ -133,7 +133,7 @@
               "name": "Is this an official Reddit tool?",
               "acceptedAnswer": {
                 "@type": "Answer",
-                "text": "No. Reddit DP Downloader is an independent utility and is not affiliated with, sponsored by, or endorsed by Reddit, Inc."
+                "text": "No. ReditGrab is an independent utility with no affiliation with, endorsement from, or connection to Reddit, Inc. It only accesses data Reddit makes publicly available through standard web requests."
               }
             }
           ]
@@ -374,28 +374,28 @@
     <section class="content-section" id="how-it-works">
       <div class="container">
         <h2 class="section-title">How to Download a Reddit Profile Picture</h2>
-        <p class="section-subtitle">Follow these three straightforward steps to retrieve and download publicly accessible Reddit avatars.</p>
+        <p class="section-subtitle">Three inputs, one result — here's the full flow from username to saved file.</p>
 
         <div class="steps-grid">
           <!-- Step 1 -->
           <div class="step-card" id="step-1">
             <div class="step-number" aria-hidden="true">1</div>
-            <h3 class="step-card-title">Enter Reddit Username</h3>
-            <p class="step-card-text">Type in any Reddit username (e.g., <code>spez</code> or <code>u/username</code>) or paste a complete public profile link (<code>https://www.reddit.com/user/...</code>).</p>
+            <h3 class="step-card-title">Enter a Username or Profile URL</h3>
+            <p class="step-card-text">Type a Reddit username directly (e.g., <code>spez</code>), use the prefixed format (<code>u/username</code>), or paste a full profile URL like <code>https://www.reddit.com/user/username/</code>. The tool normalizes all three formats — you don't need to figure out the "correct" input style.</p>
           </div>
 
           <!-- Step 2 -->
           <div class="step-card" id="step-2">
             <div class="step-number" aria-hidden="true">2</div>
-            <h3 class="step-card-title">Find the Public Picture</h3>
-            <p class="step-card-text">Click "Find DP". Our edge worker validates the username and queries publicly accessible metadata and OpenGraph sources without scraping private data.</p>
+            <h3 class="step-card-title">Let the Tool Resolve the Avatar</h3>
+            <p class="step-card-text">Click "Find DP". The tool queries Reddit's publicly accessible profile metadata and OpenGraph data to locate whatever avatar Reddit is currently serving for that account. It checks multiple sources in priority order and picks the highest-quality version available.</p>
           </div>
 
           <!-- Step 3 -->
           <div class="step-card" id="step-3">
             <div class="step-number" aria-hidden="true">3</div>
-            <h3 class="step-card-title">Preview and Download</h3>
-            <p class="step-card-text">Inspect the available preview, check image dimensions and format, and click "Download DP" to save the publicly served image file to your device.</p>
+            <h3 class="step-card-title">Review the Details, Then Save</h3>
+            <p class="step-card-text">The result card shows the avatar preview alongside its pixel dimensions, file format, and CDN source. Click the image to enlarge it, use "Open Original" to inspect the raw file URL, or click "Download DP" to save it directly to your device.</p>
           </div>
         </div>
       </div>
@@ -405,57 +405,43 @@
     <section class="content-section" id="features">
       <div class="container">
         <div class="content-block">
-          <h2>Which Reddit Profiles This Works On</h2>
-          <p>This tool reads publicly exposed Reddit profile metadata only. It accepts plain usernames (e.g., <code>spez</code>), the <code>u/username</code> format, and full profile URLs from <code>reddit.com</code>, <code>old.reddit.com</code>, and mobile share links.
-
-It does not work on users who have restricted their profile visibility, accounts marked 18+ (NSFW), or any profile that requires a Reddit login to load — the tool has no way to authenticate as you, and it will never try to bypass Reddit's own access controls.
-
-If you're trying to save a post image or gallery instead of a profile picture, use the <a href="https://reditgrab.com/reddit-image-downloader.html">Reddit Image Downloader</a>. For Reddit-hosted videos specifically, use the <a href="https://reditgrab.com/">Reddit Video Downloader</a>.</p>
+          <h2>What Input Formats Are Accepted</h2>
+          <p>The search field is flexible. You can enter just the bare username — no prefix, no URL — and it will work. You can also enter <code>u/username</code>, <code>/u/username</code>, or the full profile URL in any of its common forms: <code>reddit.com/user/username</code>, <code>old.reddit.com/user/username</code>, or the <code>https://www.reddit.com/user/username/</code> variant that Reddit's mobile app typically generates when you tap Share on a profile. All are normalized to the same lookup internally.</p>
+          <p>If you're trying to save images from a post or gallery rather than a profile picture, that's handled separately by the <a href="https://reditgrab.com/reddit-image-downloader">Reddit Image Downloader</a>. For Reddit-hosted videos, use the <a href="https://reditgrab.com/">Reddit Video Downloader</a>. For tips on all the URL formats Reddit generates, see <a href="/blog/choosing-the-right-reddit-link" class="orange-tool-link">Choosing the Right Reddit Link</a>. If you're new to this, <a href="/blog/how-to-download-reddit-profile-picture" class="orange-tool-link">the profile picture download guide</a> walks through the whole process from scratch.</p>
         </div>
 
         <div class="content-block">
-          <h2>What You Can (and Can't) Find</h2>
-
-<p>This only works with profile pictures Reddit already serves publicly, without needing a login. That covers most active, public accounts, but not everything.</p></div>
-<div class="content-block">
-<h3>A picture won't be found if:</h3>
-<ul>
-  <li>The account is private, restricted, or age-gated behind a login.</li>
-  <li>The account has been deleted or suspended.</li>
-  <li>Reddit's bot protection is temporarily blocking automated lookups.</li>
-  <li>The account is using a default Snoo icon that Reddit renders in-browser rather than serving as an actual image file.</li>
-</ul>
-<p>
-When any of these apply, the tool says so directly instead of showing a placeholder or a guess.</p> </div>
-
-        <div class="content-block">
-          <h2>Reddit Avatars vs. Uploaded Profile Pictures</h2>
-<p>Reddit accounts show one of two things where a profile picture would normally go: a Snoovatar (Reddit's customizable default character) or a photo the user actually uploaded. Both can appear in search results here if Reddit exposes them publicly, but a purely client-side default icon — one that isn't backed by a real image file on Reddit's servers — has nothing for this tool (or any tool) to retrieve. That's a Reddit platform detail, not a limitation specific to this page.</p> </div>
-
-        <div class="content-block">
-          <h2>Reading Your Result</h2>
-
-<p>The result panel shows more than just the image, so you know exactly what you're getting:</p>
-<ul>
-  <li>
-Dimensions and format — the actual size and file type Reddit is serving, not an estimate.</li>
-  <li>
-Source label — confirms the image is coming from Reddit's own CDN, not a cached or reconstructed copy.</li>
-  <li>
-Open Original — lets you view the file directly at its source URL before deciding to save it.
-</li>
-</ul>
-<p>If a listed size looks small, that's the size Reddit is publicly serving for that account — this tool doesn't upscale or regenerate a higher-resolution version.</p>
-</div>
-
-        <div class="content-block">
-          <h2>Why a Reddit DP May Not Be Available</h2>
-          <p>Reddit's profile architecture evolves regularly, and not every avatar is reachable through public web requests. A profile picture cannot be retrieved when: the user restricted public visibility or the account is marked 18+, the profile has been deleted, deactivated, or banned, Reddit's edge network requires interactive CAPTCHA verification for automated requests, or the account uses the standard platform Snoo placeholder that is rendered client-side instead of being served as a static image file. In all of these cases, the tool reports the avatar as unavailable instead of fabricating a result.</p>
+          <h2>Snoovatar vs. Uploaded Profile Photo — What You'll Get</h2>
+          <p>Reddit accounts show one of two things in the avatar position. An <strong>uploaded profile photo</strong> is an actual image file the user submitted — this is the kind this tool retrieves. A <strong>Snoovatar</strong> is Reddit's customizable illustrated character; when a user has set one, Reddit typically renders it on the client side as an SVG or composites it from layered assets rather than serving it as a single static image file.</p>
+          <p>If a Snoovatar has a backing image that Reddit <a href="/blog/what-public-reddit-media-means" class="orange-tool-link">publicly exposes</a> (some do, some don't), this tool will surface it. If the avatar is rendered purely in-browser with no single downloadable file behind it, there is nothing for any tool to retrieve — that's a Reddit platform constraint, not a limitation of this page specifically. Reddit actually has three distinct avatar types with very different storage behaviour — <a href="/blog/reddit-avatar-types-explained" class="orange-tool-link">this breakdown explains all three</a> and which ones download cleanly.</p>
         </div>
 
         <div class="content-block">
-          <h2>Using This Responsibly</h2>
-          <p>A public profile picture is visible to anyone browsing Reddit, but "visible" isn't the same as "yours to reuse." The image still belongs to whoever posted it. Use downloaded pictures for personal reference rather than republishing or impersonating someone, and don't use this tool to build a record of a specific person without their knowledge.</p>
+          <h2>How the Tool Picks the Best Available Image</h2>
+          <p>Reddit exposes avatar data through several different sources depending on the account type and privacy settings: OpenGraph meta tags on the profile page, the public JSON API, and avatar-specific CDN paths. This tool queries those sources in priority order and selects the highest-resolution version it can confirm is publicly accessible. If the highest-quality path returns an error, it falls back to the next available source rather than failing outright. The result panel always shows you the actual pixel dimensions of what was found, so you know exactly what was retrieved.</p>
+        </div>
+
+        <div class="content-block">
+          <h2>Understanding Your Result</h2>
+          <p>The result card gives you more context than just the image:</p>
+          <ul>
+            <li><strong>Dimensions</strong> — the actual width × height in pixels that Reddit is serving, not an estimate. If the number looks small, that is the size Reddit publicly hosts for that account.</li>
+            <li><strong>Format</strong> — the file type (PNG is most common for Reddit avatars; JPEG also appears).</li>
+            <li><strong>Source label</strong> — confirms the image is being served directly from Reddit's CDN, not cached or reconstructed by this tool.</li>
+            <li><strong>Open Original</strong> — opens the raw CDN URL in a new tab so you can verify the source file before saving.</li>
+          </ul>
+          <p>The tool does not upscale, sharpen, or reconstruct a higher-resolution version. What Reddit publicly serves is what you get.</p>
+        </div>
+
+        <div class="content-block">
+          <h2>Accounts and Profiles That Won't Return a Result</h2>
+          <p>Several situations will cause the lookup to come back empty. The account may have set its profile to private or restricted visibility in Reddit's privacy settings. The account may be suspended, banned, or deleted — deleted accounts typically redirect to a 404, which this tool detects and reports accurately. Some accounts use age-gated profiles that require a Reddit login to view even though the account is technically public. Reddit's bot defense system may also block automated metadata requests intermittently; in those cases retrying a minute or two later often succeeds.</p>
+          <p>In every failure case, the tool tells you the specific reason rather than returning a blank result or a placeholder image. For a detailed explanation of how Reddit's public vs. private access model works, read <a href="/blog/what-public-reddit-media-means" class="orange-tool-link">What "Public Reddit Media" Actually Means</a>.</p>
+        </div>
+
+        <div class="content-block">
+          <h2>A Note on Responsible Use</h2>
+          <p>A profile picture that's <a href="/blog/what-public-reddit-media-means" class="orange-tool-link">publicly visible on Reddit</a> can be viewed by anyone — but that doesn't mean it's free to redistribute, impersonate someone with, or archive without consent. Downloaded avatars are best used for personal reference: confirming you've found the right account, saving a picture someone shared publicly in a context where they'd expect it to be seen. Building collections of profile pictures tied to specific users, or using them in ways the person clearly wouldn't expect, crosses a line that the visibility of a public profile doesn't justify. Use this tool the way you'd want someone to use it if the account were yours.</p>
         </div>
       </div>
     </section>
@@ -464,79 +450,79 @@ Open Original — lets you view the file directly at its source URL before decid
     <section class="content-section" id="faqs">
       <div class="container">
         <h2 class="section-title">Frequently Asked Questions</h2>
-        <p class="section-subtitle">Common questions about finding and downloading Reddit profile photos.</p>
+        <p class="section-subtitle">Specific answers about username lookup, avatar types, and what affects availability.</p>
 
         <div class="faq-list">
           
           <div class="faq-item" id="faq-1">
             <button type="button" class="faq-question" aria-expanded="false">
-              <span>Can I download any Reddit profile picture?</span>
+              <span>What's the difference between a Snoovatar and an uploaded profile picture?</span>
               <svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                 <polyline points="6 9 12 15 18 9"></polyline>
               </svg>
             </button>
             <div class="faq-answer">
-              <p>No. This tool only functions when a profile image is publicly accessible through open web protocols. If an account is private, suspended, deleted, or restricted by Reddit's access controls, the picture cannot and will not be retrieved.</p>
+              <p>A Snoovatar is Reddit's customizable illustrated character — it's built from layered SVG or composited assets rendered on the client side. An uploaded profile picture is an actual image file the user submitted to Reddit. This tool retrieves uploaded photos and any Snoovatar variants that Reddit backs with a real static image file. Snoovatars that are rendered purely in-browser without a single downloadable file have nothing to retrieve.</p>
             </div>
           </div>
 
           <div class="faq-item" id="faq-2">
             <button type="button" class="faq-question" aria-expanded="false">
-              <span>Do I need a Reddit account?</span>
+              <span>Can I look up a Reddit user by username without knowing their profile URL?</span>
               <svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                 <polyline points="6 9 12 15 18 9"></polyline>
               </svg>
             </button>
             <div class="faq-answer">
-              <p>No. You do not need to register, log in, or connect your Reddit account. The service operates completely anonymously without credentials or user tracking.</p>
+              <p>Yes — that's actually the most common way to use this tool. Just type the username (e.g., <code>spez</code>) directly into the search box. No URL, no <code>u/</code> prefix required, though both of those formats also work. The tool constructs the correct profile lookup path automatically.</p>
             </div>
           </div>
 
           <div class="faq-item" id="faq-3">
             <button type="button" class="faq-question" aria-expanded="false">
-              <span>Can I enter a Reddit username instead of a URL?</span>
+              <span>Why did the search return "avatar unavailable" for an active account?</span>
               <svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                 <polyline points="6 9 12 15 18 9"></polyline>
               </svg>
             </button>
             <div class="faq-answer">
-              <p>Yes. You can enter just the username (e.g., <code>spez</code>), the prefixed username (<code>u/spez</code>), or the complete profile link (<code>https://www.reddit.com/user/spez/</code>). The tool automatically normalizes and validates the input.</p>
+              <p>Several things can cause this even for active accounts: the user has a Snoovatar that Reddit renders client-side without a backing static file; the profile's visibility is set to restricted in the user's privacy settings; Reddit's edge network returned a temporary bot-mitigation block for this lookup (retrying usually helps); or the account has no profile picture set at all and is using Reddit's default anonymous icon.</p>
             </div>
           </div>
 
           <div class="faq-item" id="faq-4">
             <button type="button" class="faq-question" aria-expanded="false">
-              <span>Can I download the original Reddit avatar?</span>
+              <span>What resolution will the downloaded profile picture be?</span>
               <svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                 <polyline points="6 9 12 15 18 9"></polyline>
               </svg>
             </button>
             <div class="faq-answer">
-              <p>Yes, provided that Reddit publicly exposes a higher-quality or original version. We use the best publicly available source, followed by other available avatar versions. We never artificially upscale low-resolution images.</p>
+              <p>The result card shows the exact pixel dimensions of the file Reddit is publicly serving before you download. Reddit stores uploaded avatars at various sizes depending on the upload and account type — common sizes are 256×256, 512×512, and occasionally larger. The tool retrieves the best available version; it does not upscale or reconstruct a higher resolution that isn't already in Reddit's CDN.</p>
             </div>
           </div>
 
           <div class="faq-item" id="faq-5">
             <button type="button" class="faq-question" aria-expanded="false">
-              <span>Why can't I find some Reddit profile pictures?</span>
+              <span>Does this tool store or log the usernames I search?</span>
               <svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                 <polyline points="6 9 12 15 18 9"></polyline>
               </svg>
             </button>
             <div class="faq-answer">
-              <p>Reddit regularly updates its profile architecture, frontend components, and bot defense mechanisms. When Reddit blocks automated page fetches or requires login sessions to render user avatars, public discovery is prevented. In such cases, our tool reports that the avatar is unavailable rather than showing fake data.</p>
+              <p>No personally identifiable data or search history is stored by ReditGrab. Each lookup is a stateless request to Reddit's public profile data — the tool acts as a pass-through and doesn't build any record of who was searched or when.</p>
             </div>
           </div>
 
           <div class="faq-item" id="faq-6">
             <button type="button" class="faq-question" aria-expanded="false">
-              <span>Does this work on mobile?</span>
+              <span>Can I download a Reddit profile picture on my phone?</span>
               <svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                 <polyline points="6 9 12 15 18 9"></polyline>
               </svg>
             </button>
             <div class="faq-answer">
-              <p>Yes. The website is fully mobile-first and responsive, optimized for smartphones, tablets, laptops, and large desktop screens.</p>
+              <p>Yes. Open reditgrab.com/reddit-dp-downloader in any mobile browser (Chrome, Safari, Firefox), type in the username, and tap "Find DP". On iOS, the download saves to your Files app or Photos depending on your browser's download behavior. On Android, it goes to your Downloads folder. No app installation is required on either platform.</p>
             </div>
           </div>
 
@@ -548,7 +534,7 @@ Open Original — lets you view the file directly at its source URL before decid
               </svg>
             </button>
             <div class="faq-answer">
-              <p>No. Reddit DP Downloader is an independent utility and is not affiliated with, sponsored by, or endorsed by Reddit, Inc.</p>
+              <p>No. ReditGrab is an independent utility and has no affiliation with, endorsement from, or connection to Reddit, Inc. "Reddit" and the Reddit logo are trademarks of Reddit, Inc. This tool only accesses data that Reddit makes publicly available through standard web requests.</p>
             </div>
           </div>
 
@@ -589,6 +575,7 @@ Open Original — lets you view the file directly at its source URL before decid
           <a href="https://threadsgrab.com/threads-profile-picture-downloader">Threads dp Downloader</a>
           <a href="https://fbvidl.com/facebook-dp-downloader">Facebook DP Downloader</a>
           <a href="https://twitter.threadsgrab.com/twitter-dp-downloader">Twitter DP Downloader</a>
+          <a href="https://pinviddl.com/">Pinterest Video Downloader</a>
         </div>
         <div class="footer-link-group">
           <h2 class="footer-link-title">Legal</h2>
