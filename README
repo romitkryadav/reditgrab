@@ -1,0 +1,89 @@
+# Reddit Video Downloader
+
+ReditGrab is a browser-based **Reddit video downloader** for publicly accessible Reddit posts.
+
+The tool lets users paste a supported Reddit post URL, preview the available video, check available quality options, and download the video as an MP4 when supported.
+
+**Live tool:** https://reditgrab.com/
+
+## Features
+
+* Download videos from publicly accessible Reddit posts
+* Preview the video before downloading
+* Show available video quality options
+* Handle common Reddit URL formats
+* MP4 output when available
+* Separate video/audio stream handling when supported
+* Works in modern desktop and mobile browsers
+* No desktop application required
+* No Reddit account is required for publicly accessible posts
+
+## Supported Reddit URLs
+
+ReditGrab is designed to work with common Reddit URL formats, including:
+
+* `reddit.com/r/...`
+* `old.reddit.com/...`
+* `redd.it/...`
+* Supported `v.redd.it` media URLs
+
+The Reddit post must be publicly accessible. Private communities, deleted posts, login-only content, and unavailable media cannot be retrieved.
+
+## How It Works
+
+Reddit-hosted videos can use separate video and audio streams.
+
+When a supported public post is submitted, the tool identifies the available media and determines which video qualities are available for that particular source.
+
+If a compatible audio stream exists, the download process can combine the available tracks into an MP4 where supported.
+
+The available resolution depends on the original Reddit media rather than being artificially upscaled.
+
+## Basic Usage
+
+1. Open a publicly accessible Reddit video post.
+2. Copy the post URL.
+3. Open [ReditGrab](https://reditgrab.com/).
+4. Paste the Reddit URL.
+5. Preview the detected video.
+6. Select an available quality if multiple options are provided.
+7. Download the MP4.
+
+## Limitations
+
+ReditGrab is intended for publicly accessible Reddit-hosted media.
+
+It cannot access:
+
+* Private communities
+* Deleted Reddit posts
+* Content requiring Reddit authentication
+* Media that is no longer publicly available
+* Videos hosted exclusively on external platforms
+
+Available resolutions and audio depend on the source media.
+
+## Related Reddit Tools
+
+ReditGrab also provides separate tools for other Reddit media:
+
+* [Reddit Image Downloader](https://reditgrab.com/reddit-image-downloader)
+* [Reddit DP Downloader](https://reditgrab.com/reddit-dp-downloader)
+
+## Project Website
+
+Visit the live project:
+
+**https://reditgrab.com/**
+
+## About
+
+ReditGrab is an independent web project focused on creating simple browser-based tools for working with publicly accessible social-media content.
+
+The project is developed by **Romit Kr Yadav**.
+
+## Disclaimer
+
+ReditGrab is not affiliated with, endorsed by, or associated with Reddit, Inc.
+
+Users are responsible for making sure that their use of downloaded media complies with applicable laws, copyright requirements, and the rights of the original content owner.
