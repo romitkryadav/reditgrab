@@ -47,7 +47,7 @@
         {
           "@type": "WebApplication",
           "@id": "https://reditgrab.com/reddit-dp-downloader#webapplication",
-          "name": "ReditGrab Ảnh đại diện Reddit Downloader",
+          "name": "ReditGrab Trình tải ảnh đại diện Reddit",
           "url": "https://reditgrab.com/reddit-dp-downloader",
           "description": "Look up a public Reddit profile by username or link, preview the profile picture, and save it when Reddit makes the image publicly available.",
           "applicationCategory": "UtilitiesApplication",
@@ -81,7 +81,7 @@
             {
               "@type": "ListItem",
               "position": 2,
-              "name": "Ảnh đại diện Reddit Downloader",
+              "name": "Trình tải ảnh đại diện Reddit",
               "item": "https://reditgrab.com/reddit-dp-downloader"
             }
           ]
@@ -112,13 +112,13 @@
       </a>
 
       <!-- Desktop nav -->
-      <nav class="nav-desktop" aria-label="Primary navigation">
+      <nav class="nav-desktop" aria-label="Điều hướng chính">
         <a href="/vi/" class="nav-links-item">Trình tải video</a>
         <a href="/vi/reddit-image-downloader.html" class="nav-links-item">Trình tải ảnh</a>
         <a href="/vi/reddit-dp-downloader.html" class="nav-links-item active" aria-current="page">Trình tải DP</a>
         <a href="/about" class="nav-links-item">Giới thiệu</a>
         <a href="/contact" class="nav-links-item">Liên hệ</a>
-        <button type="button" class="btn-icon" id="theme-toggle-btn" aria-label="Toggle dark/light theme" title="Toggle theme">
+        <button type="button" class="btn-icon" id="theme-toggle-btn" aria-label="Chuyển đổi giao diện sáng/tối" title="Đổi giao diện">
           <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2">
             <circle cx="12" cy="12" r="5"></circle>
             <line x1="12" y1="1" x2="12" y2="3"></line>
@@ -134,7 +134,7 @@
       </nav>
 
       <!-- Hamburger button (mobile only) -->
-      <button class="nav-hamburger" id="nav-hamburger" aria-expanded="false" aria-controls="nav-mobile-panel" aria-label="Open navigation menu">
+      <button class="nav-hamburger" id="nav-hamburger" aria-expanded="false" aria-controls="nav-mobile-panel" aria-label="Mở menu điều hướng">
         <span class="bar"></span>
         <span class="bar"></span>
         <span class="bar"></span>
@@ -142,7 +142,7 @@
     </div>
 
     <!-- Mobile dropdown panel -->
-    <nav class="nav-mobile-panel" id="nav-mobile-panel" aria-label="Mobile navigation">
+    <nav class="nav-mobile-panel" id="nav-mobile-panel" aria-label="Điều hướng trên thiết bị di động">
       <a href="/vi/">Trình tải video</a>
       <a href="/vi/reddit-image-downloader.html">Trình tải ảnh</a>
       <a href="/vi/reddit-dp-downloader.html">Trình tải DP</a>
@@ -174,8 +174,8 @@
     <!-- Hero Section -->
     <section class="hero-section" id="hero-section">
       <div class="container">
-        <h1 class="hero-title" id="main-title">Ảnh đại diện Reddit Downloader</h1>
-          <p class="hero-subtitle">Enter a Reddit username or profile link to preview and save the public profile picture (DP). No Reddit login needed.</p>
+        <h1 class="hero-title" id="main-title">Trình tải ảnh đại diện Reddit</h1>
+          <p class="hero-subtitle">Nhập tên người dùng Reddit hoặc liên kết hồ sơ để xem trước và lưu ảnh đại diện công khai (DP). Không cần đăng nhập Reddit.</p>
         <nav class="tool-tabs" aria-label="Downloader tools">
           <a class="tool-tab" href="/vi/" aria-label="Trình tải video" title="Trình tải video">
             <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="14" height="14" rx="2"></rect><path d="m17 10 4-2v8l-4-2z"></path></svg>
@@ -215,7 +215,7 @@
             </button>
           </form>
 
-          <p class="hero-trust-line" style="margin-top:0.75rem;font-size:0.85rem;color:var(--text-subtle,#94a3b8);text-align:center;">Public profiles only. Accepts <code>spez</code>, <code>u/spez</code> or a <code>reddit.com/user/</code> link.</p>
+          <p class="hero-trust-line" style="margin-top:0.75rem;font-size:0.85rem;color:var(--text-subtle,#94a3b8);text-align:center;">Chỉ hỗ trợ hồ sơ công khai. Chấp nhận <code>spez</code>, <code>u/spez</code> or a <code>reddit.com/user/</code> link.</p>
         </div>
         </div>
       </div>
@@ -227,8 +227,8 @@
       <!-- Loading State -->
       <div class="loading-box" id="loading-container" role="status" aria-live="polite" hidden>
         <div class="spinner" aria-hidden="true"></div>
-        <div class="loading-text">Finding Reddit profile...</div>
-        <div class="loading-status-detail" id="loading-status-detail">Checking public profile...</div>
+        <div class="loading-text">Đang tìm hồ sơ Reddit...</div>
+        <div class="loading-status-detail" id="loading-status-detail">Đang kiểm tra hồ sơ công khai...</div>
       </div>
 
       <!-- Error State -->
@@ -241,9 +241,9 @@
           </svg>
         </div>
         <div class="error-content">
-          <div class="error-title">Notice</div>
-          <p class="error-message" id="error-message">Please enter a valid Reddit username or profile URL.</p>
-          <button type="button" class="error-action-btn" id="error-action-btn">Try Again</button>
+          <div class="error-title">Lưu ý</div>
+          <p class="error-message" id="error-message">Vui lòng nhập tên người dùng Reddit hoặc URL hồ sơ hợp lệ.</p>
+          <button type="button" class="error-action-btn" id="error-action-btn">Thử lại</button>
         </div>
       </div>
 
@@ -260,7 +260,7 @@
         </div>
 
         <div class="profile-layout">
-          <!-- Avatar Preview (Click to Enlarge) -->
+          <!-- Avatar Preview (Click to Phóng to) -->
           <div class="avatar-preview-wrap" id="avatar-preview-wrap" title="Click to enlarge image" tabindex="0" role="button" aria-label="Click to enlarge avatar">
             <img id="result-avatar-img" class="avatar-img" src="" alt="Reddit profile picture" loading="eager">
             <div class="zoom-hint">
@@ -270,7 +270,7 @@
                 <line x1="11" y1="8" x2="11" y2="14"></line>
                 <line x1="8" y1="11" x2="14" y2="11"></line>
               </svg>
-              <span>Enlarge</span>
+              <span>Phóng to</span>
             </div>
           </div>
 
@@ -279,7 +279,7 @@
             <div>
               <p class="profile-username" id="result-username">u/example</p>
               <a href="#" class="profile-link" id="result-profile-link" target="_blank" rel="noopener noreferrer">
-                <span>View on Reddit</span>
+                <span>Xem trên Reddit</span>
                 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                   <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
                   <polyline points="15 3 21 3 21 9"></polyline>
@@ -292,7 +292,7 @@
             <div class="meta-tags-list">
               <span class="meta-pill" id="result-dim-pill"></span>
               <span class="meta-pill" id="result-format-pill">PNG</span>
-              <span class="meta-pill">Reddit CDN</span>
+              <span class="meta-pill">CDN Reddit</span>
             </div>
 
             <!-- Action Buttons -->
@@ -324,31 +324,31 @@
     <section class="content-section" id="how-it-works">
       <div class="container">
         <h2 class="section-title">Cách tải ảnh đại diện Reddit</h2>
-        <p class="section-subtitle">Four steps from username to saved file.</p>
+        <p class="section-subtitle">Bốn bước từ tên người dùng đến tệp đã lưu.</p>
 
         <div class="steps-grid">
           <div class="step-card" id="step-1">
             <div class="step-number" aria-hidden="true">1</div>
             <h3 class="step-card-title">Sao chép tên người dùng hoặc liên kết hồ sơ</h3>
-            <p class="step-card-text">Open the profile in Reddit and note the username, or use the profile's share option to copy its link.</p>
+            <p class="step-card-text">Mở hồ sơ trên Reddit và ghi lại tên người dùng, hoặc dùng tùy chọn chia sẻ của hồ sơ để sao chép liên kết.</p>
           </div>
 
           <div class="step-card" id="step-2">
             <div class="step-number" aria-hidden="true">2</div>
-            <h3 class="step-card-title">Dán it above</h3>
-            <p class="step-card-text">Enter the username or link and press <strong>Tìm ảnh đại diện</strong>.</p>
+            <h3 class="step-card-title">Dán vào ô bên trên</h3>
+            <p class="step-card-text">Nhập tên người dùng hoặc liên kết rồi nhấn <strong>Tìm ảnh đại diện</strong>.</p>
           </div>
 
           <div class="step-card" id="step-3">
             <div class="step-number" aria-hidden="true">3</div>
             <h3 class="step-card-title">Kiểm tra bản xem trước</h3>
-            <p class="step-card-text">ReditGrab shows the picture with its pixel size and file type. Click the image to enlarge it, or use View on Reddit to confirm it's the right account.</p>
+            <p class="step-card-text">ReditGrab shows the picture with its pixel size and file type. Click the image to enlarge it, or use Xem trên Reddit to confirm it's the right account.</p>
           </div>
 
           <div class="step-card" id="step-4">
             <div class="step-number" aria-hidden="true">4</div>
             <h3 class="step-card-title">Lưu ảnh</h3>
-            <p class="step-card-text"><strong>Tải ảnh đại diện</strong> saves the file to your device. <strong>Mở bản gốc</strong> opens the image alone in a new tab if you'd rather save it yourself.</p>
+            <p class="step-card-text"><strong>Tải ảnh đại diện</strong> sẽ lưu tệp vào thiết bị. <strong>Mở bản gốc</strong> mở riêng ảnh trong tab mới nếu bạn muốn tự lưu.</p>
           </div>
         </div>
       </div>
@@ -361,19 +361,19 @@
 
           <div class="content-block" id="what-it-does">
             <h2>Công cụ này làm gì</h2>
-            <p>A Reddit DP (display picture) is the small image shown beside a username on its profile, posts and comments. ReditGrab looks up a public profile, shows the picture Reddit currently provides for it, and lets you save it as an image file.</p>
-            <p>No Reddit account is needed. People use it to keep a copy of their own avatar, to confirm they've found the right account before replying or reporting, and to get a closer look at a picture that's tiny in the app.</p>
+            <p>DP Reddit (display picture) là ảnh nhỏ hiển thị bên cạnh tên người dùng trên hồ sơ, bài đăng và bình luận. ReditGrab tìm hồ sơ công khai, hiển thị ảnh mà Reddit hiện cung cấp và cho phép bạn lưu ảnh dưới dạng tệp hình ảnh.</p>
+            <p>Không cần tài khoản Reddit. Bạn có thể dùng công cụ để lưu bản sao avatar của mình, xác nhận đúng tài khoản trước khi trả lời hoặc báo cáo, hoặc xem rõ hơn một ảnh quá nhỏ trong ứng dụng.</p>
           </div>
 
           <div class="content-block" id="accepted-inputs">
             <h2>Bạn có thể nhập gì</h2>
-            <p>ReditGrab accepts a username with or without a prefix, and common profile links:</p>
+            <p>ReditGrab chấp nhận tên người dùng có hoặc không có tiền tố và các liên kết hồ sơ phổ biến:</p>
             <ul>
               <li><code>spez</code></li>
               <li><code>u/spez</code> or <code>/u/spez</code></li>
               <li><code>reddit.com/user/spez</code>, <code>www.reddit.com/user/spez</code> or <code>old.reddit.com/user/spez</code></li>
             </ul>
-            <p>Links to posts, subreddits (<code>r/…</code>) and galleries aren't profile links. For media inside posts, use the <a href="/vi/reddit-image-downloader.html" class="orange-tool-link">Reddit Trình tải ảnh</a> or the <a href="/vi/" class="orange-tool-link">Reddit Trình tải video</a>.</p>
+            <p>Liên kết đến bài đăng, subreddit (<code>r/…</code>) và bộ sưu tập không phải liên kết hồ sơ. Đối với nội dung media trong bài đăng, hãy dùng <a href="/vi/reddit-image-downloader.html" class="orange-tool-link">Reddit Trình tải ảnh</a> or the <a href="/vi/" class="orange-tool-link">Reddit Trình tải video</a>.</p>
           </div>
 
         </div>
@@ -387,22 +387,22 @@
 
           <div class="content-block" id="which-picture">
             <h2>Bạn sẽ nhận được ảnh nào</h2>
-            <p>The file you receive is the one Reddit makes publicly available for that account. ReditGrab shows its pixel dimensions and file type before you save, and it doesn't enhance or upscale anything, so a small original stays small. That's why this page doesn't promise "HD" or "original quality": it depends on the account's image.</p>
-            <p>Accounts usually fall into one of three cases:</p>
+            <p>Tệp bạn nhận được là phiên bản Reddit cung cấp công khai cho tài khoản đó. ReditGrab hiển thị kích thước pixel và loại tệp trước khi lưu, đồng thời không cải thiện hay phóng to ảnh, nên ảnh gốc nhỏ vẫn sẽ nhỏ. Vì vậy trang này không hứa hẹn "HD" hay "chất lượng gốc": điều đó phụ thuộc vào ảnh của tài khoản.</p>
+            <p>Các tài khoản thường thuộc một trong ba trường hợp:</p>
             <ul>
-              <li><strong>Uploaded picture</strong> — the image the user chose, at the size Reddit serves publicly.</li>
+              <li><strong>Ảnh do người dùng tải lên</strong> — the image the user chose, at the size Reddit serves publicly.</li>
               <li><strong>Snoovatar</strong> — Reddit's customizable character. ReditGrab returns the static image Reddit publishes for it, when one exists. Some Snoovatars have no single downloadable file, so those lookups may come back empty.</li>
-              <li><strong>Default avatar</strong> — the generic Reddit icon given to accounts with no picture. It's a placeholder, not something the user chose.</li>
+              <li><strong>Avatar mặc định</strong> — the generic Reddit icon given to accounts with no picture. It's a placeholder, not something the user chose.</li>
             </ul>
-            <p>For a deeper look, see <a href="/blog/reddit-avatar-types-explained" class="orange-tool-link">Reddit avatar types explained</a>.</p>
+            <p>Xem thêm tại <a href="/blog/reddit-avatar-types-explained" class="orange-tool-link">Giải thích các loại avatar Reddit</a>.</p>
           </div>
 
           <div class="content-block" id="download-vs-screenshot">
-            <h2>DP, profile picture, avatar: the same thing?</h2>
-            <p>Mostly, yes. "DP" is shorthand for display picture, "profile picture" is the everyday term, and "avatar" is common in Reddit's interface and documentation. "Profile photo" and "profile image" mean the same. What matters is which kind of avatar an account uses, covered in the section above.</p>
+            <h2>DP, ảnh hồ sơ và avatar: có giống nhau không?</h2>
+            <p>Về cơ bản là có. "DP" là viết tắt của display picture, "ảnh hồ sơ" là cách gọi thông dụng và "avatar" thường xuất hiện trong giao diện và tài liệu của Reddit. "Ảnh hồ sơ" và "hình ảnh hồ sơ" có cùng ý nghĩa. Điều quan trọng là tài khoản đang sử dụng loại avatar nào, như đã giải thích ở trên.</p>
 
             <h3 style="margin-top:1.5rem;">Tải xuống và chụp màn hình</h3>
-            <p>A screenshot captures what your screen draws: the circular crop, the interface around it and your display's scaling. A download saves the image file itself, with nothing else around it. Whether that file is larger than what you see on screen depends on what Reddit serves for the account — check the dimensions before you save.</p>
+            <p>Ảnh chụp màn hình ghi lại những gì màn hình hiển thị: phần ảnh tròn, giao diện xung quanh và tỷ lệ hiển thị. Tải xuống lưu chính tệp ảnh, không kèm các thành phần xung quanh. Tệp có lớn hơn hình bạn thấy trên màn hình hay không phụ thuộc vào phiên bản Reddit cung cấp cho tài khoản — hãy kiểm tra kích thước trước khi lưu.</p>
           </div>
 
         </div>
@@ -416,25 +416,25 @@
 
           <div class="content-block" id="mobile-guide">
             <h2>Trên Android, iPhone và máy tính</h2>
-            <p>It runs in the browser on all three, with no app to install.</p>
+            <p>Công cụ hoạt động trên trình duyệt ở cả ba thiết bị và không cần cài ứng dụng.</p>
             <ul>
-              <li><strong>Android:</strong> In the Reddit app, open the profile and copy its link or username from the share options. Dán it here, tap Tìm ảnh đại diện, then Tải ảnh đại diện. The file usually lands in Downloads.</li>
-              <li><strong>iPhone and iPad:</strong> Same steps in Safari. Safari normally saves downloads to the Files app; to add the picture to Photos, open it and use the Share sheet.</li>
-              <li><strong>Desktop:</strong> Dán the username or link, click Tìm ảnh đại diện, then Tải ảnh đại diện. Mở bản gốc shows the raw file in a new tab if you'd rather save it yourself.</li>
+              <li><strong>Android:</strong> Trong ứng dụng Reddit, mở hồ sơ rồi sao chép liên kết hoặc tên người dùng từ tùy chọn chia sẻ. Dán vào đây, nhấn Tìm ảnh đại diện rồi Tải ảnh đại diện. Tệp thường được lưu trong thư mục Tải xuống.</li>
+              <li><strong>iPhone and iPad:</strong> Thực hiện các bước tương tự trong Safari. Safari thường lưu tệp tải xuống vào ứng dụng Tệp; để thêm ảnh vào Ảnh, mở tệp và dùng menu Chia sẻ.</li>
+              <li><strong>Máy tính:</strong> Dán tên người dùng hoặc liên kết, nhấp Tìm ảnh đại diện rồi Tải ảnh đại diện. Mở bản gốc sẽ mở tệp gốc trong tab mới nếu bạn muốn tự lưu.</li>
             </ul>
           </div>
 
           <div class="content-block" id="when-not-found">
             <h2>Khi không tìm thấy ảnh</h2>
-            <p>A lookup can come back empty for ordinary reasons:</p>
+            <p>Việc tìm kiếm có thể không trả kết quả vì những lý do thông thường:</p>
             <ul>
-              <li>The username is misspelled or doesn't exist.</li>
-              <li>The account was deleted or suspended, so Reddit no longer shows a profile.</li>
-              <li>The account only has the default avatar, so there's no chosen picture to save.</li>
-              <li>Reddit won't show the profile to logged-out visitors.</li>
-              <li>Reddit refused the request for a moment — wait a minute and try again.</li>
+              <li>Tên người dùng bị nhập sai hoặc không tồn tại.</li>
+              <li>Tài khoản đã bị xóa hoặc đình chỉ nên Reddit không còn hiển thị hồ sơ.</li>
+              <li>Tài khoản chỉ có avatar mặc định nên không có ảnh do người dùng chọn để lưu.</li>
+              <li>Reddit không hiển thị hồ sơ cho khách truy cập chưa đăng nhập.</li>
+              <li>Reddit tạm thời từ chối yêu cầu — hãy đợi một phút rồi thử lại.</li>
             </ul>
-            <p>If lookups start failing across many accounts, Reddit may have changed how it exposes avatars. For what "public" covers, see <a href="/blog/what-public-reddit-media-means" class="orange-tool-link">what public Reddit media means</a>.</p>
+            <p>Nếu việc tìm kiếm bắt đầu thất bại với nhiều tài khoản, Reddit có thể đã thay đổi cách cung cấp avatar. Để hiểu "công khai" bao gồm những gì, xem <a href="/blog/what-public-reddit-media-means" class="orange-tool-link">what public Reddit media means</a>.</p>
           </div>
 
         </div>
@@ -448,13 +448,13 @@
 
           <div class="content-block" id="responsible-use">
             <h2>Sử dụng ảnh đại diện có trách nhiệm</h2>
-            <p>Good reasons to download one: backing up your own avatar, checking you have the right account, or keeping a personal reference. A picture being publicly visible doesn't make it free to reuse. Don't use someone else's picture to impersonate or harass them, or to build collections of pictures tied to specific people.</p>
+            <p>Những lý do hợp lý để tải ảnh gồm sao lưu avatar của bạn, kiểm tra đúng tài khoản hoặc lưu làm tư liệu cá nhân. Việc một ảnh được công khai không có nghĩa là bạn được tự do sử dụng lại. Không dùng ảnh của người khác để mạo danh, quấy rối hoặc tạo bộ sưu tập ảnh gắn với những người cụ thể.</p>
           </div>
 
           <div class="content-block" id="privacy">
             <h2>Quyền riêng tư</h2>
-            <p>ReditGrab doesn't ask you to sign in or for a Reddit password. To run a lookup it receives the username or link you enter, and requests may be handled by infrastructure providers such as Cloudflare. The <a href="/privacy" class="orange-tool-link">Quyền riêng tư Policy</a> covers what the site collects, including analytics and browser storage.</p>
-            <p>ReditGrab is an independent project. It is not affiliated with, endorsed by or sponsored by Reddit, Inc.</p>
+            <p>ReditGrab không yêu cầu bạn đăng nhập hoặc cung cấp mật khẩu Reddit. Để thực hiện tìm kiếm, hệ thống nhận tên người dùng hoặc liên kết bạn nhập và các yêu cầu có thể được xử lý qua nhà cung cấp hạ tầng như Cloudflare. Trang <a href="/privacy" class="orange-tool-link">Quyền riêng tư Policy</a> giải thích những dữ liệu website thu thập, bao gồm phân tích và bộ nhớ trình duyệt.</p>
+            <p>ReditGrab là một dự án độc lập. Dự án không liên kết, không được Reddit, Inc. chứng thực hoặc tài trợ.</p>
           </div>
 
         </div>
@@ -462,7 +462,7 @@
         <!-- Thêm công cụ từ ReditGrab (full-width) -->
         <div class="content-block" id="more-tools" style="max-width:1040px;margin:0 auto;">
           <h2>Thêm công cụ từ ReditGrab</h2>
-          <p>Save images from posts and galleries with the <a href="/vi/reddit-image-downloader.html" class="orange-tool-link">Reddit Trình tải ảnh</a>, download Reddit-hosted videos with the <a href="/vi/" class="orange-tool-link">Reddit Trình tải video</a>, or read about the project on the <a href="/about" class="orange-tool-link">Giới thiệu ReditGrab</a> page.</p>
+          <p>Lưu ảnh từ bài đăng và bộ sưu tập bằng <a href="/vi/reddit-image-downloader.html" class="orange-tool-link">Reddit Trình tải ảnh</a>, tải video được lưu trữ trên Reddit bằng <a href="/vi/" class="orange-tool-link">Reddit Trình tải video</a> hoặc tìm hiểu về dự án tại trang <a href="/about" class="orange-tool-link">Giới thiệu ReditGrab</a> .</p>
         </div>
       </div>
     </section>
@@ -470,8 +470,8 @@
     <!-- FAQ Section -->
     <section class="content-section" id="faqs">
       <div class="container">
-        <h2 class="section-title">Reddit profile picture downloader — questions</h2>
-        <p class="section-subtitle">Các câu hỏi thường gặp about username lookup, avatar types and what affects availability.</p>
+        <h2 class="section-title">Trình tải ảnh đại diện Reddit — câu hỏi thường gặp</h2>
+        <p class="section-subtitle">Các câu hỏi thường gặp về tìm kiếm tên người dùng, loại avatar và những yếu tố ảnh hưởng đến khả năng truy cập.</p>
 
         <div class="faq-list">
 
@@ -481,7 +481,7 @@
               <svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"></polyline></svg>
             </button>
             <div class="faq-answer" id="faq-answer-1">
-              <p>DP stands for display picture: the image shown beside a username on its Reddit profile, posts and comments. Some people call it a profile picture or avatar.</p>
+              <p>DP là viết tắt của display picture: ảnh hiển thị bên cạnh tên người dùng trên hồ sơ, bài đăng và bình luận Reddit. Một số người gọi đó là ảnh hồ sơ hoặc avatar.</p>
             </div>
           </div>
 
@@ -491,7 +491,7 @@
               <svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"></polyline></svg>
             </button>
             <div class="faq-answer" id="faq-answer-2">
-              <p>A username (<code>spez</code>), a prefixed name (<code>u/spez</code>) or a profile link such as <code>reddit.com/user/spez</code>. Post, subreddit and gallery links aren't profile links.</p>
+              <p>Tên người dùng (<code>spez</code>) hoặc tên có tiền tố (<code>u/spez</code>) hoặc liên kết hồ sơ như <code>reddit.com/user/spez</code>. Liên kết bài đăng, subreddit và bộ sưu tập không phải liên kết hồ sơ.</p>
             </div>
           </div>
 
@@ -501,7 +501,7 @@
               <svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"></polyline></svg>
             </button>
             <div class="faq-answer" id="faq-answer-3">
-              <p>No. ReditGrab only looks up what Reddit shows publicly. A profile Reddit hides from logged-out visitors can't be retrieved.</p>
+              <p>Không. ReditGrab chỉ tìm những gì Reddit hiển thị công khai. Không thể truy xuất hồ sơ mà Reddit ẩn với khách chưa đăng nhập.</p>
             </div>
           </div>
 
@@ -511,7 +511,7 @@
               <svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"></polyline></svg>
             </button>
             <div class="faq-answer" id="faq-answer-4">
-              <p>Yes, if your profile is public. Enter your username like any other. If you uploaded the image yourself, your original file is still the best copy, since Reddit may serve a different size.</p>
+              <p>Có, nếu hồ sơ của bạn là công khai. Nhập tên người dùng như bình thường. Nếu chính bạn đã tải ảnh lên, tệp gốc vẫn là bản tốt nhất vì Reddit có thể cung cấp kích thước khác.</p>
             </div>
           </div>
 
@@ -521,7 +521,7 @@
               <svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"></polyline></svg>
             </button>
             <div class="faq-answer" id="faq-answer-5">
-              <p>You can look up any public profile. Whether you should reuse the image is a separate question: don't impersonate, harass or profile people with it. A public picture is still the owner's.</p>
+              <p>Bạn có thể tìm bất kỳ hồ sơ công khai nào. Việc có nên sử dụng lại ảnh hay không là chuyện khác: không dùng ảnh để mạo danh, quấy rối hoặc lập hồ sơ về người khác. Ảnh công khai vẫn thuộc về chủ sở hữu.</p>
             </div>
           </div>
 
@@ -531,7 +531,7 @@
               <svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"></polyline></svg>
             </button>
             <div class="faq-answer" id="faq-answer-6">
-              <p>It's whatever size Reddit serves publicly for that account. The result shows the dimensions and file type before you download. ReditGrab doesn't upscale or enhance, so a small picture stays small.</p>
+              <p>Ảnh có kích thước mà Reddit cung cấp công khai cho tài khoản đó. Kết quả hiển thị kích thước và loại tệp trước khi tải. ReditGrab không phóng to hay cải thiện ảnh, vì vậy ảnh nhỏ vẫn sẽ nhỏ.</p>
             </div>
           </div>
 
@@ -541,7 +541,7 @@
               <svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"></polyline></svg>
             </button>
             <div class="faq-answer" id="faq-answer-7">
-              <p>Common causes: a misspelled username, a deleted or suspended account, an account with only the default avatar, a profile hidden from logged-out visitors, or a temporary refusal from Reddit. Check the spelling, then wait a minute and retry.</p>
+              <p>Các nguyên nhân thường gặp gồm tên người dùng sai, tài khoản đã xóa hoặc đình chỉ, tài khoản chỉ có avatar mặc định, hồ sơ bị ẩn với khách chưa đăng nhập hoặc Reddit tạm thời từ chối yêu cầu. Kiểm tra chính tả, đợi một phút rồi thử lại.</p>
             </div>
           </div>
 
@@ -551,7 +551,7 @@
               <svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"></polyline></svg>
             </button>
             <div class="faq-answer" id="faq-answer-8">
-              <p>Yes. Open ReditGrab in your phone's browser — no app needed. Where the file lands depends on the browser. Android usually uses Downloads, and Safari on iPhone usually uses Files.</p>
+              <p>Có. Mở ReditGrab trong trình duyệt điện thoại — không cần ứng dụng. Vị trí lưu tệp phụ thuộc vào trình duyệt. Android thường dùng thư mục Tải xuống, còn Safari trên iPhone thường dùng ứng dụng Tệp.</p>
             </div>
           </div>
 
@@ -561,7 +561,7 @@
               <svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"></polyline></svg>
             </button>
             <div class="faq-answer" id="faq-answer-9">
-              <p>ReditGrab doesn't require an account or Reddit login. To run a lookup it receives the username or link you enter, and requests may be handled by providers such as Cloudflare. The <a href="/privacy" class="orange-tool-link">Quyền riêng tư Policy</a> has the details.</p>
+              <p>ReditGrab không yêu cầu tài khoản hoặc đăng nhập Reddit. Để tìm kiếm, hệ thống nhận tên người dùng hoặc liên kết bạn nhập và các yêu cầu có thể được xử lý bởi các nhà cung cấp như Cloudflare. Trang <a href="/privacy" class="orange-tool-link">Quyền riêng tư Policy</a> có đầy đủ thông tin.</p>
             </div>
           </div>
 
@@ -571,12 +571,12 @@
 
   </main>
 
-  <!-- Click-to-Enlarge Modal -->
+  <!-- Click-to-Phóng to Modal -->
   <div class="modal-overlay" id="preview-modal" role="dialog" aria-modal="true" aria-labelledby="modal-title" hidden>
     <div class="modal-content">
       <div class="modal-header">
         <p class="modal-title" id="modal-title">Ảnh đại diện Reddit</p>
-        <button type="button" class="modal-close-btn" id="modal-close-btn" aria-label="Close image preview">
+        <button type="button" class="modal-close-btn" id="modal-close-btn" aria-label="Đóng bản xem trước ảnh">
           <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
             <line x1="18" y1="6" x2="6" y2="18"></line>
             <line x1="6" y1="6" x2="18" y2="18"></line>
