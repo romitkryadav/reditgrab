@@ -144,7 +144,7 @@
             "name": "¿Funciona con vídeos de YouTube, Streamable u otros vídeos incrustados?",
             "acceptedAnswer": {
               "@type": "Answer",
-              "text": "No. Those aren't hosted by Reddit, so use a downloader for the original site."
+              "text": "No. Esos vídeos no están alojados en Reddit, así que debes usar un descargador compatible con el sitio original."
             }
           },
           {
@@ -152,7 +152,7 @@
             "name": "¿Por qué no usar simplemente el botón Guardar de Reddit?",
             "acceptedAnswer": {
               "@type": "Answer",
-              "text": "Save adds the post to your saved list inside your Reddit account. It doesn't create a video file on your device, and you lose it if the post is deleted."
+              "text": "Guardar añade la publicación a tu lista de guardados de Reddit. No crea un archivo de vídeo en tu dispositivo y puedes perder el acceso si la publicación se elimina."
             }
           }
         ]
@@ -336,7 +336,7 @@
                 preload="metadata"
                 controlslist="nodownload"
                 referrerpolicy="no-referrer"
-              >Your browser does not support HTML5 video preview.</video>
+              >Tu navegador no admite la vista previa de vídeo HTML5.</video>
               <audio id="audio-synced" preload="auto" playsinline referrerpolicy="no-referrer"></audio>
 
               <button type="button" class="btn-enable-audio hidden" id="btn-enable-audio" title="Activar el sonido del vídeo">
@@ -499,7 +499,7 @@
                 <path d="m17 10 4-2v8l-4-2z"></path>
               </svg>
             </div>
-            <h3>Paste &amp; Obtener vídeo</h3>
+            <h3>Pega y obtén el vídeo</h3>
             <p>Pega el enlace en el campo de arriba y pulsa Obtener vídeo. ReditGrab comprueba el contenido multimedia público de la publicación y busca un vídeo alojado en Reddit.</p>
           </article>
           <article class="step-card">
@@ -512,7 +512,7 @@
               </svg>
             </div>
             <h3>Preview &amp; Descargar</h3>
-            <p>Confirm the clip in the player, unmute to check for sound, pick a quality from the menu, and click Descargar to save the MP4 to your device.</p>
+            <p>Confirma el clip en el reproductor, activa el sonido para comprobar el audio, elige una calidad en el menú y pulsa Descargar para guardar el MP4 en tu dispositivo.</p>
           </article>
         </div>
       </div>
@@ -522,7 +522,7 @@
     <section class="content-section" id="how-it-works">
       <div class="container">
 
-        <!-- Row 1: What happens + Supported links -->
+        <!-- Row 1: Qué ocurre + enlaces compatibles -->
         <div class="content-cols">
           <div class="content-block">
             <h2>Qué ocurre después de pegar un enlace de vídeo de Reddit</h2>
@@ -539,7 +539,7 @@
               <li><code>redd.it/…</code> — enlaces cortos de la aplicación que se amplían automáticamente</li>
               <li><code>v.redd.it/…</code> — enlaces directos al vídeo</li>
             </ul>
-            <p>Crossposts work if the original is a Reddit-hosted video. Photo galleries belong in the <a class="orange-tool-link" href="/reddit-image-downloader">Reddit Descargar imágenes</a>, profile pictures in the <a class="orange-tool-link" href="/reddit-dp-downloader">Reddit Foto de perfil</a>, and videos that are only embeds from YouTube or Streamable aren't hosted by Reddit. Not sure? See <a class="orange-tool-link" href="/blog/choosing-the-right-reddit-link">Choosing the Right Reddit Link</a>.</p>
+            <p>Los crossposts funcionan si el original es un vídeo alojado en Reddit. Para galerías de fotos usa el <a class="orange-tool-link" href="/reddit-image-downloader">Descargador de imágenes de Reddit</a>, para fotos de perfil usa el <a class="orange-tool-link" href="/reddit-dp-downloader">Descargador de fotos de perfil de Reddit</a>, y los vídeos que solo están incrustados desde YouTube o Streamable no están alojados en Reddit. ¿No estás seguro? Consulta <a class="orange-tool-link" href="/blog/choosing-the-right-reddit-link">Cómo elegir el enlace correcto de Reddit</a>.</p>
           </div>
         </div>
 
@@ -548,13 +548,13 @@
           <div class="content-block">
             <h2>Descargar vídeos de Reddit con sonido</h2>
             <p>Si la publicación original tiene audio, normalmente sí. Reddit almacena el vídeo y el audio como archivos separados en lugar de un único archivo. Por eso algunas herramientas descargan clips sin sonido: solo obtuvieron la pista de vídeo. ReditGrab solicita ambas pistas cuando existen y las combina en un único MP4 cuando es posible.</p>
-            <p>Un vídeo descargado puede seguir sin sonido por dos motivos. El primero es que nunca tuviera audio: un GIF subido como vídeo, una grabación de pantalla sin micrófono o un clip al que se le quitó el sonido. El segundo es menos frecuente: la publicación tiene una pista de audio, pero no pudo combinarse en ese intento. La tarjeta de resultado indica qué caso se aplica antes de descargar. Más información: <a class="orange-tool-link" href="/blog/why-reddit-videos-have-no-sound">Why Vídeo de Reddits Have No Sound</a>.</p>
+            <p>Un vídeo descargado puede seguir sin sonido por dos motivos. El primero es que nunca tuviera audio: un GIF subido como vídeo, una grabación de pantalla sin micrófono o un clip al que se le quitó el sonido. El segundo es menos frecuente: la publicación tiene una pista de audio, pero no pudo combinarse en ese intento. La tarjeta de resultado indica qué caso se aplica antes de descargar. Más información: <a class="orange-tool-link" href="/blog/why-reddit-videos-have-no-sound">Por qué los vídeos de Reddit no tienen sonido</a>.</p>
           </div>
 
           <div class="content-block">
             <h2>Calidad de los vídeos de Reddit y formato MP4</h2>
             <p>Obtendrás un MP4. La resolución será la que Reddit haya almacenado para la publicación. ReditGrab no amplía la resolución, vuelve a comprimir el vídeo ni añade marcas de agua. Reddit suele conservar varias versiones de menor tamaño y todas aparecen en el selector de calidad.</p>
-            <p>Una subida de baja resolución solo tiene versiones de baja resolución; ningún descargador puede recuperar detalles que no existen. Elige la versión más alta si quieres conservar o editar el clip y una más baja si tienes poco almacenamiento o datos móviles. <a class="orange-tool-link" href="/blog/understanding-reddit-video-resolutions">Understanding Vídeo de Reddit Resolucións</a> goes deeper. For a walkthrough, see the <a class="orange-tool-link" href="/blog/how-to-download-reddit-video-mp4">step-by-step download guide</a>.</p>
+            <p>Una subida de baja resolución solo tiene versiones de baja resolución; ningún descargador puede recuperar detalles que no existen. Elige la versión más alta si quieres conservar o editar el clip y una más baja si tienes poco almacenamiento o datos móviles. <a class="orange-tool-link" href="/blog/understanding-reddit-video-resolutions">Entender las resoluciones de vídeo de Reddit</a> para más detalles. Para ver el proceso paso a paso, consulta the <a class="orange-tool-link" href="/blog/how-to-download-reddit-video-mp4">guía paso a paso para descargar</a>.</p>
           </div>
         </div>
 
@@ -601,12 +601,12 @@
               <tbody>
                 <tr>
                   <td>Error de enlace no válido</td>
-                  <td>You copied a subreddit, profile or search URL, or the link got cut off</td>
+                  <td>Has copiado la URL de un subreddit, perfil o búsqueda, o el enlace se ha cortado</td>
                   <td>Abre la publicación exacta y vuelve a copiar el enlace desde Compartir → Copiar enlace</td>
                 </tr>
                 <tr>
                   <td>Publicación no encontrada</td>
-                  <td>Deleted by the poster or removed by moderators since you first saw it</td>
+                  <td>El autor la ha eliminado o los moderadores la han retirado desde que la viste</td>
                   <td>Abre el enlace en una ventana privada. Si tampoco carga allí, el vídeo ya no está disponible</td>
                 </tr>
                 <tr>
@@ -617,21 +617,21 @@
                 <tr>
                   <td>No se ha encontrado ningún vídeo</td>
                   <td>La publicación es una foto, una galería, texto o un vídeo externo incrustado</td>
-                  <td>Use the <a class="orange-tool-link" href="/reddit-image-downloader">Descargar imágenes</a> for photos. For embeds, use a downloader for the original site</td>
+                  <td>Usa el <a class="orange-tool-link" href="/reddit-image-downloader">descargador de imágenes</a> para fotos. Para vídeos incrustados, utiliza un descargador del sitio original</td>
                 </tr>
                 <tr>
                   <td>La vista previa no se reproduce</td>
                   <td>Tu navegador ha bloqueado la carga directa del contenido multimedia desde los servidores de Reddit</td>
-                  <td>Switch to the proxy playback option on the player or reload the player. Descargar may still work</td>
+                  <td>Cambia a la opción de reproducción mediante proxy o recarga el reproductor. La descarga puede seguir funcionando</td>
                 </tr>
                 <tr>
                   <td>El vídeo no tiene sonido</td>
-                  <td>Silent at the source, or the audio couldn't be merged</td>
+                  <td>El archivo original no tiene sonido o el audio no se ha podido combinar</td>
                   <td>Check the result card, then try once more. See the sound section above</td>
                 </tr>
                 <tr>
                   <td>Descargar does nothing</td>
-                  <td>Browser blocking the download, a blocking extension, or full storage</td>
+                  <td>El navegador bloquea la descarga, una extensión interfiere o no queda espacio de almacenamiento</td>
                   <td>Allow downloads for reditgrab.com, try the Copia de seguridad button, then try another browser</td>
                 </tr>
                 <tr>
@@ -649,7 +649,7 @@
         <div class="content-cols" style="margin-bottom: 0;">
           <div class="content-block">
             <h2>Cómo gestiona ReditGrab tus datos</h2>
-            <p>ReditGrab no te pide iniciar sesión y solo procesa publicaciones que cualquiera puede ver. No almacena intencionadamente los vídeos que descargas en sus servidores. Como cualquier herramienta online, necesita recibir el enlace que pegas; la <a class="orange-tool-link" href="/privacy">Privacidad page</a> contiene los detalles. Nunca introduzcas tu contraseña de Reddit en un descargador.</p>
+            <p>ReditGrab no te pide iniciar sesión y solo procesa publicaciones que cualquiera puede ver. No almacena intencionadamente los vídeos que descargas en sus servidores. Como cualquier herramienta online, necesita recibir el enlace que pegas; la <a class="orange-tool-link" href="/privacy">página de privacidad</a> contiene los detalles. Nunca introduzcas tu contraseña de Reddit en un descargador.</p>
           </div>
           <div class="content-block">
             <h2>Uso legal y responsable de los vídeos de Reddit</h2>
@@ -676,7 +676,7 @@
           </div>
 
           <div class="content-block">
-            <h2>Reddit Save Button vs Descargaring a File</h2>
+            <h2>Botón Guardar de Reddit frente a descargar un archivo</h2>
             <p>El botón Guardar de Reddit guarda la publicación dentro de tu cuenta; no coloca un archivo de vídeo en tu dispositivo y puedes perder el acceso si la publicación se elimina. Descargar con ReditGrab saves the actual MP4 file locally, independent of Reddit.</p>
             <p>ReditGrab es una herramienta independiente. No está afiliada, respaldada ni asociada con Reddit, Inc.</p>
           </div>
@@ -688,7 +688,7 @@
     <!-- ── FAQ ── -->
     <section class="faq-section" id="faq-section">
       <div class="container">
-        <h2 class="faq-heading">Descargador de vídeos de Reddit — Common Questions</h2>
+        <h2 class="faq-heading">Descargador de vídeos de Reddit — preguntas frecuentes</h2>
         <div class="faq-list">
 
           <div class="faq-item">
@@ -697,7 +697,7 @@
               <svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"></polyline></svg>
             </button>
             <div class="faq-answer">
-              <p>Copy the post's link (Share → Copy link in the app, or the address bar in a browser). Paste it above and click Obtener vídeo. Check the preview, choose a quality, and click Descargar.</p>
+              <p>Copia el enlace de la publicación (Compartir → Copiar enlace en la aplicación o la barra de direcciones del navegador). Pégalo arriba, pulsa Obtener vídeo, revisa la vista previa, elige la calidad y pulsa Descargar.</p>
             </div>
           </div>
 
@@ -727,7 +727,7 @@
               <svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"></polyline></svg>
             </button>
             <div class="faq-answer">
-              <p>No. It runs in your browser, on phone or computer. No account, sign-up, or extension is needed.</p>
+              <p>No. Funciona desde el navegador, tanto en móvil como en ordenador. No necesitas cuenta, registro ni extensión.</p>
             </div>
           </div>
 
@@ -763,11 +763,11 @@
 
           <div class="faq-item">
             <button type="button" class="faq-question" aria-expanded="false">
-              <span>Does it work for YouTube, Streamable or other embedded videos?</span>
+              <span>¿Funciona con vídeos de YouTube, Streamable u otros vídeos incrustados?</span>
               <svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"></polyline></svg>
             </button>
             <div class="faq-answer">
-              <p>No. Those aren't hosted by Reddit, so use a downloader for the original site.</p>
+              <p>No. Esos vídeos no están alojados en Reddit, así que debes usar un descargador compatible con el sitio original.</p>
             </div>
           </div>
 
@@ -777,7 +777,7 @@
               <svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"></polyline></svg>
             </button>
             <div class="faq-answer">
-              <p>Save adds the post to your saved list inside your Reddit account. It doesn't create a video file on your device, and you lose it if the post is deleted.</p>
+              <p>Guardar añade la publicación a tu lista de guardados de Reddit. No crea un archivo de vídeo en tu dispositivo y puedes perder el acceso si la publicación se elimina.</p>
             </div>
           </div>
 
@@ -806,7 +806,7 @@
       <div class="footer-bottom-row">
         <p class="footer-copy">&copy; 2026 <strong>ReditGrab</strong>. Todos los derechos reservados.</p>
         <p class="footer-disclaimer" id="footer-disclaimer">
-          Aviso legal: This tool is not affiliated with, endorsed by, or associated with Reddit, Inc. All trademarks and media belong to their respective copyright holders. Only publicly accessible media is processed.
+          Aviso legal: Esta herramienta no está afiliada, respaldada ni asociada con Reddit, Inc. Todas las marcas y contenidos multimedia pertenecen a sus respectivos titulares de derechos. Solo se procesa contenido públicamente accesible.
         </p>
       </div>
     </div>
