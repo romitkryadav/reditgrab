@@ -1,0 +1,53 @@
+name: Daily ReditGrab localization
+
+on:
+  schedule:
+    - cron: "30 6 * * *"
+  workflow_dispatch:
+    inputs:
+      locale:
+        description: "Locale code, e.g. de, es, hi, pt"
+        required: false
+        type: string
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  localize:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install OpenAI SDK
+        run: pip install --disable-pip-version-check openai
+
+      - name: Research, translate, audit and fix
+        env:
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+          INPUT_LOCALE: ${{ inputs.locale }}
+        run: python .github/scripts/localize_daily.py
+
+      - name: Create pull request
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          if git diff --quiet && [ -z "$(git status --porcelain)" ]; then
+            echo "No changes."
+            exit 0
+          fi
+          BRANCH="daily-localization-${{ github.run_id }}"
+          git checkout -b "$BRANCH"
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add .
+          git commit -m "localize: daily country research and SEO fixes"
+          git push --set-upstream origin "$BRANCH"
+          gh pr create --base main --head "$BRANCH" --title "Daily localization and SEO fixes" --body "Automated country/language research, localization of the three downloader pages, internal-link checks, SEO audit and fixes. Review before merging."
