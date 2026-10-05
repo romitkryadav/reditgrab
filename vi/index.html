@@ -61,9 +61,9 @@
       {
         "@type": "WebApplication",
         "@id": "https://reditgrab.com/#webapplication",
-        "name": "Reddit Trình tải video",
+        "name": "Trình tải video Reddit",
         "url": "https://reditgrab.com/",
-        "description": "Download videos from public Reddit posts as MP4. Preview the video, select quality, and save — no account, no app, no watermark.",
+        "description": "Tải xuống videos from public Reddit posts as MP4. Preview the video, select quality, and save — no account, no app, no watermark.",
         "applicationCategory": "MultimediaApplication",
         "operatingSystem": "Any",
         "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
@@ -90,7 +90,7 @@
             "name": "Làm thế nào để tải video Reddit?",
             "acceptedAnswer": {
               "@type": "Answer",
-              "text": "Copy the post's link (Share → Copy link in the app, or the address bar in a browser). Dán it into the input box and click Lấy video. Kiểm tra bản xem trước, choose a quality, and click Download."
+              "text": "Copy the post's link (Share → Copy link in the app, or the address bar in a browser). Dán it into the input box and click Lấy video. Kiểm tra bản xem trước, choose a quality, and click Tải xuống."
             }
           },
           {
@@ -122,7 +122,7 @@
             "name": "Video được lưu ở đâu trên điện thoại?",
             "acceptedAnswer": {
               "@type": "Answer",
-              "text": "On Android, it goes to Downloads. On iPhone, it usually goes to Files → Downloads, and you can share it from there to Photos with Save Video."
+              "text": "On Android, it goes to Tải xuốngs. On iPhone, it usually goes to Files → Tải xuốngs, and you can share it from there to Photos with Save Video."
             }
           },
           {
@@ -184,12 +184,12 @@
         <span class="brand-text">ReditGrab</span>
       </a>
 
-      <nav class="nav-desktop" aria-label="Primary navigation">
+      <nav class="nav-desktop" aria-label="Điều hướng chính">
         <a href="/vi/reddit-image-downloader.html" class="nav-anchor-link">Trình tải ảnh</a>
         <a href="/vi/reddit-dp-downloader.html" class="nav-anchor-link">Trình tải DP</a>
         <a href="/about" class="nav-anchor-link">Giới thiệu</a>
         <a href="/contact" class="nav-anchor-link">Liên hệ</a>
-        <button type="button" class="btn-icon" id="theme-toggle" aria-label="Toggle dark/light theme" title="Toggle theme">
+        <button type="button" class="btn-icon" id="theme-toggle" aria-label="Chuyển đổi giao diện sáng/tối" title="Đổi giao diện">
           <svg class="sun-icon" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2">
             <circle cx="12" cy="12" r="5"></circle>
             <line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line>
@@ -203,12 +203,12 @@
         </button>
       </nav>
 
-      <button class="nav-hamburger" id="nav-hamburger" aria-expanded="false" aria-controls="nav-mobile-panel" aria-label="Open navigation menu">
+      <button class="nav-hamburger" id="nav-hamburger" aria-expanded="false" aria-controls="nav-mobile-panel" aria-label="Mở menu điều hướng">
         <span class="bar"></span><span class="bar"></span><span class="bar"></span>
       </button>
     </div>
 
-    <nav class="nav-mobile-panel" id="nav-mobile-panel" aria-label="Mobile navigation">
+    <nav class="nav-mobile-panel" id="nav-mobile-panel" aria-label="Điều hướng trên thiết bị di động">
       <a href="/vi/reddit-image-downloader.html">Trình tải ảnh</a>
       <a href="/vi/reddit-dp-downloader.html">Trình tải DP</a>
       <a href="/about">Giới thiệu</a>
@@ -235,13 +235,13 @@
 
   <main class="main-content" id="main-content">
 
-    <!-- ── Hero / Downloader ── -->
+    <!-- ── Hero / Tải xuốnger ── -->
     <section class="hero-section" id="hero-section">
       <div class="container hero-container">
         <div class="hero-header">
-          <h1 class="hero-title" id="hero-heading">Reddit Trình tải video</h1>
-          <p class="hero-desc">Dán the link to a public Reddit post that has a video. ReditGrab loads a preview, lets you pick a quality, and saves the video to your device as an MP4.</p>
-          <nav class="tool-tabs" aria-label="Downloader tools">
+          <h1 class="hero-title" id="hero-heading">Trình tải video Reddit</h1>
+          <p class="hero-desc">Dán liên kết đến một bài đăng Reddit công khai có video. ReditGrab tải bản xem trước, cho phép bạn chọn chất lượng và lưu video vào thiết bị dưới dạng MP4.</p>
+          <nav class="tool-tabs" aria-label="Tải xuốnger tools">
             <a class="tool-tab active" href="/vi/" aria-current="page" aria-label="Trình tải video" title="Trình tải video">
               <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="14" height="14" rx="2"></rect><path d="m17 10 4-2v8l-4-2z"></path></svg>
             </a>
@@ -254,7 +254,7 @@
           </nav>
         </div>
 
-        <!-- Downloader Card -->
+        <!-- Tải xuốnger Card -->
         <div class="downloader-glow-wrap" id="downloader-glow-wrap">
           <div class="downloader-card" id="downloader-box">
             <form id="download-form" class="download-form" novalidate aria-label="Reddit video downloader">
@@ -269,8 +269,8 @@
                   type="url"
                   id="reddit-url-input"
                   class="reddit-input"
-                  placeholder="Dán Reddit Video URL"
-                  aria-label="Dán Reddit Video URL"
+                  placeholder="Dán Video Reddit URL"
+                  aria-label="Dán Video Reddit URL"
                   autocomplete="off"
                   spellcheck="false"
                   required
@@ -323,7 +323,7 @@
             </svg>
           </div>
           <div class="error-text" id="error-text">Đã xảy ra lỗi.</div>
-          <button type="button" class="error-close-btn" id="error-close-btn" aria-label="Dismiss error">×</button>
+          <button type="button" class="error-close-btn" id="error-close-btn" aria-label="Đóng thông báo lỗi">×</button>
         </div>
 
         <!-- Result Card -->
@@ -341,7 +341,7 @@
               >Trình duyệt của bạn không hỗ trợ xem trước video HTML5.</video>
               <audio id="audio-synced" preload="auto" playsinline referrerpolicy="no-referrer"></audio>
 
-              <button type="button" class="btn-enable-audio hidden" id="btn-enable-audio" title="Click to unmute video audio">
+              <button type="button" class="btn-enable-audio hidden" id="btn-enable-audio" title="Nhấp để bật âm thanh video">
                 <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2">
                   <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon>
                   <path d="M19.07 4.93a10 10 0 0 1 0 14.14M15.54 8.46a5 5 0 0 1 0 7.07"></path>
@@ -385,7 +385,7 @@
                 <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.2">
                   <line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline>
                 </svg>
-                <span>Download Another Video</span>
+                <span>Tải video khác</span>
               </button>
             </div>
 
@@ -393,32 +393,32 @@
               <div class="badges-row">
                 <span class="badge-sub" id="result-subreddit">r/example</span>
                 <span class="badge-author" id="result-author">u/user</span>
-                <span class="badge-audio-status" id="badge-audio-status">Merged Video + Audio</span>
+                <span class="badge-audio-status" id="badge-audio-status">Video và âm thanh đã ghép</span>
               </div>
-              <h2 class="result-title" id="result-title">Example Reddit Post</h2>
+              <h2 class="result-title" id="result-title">Bài đăng Reddit mẫu</h2>
             </div>
 
             <div class="metadata-grid hidden">
               <div class="meta-item">
-                <span class="meta-label">Resolution</span>
+                <span class="meta-label">Độ phân giải</span>
                 <span class="meta-val" id="result-resolution">1080 × 1920</span>
               </div>
               <div class="meta-item">
-                <span class="meta-label">Duration</span>
-                <span class="meta-val" id="result-duration">30 seconds</span>
+                <span class="meta-label">Thời lượng</span>
+                <span class="meta-val" id="result-duration">30 giây</span>
               </div>
               <div class="meta-item">
-                <span class="meta-label">File Type</span>
+                <span class="meta-label">Loại tệp</span>
                 <span class="meta-val">MP4</span>
               </div>
               <div class="meta-item">
-                <span class="meta-label">Media Source</span>
-                <span class="meta-val" id="result-source">Reddit Video</span>
+                <span class="meta-label">Nguồn phương tiện</span>
+                <span class="meta-val" id="result-source">Video Reddit</span>
               </div>
             </div>
 
             <div class="quality-selector-group hidden" id="quality-selector-group">
-              <span class="selector-label">Available Qualities:</span>
+              <span class="selector-label">Chất lượng khả dụng:</span>
               <div class="quality-buttons-row" id="quality-buttons-row"></div>
             </div>
 
@@ -430,7 +430,7 @@
                   <line x1="12" y1="15" x2="12" y2="3"></line>
                 </svg>
                 <span class="spinner-inline hidden" id="dl-spinner-primary" aria-hidden="true"></span>
-                <span id="label-download-video">Download</span>
+                <span id="label-download-video">Tải xuống</span>
               </button>
 
               <button type="button" class="btn-download secondary hidden" id="btn-download-merged-backup" title="RapidSave backup download">
@@ -440,19 +440,19 @@
                   <line x1="12" y1="15" x2="12" y2="3"></line>
                 </svg>
                 <span class="spinner-inline hidden" id="dl-spinner-backup" aria-hidden="true"></span>
-                <span id="label-download-backup">Backup</span>
+                <span id="label-download-backup">Bản dự phòng</span>
               </button>
 
-              <button type="button" class="btn-download another-video" id="btn-another-video" title="Download another Reddit video">
+              <button type="button" class="btn-download another-video" id="btn-another-video" title="Tải xuống another Reddit video">
                 <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.2">
                   <polyline points="1 4 1 10 7 10"></polyline>
                   <path d="M3.51 15a9 9 0 1 0 2.13-9.36L1 10"></path>
                 </svg>
-                <span>Download Another Video</span>
+                <span>Tải video khác</span>
               </button>
 
               <button type="button" class="btn-permalink" id="btn-copy-post-link" title="Copy original Reddit post link to clipboard">
-                <span id="label-copy-link">Copy Post Link</span>
+                <span id="label-copy-link">Sao chép liên kết bài đăng</span>
                 <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2">
                   <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
                   <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
@@ -467,7 +467,7 @@
                 <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
                 <polyline points="22 4 12 14.01 9 11.01"></polyline>
               </svg>
-              <span id="stream-notice-text">When an audio track is available, the video and audio can be combined into a single MP4.</span>
+              <span id="stream-notice-text">Khi có luồng âm thanh, video và âm thanh có thể được ghép thành một tệp MP4 duy nhất.</span>
             </div>
           </div>
         </div>
@@ -478,8 +478,8 @@
     <section class="steps-section" id="how-it-works-guide" aria-labelledby="stepsHeading">
       <div class="container">
         <div class="section-header">
-          <h2 class="section-title" id="stepsHeading">How to Download Reddit Videos as MP4</h2>
-          <p class="section-subtitle">Copy the link, paste it above, preview and save. Here's what happens at each step.</p>
+          <h2 class="section-title" id="stepsHeading">How to Tải xuống Video Reddits as MP4</h2>
+          <p class="section-subtitle">Sao chép liên kết, dán vào ô bên trên, xem trước rồi lưu. Đây là những gì xảy ra ở từng bước.</p>
         </div>
         <div class="steps-grid">
           <article class="step-card">
@@ -490,8 +490,8 @@
                 <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path>
               </svg>
             </div>
-            <h3>Copy the Post Link</h3>
-            <p>Open the specific Reddit post. In the app tap Share then Copy link. In a browser, copy the address bar. Copy the post link — not the subreddit or homepage URL.</p>
+            <h3>Sao chép liên kết bài đăng</h3>
+            <p>Mở đúng bài đăng Reddit. Trong ứng dụng, nhấn Chia sẻ rồi Sao chép liên kết. Trong trình duyệt, sao chép liên kết trên thanh địa chỉ. Hãy sao chép liên kết bài đăng, không phải URL của subreddit hoặc trang chủ.</p>
           </article>
           <article class="step-card">
             <div class="step-number">2</div>
@@ -501,8 +501,8 @@
                 <path d="m17 10 4-2v8l-4-2z"></path>
               </svg>
             </div>
-            <h3>Dán &amp; Lấy video</h3>
-            <p>Dán the link into the box above and click Lấy video. ReditGrab looks up the post's public media and checks for a Reddit-hosted video stream.</p>
+            <h3>Dán và lấy video</h3>
+            <p>Dán liên kết vào ô bên trên và nhấn Lấy video. ReditGrab kiểm tra nội dung đa phương tiện công khai của bài đăng và tìm luồng video được lưu trữ trên Reddit.</p>
           </article>
           <article class="step-card">
             <div class="step-number">3</div>
@@ -513,8 +513,8 @@
                 <line x1="12" y1="15" x2="12" y2="3"></line>
               </svg>
             </div>
-            <h3>Preview &amp; Download</h3>
-            <p>Confirm the clip in the player, unmute to check for sound, pick a quality from the menu, and click Download to save the MP4 to your device.</p>
+            <h3>Preview &amp; Tải xuống</h3>
+            <p>Confirm the clip in the player, unmute to check for sound, pick a quality from the menu, and click Tải xuống to save the MP4 to your device.</p>
           </article>
         </div>
       </div>
@@ -527,56 +527,56 @@
         <!-- Row 1: What happens + Supported links -->
         <div class="content-cols">
           <div class="content-block">
-            <h2>What Happens After You Dán a Reddit Video Link</h2>
+            <h2>What Happens After You Dán a Video Reddit Link</h2>
             <p>ReditGrab looks up the post's public media information and checks for a Reddit-hosted video. If it finds one, you get a playable preview first — not an instant download. You can confirm it's the clip you meant, check the resolution, and use the unmute button to hear whether it has sound.</p>
-            <p>The quality menu lists the versions Reddit has for that post, with the highest one selected by default. When you're happy, Download saves the MP4 through your browser.</p>
+            <p>The quality menu lists the versions Reddit has for that post, with the highest one selected by default. When you're happy, Tải xuống saves the MP4 through your browser.</p>
           </div>
 
           <div class="content-block">
-            <h2>Reddit Video URL Formats That Work</h2>
-            <p>Copy the link to the post, not the subreddit. These link shapes all work:</p>
+            <h2>Video Reddit URL Formats That Work</h2>
+            <p>Sao chép liên kết bài đăng, không phải subreddit. Các dạng liên kết sau đều được hỗ trợ:</p>
             <ul class="link-formats-list">
-              <li><code>reddit.com/r/subreddit/comments/…</code> — standard post links</li>
+              <li><code>reddit.com/r/subreddit/comments/…</code> — liên kết bài đăng tiêu chuẩn</li>
               <li><code>old.reddit.com/r/subreddit/comments/…</code></li>
-              <li><code>redd.it/…</code> — short links from the app's share sheet, expanded automatically</li>
-              <li><code>v.redd.it/…</code> — direct video links</li>
+              <li><code>redd.it/…</code> — liên kết rút gọn từ menu chia sẻ của ứng dụng, được tự động mở rộng</li>
+              <li><code>v.redd.it/…</code> — liên kết video trực tiếp</li>
             </ul>
-            <p>Crossposts work if the original is a Reddit-hosted video. Photo galleries belong in the <a class="orange-tool-link" href="/vi/reddit-image-downloader.html">Reddit Trình tải ảnh</a>, profile pictures in the <a class="orange-tool-link" href="/vi/reddit-dp-downloader.html">Reddit Trình tải DP</a>, and videos that are only embeds from YouTube or Streamable aren't hosted by Reddit. Not sure? See <a class="orange-tool-link" href="/blog/choosing-the-right-reddit-link">Choosing the Right Reddit Link</a>.</p>
+            <p>Bài đăng chéo hoạt động nếu video gốc được lưu trữ trên Reddit. Photo galleries belong in the <a class="orange-tool-link" href="/vi/reddit-image-downloader.html">Trình tải ảnh Reddit</a>, profile pictures in the <a class="orange-tool-link" href="/vi/reddit-dp-downloader.html">Trình tải ảnh đại diện Reddit</a>, and videos that are only embeds from YouTube or Streamable aren't hosted by Reddit. Not sure? See <a class="orange-tool-link" href="/blog/choosing-the-right-reddit-link">Choosing the Right Reddit Link</a>.</p>
           </div>
         </div>
 
         <!-- Row 2: Sound + Quality -->
         <div class="content-cols">
           <div class="content-block">
-            <h2>Download Reddit Video With Sound</h2>
-            <p>If the original post has audio, usually yes. Reddit stores its videos as separate video and audio files rather than one combined file. That's why some tools give you a silent clip — they grabbed only the picture. ReditGrab requests both tracks when they exist and combines them into one MP4 where it can.</p>
-            <p>A saved video can still be silent for two different reasons. The first is that it never had audio: a GIF uploaded as video, a screen recording with the mic off, or a clip with the sound stripped. The second is rarer — the post has an audio track but it couldn't be merged on that attempt. The result card shows which case you're in before you download. Full explanation: <a class="orange-tool-link" href="/blog/why-reddit-videos-have-no-sound">Why Reddit Videos Have No Sound</a>.</p>
+            <h2>Tải xuống Video Reddit With Sound</h2>
+            <p>Nếu bài đăng gốc có âm thanh thì thường là có. Reddit lưu video và âm thanh thành các tệp riêng thay vì một tệp đã ghép sẵn. That's why some tools give you a silent clip — they grabbed only the picture. ReditGrab requests both tracks when they exist and combines them into one MP4 where it can.</p>
+            <p>A saved video can still be silent for two different reasons. The first is that it never had audio: a GIF uploaded as video, a screen recording with the mic off, or a clip with the sound stripped. The second is rarer — the post has an audio track but it couldn't be merged on that attempt. The result card shows which case you're in before you download. Full explanation: <a class="orange-tool-link" href="/blog/why-reddit-videos-have-no-sound">Why Video Reddits Have No Sound</a>.</p>
           </div>
 
           <div class="content-block">
-            <h2>Reddit Video Quality and MP4 Format</h2>
-            <p>You get an MP4. The resolution is whatever Reddit stored for the upload. ReditGrab doesn't upscale, re-compress, or add a watermark. Reddit often keeps several smaller versions of the same video, and each one appears in the quality menu.</p>
-            <p>A low-resolution upload only has low-resolution versions — no downloader can sharpen it. Pick the highest version if you plan to keep or edit the clip, and a lower one if storage or mobile data is tight. <a class="orange-tool-link" href="/blog/understanding-reddit-video-resolutions">Understanding Reddit Video Resolutions</a> goes deeper. For a walkthrough, see the <a class="orange-tool-link" href="/blog/how-to-download-reddit-video-mp4">step-by-step download guide</a>.</p>
+            <h2>Video Reddit Quality and MP4 Format</h2>
+            <p>Bạn nhận được tệp MP4. Độ phân giải là phiên bản Reddit đã lưu cho video. ReditGrab không phóng to, nén lại hoặc thêm watermark. Reddit often keeps several smaller versions of the same video, and each one appears in the quality menu.</p>
+            <p>A low-resolution upload only has low-resolution versions — no downloader can sharpen it. Pick the highest version if you plan to keep or edit the clip, and a lower one if storage or mobile data is tight. <a class="orange-tool-link" href="/blog/understanding-reddit-video-resolutions">Understanding Video Reddit Độ phân giảis</a> goes deeper. For a walkthrough, see the <a class="orange-tool-link" href="/blog/how-to-download-reddit-video-mp4">step-by-step download guide</a>.</p>
           </div>
         </div>
 
         <!-- Row 3: Device guide (full-width with internal two-col grid) -->
         <div class="content-block" style="max-width: 1040px;">
-          <h2>Save Reddit Videos on iPhone, Android or PC</h2>
+          <h2>Save Video Reddits on iPhone, Android or PC</h2>
           <div class="device-grid">
             <div class="device-card">
               <h3 class="device-card-title">
                 <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="5" y="2" width="14" height="20" rx="2"></rect><line x1="12" y1="18" x2="12.01" y2="18"></line></svg>
                 Phone
               </h3>
-              <p>Copy the link in the Reddit app, open reditgrab.com in your mobile browser, paste, tap Lấy video, then Download. On Android the file goes to your Downloads folder. On iPhone it usually lands in the Files app under Downloads — open it there, tap Share, then Save Video to add it to Photos. Step-by-step guides: <a href="/blog/how-to-save-reddit-video-on-iphone">iPhone</a> · <a href="/blog/how-to-save-reddit-video-on-android">Android</a>.</p>
+              <p>Copy the link in the Reddit app, open reditgrab.com in your mobile browser, paste, tap Lấy video, then Tải xuống. On Android the file goes to your Tải xuốngs folder. On iPhone it usually lands in the Files app under Tải xuốngs — open it there, tap Share, then Save Video to add it to Photos. Step-by-step guides: <a href="/blog/how-to-save-reddit-video-on-iphone">iPhone</a> · <a href="/blog/how-to-save-reddit-video-on-android">Android</a>.</p>
             </div>
             <div class="device-card">
               <h3 class="device-card-title">
                 <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="2" y="3" width="20" height="14" rx="2"></rect><line x1="8" y1="21" x2="16" y2="21"></line><line x1="12" y1="17" x2="12" y2="21"></line></svg>
                 Computer
               </h3>
-              <p>The flow is the same in any browser on Windows or Mac. Copy the address-bar link, paste, preview, download. The file goes to your browser's download folder. No extension is required. <a href="/blog/can-you-download-reddit-videos-without-an-app">See why you don't need an app</a>.</p>
+              <p>Quy trình giống nhau trên mọi trình duyệt Windows hoặc Mac. Sao chép liên kết trên thanh địa chỉ, dán, xem trước rồi tải xuống. Tệp được lưu vào thư mục tải xuống của trình duyệt. Không cần tiện ích mở rộng. <a href="/blog/can-you-download-reddit-videos-without-an-app">See why you don't need an app</a>.</p>
             </div>
           </div>
         </div>
@@ -589,55 +589,55 @@
       <div class="container">
 
         <div class="content-block" style="max-width: 1040px;">
-          <h2>Reddit Trình tải video Not Working — Fixes</h2>
-          <p>Most failures have a specific cause and a clear fix.</p>
+          <h2>Trình tải video Reddit Not Working — Fixes</h2>
+          <p>Hầu hết lỗi đều có nguyên nhân cụ thể và cách khắc phục rõ ràng.</p>
           <div class="trouble-table-wrap">
             <table class="trouble-table">
               <thead>
                 <tr>
-                  <th scope="col">What you see</th>
-                  <th scope="col">Likely reason</th>
-                  <th scope="col">What to try</th>
+                  <th scope="col">Bạn thấy gì</th>
+                  <th scope="col">Nguyên nhân có thể</th>
+                  <th scope="col">Cách thử</th>
                 </tr>
               </thead>
               <tbody>
                 <tr>
-                  <td>Invalid link error</td>
+                  <td>Lỗi liên kết không hợp lệ</td>
                   <td>You copied a subreddit, profile or search URL, or the link got cut off</td>
                   <td>Open the exact post and copy again from Share → Copy link</td>
                 </tr>
                 <tr>
-                  <td>Post not found</td>
+                  <td>Không tìm thấy bài đăng</td>
                   <td>Deleted by the poster or removed by moderators since you first saw it</td>
                   <td>Open the link in a private browser window. If it doesn't load there, the video is gone</td>
                 </tr>
                 <tr>
-                  <td>Private or login-required</td>
+                  <td>Riêng tư hoặc yêu cầu đăng nhập</td>
                   <td>ReditGrab only reads posts anyone can view</td>
                   <td>Same private-window test. If Reddit asks you to log in, ReditGrab can't fetch it either</td>
                 </tr>
                 <tr>
-                  <td>No video found</td>
+                  <td>Không tìm thấy video</td>
                   <td>The post is a photo, gallery, text post or an external embed</td>
                   <td>Use the <a class="orange-tool-link" href="/vi/reddit-image-downloader.html">Trình tải ảnh</a> for photos. For embeds, use a downloader for the original site</td>
                 </tr>
                 <tr>
-                  <td>Preview won't play</td>
+                  <td>Bản xem trước không phát được</td>
                   <td>Your browser blocked loading media directly from Reddit's servers</td>
-                  <td>Switch to the proxy playback option on the player or reload the player. Download may still work</td>
+                  <td>Switch to the proxy playback option on the player or reload the player. Tải xuống may still work</td>
                 </tr>
                 <tr>
-                  <td>Video has no sound</td>
+                  <td>Video không có âm thanh</td>
                   <td>Silent at the source, or the audio couldn't be merged</td>
                   <td>Check the result card, then try once more. See the sound section above</td>
                 </tr>
                 <tr>
-                  <td>Download does nothing</td>
+                  <td>Tải xuống does nothing</td>
                   <td>Browser blocking the download, a blocking extension, or full storage</td>
-                  <td>Allow downloads for reditgrab.com, try the Backup button, then try another browser</td>
+                  <td>Allow downloads for reditgrab.com, try the Bản dự phòng button, then try another browser</td>
                 </tr>
                 <tr>
-                  <td>Worked last week, fails now</td>
+                  <td>Tuần trước còn hoạt động nhưng hiện tại bị lỗi</td>
                   <td>Reddit sometimes changes how it serves media</td>
                   <td>Try again later. If it keeps failing, send the link through <a class="orange-tool-link" href="/contact">Liên hệ</a></td>
                 </tr>
@@ -650,11 +650,11 @@
         <!-- Quyền riêng tư + Responsible use — two-column -->
         <div class="content-cols" style="margin-bottom: 0;">
           <div class="content-block">
-            <h2>How ReditGrab Handles Your Data</h2>
+            <h2>ReditGrab xử lý dữ liệu của bạn như thế nào</h2>
             <p>ReditGrab doesn't ask you to sign in and only handles posts anyone can view. It doesn't intentionally store the videos you download on its servers. Like any online tool, it has to see the link you paste — the <a class="orange-tool-link" href="/privacy">Quyền riêng tư page</a> has the details. Never enter your Reddit password into a downloader.</p>
           </div>
           <div class="content-block">
-            <h2>Pháp lý and Responsible Use of Reddit Videos</h2>
+            <h2>Pháp lý and Responsible Use of Video Reddits</h2>
             <p>The videos belong to the people who made them. Saving one to watch offline is different from reposting it, so credit the creator and subreddit if you share it. The rules depend on where you live and what you do with the file — the <a class="orange-tool-link" href="/blog/is-it-legal-to-download-reddit-videos">legal overview</a> covers the basics. ReditGrab is not affiliated with Reddit.</p>
           </div>
         </div>
@@ -668,18 +668,18 @@
         <div class="content-cols" style="margin-bottom: 0;">
 
           <div class="content-block">
-            <h2>Reddit Posts This Tool Cannot Download</h2>
+            <h2>Reddit Posts This Tool Cannot Tải xuống</h2>
             <ul class="link-formats-list">
-              <li>Private, quarantined or login-only posts</li>
-              <li>Deleted posts</li>
-              <li>Videos embedded from other sites (YouTube, Streamable, etc.)</li>
-              <li>NSFW posts that require an account to view</li>
+              <li>Bài đăng riêng tư, bị cách ly hoặc chỉ xem được sau khi đăng nhập</li>
+              <li>Bài đăng đã bị xóa</li>
+              <li>Video được nhúng từ các website khác (YouTube, Streamable, v.v.)</li>
+              <li>Bài đăng NSFW yêu cầu tài khoản để xem</li>
             </ul>
           </div>
 
           <div class="content-block">
-            <h2>Reddit Save Button vs Downloading a File</h2>
-            <p>Reddit's own Save button bookmarks the post inside your Reddit account — it doesn't put a video file on your device, and you lose access if the post is deleted. Downloading through ReditGrab saves the actual MP4 file locally, independent of Reddit.</p>
+            <h2>Reddit Save Button vs Tải xuốnging a File</h2>
+            <p>Reddit's own Save button bookmarks the post inside your Reddit account — it doesn't put a video file on your device, and you lose access if the post is deleted. Tải xuốnging through ReditGrab saves the actual MP4 file locally, independent of Reddit.</p>
             <p>ReditGrab is an independent tool. It is not affiliated with, endorsed by, or associated with Reddit, Inc.</p>
           </div>
 
@@ -690,7 +690,7 @@
     <!-- ── FAQ ── -->
     <section class="faq-section" id="faq-section">
       <div class="container">
-        <h2 class="faq-heading">Reddit Trình tải video — Common Questions</h2>
+        <h2 class="faq-heading">Trình tải video Reddit — Câu hỏi thường gặp</h2>
         <div class="faq-list">
 
           <div class="faq-item">
@@ -699,7 +699,7 @@
               <svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"></polyline></svg>
             </button>
             <div class="faq-answer">
-              <p>Copy the post's link (Share → Copy link in the app, or the address bar in a browser). Dán it above and click Lấy video. Kiểm tra bản xem trước, choose a quality, and click Download.</p>
+              <p>Copy the post's link (Share → Copy link in the app, or the address bar in a browser). Dán it above and click Lấy video. Kiểm tra bản xem trước, choose a quality, and click Tải xuống.</p>
             </div>
           </div>
 
@@ -739,7 +739,7 @@
               <svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"></polyline></svg>
             </button>
             <div class="faq-answer">
-              <p>On Android, it goes to Downloads. On iPhone, it usually goes to Files → Downloads, and you can share it from there to Photos with Save Video.</p>
+              <p>On Android, it goes to Tải xuốngs. On iPhone, it usually goes to Files → Tải xuốngs, and you can share it from there to Photos with Save Video.</p>
             </div>
           </div>
 
@@ -813,7 +813,7 @@
         </div>
       </div>
       <div class="footer-bottom-row">
-        <p class="footer-copy">&copy; 2026 <strong>ReditGrab</strong>. All rights reserved.</p>
+        <p class="footer-copy">&copy; 2026 <strong>ReditGrab</strong>. Đã đăng ký bản quyền.</p>
         <p class="footer-disclaimer" id="footer-disclaimer">
           Tuyên bố miễn trừ: This tool is not affiliated with, endorsed by, or associated with Reddit, Inc. All trademarks and media belong to their respective copyright holders. Only publicly accessible media is processed.
         </p>
