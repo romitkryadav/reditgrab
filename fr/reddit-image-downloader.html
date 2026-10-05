@@ -63,7 +63,7 @@
             "@id": "https://reditgrab.com/fr/reddit-image-downloader.html#webapplication",
             "name": "ReditGrab Télécharger des images de Reddit",
             "url": "https://reditgrab.com/fr/reddit-image-downloader.html",
-            "description": "Herramienta web gratuita para encontrar images en publications, galeries o liens directos publics de Reddit, previsualizarlas y enregistrer los archivos alojados en Reddit. Las images de una galerie se enregistren por separado.",
+            "description": "Outil web gratuit pour trouver des images dans des publications, des galeries ou des liens directs publics Reddit, les prévisualiser et enregistrer les fichiers hébergés sur Reddit. Les images d’une galerie sont enregistrées séparément.",
             "applicationCategory": "UtilitiesApplication",
             "operatingSystem": "Any",
             "browserRequirements": "Requires JavaScript",
@@ -71,7 +71,7 @@
             "featureList": [
               "Acepta liens de publications, galeries e images directas de Reddit",
               "Previsualiza cada image con su formato y taille en pixels",
-              "Guarda una image o todas las images de una galerie como archivos separados",
+              "Enregistrez une image ou toutes les images d’une galerie dans des fichiers séparés",
               "Vous n’avez pas besoin de una cuenta de Reddit para publications publiques"
             ],
             "offers": {
@@ -149,7 +149,7 @@
                 "name": "Puis-je télécharger des images Reddit sur iPhone ou Android ?",
                 "acceptedAnswer": {
                   "@type": "Answer",
-                  "text": "Oui, depuis le navigateur mobile. En iPhone, el archivo suele ir a la aplicación Archivos, donde Compartir → Guardar image permite añadirlo a Fotos. En Android normalmente acaba en Téléchargezs. El comportamiento exacto depende del navegador."
+                  "text": "Oui, depuis le navigateur mobile. Sur iPhone, le fichier est généralement enregistré dans l’application Fichiers, où le menu Partager permet de l’ajouter à Photos. Sur Android, il arrive généralement dans Téléchargements. Le comportement exact dépend du navigateur."
                 }
               },
               {
@@ -388,7 +388,7 @@
         <div class="results-header-box">
           <div class="results-meta">
             <h2 class="results-title" id="results-title">
-              Imágenes encontradas: <span id="results-count" class="count-badge">0</span>
+              Images trouvées : <span id="results-count" class="count-badge">0</span>
             </h2>
             <p class="results-post-title hidden" id="results-post-title"></p>
           </div>
@@ -563,7 +563,7 @@
             <div class="content-block" id="lightbox-preview">
               <h2>Prévisualiser une image avant de l’enregistrer</h2>
               <p>Lorsque vous sélectionnez une carte, un aperçu plein écran affiche l’image actuelle, ses dimensions en pixels et son format. Utilisez les flèches ou les touches ← → pour parcourir une galerie, « Télécharger » pour enregistrer l’image visible ou « Ouvrir » pour l’afficher dans un nouvel onglet. Échap ferme le visor.</p>
-              <p>Previsualizar primero te permite evitar images casi duplicadas o recortadas y comprobar el taille en pixels antes de enregistrer el archivo.</p>
+              <p>La prévisualisation permet d’éviter les images presque identiques ou recadrées et de vérifier leurs dimensions en pixels avant l’enregistrement.</p>
             </div>
 
           </div>
@@ -576,18 +576,18 @@
           <div class="content-cols">
 
             <div class="content-block" id="mobile-save">
-              <h2>Guardar images de Reddit en iPhone y Android</h2>
+              <h2>Enregistrer des images Reddit sur iPhone et Android</h2>
               <p>Dans l’application Reddit, appuyez sur Partager, puis Copier le lien. Ouvrez <strong>reditgrab.com/reddit-image-downloader</strong> dans le navigateur de votre téléphone, collez le lien, sélectionnez « Télécharger les images », puis appuyez sur « Télécharger ». L’emplacement du fichier dépend de votre navigateur, et non de ReditGrab.</p>
 
               <h3 style="margin-top:1.75rem;">iPhone et iPad</h3>
               <p>Safari enregistre généralement les téléchargements dans le dossier Téléchargements de l’application Fichiers. Pour ajouter l’image à Photos, ouvrez-la depuis Fichiers, appuyez sur Partager, puis sélectionnez « Enregistrer l’image ».</p>
 
               <h3 style="margin-top:1.75rem;">Android</h3>
-              <p>Chrome enregistre généralement les fichiers dans le dossier Téléchargements. Si « Télécharger » ouvre l’image dans un nouvel onglet, maintenez-la appuyée et utilisez l’option d’enregistrement du navigateur. Il existe une <a href="/blog/how-to-save-reddit-images-on-mobile" class="orange-tool-link">guía móvil más detallada</a> is available.</p>
+              <p>Chrome enregistre généralement les fichiers dans le dossier Téléchargements. Si « Télécharger » ouvre l’image dans un nouvel onglet, maintenez-la appuyée et utilisez l’option d’enregistrement du navigateur. Il existe une <a href="/blog/how-to-save-reddit-images-on-mobile" class="orange-tool-link">guide mobile plus détaillé</a> est disponible.</p>
             </div>
 
             <div class="content-block" id="external-hosting">
-              <h2>Imágenes alojadas en Reddit frente a images de otros sitios</h2>
+              <h2>Images hébergées sur Reddit ou sur d’autres sites</h2>
               <p>Une image mise en ligne sur Reddit est hébergée sur <code>i.redd.it</code>. Une publication peut aussi renvoyer vers une image hébergée sur un autre site, que Reddit affichera sous forme d’aperçu. Ambas situaciones parecen «una image en una publication de Reddit», pero seulement la primera tiene un archivo alojado en Reddit que se pueda télécharger.</p>
               <p>ReditGrab está diseñado para el primer caso. Si el lien apunta a otro sitio, puede que no encuentre nada o seulement la miniatura pequeña que Reddit conserva para la publication.</p>
               <p>Test rapide : copiez l’adresse de l’image depuis Reddit. Si empieza por <code>i.redd.it</code>, se subió a Reddit. Si empieza por <code>external-preview.redd.it</code> o apunta a otro dominio, estás viendo una vista previa de una image alojada externamente.</p>
@@ -635,7 +635,7 @@
                   <tr>
                     <td>Télécharger abre la image en una pestaña nueva</td>
                     <td>El navegador bloqueó el enregistredo directo</td>
-                    <td>Mantén pulsada la image (móvil) o haz clic derecho (ordenador) y guárdala</td>
+                    <td>Maintenez l’image appuyée sur mobile ou faites un clic droit sur ordinateur, puis enregistrez-la</td>
                   </tr>
                   <tr>
                     <td>La image es más pequeña de lo esperado</td>
@@ -663,9 +663,9 @@
             <div class="content-block" id="limits">
               <h2>Lo que ReditGrab no puede télécharger</h2>
               <ul class="steps-list">
-                <li>Publicaciones privées, comunidades que requieren aprobación, comunidades en cuarentena y cualquier contenido que necesite se connecter en Reddit</li>
-                <li>Publicaciones supprimées o retiradas</li>
-                <li>Imágenes alojadas en otros sitios web</li>
+                <li>Publications privées, communautés nécessitant une approbation, communautés en quarantaine et tout contenu nécessitant une connexion à Reddit</li>
+                <li>Publications supprimées ou retirées</li>
+                <li>Images hébergées sur d’autres sites web</li>
                 <li>Vidéos y publications animadas almacenadas como vidéo — utiliza el <a href="https://reditgrab.com/fr/" class="orange-tool-link">Reddit Téléchargeur de vidéos</a></li>
                 <li>Fotos de profil y avatares — utiliza el <a href="/fr/reddit-dp-downloader.html" class="orange-tool-link">Reddit Téléchargeur de photos de profil</a></li>
                 <li>Subreddits completos o todo el historial de publications de un utilisateur</li>
@@ -674,9 +674,9 @@
             </div>
 
             <div class="content-block" id="privacy-use">
-              <h2>Confidentialité, droits y uso responsable</h2>
-              <p>ReditGrab seulement funciona con publications que cualquiera puede abrir sin se connecter en Reddit. Nunca pide tu nombre de utilisateur ni mot de passe de Reddit y no intenta saltarse comunidades privées, publications supprimées ni requisitos de inicio de sesión.</p>
-              <p>Las vistas previas y las téléchargements pasan por la infraestructura de servidores de ReditGrab antes de llegar a tu navegador; la <a href="/privacy" class="orange-tool-link">Política de privacidad</a> explica qué datos se procesan. ReditGrab es un proyecto independiente y no está afiliado, respaldado ni patrocinado por Reddit, Inc.</p>
+              <h2>Confidentialité, droits et utilisation responsable</h2>
+              <p>ReditGrab fonctionne uniquement avec les publications que tout le monde peut ouvrir sans se connecter à Reddit. Le service ne demande jamais votre nom d’utilisateur ni votre mot de passe Reddit et ne tente pas de contourner les communautés privées, les publications supprimées ou les exigences de connexion.</p>
+              <p>Les aperçus et les téléchargements passent par l’infrastructure de serveurs de ReditGrab avant d’arriver dans votre navigateur ; la <a href="/privacy" class="orange-tool-link">Politique de confidentialité</a> explique quelles données sont traitées. ReditGrab est un projet indépendant et n’est pas affilié, approuvé ou sponsorisé par Reddit, Inc.</p>
               <p>Que una publication sea publique no significa que puedas reutilizarla libremente. Las images pertenecen a sus creadores: enregistrerlas para verlas más tarde es distinto de republicarlas o utilizarlas con fines comerciales. El <a href="/disclaimer" class="orange-tool-link">Avis juridique</a> contiene más información.</p>
             </div>
 
@@ -688,7 +688,7 @@
       <section class="content-section" id="faq">
         <div class="section-header">
           <h2 class="section-title">Questions fréquentes sobre télécharger images de Reddit</h2>
-          <p class="section-desc">Respuestas a las preguntas más habituales sobre la téléchargement de images de Reddit.</p>
+          <p class="section-desc">Réponses aux questions les plus fréquentes sur le téléchargement d’images Reddit.</p>
         </div>
 
         <div class="faq-accordion" id="faq-accordion">
@@ -738,7 +738,7 @@
               <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
             </summary>
             <div class="faq-answer">
-              <p>Oui, depuis le navigateur mobile. En iPhone, el archivo suele ir a la aplicación Archivos, donde Compartir → Guardar image permite añadirlo a Fotos. En Android normalmente acaba en Téléchargezs. El comportamiento exacto depende del navegador.</p>
+              <p>Oui, depuis le navigateur mobile. Sur iPhone, le fichier est généralement enregistré dans l’application Fichiers, où le menu Partager permet de l’ajouter à Photos. Sur Android, il arrive généralement dans Téléchargements. Le comportement exact dépend du navigateur.</p>
             </div>
           </details>
 
