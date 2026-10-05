@@ -1,17 +1,33 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:xhtml="http://www.w3.org/1999/xhtml">
 
   <url>
     <loc>https://reditgrab.com/</loc>
     <lastmod>2026-10-05</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://reditgrab.com/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://reditgrab.com/es/"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://reditgrab.com/fr/"/>
+    <xhtml:link rel="alternate" hreflang="vi" href="https://reditgrab.com/vi/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://reditgrab.com/"/>
   </url>
   <url>
     <loc>https://reditgrab.com/reddit-image-downloader</loc>
-    <lastmod>2026-10-03</lastmod>
+    <lastmod>2026-10-05</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://reditgrab.com/reddit-image-downloader"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://reditgrab.com/es/reddit-image-downloader.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://reditgrab.com/fr/reddit-image-downloader.html"/>
+    <xhtml:link rel="alternate" hreflang="vi" href="https://reditgrab.com/vi/reddit-image-downloader.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://reditgrab.com/reddit-image-downloader"/>
   </url>
   <url>
     <loc>https://reditgrab.com/reddit-dp-downloader</loc>
-    <lastmod>2026-10-03</lastmod>
+    <lastmod>2026-10-05</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://reditgrab.com/reddit-dp-downloader"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://reditgrab.com/es/reddit-dp-downloader.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://reditgrab.com/fr/reddit-dp-downloader.html"/>
+    <xhtml:link rel="alternate" hreflang="vi" href="https://reditgrab.com/vi/reddit-dp-downloader.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://reditgrab.com/reddit-dp-downloader"/>
   </url>
 
   <url>
