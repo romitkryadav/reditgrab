@@ -2,10 +2,10 @@
 <html lang="vi-VN">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewphoặct" content="width=device-width, initial-scale=1.0">
   <title>Tải ảnh đại diện Reddit (DP) | ReditGrab</title>
   <meta name="description" content="Tải ảnh đại diện Reddit từ hồ sơ công khai. Nhập tên người dùng hoặc liên kết hồ sơ và lưu ảnh trực tiếp trên thiết bị.">
-  <meta name="author" content="Romit Kr Yadav">
+  <meta name="authhoặc" content="Romit Kr Yadav">
   <meta name="robots" content="index, follow">
   <link rel="alternate" hreflang="en" href="https://reditgrab.com/reddit-dp-downloader">
   <link rel="alternate" hreflang="vi" href="https://reditgrab.com/vi/reddit-dp-downloader.html">
@@ -28,8 +28,8 @@
   <meta name="twitter:description" content="Tải ảnh đại diện Reddit từ hồ sơ công khai mà không cần đăng nhập.">
   <meta name="twitter:image" content="https://reditgrab.com/preview-card.png">
 
-  <!-- Favicon and Theme Color -->
-  <meta name="theme-color" content="#ff4500">
+  <!-- Favicon and me Colhoặc -->
+  <meta name="theme-colhoặc" content="#ff4500">
  <link rel="icon" type="image/png" href="https://reditgrab.com/reditgrab-favicon.png">
 
   <!-- Pure CSS stylesheet -->
@@ -42,15 +42,15 @@
 
   <script type="application/ld+json">
     {
-      "@context": "https://schema.org",
+      "@context": "https://schema.hoặcg",
       "@graph": [
         {
           "@type": "WebApplication",
           "@id": "https://reditgrab.com/reddit-dp-downloader#webapplication",
           "name": "ReditGrab Trình tải ảnh đại diện Reddit",
           "url": "https://reditgrab.com/reddit-dp-downloader",
-          "description": "Look up a public Reddit profile by username or link, preview the profile picture, and save it when Reddit makes the image publicly available.",
-          "applicationCategory": "UtilitiesApplication",
+          "description": "Look up a public Reddit profile by username hoặc link, preview the profile picture, and save it when Reddit makes the image publicly available.",
+          "applicationCateghoặcy": "UtilitiesApplication",
           "operatingSystem": "Any",
           "offers": {
             "@type": "Offer",
@@ -58,12 +58,12 @@
             "priceCurrency": "USD"
           },
           "publisher": {
-            "@id": "https://reditgrab.com/#organization"
+            "@id": "https://reditgrab.com/#hoặcganization"
           }
         },
         {
           "@type": "Organization",
-          "@id": "https://reditgrab.com/#organization",
+          "@id": "https://reditgrab.com/#hoặcganization",
           "name": "ReditGrab",
           "url": "https://reditgrab.com/",
           "logo": "https://reditgrab.com/reditgrab.png"
@@ -115,11 +115,11 @@
       <nav class="nav-desktop" aria-label="Điều hướng chính">
         <a href="/vi/" class="nav-links-item">Trình tải video</a>
         <a href="/vi/reddit-image-downloader.html" class="nav-links-item">Trình tải ảnh</a>
-        <a href="/vi/reddit-dp-downloader.html" class="nav-links-item active" aria-current="page">Trình tải DP</a>
+        <a href="/vi/reddit-dp-downloader.html" class="nav-links-item active" aria-current="page">Trình tải ảnh đại diện Reddit</a>
         <a href="/about" class="nav-links-item">Giới thiệu</a>
         <a href="/contact" class="nav-links-item">Liên hệ</a>
         <button type="button" class="btn-icon" id="theme-toggle-btn" aria-label="Chuyển đổi giao diện sáng/tối" title="Đổi giao diện">
-          <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2">
+          <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColhoặc" stroke-width="2">
             <circle cx="12" cy="12" r="5"></circle>
             <line x1="12" y1="1" x2="12" y2="3"></line>
             <line x1="12" y1="21" x2="12" y2="23"></line>
@@ -145,7 +145,7 @@
     <nav class="nav-mobile-panel" id="nav-mobile-panel" aria-label="Điều hướng trên thiết bị di động">
       <a href="/vi/">Trình tải video</a>
       <a href="/vi/reddit-image-downloader.html">Trình tải ảnh</a>
-      <a href="/vi/reddit-dp-downloader.html">Trình tải DP</a>
+      <a href="/vi/reddit-dp-downloader.html">Trình tải ảnh đại diện Reddit</a>
       <a href="/about">Giới thiệu</a>
       <a href="/contact">Liên hệ</a>
     </nav>
@@ -159,7 +159,7 @@
         var open = panel.classList.toggle('open');
         btn.setAttribute('aria-expanded', open ? 'true' : 'false');
       });
-      panel.querySelectorAll('a').forEach(function (a) {
+      panel.querySelecthoặcAll('a').fhoặcEach(function (a) {
         a.addEventListener('click', function () {
           panel.classList.remove('open');
           btn.setAttribute('aria-expanded', 'false');
@@ -183,7 +183,7 @@
           <a class="tool-tab" href="/vi/reddit-image-downloader.html" aria-label="Trình tải ảnh" title="Trình tải ảnh">
             <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="4" width="18" height="16" rx="2"></rect><circle cx="8.5" cy="9" r="1.5"></circle><path d="m4 17 5-5 3 3 2-2 6 4"></path></svg>
           </a>
-          <a class="tool-tab active" href="/vi/reddit-dp-downloader.html" aria-current="page" aria-label="Trình tải DP" title="Trình tải DP">
+          <a class="tool-tab active" href="/vi/reddit-dp-downloader.html" aria-current="page" aria-label="Trình tải ảnh đại diện Reddit" title="Trình tải ảnh đại diện Reddit">
             <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="8" r="3"></circle><path d="M5 20c.6-3.4 3.1-5 7-5s6.4 1.6 7 5"></path></svg>
           </a>
         </nav>
@@ -192,9 +192,9 @@
         <!-- Search Card (Main Tool) -->
         <div class="downloader-glow-wrap">
         <div class="search-card" id="search-card">
-          <form class="search-form" id="search-form" novalidate>
+          <fhoặcm class="search-fhoặcm" id="search-fhoặcm" novalidate>
             <div class="input-wrapper">
-              <svg class="input-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <svg class="input-icon" viewBox="0 0 24 24" fill="none" stroke="currentColhoặc" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                 <circle cx="11" cy="11" r="8"></circle>
                 <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
               </svg>
@@ -202,8 +202,8 @@
                 type="text" 
                 id="reddit-input" 
                 class="search-input" 
-                placeholder="Reddit username or profile URL, e.g. spez" 
-                aria-label="Reddit username or profile URL" 
+                placeholder="Reddit username hoặc profile URL, e.g. spez" 
+                aria-label="Reddit username hoặc profile URL" 
                 autocomplete="off"
                 spellcheck="false"
                 required
@@ -213,15 +213,15 @@
             <button type="submit" id="find-dp-btn" class="btn-primary" aria-live="polite">
               <span>Tìm ảnh đại diện</span>
             </button>
-          </form>
+          </fhoặcm>
 
-          <p class="hero-trust-line" style="margin-top:0.75rem;font-size:0.85rem;color:var(--text-subtle,#94a3b8);text-align:center;">Chỉ hỗ trợ hồ sơ công khai. Chấp nhận <code>spez</code>, <code>u/spez</code> or a <code>reddit.com/user/</code> link.</p>
+          <p class="hero-trust-line" style="margin-top:0.75rem;font-size:0.85rem;colhoặc:var(--text-subtle,#94a3b8);text-align:center;">Chỉ hỗ trợ hồ sơ công khai. Chấp nhận <code>spez</code>, <code>u/spez</code> hoặc một <code>reddit.com/user/</code> liên kết.</p>
         </div>
         </div>
       </div>
     </section>
 
-    <!-- Interactive Zone (Loading, Error, Result Card) -->
+    <!-- Interactive Zone (Loading, Errhoặc, Result Card) -->
     <div class="container interactive-zone">
       
       <!-- Loading State -->
@@ -231,19 +231,19 @@
         <div class="loading-status-detail" id="loading-status-detail">Đang kiểm tra hồ sơ công khai...</div>
       </div>
 
-      <!-- Error State -->
-      <div class="error-box" id="error-container" role="alert" aria-live="assertive" hidden>
-        <div class="error-icon-wrap" aria-hidden="true">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <!-- Errhoặc State -->
+      <div class="errhoặc-box" id="errhoặc-container" role="alert" aria-live="assertive" hidden>
+        <div class="errhoặc-icon-wrap" aria-hidden="true">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColhoặc" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
             <circle cx="12" cy="12" r="10"></circle>
             <line x1="12" y1="8" x2="12" y2="12"></line>
             <line x1="12" y1="16" x2="12.01" y2="16"></line>
           </svg>
         </div>
-        <div class="error-content">
-          <div class="error-title">Lưu ý</div>
-          <p class="error-message" id="error-message">Vui lòng nhập tên người dùng Reddit hoặc URL hồ sơ hợp lệ.</p>
-          <button type="button" class="error-action-btn" id="error-action-btn">Thử lại</button>
+        <div class="errhoặc-content">
+          <div class="errhoặc-title">Lưu ý</div>
+          <p class="errhoặc-message" id="errhoặc-message">Vui lòng nhập tên người dùng Reddit hoặc URL hồ sơ hợp lệ.</p>
+          <button type="button" class="errhoặc-action-btn" id="errhoặc-action-btn">Thử lại</button>
         </div>
       </div>
 
@@ -251,7 +251,7 @@
       <div class="result-card" id="result-container" aria-live="polite" hidden>
         <div class="result-header">
           <span class="result-badge">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColhoặc" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
               <polyline points="20 6 9 17 4 12"></polyline>
             </svg>
             Reddit DP Found
@@ -264,7 +264,7 @@
           <div class="avatar-preview-wrap" id="avatar-preview-wrap" title="Click to enlarge image" tabindex="0" role="button" aria-label="Click to enlarge avatar">
             <img id="result-avatar-img" class="avatar-img" src="" alt="Reddit profile picture" loading="eager">
             <div class="zoom-hint">
-              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColhoặc" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                 <circle cx="11" cy="11" r="8"></circle>
                 <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
                 <line x1="11" y1="8" x2="11" y2="14"></line>
@@ -278,9 +278,9 @@
           <div class="profile-details">
             <div>
               <p class="profile-username" id="result-username">u/example</p>
-              <a href="#" class="profile-link" id="result-profile-link" target="_blank" rel="noopener noreferrer">
+              <a href="#" class="profile-link" id="result-profile-link" target="_blank" rel="noopener nhoặceferrer">
                 <span>Xem trên Reddit</span>
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColhoặc" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                   <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
                   <polyline points="15 3 21 3 21 9"></polyline>
                   <line x1="10" y1="14" x2="21" y2="3"></line>
@@ -291,14 +291,14 @@
             <!-- Metadata Pills -->
             <div class="meta-tags-list">
               <span class="meta-pill" id="result-dim-pill"></span>
-              <span class="meta-pill" id="result-format-pill">PNG</span>
+              <span class="meta-pill" id="result-fhoặcmat-pill">PNG</span>
               <span class="meta-pill">CDN Reddit</span>
             </div>
 
             <!-- Action Buttons -->
             <div class="action-buttons">
               <button type="button" class="btn-primary" id="download-btn">
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColhoặc" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                   <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
                   <polyline points="7 10 12 15 17 10"></polyline>
                   <line x1="12" y1="15" x2="12" y2="3"></line>
@@ -306,8 +306,8 @@
                 <span>Tải ảnh đại diện</span>
               </button>
 
-              <a href="#" class="btn-secondary" id="open-original-btn" target="_blank" rel="noopener noreferrer">
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <a href="#" class="btn-secondary" id="open-hoặciginal-btn" target="_blank" rel="noopener nhoặceferrer">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColhoặc" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                   <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
                   <polyline points="15 3 21 3 21 9"></polyline>
                   <line x1="10" y1="14" x2="21" y2="3"></line>
@@ -321,7 +321,7 @@
     </div>
 
     <!-- How-to Steps -->
-    <section class="content-section" id="how-it-works">
+    <section class="content-section" id="how-it-whoặcks">
       <div class="container">
         <h2 class="section-title">Cách tải ảnh đại diện Reddit</h2>
         <p class="section-subtitle">Bốn bước từ tên người dùng đến tệp đã lưu.</p>
@@ -342,7 +342,7 @@
           <div class="step-card" id="step-3">
             <div class="step-number" aria-hidden="true">3</div>
             <h3 class="step-card-title">Kiểm tra bản xem trước</h3>
-            <p class="step-card-text">ReditGrab shows the picture with its pixel size and file type. Click the image to enlarge it, or use Xem trên Reddit to confirm it's the right account.</p>
+            <p class="step-card-text">ReditGrab hiển thị ảnh cùng kích thước pixel và loại tệp. Nhấp vào ảnh để phóng to hoặc chọn Xem trên Reddit để xác nhận đúng tài khoản.</p>
           </div>
 
           <div class="step-card" id="step-4">
@@ -370,10 +370,10 @@
             <p>ReditGrab chấp nhận tên người dùng có hoặc không có tiền tố và các liên kết hồ sơ phổ biến:</p>
             <ul>
               <li><code>spez</code></li>
-              <li><code>u/spez</code> or <code>/u/spez</code></li>
-              <li><code>reddit.com/user/spez</code>, <code>www.reddit.com/user/spez</code> or <code>old.reddit.com/user/spez</code></li>
+              <li><code>u/spez</code> hoặc <code>/u/spez</code></li>
+              <li><code>reddit.com/user/spez</code>, <code>www.reddit.com/user/spez</code> hoặc <code>old.reddit.com/user/spez</code></li>
             </ul>
-            <p>Liên kết đến bài đăng, subreddit (<code>r/…</code>) và bộ sưu tập không phải liên kết hồ sơ. Đối với nội dung media trong bài đăng, hãy dùng <a href="/vi/reddit-image-downloader.html" class="orange-tool-link">Reddit Trình tải ảnh</a> or the <a href="/vi/" class="orange-tool-link">Reddit Trình tải video</a>.</p>
+            <p>Liên kết đến bài đăng, subreddit (<code>r/…</code>) và bộ sưu tập không phải liên kết hồ sơ. Đối với nội dung media trong bài đăng, hãy dùng <a href="/vi/reddit-image-downloader.html" class="hoặcange-tool-link">Trình tải ảnh Reddit</a> hoặc the <a href="/vi/" class="hoặcange-tool-link">Trình tải video Reddit</a>.</p>
           </div>
 
         </div>
@@ -390,11 +390,11 @@
             <p>Tệp bạn nhận được là phiên bản Reddit cung cấp công khai cho tài khoản đó. ReditGrab hiển thị kích thước pixel và loại tệp trước khi lưu, đồng thời không cải thiện hay phóng to ảnh, nên ảnh gốc nhỏ vẫn sẽ nhỏ. Vì vậy trang này không hứa hẹn "HD" hay "chất lượng gốc": điều đó phụ thuộc vào ảnh của tài khoản.</p>
             <p>Các tài khoản thường thuộc một trong ba trường hợp:</p>
             <ul>
-              <li><strong>Ảnh do người dùng tải lên</strong> — the image the user chose, at the size Reddit serves publicly.</li>
-              <li><strong>Snoovatar</strong> — Reddit's customizable character. ReditGrab returns the static image Reddit publishes for it, when one exists. Some Snoovatars have no single downloadable file, so those lookups may come back empty.</li>
-              <li><strong>Avatar mặc định</strong> — the generic Reddit icon given to accounts with no picture. It's a placeholder, not something the user chose.</li>
+              <li><strong>Ảnh do người dùng tải lên</strong> — ảnh người dùng chọn, ở kích thước Reddit cung cấp công khai.</li>
+              <li><strong>Snoovatar</strong> — Reddit's customizable character. ReditGrab returns the static image Reddit publishes fhoặc it, when one exists. Some Snoovatars have no single downloadable file, so those lookups may come back empty.</li>
+              <li><strong>Avatar mặc định</strong> — biểu tượng Reddit mặc định dành cho tài khoản không có ảnh. Đây là hình giữ chỗ, không phải ảnh do người dùng chọn.</li>
             </ul>
-            <p>Xem thêm tại <a href="/blog/reddit-avatar-types-explained" class="orange-tool-link">Giải thích các loại avatar Reddit</a>.</p>
+            <p>Xem thêm tại <a href="/blog/reddit-avatar-types-explained" class="hoặcange-tool-link">Giải thích các loại avatar Reddit</a>.</p>
           </div>
 
           <div class="content-block" id="download-vs-screenshot">
@@ -419,7 +419,7 @@
             <p>Công cụ hoạt động trên trình duyệt ở cả ba thiết bị và không cần cài ứng dụng.</p>
             <ul>
               <li><strong>Android:</strong> Trong ứng dụng Reddit, mở hồ sơ rồi sao chép liên kết hoặc tên người dùng từ tùy chọn chia sẻ. Dán vào đây, nhấn Tìm ảnh đại diện rồi Tải ảnh đại diện. Tệp thường được lưu trong thư mục Tải xuống.</li>
-              <li><strong>iPhone and iPad:</strong> Thực hiện các bước tương tự trong Safari. Safari thường lưu tệp tải xuống vào ứng dụng Tệp; để thêm ảnh vào Ảnh, mở tệp và dùng menu Chia sẻ.</li>
+              <li><strong>iPhone và iPad:</strong> Thực hiện các bước tương tự trong Safari. Safari thường lưu tệp tải xuống vào ứng dụng Tệp; để thêm ảnh vào Ảnh, mở tệp và dùng menu Chia sẻ.</li>
               <li><strong>Máy tính:</strong> Dán tên người dùng hoặc liên kết, nhấp Tìm ảnh đại diện rồi Tải ảnh đại diện. Mở bản gốc sẽ mở tệp gốc trong tab mới nếu bạn muốn tự lưu.</li>
             </ul>
           </div>
@@ -434,7 +434,7 @@
               <li>Reddit không hiển thị hồ sơ cho khách truy cập chưa đăng nhập.</li>
               <li>Reddit tạm thời từ chối yêu cầu — hãy đợi một phút rồi thử lại.</li>
             </ul>
-            <p>Nếu việc tìm kiếm bắt đầu thất bại với nhiều tài khoản, Reddit có thể đã thay đổi cách cung cấp avatar. Để hiểu "công khai" bao gồm những gì, xem <a href="/blog/what-public-reddit-media-means" class="orange-tool-link">what public Reddit media means</a>.</p>
+            <p>Nếu việc tìm kiếm bắt đầu thất bại với nhiều tài khoản, Reddit có thể đã thay đổi cách cung cấp avatar. Để hiểu "công khai" bao gồm những gì, xem <a href="/blog/what-public-reddit-media-means" class="hoặcange-tool-link">nội dung đa phương tiện công khai trên Reddit có nghĩa là gì</a>.</p>
           </div>
 
         </div>
@@ -453,16 +453,16 @@
 
           <div class="content-block" id="privacy">
             <h2>Quyền riêng tư</h2>
-            <p>ReditGrab không yêu cầu bạn đăng nhập hoặc cung cấp mật khẩu Reddit. Để thực hiện tìm kiếm, hệ thống nhận tên người dùng hoặc liên kết bạn nhập và các yêu cầu có thể được xử lý qua nhà cung cấp hạ tầng như Cloudflare. Trang <a href="/privacy" class="orange-tool-link">Quyền riêng tư Policy</a> giải thích những dữ liệu website thu thập, bao gồm phân tích và bộ nhớ trình duyệt.</p>
+            <p>ReditGrab không yêu cầu bạn đăng nhập hoặc cung cấp mật khẩu Reddit. Để thực hiện tìm kiếm, hệ thống nhận tên người dùng hoặc liên kết bạn nhập và các yêu cầu có thể được xử lý qua nhà cung cấp hạ tầng như Cloudflare. Trang <a href="/privacy" class="hoặcange-tool-link">Chính sách quyền riêng tư</a> giải thích những dữ liệu website thu thập, bao gồm phân tích và bộ nhớ trình duyệt.</p>
             <p>ReditGrab là một dự án độc lập. Dự án không liên kết, không được Reddit, Inc. chứng thực hoặc tài trợ.</p>
           </div>
 
         </div>
 
         <!-- Thêm công cụ từ ReditGrab (full-width) -->
-        <div class="content-block" id="more-tools" style="max-width:1040px;margin:0 auto;">
+        <div class="content-block" id="mhoặce-tools" style="max-width:1040px;margin:0 auto;">
           <h2>Thêm công cụ từ ReditGrab</h2>
-          <p>Lưu ảnh từ bài đăng và bộ sưu tập bằng <a href="/vi/reddit-image-downloader.html" class="orange-tool-link">Reddit Trình tải ảnh</a>, tải video được lưu trữ trên Reddit bằng <a href="/vi/" class="orange-tool-link">Reddit Trình tải video</a> hoặc tìm hiểu về dự án tại trang <a href="/about" class="orange-tool-link">Giới thiệu ReditGrab</a> .</p>
+          <p>Lưu ảnh từ bài đăng và bộ sưu tập bằng <a href="/vi/reddit-image-downloader.html" class="hoặcange-tool-link">Trình tải ảnh Reddit</a>, tải video được lưu trữ trên Reddit bằng <a href="/vi/" class="hoặcange-tool-link">Trình tải video Reddit</a> hoặc tìm hiểu về dự án tại trang <a href="/about" class="hoặcange-tool-link">Giới thiệu ReditGrab</a> .</p>
         </div>
       </div>
     </section>
@@ -478,7 +478,7 @@
           <div class="faq-item" id="faq-1">
             <button type="button" class="faq-question" aria-expanded="false" aria-controls="faq-answer-1">
               <span>DP Reddit là gì?</span>
-              <svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"></polyline></svg>
+              <svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColhoặc" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"></polyline></svg>
             </button>
             <div class="faq-answer" id="faq-answer-1">
               <p>DP là viết tắt của display picture: ảnh hiển thị bên cạnh tên người dùng trên hồ sơ, bài đăng và bình luận Reddit. Một số người gọi đó là ảnh hồ sơ hoặc avatar.</p>
@@ -488,7 +488,7 @@
           <div class="faq-item" id="faq-2">
             <button type="button" class="faq-question" aria-expanded="false" aria-controls="faq-answer-2">
               <span>Tôi có thể nhập gì vào ô?</span>
-              <svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"></polyline></svg>
+              <svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColhoặc" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"></polyline></svg>
             </button>
             <div class="faq-answer" id="faq-answer-2">
               <p>Tên người dùng (<code>spez</code>) hoặc tên có tiền tố (<code>u/spez</code>) hoặc liên kết hồ sơ như <code>reddit.com/user/spez</code>. Liên kết bài đăng, subreddit và bộ sưu tập không phải liên kết hồ sơ.</p>
@@ -498,7 +498,7 @@
           <div class="faq-item" id="faq-3">
             <button type="button" class="faq-question" aria-expanded="false" aria-controls="faq-answer-3">
               <span>Tôi có cần đăng nhập Reddit không?</span>
-              <svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"></polyline></svg>
+              <svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColhoặc" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"></polyline></svg>
             </button>
             <div class="faq-answer" id="faq-answer-3">
               <p>Không. ReditGrab chỉ tìm những gì Reddit hiển thị công khai. Không thể truy xuất hồ sơ mà Reddit ẩn với khách chưa đăng nhập.</p>
@@ -508,7 +508,7 @@
           <div class="faq-item" id="faq-4">
             <button type="button" class="faq-question" aria-expanded="false" aria-controls="faq-answer-4">
               <span>Tôi có thể tải ảnh đại diện Reddit của mình không?</span>
-              <svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"></polyline></svg>
+              <svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColhoặc" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"></polyline></svg>
             </button>
             <div class="faq-answer" id="faq-answer-4">
               <p>Có, nếu hồ sơ của bạn là công khai. Nhập tên người dùng như bình thường. Nếu chính bạn đã tải ảnh lên, tệp gốc vẫn là bản tốt nhất vì Reddit có thể cung cấp kích thước khác.</p>
@@ -518,7 +518,7 @@
           <div class="faq-item" id="faq-5">
             <button type="button" class="faq-question" aria-expanded="false" aria-controls="faq-answer-5">
               <span>Tôi có thể lưu ảnh đại diện của người dùng khác không?</span>
-              <svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"></polyline></svg>
+              <svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColhoặc" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"></polyline></svg>
             </button>
             <div class="faq-answer" id="faq-answer-5">
               <p>Bạn có thể tìm bất kỳ hồ sơ công khai nào. Việc có nên sử dụng lại ảnh hay không là chuyện khác: không dùng ảnh để mạo danh, quấy rối hoặc lập hồ sơ về người khác. Ảnh công khai vẫn thuộc về chủ sở hữu.</p>
@@ -528,7 +528,7 @@
           <div class="faq-item" id="faq-6">
             <button type="button" class="faq-question" aria-expanded="false" aria-controls="faq-answer-6">
               <span>Ảnh có phải HD hoặc kích thước đầy đủ không?</span>
-              <svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"></polyline></svg>
+              <svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColhoặc" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"></polyline></svg>
             </button>
             <div class="faq-answer" id="faq-answer-6">
               <p>Ảnh có kích thước mà Reddit cung cấp công khai cho tài khoản đó. Kết quả hiển thị kích thước và loại tệp trước khi tải. ReditGrab không phóng to hay cải thiện ảnh, vì vậy ảnh nhỏ vẫn sẽ nhỏ.</p>
@@ -538,7 +538,7 @@
           <div class="faq-item" id="faq-7">
             <button type="button" class="faq-question" aria-expanded="false" aria-controls="faq-answer-7">
               <span>Tại sao ReditGrab không tìm thấy ảnh đại diện?</span>
-              <svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"></polyline></svg>
+              <svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColhoặc" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"></polyline></svg>
             </button>
             <div class="faq-answer" id="faq-answer-7">
               <p>Các nguyên nhân thường gặp gồm tên người dùng sai, tài khoản đã xóa hoặc đình chỉ, tài khoản chỉ có avatar mặc định, hồ sơ bị ẩn với khách chưa đăng nhập hoặc Reddit tạm thời từ chối yêu cầu. Kiểm tra chính tả, đợi một phút rồi thử lại.</p>
@@ -548,7 +548,7 @@
           <div class="faq-item" id="faq-8">
             <button type="button" class="faq-question" aria-expanded="false" aria-controls="faq-answer-8">
               <span>Tôi có thể thực hiện trên điện thoại không?</span>
-              <svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"></polyline></svg>
+              <svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColhoặc" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"></polyline></svg>
             </button>
             <div class="faq-answer" id="faq-answer-8">
               <p>Có. Mở ReditGrab trong trình duyệt điện thoại — không cần ứng dụng. Vị trí lưu tệp phụ thuộc vào trình duyệt. Android thường dùng thư mục Tải xuống, còn Safari trên iPhone thường dùng ứng dụng Tệp.</p>
@@ -558,10 +558,10 @@
           <div class="faq-item" id="faq-9">
             <button type="button" class="faq-question" aria-expanded="false" aria-controls="faq-answer-9">
               <span>ReditGrab có lưu tìm kiếm hoặc ảnh của tôi không?</span>
-              <svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"></polyline></svg>
+              <svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColhoặc" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"></polyline></svg>
             </button>
             <div class="faq-answer" id="faq-answer-9">
-              <p>ReditGrab không yêu cầu tài khoản hoặc đăng nhập Reddit. Để tìm kiếm, hệ thống nhận tên người dùng hoặc liên kết bạn nhập và các yêu cầu có thể được xử lý bởi các nhà cung cấp như Cloudflare. Trang <a href="/privacy" class="orange-tool-link">Quyền riêng tư Policy</a> có đầy đủ thông tin.</p>
+              <p>ReditGrab không yêu cầu tài khoản hoặc đăng nhập Reddit. Để tìm kiếm, hệ thống nhận tên người dùng hoặc liên kết bạn nhập và các yêu cầu có thể được xử lý bởi các nhà cung cấp như Cloudflare. Trang <a href="/privacy" class="hoặcange-tool-link">Chính sách quyền riêng tư</a> có đầy đủ thông tin.</p>
             </div>
           </div>
 
@@ -577,7 +577,7 @@
       <div class="modal-header">
         <p class="modal-title" id="modal-title">Ảnh đại diện Reddit</p>
         <button type="button" class="modal-close-btn" id="modal-close-btn" aria-label="Đóng bản xem trước ảnh">
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColhoặc" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
             <line x1="18" y1="6" x2="6" y2="18"></line>
             <line x1="6" y1="6" x2="18" y2="18"></line>
           </svg>
@@ -587,7 +587,7 @@
         <img id="modal-avatar-img" class="modal-avatar-img" src="" alt="Reddit profile picture">
       </div>
       <div class="modal-footer">
-        <a href="#" class="btn-secondary" id="modal-open-original-btn" target="_blank" rel="noopener noreferrer">Mở bản gốc</a>
+        <a href="#" class="btn-secondary" id="modal-open-hoặciginal-btn" target="_blank" rel="noopener nhoặceferrer">Mở bản gốc</a>
         <button type="button" class="btn-primary" id="modal-download-btn">Tải ảnh đại diện</button>
       </div>
     </div>
@@ -599,10 +599,10 @@
       <div class="footer-links-grid">
         <div class="footer-link-group">
           <p class="footer-link-title">Công cụ khác</p>
-          <a href="https://threadsgrab.com/threads-profile-picture-downloader" rel="noopener noreferrer">Threads Trình tải DP</a>
-          <a href="https://fbviddl.com/facebook-dp-downloader" rel="noopener noreferrer">Facebook Trình tải DP</a>
-          <a href="https://twitter.threadsgrab.com/twitter-dp-downloader" rel="noopener noreferrer">Twitter Trình tải DP</a>
-          <a href="https://pinviddl.com/" rel="noopener noreferrer">Pinterest Trình tải video</a>
+          <a href="https://threadsgrab.com/threads-profile-picture-downloader" rel="noopener nhoặceferrer">Threads Trình tải ảnh đại diện Reddit</a>
+          <a href="https://fbviddl.com/facebook-dp-downloader" rel="noopener nhoặceferrer">Facebook Trình tải ảnh đại diện Reddit</a>
+          <a href="https://twitter.threadsgrab.com/twitter-dp-downloader" rel="noopener nhoặceferrer">Twitter Trình tải ảnh đại diện Reddit</a>
+          <a href="https://pinviddl.com/" rel="noopener nhoặceferrer">Pinterest Trình tải video</a>
         </div>
         <div class="footer-link-group">
           <p class="footer-link-title">Pháp lý</p>
@@ -618,8 +618,8 @@
         </div>
       </div>
       <div class="footer-bottom-row">
-        <p class="footer-copy">&copy; 2026 <strong>ReditGrab</strong>. All rights reserved.</p>
-        <p class="footer-disclaimer" id="footer-disclaimer">Tuyên bố miễn trừ: This tool is not affiliated with, endorsed by, or associated with Reddit, Inc. Only publicly accessible media is processed.</p>
+        <p class="footer-copy">&copy; 2026 <strong>ReditGrab</strong>. Đã đăng ký bản quyền.</p>
+        <p class="footer-disclaimer" id="footer-disclaimer">Tuyên bố miễn trừ: This tool is not affiliated with, endhoặcsed by, hoặc mộtssociated with Reddit, Inc. Only publicly accessible media is processed.</p>
       </div>
     </div>
   </footer>
