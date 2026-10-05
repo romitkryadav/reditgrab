@@ -1,0 +1,628 @@
+<!DOCTYPE html>
+<html lang="es-ES">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Descargar foto de perfil de Reddit (DP) | ReditGrab</title>
+  <meta name="description" content="Look up a public Reddit profile picture by username or profile link, check its size and format, then save the image file. Free, no Reddit account needed.">
+  <meta name="author" content="Romit Kr Yadav">
+  <meta name="robots" content="index, follow">
+  <meta name="language" content="Spanish">
+  <meta name="geo.region" content="ES">
+  <link rel="canonical" href="https://reditgrab.com/es/reddit-dp-downloader.html">
+
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://reditgrab.com/es/reddit-dp-downloader.html">
+  <meta property="og:title" content="Descargar foto de perfil de Reddit | ReditGrab">
+  <meta property="og:description" content="Busca un perfil público de Reddit por nombre de usuario o enlace, previsualiza la foto de perfil y guárdala. No necesitas iniciar sesión en Reddit.">
+  <meta property="og:image" content="https://reditgrab.com/preview-card.png">
+  <meta property="og:site_name" content="ReditGrab">
+  <meta property="og:locale" content="es_ES">
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:url" content="https://reditgrab.com/es/reddit-dp-downloader.html">
+  <meta name="twitter:title" content="Descargar foto de perfil de Reddit | ReditGrab">
+  <meta name="twitter:description" content="Busca un perfil público de Reddit por nombre de usuario o enlace, previsualiza la foto de perfil y guárdala. No necesitas iniciar sesión en Reddit.">
+  <meta name="twitter:image" content="https://reditgrab.com/preview-card.png">
+
+  <!-- Favicon and Theme Color -->
+  <meta name="theme-color" content="#ff4500">
+ <link rel="icon" type="image/png" href="https://reditgrab.com/reditgrab-favicon.png">
+
+  <!-- Pure CSS stylesheet -->
+  <link rel="stylesheet" href="/reddp.css">
+  <style>
+    .content-cols{display:grid;grid-template-columns:1fr;gap:2rem;max-width:1040px;margin:0 auto 3rem}
+    @media(min-width:768px){.content-cols{grid-template-columns:1fr 1fr;gap:2rem 3rem}}
+    .content-cols .content-block{margin-bottom:0}
+  </style>
+
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "WebApplication",
+          "@id": "https://reditgrab.com/es/reddit-dp-downloader.html#webapplication",
+          "name": "ReditGrab Reddit Profile Picture Downloader",
+          "url": "https://reditgrab.com/es/reddit-dp-downloader.html",
+          "description": "Busca un perfil público de Reddit por nombre de usuario o enlace, previsualiza la foto de perfil y guárdala cuando Reddit la haga públicamente disponible.",
+          "applicationCategory": "UtilitiesApplication",
+          "operatingSystem": "Any",
+          "offers": {
+            "@type": "Offer",
+            "price": "0",
+            "priceCurrency": "USD"
+          },
+          "publisher": {
+            "@id": "https://reditgrab.com/#organization"
+          }
+        },
+        {
+          "@type": "Organization",
+          "@id": "https://reditgrab.com/#organization",
+          "name": "ReditGrab",
+          "url": "https://reditgrab.com/",
+          "logo": "https://reditgrab.com/reditgrab.png"
+        },
+        {
+          "@type": "BreadcrumbList",
+          "@id": "https://reditgrab.com/es/reddit-dp-downloader.html#breadcrumb",
+          "itemListElement": [
+            {
+              "@type": "ListItem",
+              "position": 1,
+              "name": "Inicio",
+              "item": "https://reditgrab.com/"
+            },
+            {
+              "@type": "ListItem",
+              "position": 2,
+              "name": "Descargar foto de perfil de Reddit",
+              "item": "https://reditgrab.com/es/reddit-dp-downloader.html"
+            }
+          ]
+        }
+      ]
+    }
+  </script>
+  <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-LEBSQ97VK4"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-LEBSQ97VK4');
+</script>
+</head>
+<body data-theme="dark">
+
+  <!-- Site Header -->
+  <header class="site-header" id="site-header">
+    <div class="container header-inner">
+      <a href="https://reditgrab.com/" class="brand-link" id="brand-link" aria-label="Inicio de ReditGrab">
+        <div class="brand-icon" aria-hidden="true">
+          <img src="https://reditgrab.com/reditgrab.png" alt="ReditGrab logo" width="48" height="48">
+        </div>
+        <span>ReditGrab</span>
+      </a>
+
+      <!-- Desktop nav -->
+      <nav class="nav-desktop" aria-label="Navegación principal">
+        <a href="https://reditgrab.com/" class="nav-links-item">Descargador de vídeos</a>
+        <a href="/reddit-image-downloader" class="nav-links-item">Descargador de imágenes</a>
+        <a href="/reddit-dp-downloader" class="nav-links-item active" aria-current="page">Descargador de fotos de perfil</a>
+        <a href="/about" class="nav-links-item">Sobre ReditGrab</a>
+        <a href="/contact" class="nav-links-item">Contacto</a>
+        <button type="button" class="btn-icon" id="theme-toggle-btn" aria-label="Cambiar entre tema claro y oscuro" title="Cambiar tema">
+          <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="12" cy="12" r="5"></circle>
+            <line x1="12" y1="1" x2="12" y2="3"></line>
+            <line x1="12" y1="21" x2="12" y2="23"></line>
+            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+            <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+            <line x1="1" y1="12" x2="3" y2="12"></line>
+            <line x1="21" y1="12" x2="23" y2="12"></line>
+            <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+            <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+          </svg>
+        </button>
+      </nav>
+
+      <!-- Hamburger button (mobile only) -->
+      <button class="nav-hamburger" id="nav-hamburger" aria-expanded="false" aria-controls="nav-mobile-panel" aria-label="Abrir menú de navegación">
+        <span class="bar"></span>
+        <span class="bar"></span>
+        <span class="bar"></span>
+      </button>
+    </div>
+
+    <!-- Mobile dropdown panel -->
+    <nav class="nav-mobile-panel" id="nav-mobile-panel" aria-label="Navegación móvil">
+      <a href="https://reditgrab.com/">Descargador de vídeos</a>
+      <a href="/reddit-image-downloader">Descargador de imágenes</a>
+      <a href="/reddit-dp-downloader">Descargador de fotos de perfil</a>
+      <a href="/about">Sobre ReditGrab</a>
+      <a href="/contact">Contacto</a>
+    </nav>
+  </header>
+
+  <script>
+    (function () {
+      var btn = document.getElementById('nav-hamburger');
+      var panel = document.getElementById('nav-mobile-panel');
+      btn.addEventListener('click', function () {
+        var open = panel.classList.toggle('open');
+        btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+      });
+      panel.querySelectorAll('a').forEach(function (a) {
+        a.addEventListener('click', function () {
+          panel.classList.remove('open');
+          btn.setAttribute('aria-expanded', 'false');
+        });
+      });
+    })();
+  </script>
+
+  <!-- Main Content -->
+  <main class="main-content" id="main-content">
+    
+    <!-- Hero Section -->
+    <section class="hero-section" id="hero-section">
+      <div class="container">
+        <h1 class="hero-title" id="main-title">Descargar foto de perfil de Reddit</h1>
+          <p class="hero-subtitle">Introduce un nombre de usuario o enlace de perfil de Reddit para previsualizar y guardar la foto de perfil pública (DP). No necesitas iniciar sesión en Reddit.</p>
+        <nav class="tool-tabs" aria-label="Herramientas de descarga">
+          <a class="tool-tab" href="/" aria-label="Descargador de vídeos" title="Descargador de vídeos">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="14" height="14" rx="2"></rect><path d="m17 10 4-2v8l-4-2z"></path></svg>
+          </a>
+          <a class="tool-tab" href="/reddit-image-downloader" aria-label="Descargador de imágenes" title="Descargador de imágenes">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="4" width="18" height="16" rx="2"></rect><circle cx="8.5" cy="9" r="1.5"></circle><path d="m4 17 5-5 3 3 2-2 6 4"></path></svg>
+          </a>
+          <a class="tool-tab active" href="/reddit-dp-downloader" aria-current="page" aria-label="Descargador de fotos de perfil" title="Descargador de fotos de perfil">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="8" r="3"></circle><path d="M5 20c.6-3.4 3.1-5 7-5s6.4 1.6 7 5"></path></svg>
+          </a>
+        </nav>
+       
+
+        <!-- Search Card (Main Tool) -->
+        <div class="downloader-glow-wrap">
+        <div class="search-card" id="search-card">
+          <form class="search-form" id="search-form" novalidate>
+            <div class="input-wrapper">
+              <svg class="input-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <circle cx="11" cy="11" r="8"></circle>
+                <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+              </svg>
+              <input 
+                type="text" 
+                id="reddit-input" 
+                class="search-input" 
+                placeholder="Nombre de usuario o URL de perfil de Reddit, por ejemplo spez" 
+                aria-label="Nombre de usuario o URL de perfil de Reddit" 
+                autocomplete="off"
+                spellcheck="false"
+                required
+              >
+            </div>
+
+            <button type="submit" id="find-dp-btn" class="btn-primary" aria-live="polite">
+              <span>Buscar foto de perfil</span>
+            </button>
+          </form>
+
+          <p class="hero-trust-line" style="margin-top:0.75rem;font-size:0.85rem;color:var(--text-subtle,#94a3b8);text-align:center;">Solo perfiles públicos. Acepta <code>spez</code>, <code>u/spez</code> or a <code>reddit.com/user/</code> link.</p>
+        </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Interactive Zone (Loading, Error, Result Card) -->
+    <div class="container interactive-zone">
+      
+      <!-- Loading State -->
+      <div class="loading-box" id="loading-container" role="status" aria-live="polite" hidden>
+        <div class="spinner" aria-hidden="true"></div>
+        <div class="loading-text">Buscando el perfil de Reddit…</div>
+        <div class="loading-status-detail" id="loading-status-detail">Comprobando el perfil público…</div>
+      </div>
+
+      <!-- Error State -->
+      <div class="error-box" id="error-container" role="alert" aria-live="assertive" hidden>
+        <div class="error-icon-wrap" aria-hidden="true">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="10"></circle>
+            <line x1="12" y1="8" x2="12" y2="12"></line>
+            <line x1="12" y1="16" x2="12.01" y2="16"></line>
+          </svg>
+        </div>
+        <div class="error-content">
+          <div class="error-title">Aviso</div>
+          <p class="error-message" id="error-message">Introduce un nombre de usuario o una URL de perfil de Reddit válida.</p>
+          <button type="button" class="error-action-btn" id="error-action-btn">Volver a intentar</button>
+        </div>
+      </div>
+
+      <!-- Success Profile Card -->
+      <div class="result-card" id="result-container" aria-live="polite" hidden>
+        <div class="result-header">
+          <span class="result-badge">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <polyline points="20 6 9 17 4 12"></polyline>
+            </svg>
+            Foto de perfil de Reddit encontrada
+          </span>
+          <span class="result-timestamp" id="result-timestamp"></span>
+        </div>
+
+        <div class="profile-layout">
+          <!-- Avatar Preview (Click to Enlarge) -->
+          <div class="avatar-preview-wrap" id="avatar-preview-wrap" title="Haz clic para ampliar la imagen" tabindex="0" role="button" aria-label="Haz clic para ampliar el avatar">
+            <img id="result-avatar-img" class="avatar-img" src="" alt="Foto de perfil de Reddit" loading="eager">
+            <div class="zoom-hint">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <circle cx="11" cy="11" r="8"></circle>
+                <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                <line x1="11" y1="8" x2="11" y2="14"></line>
+                <line x1="8" y1="11" x2="14" y2="11"></line>
+              </svg>
+              <span>Ampliar</span>
+            </div>
+          </div>
+
+          <!-- Profile Details & Actions -->
+          <div class="profile-details">
+            <div>
+              <p class="profile-username" id="result-username">u/example</p>
+              <a href="#" class="profile-link" id="result-profile-link" target="_blank" rel="noopener noreferrer">
+                <span>Ver en Reddit</span>
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+                  <polyline points="15 3 21 3 21 9"></polyline>
+                  <line x1="10" y1="14" x2="21" y2="3"></line>
+                </svg>
+              </a>
+            </div>
+
+            <!-- Metadata Pills -->
+            <div class="meta-tags-list">
+              <span class="meta-pill" id="result-dim-pill"></span>
+              <span class="meta-pill" id="result-format-pill">PNG</span>
+              <span class="meta-pill">CDN de Reddit</span>
+            </div>
+
+            <!-- Action Buttons -->
+            <div class="action-buttons">
+              <button type="button" class="btn-primary" id="download-btn">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                  <polyline points="7 10 12 15 17 10"></polyline>
+                  <line x1="12" y1="15" x2="12" y2="3"></line>
+                </svg>
+                <span>Descargar foto de perfil</span>
+              </button>
+
+              <a href="#" class="btn-secondary" id="open-original-btn" target="_blank" rel="noopener noreferrer">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+                  <polyline points="15 3 21 3 21 9"></polyline>
+                  <line x1="10" y1="14" x2="21" y2="3"></line>
+                </svg>
+                <span>Abrir original</span>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- How-to Steps -->
+    <section class="content-section" id="how-it-works">
+      <div class="container">
+        <h2 class="section-title">Cómo descargar una foto de perfil de Reddit</h2>
+        <p class="section-subtitle">Cuatro pasos: del nombre de usuario al archivo guardado.</p>
+
+        <div class="steps-grid">
+          <div class="step-card" id="step-1">
+            <div class="step-number" aria-hidden="true">1</div>
+            <h3 class="step-card-title">Copia un nombre de usuario o enlace de perfil</h3>
+            <p class="step-card-text">Abre el perfil en Reddit y copia el nombre de usuario, o utiliza la opción de compartir del perfil para copiar su enlace.</p>
+          </div>
+
+          <div class="step-card" id="step-2">
+            <div class="step-number" aria-hidden="true">2</div>
+            <h3 class="step-card-title">Pégalo arriba</h3>
+            <p class="step-card-text">Introduce el nombre de usuario o enlace y pulsa <strong>Buscar foto de perfil</strong>.</p>
+          </div>
+
+          <div class="step-card" id="step-3">
+            <div class="step-number" aria-hidden="true">3</div>
+            <h3 class="step-card-title">Comprueba la vista previa</h3>
+            <p class="step-card-text">ReditGrab muestra la foto con su tamaño en píxeles y tipo de archivo. Haz clic en la imagen para ampliarla o usa Ver en Reddit para confirmar que es la cuenta correcta.</p>
+          </div>
+
+          <div class="step-card" id="step-4">
+            <div class="step-number" aria-hidden="true">4</div>
+            <h3 class="step-card-title">Guárdala</h3>
+            <p class="step-card-text"><strong>Descargar foto de perfil</strong> guarda el archivo en tu dispositivo. <strong>Abrir original</strong> abre la imagen sola en una pestaña nueva si prefieres guardarla manualmente.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Row 1: Qué hace esta herramienta + Qué puedes introducir -->
+    <section class="content-section" id="about-and-inputs">
+      <div class="container">
+        <div class="content-cols">
+
+          <div class="content-block" id="what-it-does">
+            <h2>Qué hace esta herramienta</h2>
+            <p>Una DP de Reddit (display picture) es la pequeña imagen que aparece junto al nombre de usuario en su perfil, publicaciones y comentarios. ReditGrab busca un perfil público, muestra la foto que Reddit proporciona actualmente y permite guardarla como archivo de imagen.</p>
+            <p>No necesitas una cuenta de Reddit. Puedes usarla para guardar una copia de tu propio avatar, confirmar que has encontrado la cuenta correcta antes de responder o denunciar, o ver con más detalle una imagen que aparece muy pequeña en la aplicación.</p>
+          </div>
+
+          <div class="content-block" id="accepted-inputs">
+            <h2>Qué puedes introducir</h2>
+            <p>ReditGrab acepta un nombre de usuario con o sin prefijo y los enlaces de perfil habituales:</p>
+            <ul>
+              <li><code>spez</code></li>
+              <li><code>u/spez</code> or <code>/u/spez</code></li>
+              <li><code>reddit.com/user/spez</code>, <code>www.reddit.com/user/spez</code> or <code>old.reddit.com/user/spez</code></li>
+            </ul>
+            <p>Los enlaces a publicaciones, subreddits (<code>r/…</code>) and galleries aren't profile links. Para contenido multimedia dentro de publicaciones, utiliza el <a href="/reddit-image-downloader" class="orange-tool-link">Reddit Descargador de imágenes</a> or the <a href="https://reditgrab.com/" class="orange-tool-link">Reddit Descargador de vídeos</a>.</p>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- Row 2: Qué imagen obtendrás + Download vs screenshot -->
+    <section class="content-section" id="picture-and-quality">
+      <div class="container">
+        <div class="content-cols">
+
+          <div class="content-block" id="which-picture">
+            <h2>Qué imagen obtendrás</h2>
+            <p>El archivo que recibes es el que Reddit hace públicamente disponible para esa cuenta. ReditGrab muestra sus dimensiones en píxeles y el tipo de archivo antes de guardarlo y no mejora ni amplía la imagen, por lo que una imagen original pequeña seguirá siendo pequeña. Por eso esta página no promete «HD» ni «calidad original»: depende de la imagen de la cuenta.</p>
+            <p>Las cuentas suelen encajar en uno de estos tres casos:</p>
+            <ul>
+              <li><strong>Imagen subida</strong> — la imagen elegida por el usuario, en el tamaño que Reddit ofrece públicamente.</li>
+              <li><strong>Snoovatar</strong> — El personaje personalizable de Reddit. ReditGrab devuelve la imagen estática que Reddit publica cuando existe. Algunos Snoovatar no tienen un único archivo descargable, por lo que estas búsquedas pueden no devolver resultados.</li>
+              <li><strong>Avatar predeterminado</strong> — el icono genérico de Reddit para cuentas sin imagen. Es un marcador de posición, no una imagen elegida por el usuario.</li>
+            </ul>
+            <p>For a deeper look, see <a href="/blog/reddit-avatar-types-explained" class="orange-tool-link">Reddit avatar types explained</a>.</p>
+          </div>
+
+          <div class="content-block" id="download-vs-screenshot">
+            <h2>DP, foto de perfil y avatar: ¿es lo mismo?</h2>
+            <p>En general, sí. «DP» es la abreviatura de display picture, «foto de perfil» es el término habitual y «avatar» aparece con frecuencia en la interfaz y documentación de Reddit. «Foto de perfil» e «imagen de perfil» significan prácticamente lo mismo. Lo importante es qué tipo de avatar utiliza la cuenta, como se explica arriba.</p>
+
+            <h3 style="margin-top:1.5rem;">Descarga frente a captura de pantalla</h3>
+            <p>Una captura de pantalla registra lo que muestra tu pantalla: el recorte circular, la interfaz y el escalado de la pantalla. Una descarga guarda el archivo de imagen en sí, sin elementos alrededor. Que el archivo sea más grande que lo que ves depende de lo que Reddit ofrece para esa cuenta; comprueba las dimensiones antes de guardarlo.</p>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- Row 3: Mobile + Cuando no se encuentra ninguna foto -->
+    <section class="content-section" id="mobile-and-failures">
+      <div class="container">
+        <div class="content-cols">
+
+          <div class="content-block" id="mobile-guide">
+            <h2>En Android, iPhone y ordenador</h2>
+            <p>Funciona en el navegador en los tres casos, sin instalar ninguna aplicación.</p>
+            <ul>
+              <li><strong>Android:</strong> En la aplicación de Reddit, abre el perfil y copia su enlace o nombre de usuario desde las opciones de compartir. Pégalo aquí, pulsa Buscar foto de perfil y después Descargar foto de perfil. El archivo suele guardarse en Descargas.</li>
+              <li><strong>iPhone y iPad:</strong> Los mismos pasos en Safari. Safari suele guardar las descargas en la aplicación Archivos; para añadir la foto a Fotos, ábrela y utiliza el menú Compartir.</li>
+              <li><strong>Ordenador:</strong> Pega el nombre de usuario o enlace, haz clic en Buscar foto de perfil y después en Descargar foto de perfil. Abrir original muestra el archivo sin más elementos en una pestaña nueva si prefieres guardarlo manualmente.</li>
+            </ul>
+          </div>
+
+          <div class="content-block" id="when-not-found">
+            <h2>Cuando no se encuentra ninguna foto</h2>
+            <p>Una búsqueda puede no devolver resultados por motivos habituales:</p>
+            <ul>
+              <li>El nombre de usuario está mal escrito o no existe.</li>
+              <li>La cuenta fue eliminada o suspendida y Reddit ya no muestra el perfil.</li>
+              <li>La cuenta solo tiene el avatar predeterminado, por lo que no hay una imagen elegida que guardar.</li>
+              <li>Reddit no muestra el perfil a visitantes que no han iniciado sesión.</li>
+              <li>Reddit rechazó la solicitud temporalmente; espera un minuto y vuelve a intentarlo.</li>
+            </ul>
+            <p>If lookups start failing across many accounts, Reddit may have changed how it exposes avatars. For what "public" covers, see <a href="/blog/what-public-reddit-media-means" class="orange-tool-link">what public Reddit media means</a>.</p>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- Row 4 full: Responsible use + Privacidad -->
+    <section class="content-section" id="responsible-and-privacy">
+      <div class="container">
+        <div class="content-cols">
+
+          <div class="content-block" id="responsible-use">
+            <h2>Uso responsable de las fotos de perfil</h2>
+            <p>Algunos usos razonables son guardar una copia de tu propio avatar, comprobar que tienes la cuenta correcta o conservar una referencia personal. Que una imagen sea pública no significa que puedas reutilizarla libremente. No utilices la foto de otra persona para suplantarla, acosarla o crear colecciones de imágenes vinculadas a personas concretas.</p>
+          </div>
+
+          <div class="content-block" id="privacy">
+            <h2>Privacidad</h2>
+            <p>ReditGrab no te pide iniciar sesión ni tu contraseña de Reddit. Para realizar una búsqueda recibe el nombre de usuario o enlace que introduces, y las solicitudes pueden gestionarse mediante proveedores de infraestructura como Cloudflare. La <a href="/privacy" class="orange-tool-link">Privacidad Policy</a> covers what the site collects, including analytics and browser storage.</p>
+            <p>ReditGrab is an independent project. It no está afiliado, respaldado ni patrocinado por Reddit, Inc.</p>
+          </div>
+
+        </div>
+
+        <!-- Más de ReditGrab (full-width) -->
+        <div class="content-block" id="more-tools" style="max-width:1040px;margin:0 auto;">
+          <h2>Más de ReditGrab</h2>
+          <p>Guarda imágenes de publicaciones y galerías con el <a href="/reddit-image-downloader" class="orange-tool-link">Reddit Descargador de imágenes</a>, descarga vídeos alojados en Reddit con el <a href="https://reditgrab.com/" class="orange-tool-link">Reddit Descargador de vídeos</a>, o conoce el proyecto en la página <a href="/about" class="orange-tool-link">Sobre ReditGrab ReditGrab</a> de ReditGrab.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="content-section" id="faqs">
+      <div class="container">
+        <h2 class="section-title">Descargar foto de perfil de Reddit — preguntas frecuentes</h2>
+        <p class="section-subtitle">Preguntas frecuentes sobre búsquedas por nombre de usuario, tipos de avatar y disponibilidad.</p>
+
+        <div class="faq-list">
+
+          <div class="faq-item" id="faq-1">
+            <button type="button" class="faq-question" aria-expanded="false" aria-controls="faq-answer-1">
+              <span>¿Qué es una DP de Reddit?</span>
+              <svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"></polyline></svg>
+            </button>
+            <div class="faq-answer" id="faq-answer-1">
+              <p>DP significa display picture: la imagen que aparece junto al nombre de usuario en el perfil, publicaciones y comentarios de Reddit. Algunas personas la llaman foto de perfil o avatar.</p>
+            </div>
+          </div>
+
+          <div class="faq-item" id="faq-2">
+            <button type="button" class="faq-question" aria-expanded="false" aria-controls="faq-answer-2">
+              <span>¿Qué puedo introducir en el campo?</span>
+              <svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"></polyline></svg>
+            </button>
+            <div class="faq-answer" id="faq-answer-2">
+              <p>Un nombre de usuario (<code>spez</code>), un nombre con prefijo (<code>u/spez</code>) o un enlace de perfil como <code>reddit.com/user/spez</code>. Los enlaces de publicaciones, subreddits y galerías no son enlaces de perfil.</p>
+            </div>
+          </div>
+
+          <div class="faq-item" id="faq-3">
+            <button type="button" class="faq-question" aria-expanded="false" aria-controls="faq-answer-3">
+              <span>¿Necesito iniciar sesión en Reddit?</span>
+              <svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"></polyline></svg>
+            </button>
+            <div class="faq-answer" id="faq-answer-3">
+              <p>No. ReditGrab solo busca lo que Reddit muestra públicamente. No puede obtener un perfil que Reddit oculta a los visitantes que no han iniciado sesión.</p>
+            </div>
+          </div>
+
+          <div class="faq-item" id="faq-4">
+            <button type="button" class="faq-question" aria-expanded="false" aria-controls="faq-answer-4">
+              <span>¿Puedo descargar mi propia foto de perfil de Reddit?</span>
+              <svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"></polyline></svg>
+            </button>
+            <div class="faq-answer" id="faq-answer-4">
+              <p>Sí, si tu perfil es público. Introduce tu nombre de usuario como cualquier otro. Si tú subiste la imagen, el archivo original sigue siendo la mejor copia, ya que Reddit puede ofrecer un tamaño diferente.</p>
+            </div>
+          </div>
+
+          <div class="faq-item" id="faq-5">
+            <button type="button" class="faq-question" aria-expanded="false" aria-controls="faq-answer-5">
+              <span>¿Puedo guardar la foto de perfil de otro usuario?</span>
+              <svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"></polyline></svg>
+            </button>
+            <div class="faq-answer" id="faq-answer-5">
+              <p>Puedes buscar cualquier perfil público. Reutilizar la imagen es otra cuestión: no la uses para suplantar, acosar o perfilar a otras personas. Una imagen pública sigue perteneciendo a su propietario.</p>
+            </div>
+          </div>
+
+          <div class="faq-item" id="faq-6">
+            <button type="button" class="faq-question" aria-expanded="false" aria-controls="faq-answer-6">
+              <span>¿La foto está en HD o a tamaño completo?</span>
+              <svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"></polyline></svg>
+            </button>
+            <div class="faq-answer" id="faq-answer-6">
+              <p>Tiene el tamaño que Reddit ofrece públicamente para esa cuenta. El resultado muestra las dimensiones y el tipo de archivo antes de descargarlo. ReditGrab no amplía ni mejora la imagen, así que una foto pequeña seguirá siendo pequeña.</p>
+            </div>
+          </div>
+
+          <div class="faq-item" id="faq-7">
+            <button type="button" class="faq-question" aria-expanded="false" aria-controls="faq-answer-7">
+              <span>¿Por qué ReditGrab no encuentra una foto de perfil?</span>
+              <svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"></polyline></svg>
+            </button>
+            <div class="faq-answer" id="faq-answer-7">
+              <p>Las causas habituales son: un nombre de usuario mal escrito, una cuenta eliminada o suspendida, una cuenta con el avatar predeterminado, un perfil oculto para visitantes que no han iniciado sesión o un rechazo temporal de Reddit. Comprueba el nombre y vuelve a intentarlo después de un minuto.</p>
+            </div>
+          </div>
+
+          <div class="faq-item" id="faq-8">
+            <button type="button" class="faq-question" aria-expanded="false" aria-controls="faq-answer-8">
+              <span>¿Puedo hacerlo desde el móvil?</span>
+              <svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"></polyline></svg>
+            </button>
+            <div class="faq-answer" id="faq-answer-8">
+              <p>Sí. Abre ReditGrab en el navegador del móvil; no necesitas instalar una aplicación. La ubicación del archivo depende del navegador. Android suele utilizar Descargas y Safari en iPhone suele utilizar Archivos.</p>
+            </div>
+          </div>
+
+          <div class="faq-item" id="faq-9">
+            <button type="button" class="faq-question" aria-expanded="false" aria-controls="faq-answer-9">
+              <span>¿ReditGrab guarda mis búsquedas o la foto?</span>
+              <svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"></polyline></svg>
+            </button>
+            <div class="faq-answer" id="faq-answer-9">
+              <p>ReditGrab no requiere una cuenta ni iniciar sesión en Reddit. Para realizar una búsqueda recibe el nombre de usuario o enlace que introduces, y las solicitudes pueden gestionarse mediante proveedores como Cloudflare. La <a href="/privacy" class="orange-tool-link">Privacidad Policy</a> has the details.</p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Click-to-Enlarge Modal -->
+  <div class="modal-overlay" id="preview-modal" role="dialog" aria-modal="true" aria-labelledby="modal-title" hidden>
+    <div class="modal-content">
+      <div class="modal-header">
+        <p class="modal-title" id="modal-title">Reddit Profile Picture</p>
+        <button type="button" class="modal-close-btn" id="modal-close-btn" aria-label="Cerrar vista previa de la imagen">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <line x1="18" y1="6" x2="6" y2="18"></line>
+            <line x1="6" y1="6" x2="18" y2="18"></line>
+          </svg>
+        </button>
+      </div>
+      <div class="modal-body">
+        <img id="modal-avatar-img" class="modal-avatar-img" src="" alt="Foto de perfil de Reddit">
+      </div>
+      <div class="modal-footer">
+        <a href="#" class="btn-secondary" id="modal-open-original-btn" target="_blank" rel="noopener noreferrer">Abrir original</a>
+        <button type="button" class="btn-primary" id="modal-download-btn">Descargar foto de perfil</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Site Footer -->
+  <footer class="site-footer" id="site-footer">
+    <div class="container footer-inner">
+      <div class="footer-links-grid">
+        <div class="footer-link-group">
+          <p class="footer-link-title">Otras herramientas</p>
+          <a href="https://threadsgrab.com/threads-profile-picture-downloader" rel="noopener noreferrer">Threads Descargador de fotos de perfil</a>
+          <a href="https://fbviddl.com/facebook-dp-downloader" rel="noopener noreferrer">Facebook Descargador de fotos de perfil</a>
+          <a href="https://twitter.threadsgrab.com/twitter-dp-downloader" rel="noopener noreferrer">Twitter Descargador de fotos de perfil</a>
+          <a href="https://pinviddl.com/" rel="noopener noreferrer">Pinterest Descargador de vídeos</a>
+        </div>
+        <div class="footer-link-group">
+          <p class="footer-link-title">Legal</p>
+          <a href="/privacy">Privacidad</a>
+          <a href="/disclaimer">Disclaimer</a>
+        </div>
+        <div class="footer-link-group">
+          <p class="footer-link-title">Company</p>
+          <a href="/about">Sobre ReditGrab</a>
+          <a href="/contact">Contacto</a>
+          <a href="/blog">Blog</a>
+          <a href="/developer">Desarrollador</a>
+        </div>
+      </div>
+      <div class="footer-bottom-row">
+        <p class="footer-copy">&copy; 2026 <strong>ReditGrab</strong>. Todos los derechos reservados.</p>
+        <p class="footer-disclaimer" id="footer-disclaimer">Aviso: esta herramienta no está afiliada, respaldada ni asociada con Reddit, Inc. Solo se procesa contenido de acceso público.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Vanilla JavaScript -->
+  <script src="/reddp.js" defer></script>
+</body>
+</html>
