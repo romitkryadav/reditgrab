@@ -1,5 +1,5 @@
 /**
- * Reddit Video Downloader - Vanilla JavaScript Client
+ * Vídeo de Reddit Descargarer - Vanilla JavaScript Client
  * Handles URL validation, API communication with Cloudflare Worker,
  * byte-range media streaming, audio synchronization, and file downloads.
  */
@@ -39,15 +39,15 @@
   const resultAuthor = document.getElementById('result-author');
   const resultResolution = document.getElementById('result-resolution');
   const resultDuration = document.getElementById('result-duration');
-  const resultSource = document.getElementById('result-source');
+  const resultOriginal = document.getElementById('result-source');
   const badgeAudioStatus = document.getElementById('badge-audio-status');
   const qualityButtonsRow = document.getElementById('quality-buttons-row');
   const qualitySelectorGroup = document.getElementById('quality-selector-group');
-  const btnDownloadVideo = document.getElementById('btn-download-video');
-  const labelDownloadVideo = document.getElementById('label-download-video');
+  const btnDescargarVideo = document.getElementById('btn-download-video');
+  const labelDescargarVideo = document.getElementById('label-download-video');
   const dlSpinnerPrimary = document.getElementById('dl-spinner-primary');
-  const btnDownloadMergedBackup = document.getElementById('btn-download-merged-backup');
-  const labelDownloadBackup = document.getElementById('label-download-backup');
+  const btnDescargarMergedBackup = document.getElementById('btn-download-merged-backup');
+  const labelDescargarBackup = document.getElementById('label-download-backup');
   const dlSpinnerBackup = document.getElementById('dl-spinner-backup');
   const btnCopyPostLink = document.getElementById('btn-copy-post-link');
   const labelCopyLink = document.getElementById('label-copy-link');
@@ -63,9 +63,9 @@
   const btnStreamDirect = document.getElementById('btn-stream-direct');
 
   // State for in-page download actions
-  let isDownloading = false;
-  let lastDownloadTime = 0;
-  let activeDownloadState = {
+  let isDescargaring = false;
+  let lastDescargarTime = 0;
+  let activeDescargarState = {
     primaryUrl: '',
     backupUrl: '',
     filename: 'reddit-video.mp4',
@@ -169,7 +169,7 @@
     try {
       if (!navigator.clipboard || !navigator.clipboard.readText) {
         urlInput.focus();
-        showError('Clipboard access is restricted. Please press Ctrl+V or Cmd+V to paste.');
+        showError('El acceso al portapapeles está restringido. Pulsa Ctrl+V o Cmd+V para pegar.');
         return;
       }
       const text = await navigator.clipboard.readText();
@@ -177,13 +177,13 @@
         urlInput.value = text.trim();
         updateInputControls();
         hideError();
-        processDownload(text.trim());
+        processDescargar(text.trim());
       } else {
-        showError('Clipboard is empty.');
+        showError('El portapapeles está vacío.');
       }
     } catch {
       urlInput.focus();
-      showError('Please press Ctrl+V or Cmd+V to paste your Reddit link.');
+      showError('Pulsa Ctrl+V o Cmd+V para pegar el enlace de Reddit.');
     }
   }
 
@@ -226,7 +226,7 @@
         urlInput.value = text.trim();
         updateInputControls();
         hideError();
-        processDownload(text.trim());
+        processDescargar(text.trim());
       }
     }, false);
   }
@@ -236,7 +236,7 @@
      -------------------------------------------------------------------------- */
   function showError(message) {
     hideLoading();
-    errorText.textContent = message || 'An unexpected error occurred.';
+    errorText.textContent = message || 'Se ha producido un error inesperado.';
     errorBanner.classList.remove('hidden');
     errorBanner.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
   }
@@ -263,7 +263,7 @@
 
     // Progressive loading step animation
     let step = 1;
-    statusMessage.textContent = 'Finding Reddit video...';
+    statusMessage.textContent = 'Buscando el vídeo de Reddit…';
     progressBar.style.width = '25%';
 
     clearInterval(loadingStepInterval);
@@ -273,7 +273,7 @@
         statusMessage.textContent = 'Extracting media streams...';
         progressBar.style.width = '65%';
       } else if (step === 3) {
-        statusMessage.textContent = 'Preparing download links...';
+        statusMessage.textContent = 'Preparando los enlaces de descarga…';
         progressBar.style.width = '90%';
       }
     }, 700);
@@ -286,7 +286,7 @@
   }
 
   /* --------------------------------------------------------------------------
-     Helper: Generate Media URLs (Stream & Download)
+     Helper: Generate Media URLs (Stream & Descargar)
      -------------------------------------------------------------------------- */
   function getStreamUrl(rawMediaUrl, audioUrl, permalink, forceUnmerged = false) {
     if (!rawMediaUrl) return '';
@@ -307,7 +307,7 @@
     return `${base}/api/reddit-stream?url=${encodeURIComponent(rawMediaUrl)}&disposition=inline`;
   }
 
-  function getDownloadUrl(rawMediaUrl, audioUrl, permalink, filename) {
+  function getDescargarUrl(rawMediaUrl, audioUrl, permalink, filename) {
     if (!rawMediaUrl) return '#';
     const base = activeApiBase;
     const cleanAudioUrl = (audioUrl && audioUrl !== 'null' && audioUrl !== 'undefined') ? audioUrl : null;
@@ -475,7 +475,7 @@
           audioElem.currentTime = videoElem.currentTime;
           audioElem.play().then(() => {
             btnEnableAudio.classList.add('hidden');
-            showToast('Preview audio enabled 🔊');
+            showToast('Audio de la vista previa activado 🔊');
           }).catch(() => {});
         }
       });
@@ -494,7 +494,7 @@
         if (videoPlayer.error && (videoPlayer.error.code === 3 || videoPlayer.error.code === 4)) {
           console.info('Merged stream decode issue; falling back to worker-proxied stream...');
           isRetryingMerged = true;
-          applyCurrentStreamSource();
+          applyCurrentStreamOriginal();
           return;
         }
       }
@@ -502,10 +502,10 @@
       if (videoErrorOverlay) {
         videoErrorOverlay.classList.remove('hidden');
         if (videoErrorDesc) {
-          videoErrorDesc.textContent = 'Browser blocked video stream. You can download the full video directly below or switch stream mode.';
+          videoErrorDesc.textContent = 'El navegador bloqueó el vídeo. Puedes descargarlo directamente abajo o cambiar el modo de reproducción.';
         }
         if (labelSwitchStream) {
-          labelSwitchStream.textContent = streamMode === 'worker' ? 'Try Direct CDN' : 'Try Worker Proxy';
+          labelSwitchStream.textContent = streamMode === 'worker' ? 'Probar CDN directa' : 'Probar proxy de Worker';
         }
       }
     };
@@ -555,11 +555,11 @@
     }
 
     if (currentPostData && selectedVariant) {
-      applyCurrentStreamSource();
+      applyCurrentStreamOriginal();
     }
   }
 
-  function applyCurrentStreamSource() {
+  function applyCurrentStreamOriginal() {
     if (!selectedVariant) return;
 
     if (videoErrorOverlay) {
@@ -646,12 +646,12 @@
     const media = data.media || {};
 
     // Populate post information
-    resultTitle.textContent = post.title || 'Reddit Video';
+    resultTitle.textContent = post.title || 'Vídeo de Reddit';
     resultSubreddit.textContent = post.subreddit || 'r/reddit';
     resultAuthor.textContent = post.author || '';
-    activeDownloadState.permalink = post.permalink || '';
+    activeDescargarState.permalink = post.permalink || '';
     if (btnCopyPostLink) {
-      btnCopyPostLink.title = post.permalink ? `Copy link: ${post.permalink}` : 'Copy post link';
+      btnCopyPostLink.title = post.permalink ? `Copiar enlace: ${post.permalink}` : 'Copiar enlace de la publicación';
     }
 
     // Populate metadata
@@ -671,7 +671,7 @@
       resultDuration.textContent = 'N/A';
     }
 
-    resultSource.textContent = media.videoUrl && media.videoUrl.includes('v.redd.it') ? 'Reddit Video (v.redd.it)' : 'Reddit CDN';
+    resultOriginal.textContent = media.videoUrl && media.videoUrl.includes('v.redd.it') ? 'Vídeo de Reddit (v.redd.it)' : 'Reddit CDN';
 
     // Thumbnail poster
     if (media.thumbnail) {
@@ -683,29 +683,29 @@
     // Set active variant (highest quality by default)
     const variants = media.variants || [];
     selectedVariant = variants[0] || {
-      quality: media.height ? `${media.height}p` : 'Source',
+      quality: media.height ? `${media.height}p` : 'Original',
       videoUrl: media.videoUrl,
       height: media.height
     };
 
     // Merged audio status & notice
     if (media.audioUrl) {
-      badgeAudioStatus.textContent = '🔊 Auto-Merged Video + Audio';
+      badgeAudioStatus.textContent = '🔊 Vídeo + audio combinados automáticamente';
       badgeAudioStatus.classList.remove('no-audio');
-      streamNoticeText.textContent = 'Video and audio tracks are automatically merged with faststart streaming so preview and download both have full native audio.';
+      streamNoticeText.textContent = 'Las pistas de vídeo y audio se combinan automáticamente para que la vista previa y la descarga conserven el audio original.';
     } else {
-      badgeAudioStatus.textContent = 'Silent Video (No Audio)';
+      badgeAudioStatus.textContent = 'Vídeo sin sonido';
       badgeAudioStatus.classList.add('no-audio');
-      streamNoticeText.textContent = 'This Reddit video is a silent video or GIF without an audio track.';
+      streamNoticeText.textContent = 'Este vídeo de Reddit es un vídeo sin sonido o un GIF sin pista de audio.';
     }
 
     // Load preview with active stream mode (merged stream)
-    applyCurrentStreamSource();
+    applyCurrentStreamOriginal();
 
-    // Configure Video Download Button (downloads merged video + audio)
-    updateDownloadButton(selectedVariant, post);
+    // Configure Video Descargar Button (downloads merged video + audio)
+    updateDescargarButton(selectedVariant, post);
 
-    // Variants & Quality Selector
+    // Variants & Calidad Selector
     qualityButtonsRow.innerHTML = '';
     if (variants.length > 1) {
       qualitySelectorGroup.classList.remove('hidden');
@@ -720,8 +720,8 @@
           chip.classList.add('active');
 
           selectedVariant = v;
-          applyCurrentStreamSource();
-          updateDownloadButton(v, post);
+          applyCurrentStreamOriginal();
+          updateDescargarButton(v, post);
         });
 
         qualityButtonsRow.appendChild(chip);
@@ -781,26 +781,26 @@
     }, duration);
   }
 
-  async function triggerInPageDownload(url, filename, btnEl, labelEl, spinnerEl) {
+  async function triggerInPageDescargar(url, filename, btnEl, labelEl, spinnerEl) {
     if (!url || url === '#' || url === 'undefined' || url === 'null') return;
 
     // Strict debounce: ignore rapid clicks if already downloading or within 3 seconds of previous click
     const now = Date.now();
-    if (isDownloading || (now - lastDownloadTime < 3000)) {
-      console.info('Download already in progress or debounced; duplicate trigger ignored.');
+    if (isDescargaring || (now - lastDescargarTime < 3000)) {
+      console.info('Descargar already in progress or debounced; duplicate trigger ignored.');
       return;
     }
 
-    isDownloading = true;
-    lastDownloadTime = now;
+    isDescargaring = true;
+    lastDescargarTime = now;
 
     const normalIcon = btnEl ? btnEl.querySelector('.dl-icon-normal') : null;
-    const originalLabel = labelEl ? labelEl.textContent : 'Download';
+    const originalLabel = labelEl ? labelEl.textContent : 'Descargar';
 
     if (btnEl) btnEl.disabled = true;
     if (spinnerEl) spinnerEl.classList.remove('hidden');
     if (normalIcon) normalIcon.classList.add('hidden');
-    if (labelEl) labelEl.textContent = 'Starting Download...';
+    if (labelEl) labelEl.textContent = 'Starting Descargar...';
 
     const cleanFilename = filename || 'reddit-video.mp4';
 
@@ -820,8 +820,8 @@
         }
       }, 1000);
 
-      if (labelEl) labelEl.textContent = 'Download Started! ✓';
-      showToast(`Downloading "${cleanFilename}" to your device`);
+      if (labelEl) labelEl.textContent = 'Descargar Started! ✓';
+      showToast(`Descargaring "${cleanFilename}" to your device`);
     } catch (err) {
       console.warn('Anchor download exception, attempting iframe stream fallback:', err);
       // Fallback: ONLY if anchor click threw an exception, use single iframe navigation
@@ -834,12 +834,12 @@
       }
       iframe.src = url;
 
-      if (labelEl) labelEl.textContent = 'Download Started! ✓';
-      showToast('Download started');
+      if (labelEl) labelEl.textContent = 'Descargar Started! ✓';
+      showToast('Descargar started');
     } finally {
       // Hold cooldown lock for 3 seconds before restoring button to prevent rapid double-clicks
       setTimeout(() => {
-        isDownloading = false;
+        isDescargaring = false;
         if (btnEl) btnEl.disabled = false;
         if (spinnerEl) spinnerEl.classList.add('hidden');
         if (normalIcon) normalIcon.classList.remove('hidden');
@@ -848,7 +848,7 @@
     }
   }
 
-  function updateDownloadButton(variant, post) {
+  function updateDescargarButton(variant, post) {
     const subClean = (post?.subreddit || 'video').replace(/[^a-zA-Z0-9]/g, '');
     const qualityLabel = variant.quality || (variant.height ? `${variant.height}p` : 'HD');
     const variantFilename = `reddit-${subClean}-${qualityLabel}.mp4`;
@@ -858,26 +858,26 @@
     const hasAudio = Boolean(cleanAudio);
 
     // Save download details into state
-    activeDownloadState.primaryUrl = getDownloadUrl(
+    activeDescargarState.primaryUrl = getDescargarUrl(
       variant.videoUrl,
       cleanAudio,
       currentPostData?.post?.permalink,
       variantFilename
     );
-    activeDownloadState.filename = variantFilename;
-    activeDownloadState.permalink = currentPostData?.post?.permalink || 'https://www.reddit.com';
+    activeDescargarState.filename = variantFilename;
+    activeDescargarState.permalink = currentPostData?.post?.permalink || 'https://www.reddit.com';
 
-    if (labelDownloadVideo) {
-      labelDownloadVideo.textContent = 'Download';
+    if (labelDescargarVideo) {
+      labelDescargarVideo.textContent = 'Descargar';
     }
 
-    if (btnDownloadMergedBackup) {
+    if (btnDescargarMergedBackup) {
       if (hasAudio) {
-        btnDownloadMergedBackup.classList.remove('hidden');
-        activeDownloadState.backupUrl = `https://sd.rapidsave.com/download.php?permalink=${encodeURIComponent(currentPostData?.post?.permalink || 'https://www.reddit.com/')}&video_url=${encodeURIComponent(variant.videoUrl)}&audio_url=${encodeURIComponent(cleanAudio)}`;
+        btnDescargarMergedBackup.classList.remove('hidden');
+        activeDescargarState.backupUrl = `https://sd.rapidsave.com/download.php?permalink=${encodeURIComponent(currentPostData?.post?.permalink || 'https://www.reddit.com/')}&video_url=${encodeURIComponent(variant.videoUrl)}&audio_url=${encodeURIComponent(cleanAudio)}`;
       } else {
-        btnDownloadMergedBackup.classList.add('hidden');
-        activeDownloadState.backupUrl = '';
+        btnDescargarMergedBackup.classList.add('hidden');
+        activeDescargarState.backupUrl = '';
       }
     }
   }
@@ -885,17 +885,17 @@
   /* --------------------------------------------------------------------------
      Fetch Reddit Media from Cloudflare Worker API with Failover
      -------------------------------------------------------------------------- */
-  async function processDownload(rawUrl) {
+  async function processDescargar(rawUrl) {
     if (isProcessing) return;
 
     const trimmedUrl = (rawUrl || '').trim();
     if (!trimmedUrl) {
-      showError('Please paste a public Reddit post URL.');
+      showError('Pega la URL de una publicación pública de Reddit.');
       return;
     }
 
     if (!isValidRedditUrl(trimmedUrl)) {
-      showError('Invalid Reddit post URL. Please enter a valid reddit.com or v.redd.it link.');
+      showError('La URL de la publicación de Reddit no es válida. Introduce un enlace válido de reddit.com o v.redd.it.');
       return;
     }
 
@@ -959,18 +959,18 @@
       }
 
       if (!response) {
-        throw new Error('Unable to connect to Reddit downloader service. Please check your internet connection.');
+        throw new Error('No se puede conectar con el servicio de descarga de Reddit. Comprueba tu conexión a Internet.');
       }
 
       let jsonResult;
       try {
         jsonResult = await response.json();
       } catch {
-        throw new Error('Unable to parse server response. Please check your URL and try again.');
+        throw new Error('No se ha podido interpretar la respuesta del servidor. Comprueba la URL y vuelve a intentarlo.');
       }
 
       if (!response.ok || !jsonResult.success) {
-        const errorMsg = jsonResult.error || 'No downloadable video was found in this Reddit post.';
+        const errorMsg = jsonResult.error || 'No se ha encontrado ningún vídeo descargable en esta publicación de Reddit.';
         showError(errorMsg);
         return;
       }
@@ -996,7 +996,7 @@
 
       renderResult(jsonResult);
     } catch (err) {
-      showError(err.message || 'Network error occurred while communicating with the worker.');
+      showError(err.message || 'Se ha producido un error de red al comunicarse con el servicio.');
     } finally {
       isProcessing = false;
       hideLoading();
@@ -1067,7 +1067,7 @@
     // Form Submit
     downloadForm.addEventListener('submit', (e) => {
       e.preventDefault();
-      processDownload(urlInput.value);
+      processDescargar(urlInput.value);
     });
 
     // Paste & Clear buttons
@@ -1089,7 +1089,7 @@
           urlInput.value = sampleUrl;
           updateInputControls();
           hideError();
-          processDownload(sampleUrl);
+          processDescargar(sampleUrl);
         }
       });
     });
@@ -1114,7 +1114,7 @@
       btnRetryPlayer.addEventListener('click', (e) => {
         e.preventDefault();
         hideVideoError();
-        applyCurrentStreamSource();
+        applyCurrentStreamOriginal();
         if (videoPlayer) {
           videoPlayer.load();
           videoPlayer.play().catch(() => {});
@@ -1122,40 +1122,40 @@
       });
     }
 
-    // In-Page Download Buttons (Strictly zero new tabs opened)
-    if (btnDownloadVideo) {
-      btnDownloadVideo.addEventListener('click', (e) => {
+    // In-Page Descargar Buttons (Strictly zero new tabs opened)
+    if (btnDescargarVideo) {
+      btnDescargarVideo.addEventListener('click', (e) => {
         e.preventDefault();
         e.stopPropagation();
-        triggerInPageDownload(
-          activeDownloadState.primaryUrl,
-          activeDownloadState.filename,
-          btnDownloadVideo,
-          labelDownloadVideo,
+        triggerInPageDescargar(
+          activeDescargarState.primaryUrl,
+          activeDescargarState.filename,
+          btnDescargarVideo,
+          labelDescargarVideo,
           dlSpinnerPrimary
         );
       });
     }
 
-    if (btnDownloadMergedBackup) {
-      btnDownloadMergedBackup.addEventListener('click', (e) => {
+    if (btnDescargarMergedBackup) {
+      btnDescargarMergedBackup.addEventListener('click', (e) => {
         e.preventDefault();
         e.stopPropagation();
-        triggerInPageDownload(
-          activeDownloadState.backupUrl,
-          activeDownloadState.filename,
-          btnDownloadMergedBackup,
-          labelDownloadBackup,
+        triggerInPageDescargar(
+          activeDescargarState.backupUrl,
+          activeDescargarState.filename,
+          btnDescargarMergedBackup,
+          labelDescargarBackup,
           dlSpinnerBackup
         );
       });
     }
 
-    // In-Page Copy Post Link (Zero tabs opened)
+    // In-Page Copiar enlace de la publicación (Zero tabs opened)
     if (btnCopyPostLink) {
       btnCopyPostLink.addEventListener('click', async (e) => {
         e.preventDefault();
-        const urlToCopy = activeDownloadState.permalink || urlInput.value.trim();
+        const urlToCopy = activeDescargarState.permalink || urlInput.value.trim();
         if (!urlToCopy) return;
 
         try {
@@ -1169,19 +1169,19 @@
             document.execCommand('copy');
             document.body.removeChild(temp);
           }
-          if (labelCopyLink) labelCopyLink.textContent = 'Copied! ✓';
-          showToast('Reddit post link copied to clipboard');
+          if (labelCopyLink) labelCopyLink.textContent = '¡Copiado! ✓';
+          showToast('Enlace de la publicación de Reddit copiado al portapapeles');
           setTimeout(() => {
-            if (labelCopyLink) labelCopyLink.textContent = 'Copy Post Link';
+            if (labelCopyLink) labelCopyLink.textContent = 'Copiar enlace de la publicación';
           }, 2500);
         } catch {
-          showToast('Link copied: ' + urlToCopy);
+          showToast('Enlace copiado: ' + urlToCopy);
         }
       });
     }
 
-    // Download Another Video handlers (re-shows input box and heading)
-    function resetToDownloadAnother() {
+    // Descargar Another Video handlers (re-shows input box and heading)
+    function resetToDescargarAnother() {
       // Pause and clear player media
       if (videoPlayer) {
         try {
@@ -1241,14 +1241,14 @@
     if (btnAnotherVideo) {
       btnAnotherVideo.addEventListener('click', (e) => {
         e.preventDefault();
-        resetToDownloadAnother();
+        resetToDescargarAnother();
       });
     }
 
     if (btnAnotherVideoTop) {
       btnAnotherVideoTop.addEventListener('click', (e) => {
         e.preventDefault();
-        resetToDownloadAnother();
+        resetToDescargarAnother();
       });
     }
 
