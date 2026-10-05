@@ -1,0 +1,910 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Téléchargeur d’images Reddit – Enregistrer des images et galeries en haute qualité | ReditGrab</title>
+    <meta name="description" content="Descarga images de Reddit en alta qualité. Pega una publication, galería o lien i.redd.it, previsualiza las images y guarda los archivos originales de Reddit. Gratis, sin iniciar sesión." />
+    <meta name="author" content="Romit kr Yadav" />
+    <meta name="language" content="Spanish">
+    <meta name="geo.region" content="ES">
+    <meta name="robots" content="index, follow, max-image-preview:large" />
+  <link rel="alternate" hreflang="en" href="https://reditgrab.com/reddit-image-downloader">
+  <link rel="alternate" hreflang="es" href="https://reditgrab.com/fr/reddit-image-downloader.html">
+  <link rel="alternate" hreflang="vi" href="https://reditgrab.com/fr/reddit-image-downloader.html">
+  <link rel="alternate" hreflang="fr" href="https://reditgrab.com/fr/reddit-image-downloader.html">
+  <link rel="alternate" hreflang="x-default" href="https://reditgrab.com/reddit-image-downloader">
+
+    <link rel="canonical" href="https://reditgrab.com/fr/reddit-image-downloader.html" />
+
+    <!-- Abrir Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://reditgrab.com/fr/reddit-image-downloader.html" />
+    <meta property="og:title" content="Télécharger des images de Reddit en alta qualité | ReditGrab" />
+    <meta property="og:description" content="Descarga images de Reddit en alta qualité. Pega una publication, galería o lien i.redd.it, previsualiza las images y guarda los archivos originales de Reddit. Gratis, sin iniciar sesión." />
+    <meta property="og:image" content="https://reditgrab.com/reditgrab.png" />
+    <meta property="og:site_name" content="ReditGrab" />
+    <meta property="og:locale" content="es_ES" />
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Télécharger des images de Reddit en alta qualité | ReditGrab" />
+    <meta name="twitter:description" content="Descarga images de Reddit en alta qualité. Pega una publication, galería o lien i.redd.it, previsualiza las images y guarda los archivos originales de Reddit. Gratis, sin iniciar sesión." />
+    <meta name="twitter:image" content="https://reditgrab.com/reditgrab.png" />
+
+    <!-- Theme & Icons -->
+    <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)" />
+    <meta name="theme-color" content="#0f172a" media="(prefers-color-scheme: dark)" />
+    <link rel="icon" type="image/png" href="https://reditgrab.com/reditgrab-favicon.png">
+    <!-- Stylesheet -->
+    <link rel="stylesheet" href="/redimg.css" />
+    <style>
+      .trouble-table-wrap{overflow-x:auto;border-radius:var(--radius-lg,8px);border:1px solid var(--border-color);margin-top:1rem}
+      .trouble-table{width:100%;border-collapse:collapse;font-size:.9rem}
+      .trouble-table thead{background-color:var(--bg-card-hover)}
+      .trouble-table th{padding:.8rem 1rem;text-align:left;font-size:.78rem;font-weight:700;color:var(--text-subtle);text-transform:uppercase;letter-spacing:.05em;border-bottom:1px solid var(--border-color);white-space:nowrap}
+      .trouble-table td{padding:.85rem 1rem;color:var(--text-muted);border-bottom:1px solid var(--border-subtle);vertical-align:top;line-height:1.55}
+      .trouble-table tr:last-child td{border-bottom:none}
+      .trouble-table tr:nth-child(even) td{background-color:rgba(255,255,255,.02)}
+      .trouble-table td:first-child{font-weight:600;color:var(--text-secondary);white-space:nowrap}
+      .trouble-note{margin-top:1rem;font-size:.9rem;color:var(--text-subtle)}
+      /* Two-column content grid */
+      .content-cols{display:grid;grid-template-columns:1fr;gap:2rem;max-width:1040px;margin:0 auto 3rem}
+      @media(min-width:768px){.content-cols{grid-template-columns:1fr 1fr;gap:2rem 3rem}}
+      .content-cols .content-block{margin-bottom:0}
+      .content-full{max-width:1040px;margin:0 auto 3rem}
+    </style>
+
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@graph": [
+          {
+            "@type": "WebApplication",
+            "@id": "https://reditgrab.com/fr/reddit-image-downloader.html#webapplication",
+            "name": "ReditGrab Télécharger des images de Reddit",
+            "url": "https://reditgrab.com/fr/reddit-image-downloader.html",
+            "description": "Herramienta web gratuita para encontrar images en publications, galerías o liens directos publics de Reddit, previsualizarlas y guardar los archivos alojados en Reddit. Las images de una galería se guardan por separado.",
+            "applicationCategory": "UtilitiesApplication",
+            "operatingSystem": "Any",
+            "browserRequirements": "Requires JavaScript",
+            "isAccessibleForFree": true,
+            "featureList": [
+              "Acepta liens de publications, galerías e images directas de Reddit",
+              "Previsualiza cada image con su formato y tamaño en píxeles",
+              "Guarda una image o todas las images de una galería como archivos separados",
+              "Vous n’avez pas besoin de una cuenta de Reddit para publications publiques"
+            ],
+            "offers": {
+              "@type": "Offer",
+              "price": "0",
+              "priceCurrency": "USD"
+            },
+            "publisher": {
+              "@id": "https://reditgrab.com/#organization"
+            }
+          },
+          {
+            "@type": "Organization",
+            "@id": "https://reditgrab.com/#organization",
+            "name": "ReditGrab",
+            "url": "https://reditgrab.com/",
+            "logo": "https://reditgrab.com/reditgrab.png"
+          },
+          {
+            "@type": "BreadcrumbList",
+            "@id": "https://reditgrab.com/fr/reddit-image-downloader.html#breadcrumb",
+            "itemListElement": [
+              {
+                "@type": "ListItem",
+                "position": 1,
+                "name": "Inicio",
+                "item": "https://reditgrab.com/"
+              },
+              {
+                "@type": "ListItem",
+                "position": 2,
+                "name": "Télécharger des images de Reddit",
+                "item": "https://reditgrab.com/fr/reddit-image-downloader.html"
+              }
+            ]
+          },
+          {
+            "@type": "FAQPage",
+            "@id": "https://reditgrab.com/fr/reddit-image-downloader.html#faq",
+            "mainEntity": [
+              {
+                "@type": "Question",
+                "name": "¿Cómo puedo télécharger una image de Reddit?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Copy the post link (Share → Copy Link in the app, or the address bar on the web), paste it into the box, select Télécharger les images, then choose Télécharger. You can also paste a direct i.redd.it image link."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "¿Puedo télécharger todas las images de una galería de Reddit?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Yes, one post at a time. Coller the gallery link and select Télécharger todas las images. Each picture is a separate file; there is no ZIP, and whole subreddits are not supported."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "¿Puedo télécharger images de Reddit en resolución completa?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "ReditGrab retrieves the best version Reddit hosts instead of the resized feed copy. It cannot add detail that was not uploaded, and if Reddit shrank the picture at upload time, that stored file is the best available. Check the pixel size on each card."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "¿Funciona con liens de i.redd.it?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Oui. Un i.redd.it se carga directamente, un preview.redd.it lien se cambia al correspondiente i.redd.it y un reddit.com/media se deshace para obtener la image."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "¿Puedo télécharger images de Reddit en iPhone o Android?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Sí, desde el navegador del móvil. En iPhone, el archivo suele ir a la aplicación Archivos, donde Compartir → Guardar image permite añadirlo a Fotos. En Android normalmente acaba en Descargas. El comportamiento exacto depende del navegador."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "¿Qué formatos de image puedo télécharger?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "JPEG, PNG, WebP y GIF, tal como Reddit los almacena. ReditGrab no convierte los formatos."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "¿Por qué mi image se téléchargement como WebP?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "The file Reddit hosts is a WebP, or you saved a WebP preview. ReditGrab cannot change the format, so convert it afterwards. If you started from a preview.redd.it , pégalo aquí: la versión i.redd.it a la que cambia suele ser JPEG o PNG."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "¿Por qué no puedo télécharger una image de una publication de Reddit?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Usually the post is private, removed or needs a login; the image is hosted on another website; the post is a video; or ReditGrab could not reach Reddit at that moment. Check the troubleshooting table on the page for specific causes and fixes."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "¿Puedo télécharger GIF animados de Reddit?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "A veces. Si Reddit almacena la animación como un archivo GIF real, ReditGrab lo téléchargement tal cual. Muchas publications animadas se almacenan como vidéo y necesitan la herramienta de vidéo de ReditGrab en reditgrab.com."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "¿ReditGrab téléchargement images alojadas en otros sitios web?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Non. It is built for images hosted by Reddit. For a picture that is only linked from a post, use the site that hosts it."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "¿Necesito una cuenta de Reddit y funciona con publications privadas?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "You do not need an account, and ReditGrab never asks for your password. It cannot open private or deleted posts because it has no way to sign in as you or get around Reddit's access controls."
+                }
+              }
+            ]
+          }
+        ]
+      }
+    </script>
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-LEBSQ97VK4"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-LEBSQ97VK4');
+</script>
+  </head>
+  <body data-theme="dark">
+    <!-- Saltar al contenido principal for accessibility -->
+    <a href="#main-content" class="skip-link">Saltar al contenido principal</a>
+
+    <!-- Top Navigation Header -->
+    <header class="site-header" id="site-header">
+      <div class="header-container">
+        <a href="https://reditgrab.com/fr/" class="brand-logo" aria-label="ReditGrab Home">
+          <div class="brand-icon" aria-hidden="true">
+            <img src="https://reditgrab.com/reditgrab.png" alt="ReditGrab" width="48" height="48">
+          </div>
+          <span class="brand-text">ReditGrab</span>
+        </a>
+
+        <!-- Desktop nav -->
+        <nav class="nav-desktop header-nav" aria-label="Navegación principal">
+          <a href="https://reditgrab.com/fr/" class="nav-link">Descargador de vidéos</a>
+          <a href="https://reditgrab.com/fr/reddit-dp-downloader.html" class="nav-link">Descargador de photos de profil</a>
+          <a href="/contact" class="nav-link">Contact</a>
+          <a href="/blog" class="nav-link">Blog</a>
+          <button type="button" class="btn-icon" id="theme-toggle-btn" aria-label="Cambiar entre tema claro y oscuro" title="Cambiar tema">
+            <svg class="sun-icon" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2">
+              <circle cx="12" cy="12" r="5"></circle>
+              <line x1="12" y1="1" x2="12" y2="3"></line>
+              <line x1="12" y1="21" x2="12" y2="23"></line>
+              <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+              <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+              <line x1="1" y1="12" x2="3" y2="12"></line>
+              <line x1="21" y1="12" x2="23" y2="12"></line>
+              <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+              <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+            </svg>
+            <svg class="moon-icon" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+            </svg>
+          </button>
+        </nav>
+
+        <!-- Hamburger button (mobile only) -->
+        <button class="nav-hamburger" id="nav-hamburger" aria-expanded="false" aria-controls="nav-mobile-panel" aria-label="Abrir menú de navegación">
+          <span class="bar"></span>
+          <span class="bar"></span>
+          <span class="bar"></span>
+        </button>
+      </div>
+
+      <!-- Mobile dropdown panel -->
+      <nav class="nav-mobile-panel" id="nav-mobile-panel" aria-label="Navegación móvil">
+        <a href="https://reditgrab.com/fr/">Descargador de vidéos</a>
+        <a href="/vi/reddit-dp-downloader.html">Descargador de photos de profil</a>
+        <a href="/contact">Contact</a>
+        <a href="/blog">Blog</a>
+      </nav>
+    </header>
+
+    <script>
+      (function () {
+        var btn = document.getElementById('nav-hamburger');
+        var panel = document.getElementById('nav-mobile-panel');
+        btn.addEventListener('click', function () {
+          var open = panel.classList.toggle('open');
+          btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+        });
+        panel.querySelectorAll('a').forEach(function (a) {
+          a.addEventListener('click', function () {
+            panel.classList.remove('open');
+            btn.setAttribute('aria-expanded', 'false');
+          });
+        });
+      })();
+    </script>
+
+    <main class="main-content" id="main-content">
+      <!-- Hero Téléchargerer Section -->
+      <section class="hero-section" id="hero-section">
+        <div class="container hero-container">
+          <div class="hero-header">
+            <h1 class="hero-title">Téléchargeur d’images Reddit</h1>
+            <p class="hero-desc">Coller a link to a public Reddit post, gallery or image. ReditGrab finds the images, lets you look at them first, and saves the full-size file Reddit hosts instead of the smaller copy shown in your feed.</p><div style="height: 30px;"></div>
+            <nav class="tool-tabs" aria-label="Téléchargerer tools">
+              <a class="tool-tab" href="https://reditgrab.com/fr/" aria-label="Descargador de vidéos" title="Descargador de vidéos">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="14" height="14" rx="2"></rect><path d="m17 10 4-2v8l-4-2z"></path></svg>
+              </a>
+              <a class="tool-tab active" href="https://reditgrab.com/fr/reddit-image-downloader.html" aria-current="page" aria-label="Image Téléchargerer" title="Image Téléchargerer">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="4" width="18" height="16" rx="2"></rect><circle cx="8.5" cy="9" r="1.5"></circle><path d="m4 17 5-5 3 3 2-2 6 4"></path></svg>
+              </a>
+              <a class="tool-tab" href="https://reditgrab.com/fr/reddit-dp-downloader.html" aria-label="Descargador de photos de profil" title="Descargador de photos de profil">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="8" r="3"></circle><path d="M5 20c.6-3.4 3.1-5 7-5s6.4 1.6 7 5"></path></svg>
+              </a>
+            </nav>
+          </div>
+
+          <!-- Téléchargerer Box Card -->
+          <div class="downloader-glow-wrap" id="downloader-tool-section">
+            <div class="tool-card">
+              <form id="reddit-form" class="downloader-form" novalidate>
+                <label for="reddit-url-input" class="sr-only">Coller URL de publication de Reddit</label>
+                <div class="input-wrapper">
+                  <div class="input-icon-box" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                      <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/>
+                      <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/>
+                    </svg>
+                  </div>
+                  <input
+                    type="url"
+                    id="reddit-url-input"
+                    name="redditUrl"
+                    class="url-input"
+                    placeholder="Pega una publication, galería o lien de i.redd.it"
+                    autocomplete="off"
+                    spellcheck="false"
+                    required
+                  />
+                  <button type="button" id="clear-btn" class="input-action-btn hidden" aria-label="Borrar campo" title="Borrar campo">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                      <path d="M18 6 6 18"/>
+                      <path d="m6 6 12 12"/>
+                    </svg>
+                  </button>
+                  <button type="button" id="paste-btn" class="input-action-btn" aria-label="Coller desde el portapapeles" title="Coller URL desde el portapapeles">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                      <rect width="8" height="4" x="8" y="2" rx="1" ry="1"/>
+                      <path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/>
+                    </svg>
+                    <span class="btn-text-desktop">Coller</span>
+                  </button>
+                </div>
+
+                <div class="form-actions">
+                  <button type="submit" id="submit-btn" class="submit-btn">
+                    <span class="submit-btn-text" id="submit-btn-text">Télécharger les images</span>
+                    <svg class="submit-btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                      <path d="m9 18 6-6-6-6"/>
+                    </svg>
+                  </button>
+                </div>
+              </form>
+
+              <!-- Loading Indicator Box -->
+              <div id="loading-container" class="loading-container hidden" role="status" aria-live="polite">
+                <div class="spinner" aria-hidden="true"></div>
+                <div class="loading-content">
+                  <div class="loading-primary-text" id="loading-primary-text">Recherche des images Reddit…</div>
+                  <div class="loading-sub-text" id="loading-sub-text">Vérification des données de la publication…</div>
+                </div>
+              </div>
+
+              <!-- Error Alert Banner -->
+              <div id="error-banner" class="error-banner hidden" role="alert">
+                <svg class="error-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <circle cx="12" cy="12" r="10"/>
+                  <line x1="12" x2="12" y1="8" y2="12"/>
+                  <line x1="12" x2="12.01" y1="16" y2="16"/>
+                </svg>
+                <div class="error-message" id="error-message-text">Introduce una URL válida de Reddit.</div>
+                <button type="button" id="error-dismiss-btn" class="error-dismiss-btn" aria-label="Cerrar aviso de error">
+                  &times;
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Optional Non-Intrusive Ad Slot: Below Tool -->
+      <!-- <div class="ad-slot-container" id="ad-slot-tool" aria-label="Advertisement"></div> -->
+
+      <!-- Results Display Section -->
+      <section id="results-container" class="results-section hidden" aria-live="polite">
+        <div class="results-header-box">
+          <div class="results-meta">
+            <h2 class="results-title" id="results-title">
+              Imágenes encontradas: <span id="results-count" class="count-badge">0</span>
+            </h2>
+            <p class="results-post-title hidden" id="results-post-title"></p>
+          </div>
+          <div class="results-global-actions">
+            <button type="button" id="download-all-btn" class="download-all-btn">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+                <polyline points="7 10 12 15 17 10"/>
+                <line x1="12" x2="12" y1="15" y2="3"/>
+              </svg>
+              <span id="download-all-text">Télécharger todas las images</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Image Cards Grid -->
+        <div class="image-grid" id="image-grid">
+          <!-- Dynamically populated via script.js -->
+        </div>
+      </section>
+
+      <!-- Publicación de Reddit Embed Section (When post is verified but has no direct image) -->
+      <section id="embed-container" class="embed-section hidden" aria-live="polite">
+        <div class="embed-card">
+          <div class="embed-header">
+            <div class="embed-meta">
+              <span class="embed-badge" id="embed-badge">Publicación de Reddit verificada</span>
+              <h2 class="embed-title" id="embed-title">Publicación de Reddit</h2>
+              <div class="embed-author" id="embed-author"></div>
+            </div>
+            <a id="embed-link" href="#" target="_blank" rel="noopener noreferrer" class="embed-reddit-link">
+              <span>Ver en Reddit</span>
+              <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+            </a>
+          </div>
+
+          <div id="embed-frame-target" class="embed-frame-target">
+            <!-- Reddit widget iframe injected dynamically -->
+          </div>
+
+          <div class="embed-instructions">
+            <div class="instruction-icon">
+              <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" x2="12" y1="16" y2="12"/><line x1="12" x2="12.01" y1="8" y2="8"/></svg>
+            </div>
+            <div class="instruction-text">
+              <strong>Cómo obtener esta image con la máxima qualité disponible:</strong>
+              <p>Haz clic derecho o mantén pulsada la image en la vista previa de Reddit, selecciona <strong>«Copiar dirección de image»</strong> y pulsa el botón de abajo para télécharger el archivo de mayor qualité alojado en Reddit.</p>
+            </div>
+            <button type="button" id="embed-paste-btn" class="embed-paste-btn">
+              <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><rect width="8" height="4" x="8" y="2" rx="1" ry="1"/><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/></svg>
+              <span>Coller Image Link &amp; Télécharger</span>
+            </button>
+          </div>
+        </div>
+      </section>
+      <!-- Cómo télécharger una image de Reddit -->
+      <section class="content-section" id="how-to-download">
+        <div class="section-header">
+          <h2 class="section-title">Cómo télécharger una image de Reddit</h2>
+          <p class="section-desc">Tres pasos. Vous n’avez pas besoin de una cuenta; la publication solo tiene que ser accesible sin iniciar sesión.</p>
+        </div>
+        <div class="steps-grid">
+          <div class="step-card" id="step-card-1">
+            <div class="step-number">1</div>
+            <div class="step-icon-wrapper" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg>
+            </div>
+            <h3 class="step-title">Copia el lien</h3>
+            <p class="step-text">En la web de Reddit, copia la dirección de la barra del navegador. En la aplicación de Reddit, pulsa Compartir y después Copiar lien.</p>
+          </div>
+          <div class="step-card" id="step-card-2">
+            <div class="step-number">2</div>
+            <div class="step-icon-wrapper" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="8" height="4" x="8" y="2" rx="1" ry="1"/><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/></svg>
+            </div>
+            <h3 class="step-title">Coller and select Télécharger les images</h3>
+            <p class="step-text">Cada image de la publication aparece como una tarjeta con su formato y tamaño en píxeles.</p>
+          </div>
+          <div class="step-card" id="step-card-3">
+            <div class="step-number">3</div>
+            <div class="step-icon-wrapper" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" x2="12" y1="15" y2="3"/></svg>
+            </div>
+            <h3 class="step-title">Previsualiza y guarda</h3>
+            <p class="step-text">Select a card to see the image full-screen, then choose Télécharger. For a gallery, Télécharger todas las images saves every picture as its own file.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Row 1: Link formats + Quality -->
+      <section class="content-section" id="link-formats-quality">
+        <div class="container">
+          <div class="content-cols">
+
+            <div class="content-block" id="link-formats">
+              <h2>¿Qué lien de Reddit debes pegar?</h2>
+              <p>El lien de la publication es la opción habitual y permite a ReditGrab mostrar todas las images de una galería. La herramienta también acepta liens directos a archivos de image, algo útil cuando has copiado la dirección de la propia image. Esta <a href="/blog/choosing-the-right-reddit-link" class="orange-tool-link">guía sobre los tipos de liens de Reddit</a> goes deeper.</p>
+
+              <div class="trouble-table-wrap" style="margin-top:1.25rem;">
+                <table class="trouble-table">
+                  <thead>
+                    <tr>
+                      <th scope="col">El lien que tienes</th>
+                      <th scope="col">Qué hace ReditGrab</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td><code>reddit.com/r/…/comments/…</code></td>
+                      <td>Busca la publication y muestra sus images</td>
+                    </tr>
+                    <tr>
+                      <td><code>reddit.com/gallery/…</code></td>
+                      <td>Muestra todas las images de la galería</td>
+                    </tr>
+                    <tr>
+                      <td><code>redd.it/…</code></td>
+                      <td>Busca la publication a la que apunta</td>
+                    </tr>
+                    <tr>
+                      <td><code>i.redd.it/….jpeg</code></td>
+                      <td>Carga el archivo directamente, sin buscar la publication</td>
+                    </tr>
+                    <tr>
+                      <td><code>preview.redd.it/…</code></td>
+                      <td>Cambia al archivo <code>i.redd.it</code> correspondiente</td>
+                    </tr>
+                    <tr>
+                      <td><code>reddit.com/media?url=…</code></td>
+                      <td>Abre el lien de image que contiene</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+
+              <h3 style="margin-top:1.75rem;">Enlaces directos a images</h3>
+              <p>Haz clic derecho en la image desde un ordenador o mantenla pulsada en el móvil y selecciona Copiar dirección de image. Un <code>preview.redd.it</code> lien se cambia al correspondiente <code>i.redd.it</code> ; normalmente es el original de mayor tamaño. Un <code>reddit.com/media</code> se deshace automáticamente para obtener el lien de la image.</p>
+            </div>
+
+            <div class="content-block" id="image-quality">
+              <h2>Tamaño original frente a la vista previa de Reddit</h2>
+              <p>Reddit muestra en el feed una copia redimensionada de <code>preview.redd.it</code> en el feed, a menudo como WebP. El archivo subido se almacena por separado en <code>i.redd.it</code>. Por eso «Guardar image como» puede dejarte un archivo pequeño o un <code>.webp</code> que algunas aplicaciones no pueden abrir.</p>
+              <p>ReditGrab busca el archivo alojado en Reddit. Compara el tamaño en píxeles de la tarjeta con el que obtuviste al guardar con clic derecho; en photos grandes, la diferencia suele ser evidente. Más información sobre <a href="/blog/does-reddit-compress-images" class="orange-tool-link">qué hace Reddit con las images subidas</a>.)</p>
+
+              <h3 style="margin-top:1.75rem;">Qué significa realmente «tamaño original»</h3>
+              <p>Tamaño original significa la mejor versión que Reddit aloja, no más detalle del que proporcionó quien subió la image. Una captura pequeña seguirá siendo pequeña. ReditGrab no amplía, enfoca ni mejora las images.</p>
+
+              <h3 style="margin-top:1.75rem;">Qué formato de archivo obtendrás</h3>
+              <p>ReditGrab guarda el archivo tal como Reddit lo almacena —JPEG, PNG, WebP o GIF— y no convierte formatos. Si la fuente es WebP, obtendrás WebP; puedes convertirlo después si lo necesitas. Reddit suele almacenar las publications animadas como vidéo y, en ese caso, necesitas el <a href="https://reditgrab.com/fr/" class="orange-tool-link">Reddit Descargador de vidéos</a>. <a href="/blog/reddit-video-vs-gif-whats-the-difference" class="orange-tool-link">Por qué muchos GIF de Reddit son realmente vidéos</a> explains the difference.</p>
+            </div>
+
+          </div>
+        </div>
+      </section>
+
+      <!-- Row 2: Gallery + Lightbox -->
+      <section class="content-section" id="gallery-lightbox">
+        <div class="container">
+          <div class="content-cols">
+
+            <div class="content-block" id="gallery-download">
+              <h2>Télécharger una galería de Reddit</h2>
+              <p>A gallery is one Reddit post holding several images (Reddit allows up to 20). Coller its link and each image appears as a numbered card. <a href="/blog/reddit-gallery-post-explained" class="orange-tool-link">Cómo funcionan las publications en galería</a> covers the format itself.</p>
+
+              <h3 style="margin-top:1.75rem;">Descarga una image o todas</h3>
+              <p>Use the Télécharger button on a card for a single picture. Select Télécharger todas las images to save them all: ReditGrab saves them one after another as <code>reddit-image-1</code>, <code>reddit-image-2</code> and so on. Algunos navegadores piden permiso antes de guardar varios archivos de una página; permite las téléchargements de este sitio y vuelve a intentarlo si alguna se bloquea.</p>
+
+              <h3 style="margin-top:1.75rem;">Por qué los archivos no se comprimen en ZIP</h3>
+              <p>Cada image es un archivo independiente, así que puedes guardar solo las que quieras. ReditGrab procesa una publication cada vez; no permite télécharger subreddits completos ni todo el historial de un utilisateur. Si una image de la galería es un vidéo, necesitas el <a href="https://reditgrab.com/fr/" class="orange-tool-link">Reddit Descargador de vidéos</a>.</p>
+            </div>
+
+            <div class="content-block" id="lightbox-preview">
+              <h2>Previsualiza una image antes de guardarla</h2>
+              <p>Al seleccionar una tarjeta se abre un visor a pantalla completa que muestra la image actual, su tamaño en píxeles y su formato. Usa las flechas o las teclas ← → para recorrer una galería, Télécharger para guardar la image visible o Abrir para verla en una pestaña nueva. Esc cierra el visor.</p>
+              <p>Previsualizar primero te permite evitar images casi duplicadas o recortadas y comprobar el tamaño en píxeles antes de guardar el archivo.</p>
+            </div>
+
+          </div>
+        </div>
+      </section>
+
+      <!-- Row 3: Mobile + External hosting -->
+      <section class="content-section" id="mobile-external">
+        <div class="container">
+          <div class="content-cols">
+
+            <div class="content-block" id="mobile-save">
+              <h2>Guardar images de Reddit en iPhone y Android</h2>
+              <p>In the Reddit app tap Share, then Copy Link. Abrir <strong>reditgrab.com/reddit-image-downloader</strong> in your phone's browser, paste, select Télécharger les images, and tap Télécharger. Where the file ends up is decided by your browser, not by ReditGrab.</p>
+
+              <h3 style="margin-top:1.75rem;">iPhone y iPad</h3>
+              <p>Safari suele guardar las téléchargements en la carpeta Descargas de la aplicación Archivos. Para añadir la image a Fotos, ábrela desde Archivos, pulsa Compartir y selecciona Guardar image.</p>
+
+              <h3 style="margin-top:1.75rem;">Android</h3>
+              <p>Chrome suele guardar los archivos en la carpeta Descargas. Si Télécharger abre la image en una pestaña nueva, mantenla pulsada y utiliza la opción de guardado del navegador. Hay una <a href="/blog/how-to-save-reddit-images-on-mobile" class="orange-tool-link">guía móvil más detallada</a> is available.</p>
+            </div>
+
+            <div class="content-block" id="external-hosting">
+              <h2>Imágenes alojadas en Reddit frente a images de otros sitios</h2>
+              <p>Una image subida a Reddit se aloja en <code>i.redd.it</code>. Una publication también puede enlazar a una image de otro sitio web y Reddit mostrará una vista previa. Ambas situaciones parecen «una image en una publication de Reddit», pero solo la primera tiene un archivo alojado en Reddit que se pueda télécharger.</p>
+              <p>ReditGrab está diseñado para el primer caso. Si el lien apunta a otro sitio, puede que no encuentre nada o solo la miniatura pequeña que Reddit conserva para la publication.</p>
+              <p>Prueba rápida: copia la dirección de la image desde Reddit. Si empieza por <code>i.redd.it</code>, se subió a Reddit. Si empieza por <code>external-preview.redd.it</code> o apunta a otro dominio, estás viendo una vista previa de una image alojada externamente.</p>
+            </div>
+
+          </div>
+        </div>
+      </section>
+
+      <!-- Si una image de Reddit no se puede télécharger -->
+      <section class="content-section" id="troubleshooting">
+        <div class="container">
+          <div class="content-block">
+            <h2>Si una image de Reddit no se puede télécharger</h2>
+            <div class="trouble-table-wrap">
+              <table class="trouble-table">
+                <thead>
+                  <tr>
+                    <th scope="col">Lo que ves</th>
+                    <th scope="col">Causa probable</th>
+                    <th scope="col">Qué puedes probar</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>No se encontraron images téléchargementbles</td>
+                    <td>Una publication de solo texto, un vidéo, un lien a otro sitio o una publication eliminada</td>
+                    <td>Copia desde Reddit la dirección de la propia image y pégala aquí</td>
+                  </tr>
+                  <tr>
+                    <td>Se muestra la publication insertada, pero no hay tarjetas de image</td>
+                    <td>La publication existe, pero ReditGrab no encontró ninguna image alojada en Reddit</td>
+                    <td>Follow the prompt under the embed: copy the image address from the preview, then select Coller Image Link &amp; Télécharger</td>
+                  </tr>
+                  <tr>
+                    <td>No se pudo conectar con el sistema de téléchargement o hubo un error de red</td>
+                    <td>No se pudo acceder al servidor de ReditGrab o Reddit no responde</td>
+                    <td>Vuelve a intentarlo en unos instantes. Un lien directo <code>i.redd.it</code> evita buscar la publication, así que puedes probar con uno mientras tanto</td>
+                  </tr>
+                  <tr>
+                    <td>Una publication que puedes ver en Reddit no se carga</td>
+                    <td>Comunidad privada o en cuarentena, contenido con restricción de edad o publication eliminada</td>
+                    <td>Ábrela en una ventana privada. Si Reddit te pide iniciar sesión, esa es la causa. <a href="/blog/what-public-reddit-media-means" class="orange-tool-link">Qué significa «public» en Reddit</a></td>
+                  </tr>
+                  <tr>
+                    <td>Télécharger abre la image en una pestaña nueva</td>
+                    <td>El navegador bloqueó el guardado directo</td>
+                    <td>Mantén pulsada la image (móvil) o haz clic derecho (ordenador) y guárdala</td>
+                  </tr>
+                  <tr>
+                    <td>La image es más pequeña de lo esperado</td>
+                    <td>Se devolvió una copia almacenada pequeña o, en raras ocasiones, una miniatura</td>
+                    <td>Comprueba el tamaño en píxeles de la tarjeta y pega después la dirección directa de la image desde Reddit</td>
+                  </tr>
+                  <tr>
+                    <td>Télécharger todas solo guardó algunos archivos</td>
+                    <td>El navegador limitó las téléchargements múltiples de una página</td>
+                    <td>Permite las téléchargements de este sitio y vuelve a intentarlo, o guarda las tarjetas una por una</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <p class="trouble-note">¿Sigues teniendo problemas? <a href="/contact" class="orange-tool-link">Contact us</a> con el lien que probaste y lo que ocurrió.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Row 4: Limits + Confidentialité (two-column) -->
+      <section class="content-section" id="limits-privacy">
+        <div class="container">
+          <div class="content-cols">
+
+            <div class="content-block" id="limits">
+              <h2>Lo que ReditGrab no puede télécharger</h2>
+              <ul class="steps-list">
+                <li>Publicaciones privadas, comunidades que requieren aprobación, comunidades en cuarentena y cualquier contenido que necesite iniciar sesión en Reddit</li>
+                <li>Publicaciones eliminadas o retiradas</li>
+                <li>Imágenes alojadas en otros sitios web</li>
+                <li>Vídeos y publications animadas almacenadas como vidéo — utiliza el <a href="https://reditgrab.com/fr/" class="orange-tool-link">Reddit Descargador de vidéos</a></li>
+                <li>Fotos de profil y avatares — utiliza el <a href="/vi/reddit-dp-downloader.html" class="orange-tool-link">Reddit Descargador de photos de profil</a></li>
+                <li>Subreddits completos o todo el historial de publications de un utilisateur</li>
+                <li>Conversiones de formato, téléchargements ZIP o versiones ampliadas y mejoradas</li>
+              </ul>
+            </div>
+
+            <div class="content-block" id="privacy-use">
+              <h2>Confidentialité, derechos y uso responsable</h2>
+              <p>ReditGrab solo funciona con publications que cualquiera puede abrir sin iniciar sesión en Reddit. Nunca pide tu nombre de utilisateur ni contraseña de Reddit y no intenta saltarse comunidades privadas, publications eliminadas ni requisitos de inicio de sesión.</p>
+              <p>Las vistas previas y las téléchargements pasan por la infraestructura de servidores de ReditGrab antes de llegar a tu navegador; la <a href="/privacy" class="orange-tool-link">Política de privacidad</a> explica qué datos se procesan. ReditGrab es un proyecto independiente y no está afiliado, respaldado ni patrocinado por Reddit, Inc.</p>
+              <p>Que una publication sea publique no significa que puedas reutilizarla libremente. Las images pertenecen a sus creadores: guardarlas para verlas más tarde es distinto de republicarlas o utilizarlas con fines comerciales. El <a href="/disclaimer" class="orange-tool-link">Avis juridique</a> contiene más información.</p>
+            </div>
+
+          </div>
+        </div>
+      </section>
+
+      <!-- Preguntas frecuentes sobre télécharger images de Reddit (FAQ) -->
+      <section class="content-section" id="faq">
+        <div class="section-header">
+          <h2 class="section-title">Preguntas frecuentes sobre télécharger images de Reddit</h2>
+          <p class="section-desc">Respuestas a las preguntas más habituales sobre la téléchargement de images de Reddit.</p>
+        </div>
+
+        <div class="faq-accordion" id="faq-accordion">
+          <details class="faq-item" open>
+            <summary class="faq-question">
+              <span>¿Cómo puedo télécharger una image de Reddit?</span>
+              <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+            </summary>
+            <div class="faq-answer">
+              <p>Copier le lien de la publication (Compartir → Copiar lien en la aplicación o la barra de direcciones en la web), pégalo en el cuadro de arriba, selecciona Télécharger les images y después pulsa Télécharger. También puedes pegar directamente un lien de image <code>i.redd.it</code>.</p>
+            </div>
+          </details>
+
+          <details class="faq-item">
+            <summary class="faq-question">
+              <span>¿Puedo télécharger todas las images de una galería de Reddit?</span>
+              <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+            </summary>
+            <div class="faq-answer">
+              <p>Sí, una publication cada vez. Pega el lien de la galería y selecciona Télécharger todas las images. Cada image se guarda como un archivo independiente; no se crea un ZIP y no se admiten subreddits completos.</p>
+            </div>
+          </details>
+
+          <details class="faq-item">
+            <summary class="faq-question">
+              <span>¿Puedo télécharger images de Reddit en resolución completa?</span>
+              <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+            </summary>
+            <div class="faq-answer">
+              <p>ReditGrab obtiene la mejor versión que Reddit aloja en lugar de la copia redimensionada del feed. No puede añadir detalles que no se subieron y, si Reddit redujo la image al publicarla, ese archivo más pequeño es la mejor versión disponible. Comprueba el tamaño en píxeles de cada tarjeta.</p>
+            </div>
+          </details>
+
+          <details class="faq-item">
+            <summary class="faq-question">
+              <span>¿Funciona con liens de i.redd.it?</span>
+              <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+            </summary>
+            <div class="faq-answer">
+              <p>Oui. Un <code>i.redd.it</code> se carga directamente, un <code>preview.redd.it</code> lien se cambia al correspondiente <code>i.redd.it</code> y un <code>reddit.com/media</code> se deshace para obtener la image.</p>
+            </div>
+          </details>
+
+          <details class="faq-item">
+            <summary class="faq-question">
+              <span>¿Puedo télécharger images de Reddit en iPhone o Android?</span>
+              <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+            </summary>
+            <div class="faq-answer">
+              <p>Sí, desde el navegador del móvil. En iPhone, el archivo suele ir a la aplicación Archivos, donde Compartir → Guardar image permite añadirlo a Fotos. En Android normalmente acaba en Descargas. El comportamiento exacto depende del navegador.</p>
+            </div>
+          </details>
+
+          <details class="faq-item">
+            <summary class="faq-question">
+              <span>¿Qué formatos de image puedo télécharger?</span>
+              <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+            </summary>
+            <div class="faq-answer">
+              <p>JPEG, PNG, WebP y GIF, tal como Reddit los almacena. ReditGrab no convierte formatos.</p>
+            </div>
+          </details>
+
+          <details class="faq-item">
+            <summary class="faq-question">
+              <span>¿Por qué mi image se téléchargement como WebP?</span>
+              <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+            </summary>
+            <div class="faq-answer">
+              <p>El archivo que aloja Reddit es WebP o guardaste una vista previa WebP. ReditGrab no cambia el formato, así que puedes convertirlo después. Si empezaste con un lien <code>preview.redd.it</code> , pégalo aquí: la versión <code>i.redd.it</code> a la que cambia suele ser JPEG o PNG.</p>
+            </div>
+          </details>
+
+          <details class="faq-item">
+            <summary class="faq-question">
+              <span>¿Por qué no puedo télécharger una image de una publication de Reddit?</span>
+              <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+            </summary>
+            <div class="faq-answer">
+              <p>Normalmente la publication es privada, se ha eliminado o requiere iniciar sesión; la image está alojada en otro sitio web; la publication es un vidéo; o ReditGrab no pudo acceder a Reddit en ese momento. La tabla de solución de problemas explica qué probar en cada caso.</p>
+            </div>
+          </details>
+
+          <details class="faq-item">
+            <summary class="faq-question">
+              <span>¿Puedo télécharger GIF animados de Reddit?</span>
+              <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+            </summary>
+            <div class="faq-answer">
+              <p>A veces. Si Reddit almacena la animación como un archivo GIF real, ReditGrab la téléchargement tal cual. Muchas publications animadas se almacenan como vidéo y necesitan el <a href="https://reditgrab.com/fr/" class="orange-tool-link">Reddit Descargador de vidéos</a>.</p>
+            </div>
+          </details>
+
+          <details class="faq-item">
+            <summary class="faq-question">
+              <span>¿ReditGrab téléchargement images alojadas en otros sitios web?</span>
+              <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+            </summary>
+            <div class="faq-answer">
+              <p>Non. Está diseñado para images alojadas en Reddit. Si una publication solo enlaza a una image de otro sitio, utiliza el sitio donde está alojada.</p>
+            </div>
+          </details>
+
+          <details class="faq-item">
+            <summary class="faq-question">
+              <span>¿Necesito una cuenta de Reddit y funciona con publications privadas?</span>
+              <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+            </summary>
+            <div class="faq-answer">
+              <p>Vous n’avez pas besoin de una cuenta y ReditGrab nunca pide tu contraseña. No puede abrir publications privadas o eliminadas porque no puede iniciar sesión por ti ni saltarse los controles de acceso de Reddit.</p>
+            </div>
+          </details>
+        </div>
+      </section>
+
+      <!-- Herramientas y guías relacionadas -->
+      <section class="content-section" id="related">
+        <div class="container">
+          <div class="content-block">
+            <h2>Herramientas y guías relacionadas</h2>
+            <ul class="steps-list">
+              <li><a href="https://reditgrab.com/fr/" class="orange-tool-link">Reddit Descargador de vidéos</a> — para vidéos, con son</li>
+              <li><a href="/vi/reddit-dp-downloader.html" class="orange-tool-link">Téléchargeur de photos de profil Reddit</a> — para avatares y snoovatars</li>
+              <li><a href="/blog/download-reddit-images-and-galleries" class="orange-tool-link">Cómo télécharger images y galerías de Reddit</a> — la guía completa</li>
+              <li><a href="/about" class="orange-tool-link">Sobre ReditGrab</a></li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+    
+<section class="content-section" aria-labelledby="fr-tools-title"><div class="container"><h2 id="fr-tools-title">Autres outils Reddit</h2><p>ReditGrab propose plusieurs outils gratuits pour les médias publics Reddit. Utilisez le <a href="/fr/">téléchargeur vidéo Reddit</a> pour les vidéos MP4, le <a href="/fr/reddit-image-downloader.html">téléchargeur d’images Reddit</a> pour les photos et galeries, ou le <a href="/fr/reddit-dp-downloader.html">téléchargeur de photo de profil Reddit</a> pour les avatars publics.</p></div></section>
+</main>
+
+    <!-- Lightbox Vista previa de image Modal -->
+    <div id="preview-modal" class="preview-modal hidden" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+      <div class="modal-backdrop" id="modal-backdrop"></div>
+      <div class="modal-dialog">
+        <div class="modal-header">
+          <div class="modal-meta">
+            <h3 id="modal-title" class="modal-title">Vista previa de image</h3>
+            <span id="modal-counter" class="modal-counter">1 of 1</span>
+            <span id="modal-resolution" class="modal-badge">1920 × 1080</span>
+            <span id="modal-format" class="modal-badge uppercase">JPG</span>
+          </div>
+          <div class="modal-controls">
+            <a href="#" id="modal-open-btn" target="_blank" rel="noopener noreferrer" class="modal-action-btn secondary" title="Abrir la image de mayor qualité disponible en una pestaña nueva">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="width:16px;height:16px;">
+                <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/>
+                <polyline points="15 3 21 3 21 9"/>
+                <line x1="10" y1="14" x2="21" y2="3"/>
+              </svg>
+              <span>Abrir</span>
+            </a>
+            <button type="button" id="modal-download-btn" class="modal-action-btn primary" title="Télécharger esta image">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+                <polyline points="7 10 12 15 17 10"/>
+                <line x1="12" x2="12" y1="15" y2="3"/>
+              </svg>
+              <span>Télécharger</span>
+            </button>
+            <button type="button" id="modal-close-btn" class="modal-action-btn close" aria-label="Cerrar vista previa (Escape)">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <line x1="18" x2="6" y1="6" y2="18"/>
+                <line x1="6" x2="18" y1="6" y2="18"/>
+              </svg>
+            </button>
+          </div>
+        </div>
+
+        <div class="modal-body">
+          <button type="button" id="modal-prev-btn" class="modal-nav-btn prev hidden" aria-label="Imagen anterior">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <polyline points="15 18 9 12 15 6"/>
+            </svg>
+          </button>
+          
+          <div class="modal-image-wrapper">
+            <div class="modal-loading-spinner" id="modal-spinner" aria-hidden="true"></div>
+            <img id="modal-image" src="" alt="Vista previa en alta resolución de una publication de Reddit" referrerpolicy="no-referrer" />
+          </div>
+
+          <button type="button" id="modal-next-btn" class="modal-nav-btn next hidden" aria-label="Imagen siguiente">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <polyline points="9 18 15 12 9 6"/>
+            </svg>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Site Footer -->
+    <footer class="site-footer" id="site-footer">
+      <div class="container footer-inner">
+        <div class="footer-links-grid">
+          <div class="footer-link-group">
+            <p class="footer-link-title">Mentions légales</p>
+            <a href="/privacy">Confidentialité</a>
+            <a href="/disclaimer">Avis juridique</a>
+          </div>
+          <div class="footer-link-group">
+            <p class="footer-link-title">Entreprise</p>
+            <a href="/about">Sobre ReditGrab</a>
+            <a href="/contact">Contact</a>
+            <a href="/blog">Blog</a>
+          </div>
+        </div>
+        <div class="footer-bottom-row">
+          <p class="footer-copy">&copy; 2026 <strong>ReditGrab</strong>. Tous droits réservés.</p>
+          <p class="footer-disclaimer" id="footer-disclaimer">Avis juridique: This tool is not affiliated with, endorsed by, or associated with Reddit, Inc. Only publicly accessible media is processed.</p>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Client Application Script -->
+    <script src="/redimg.js" defer></script>
+  </body>
+</html>
