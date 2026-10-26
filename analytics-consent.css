@@ -1,0 +1,46 @@
+/* Analytics preferences */
+.analytics-consent-panel {
+  position: fixed;
+  z-index: 12000;
+  inset-inline: 1rem;
+  bottom: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.25rem;
+  max-width: 1100px;
+  margin-inline: auto;
+  padding: 1rem 1.2rem;
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-lg);
+  background: var(--bg-card);
+  color: var(--text-primary);
+  box-shadow: var(--shadow-lg);
+}
+.analytics-consent-copy { max-width: 680px; }
+.analytics-consent-copy strong { display: block; margin-bottom: 0.25rem; }
+.analytics-consent-copy p { margin: 0; color: var(--text-muted); font-size: 0.9rem; line-height: 1.5; }
+.analytics-consent-copy a { color: var(--reddit-orange); text-decoration: underline; }
+.analytics-consent-actions { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+.analytics-consent-actions button {
+  min-height: 42px;
+  padding: 0.55rem 0.8rem;
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  background: var(--bg-primary);
+  color: var(--text-primary);
+  font: inherit;
+  font-size: 0.85rem;
+  cursor: pointer;
+}
+.analytics-consent-actions .analytics-consent-accept {
+  border-color: var(--reddit-orange);
+  background: var(--reddit-orange);
+  color: #fff;
+  font-weight: 700;
+}
+.analytics-consent-actions button:focus-visible { outline: 3px solid var(--reddit-orange); outline-offset: 2px; }
+@media (max-width: 700px) {
+  .analytics-consent-panel { align-items: stretch; flex-direction: column; gap: 0.75rem; }
+  .analytics-consent-actions { display: grid; grid-template-columns: 1fr 1fr; }
+}

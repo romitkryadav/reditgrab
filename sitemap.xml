@@ -1,162 +1,30 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
-        xmlns:xhtml="http://www.w3.org/1999/xhtml">
-
-  <url>
-    <loc>https://reditgrab.com/</loc>
-    <lastmod>2026-10-05</lastmod>
-    <xhtml:link rel="alternate" hreflang="en" href="https://reditgrab.com/"/>
-    <xhtml:link rel="alternate" hreflang="es" href="https://reditgrab.com/es/"/>
-    <xhtml:link rel="alternate" hreflang="fr" href="https://reditgrab.com/fr/"/>
-    <xhtml:link rel="alternate" hreflang="vi" href="https://reditgrab.com/vi/"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://reditgrab.com/"/>
-  </url>
-  <url>
-    <loc>https://reditgrab.com/reddit-image-downloader</loc>
-    <lastmod>2026-10-05</lastmod>
-    <xhtml:link rel="alternate" hreflang="en" href="https://reditgrab.com/reddit-image-downloader"/>
-    <xhtml:link rel="alternate" hreflang="es" href="https://reditgrab.com/es/reddit-image-downloader.html"/>
-    <xhtml:link rel="alternate" hreflang="fr" href="https://reditgrab.com/fr/reddit-image-downloader.html"/>
-    <xhtml:link rel="alternate" hreflang="vi" href="https://reditgrab.com/vi/reddit-image-downloader.html"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://reditgrab.com/reddit-image-downloader"/>
-  </url>
-  <url>
-    <loc>https://reditgrab.com/reddit-dp-downloader</loc>
-    <lastmod>2026-10-05</lastmod>
-    <xhtml:link rel="alternate" hreflang="en" href="https://reditgrab.com/reddit-dp-downloader"/>
-    <xhtml:link rel="alternate" hreflang="es" href="https://reditgrab.com/es/reddit-dp-downloader.html"/>
-    <xhtml:link rel="alternate" hreflang="fr" href="https://reditgrab.com/fr/reddit-dp-downloader.html"/>
-    <xhtml:link rel="alternate" hreflang="vi" href="https://reditgrab.com/vi/reddit-dp-downloader.html"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://reditgrab.com/reddit-dp-downloader"/>
-  </url>
-
-  <url>
-    <loc>https://reditgrab.com/es/</loc>
-    <lastmod>2026-10-05</lastmod>
-  </url>
-  <url>
-    <loc>https://reditgrab.com/es/reddit-image-downloader.html</loc>
-    <lastmod>2026-10-05</lastmod>
-  </url>
-  <url>
-    <loc>https://reditgrab.com/es/reddit-dp-downloader.html</loc>
-    <lastmod>2026-10-05</lastmod>
-  </url>
-
-  <url>
-    <loc>https://reditgrab.com/fr/</loc>
-    <lastmod>2026-10-05</lastmod>
-  </url>
-  <url>
-    <loc>https://reditgrab.com/fr/reddit-image-downloader.html</loc>
-    <lastmod>2026-10-05</lastmod>
-  </url>
-  <url>
-    <loc>https://reditgrab.com/fr/reddit-dp-downloader.html</loc>
-    <lastmod>2026-10-05</lastmod>
-  </url>
-
-  <url>
-    <loc>https://reditgrab.com/vi/</loc>
-    <lastmod>2026-10-05</lastmod>
-  </url>
-  <url>
-    <loc>https://reditgrab.com/vi/reddit-image-downloader.html</loc>
-    <lastmod>2026-10-05</lastmod>
-  </url>
-  <url>
-    <loc>https://reditgrab.com/vi/reddit-dp-downloader.html</loc>
-    <lastmod>2026-10-05</lastmod>
-  </url>
-
-  <url>
-    <loc>https://reditgrab.com/blog</loc>
-    <lastmod>2026-09-12</lastmod>
-  </url>
-  <url>
-    <loc>https://reditgrab.com/blog/how-to-download-reddit-video-mp4</loc>
-    <lastmod>2026-09-12</lastmod>
-  </url>
-  <url>
-    <loc>https://reditgrab.com/blog/why-reddit-videos-have-no-sound</loc>
-    <lastmod>2026-09-12</lastmod>
-  </url>
-  <url>
-    <loc>https://reditgrab.com/blog/download-reddit-images-and-galleries</loc>
-    <lastmod>2026-09-12</lastmod>
-  </url>
-  <url>
-    <loc>https://reditgrab.com/blog/what-public-reddit-media-means</loc>
-    <lastmod>2026-09-12</lastmod>
-  </url>
-  <url>
-    <loc>https://reditgrab.com/blog/understanding-reddit-video-resolutions</loc>
-    <lastmod>2026-09-12</lastmod>
-  </url>
-  <url>
-    <loc>https://reditgrab.com/blog/choosing-the-right-reddit-link</loc>
-    <lastmod>2026-09-12</lastmod>
-  </url>
-  <url>
-    <loc>https://reditgrab.com/blog/how-to-save-reddit-video-on-iphone</loc>
-    <lastmod>2026-09-12</lastmod>
-  </url>
-  <url>
-    <loc>https://reditgrab.com/blog/how-to-save-reddit-video-on-android</loc>
-    <lastmod>2026-09-12</lastmod>
-  </url>
-  <url>
-    <loc>https://reditgrab.com/blog/reddit-video-vs-gif-whats-the-difference</loc>
-    <lastmod>2026-09-12</lastmod>
-  </url>
-  <url>
-    <loc>https://reditgrab.com/blog/can-you-download-reddit-videos-without-an-app</loc>
-    <lastmod>2026-09-12</lastmod>
-  </url>
-  <url>
-    <loc>https://reditgrab.com/blog/how-to-download-reddit-profile-picture</loc>
-    <lastmod>2026-09-12</lastmod>
-  </url>
-  <url>
-    <loc>https://reditgrab.com/blog/reddit-avatar-types-explained</loc>
-    <lastmod>2026-09-12</lastmod>
-  </url>
-  <url>
-    <loc>https://reditgrab.com/blog/how-to-save-reddit-images-on-mobile</loc>
-    <lastmod>2026-09-12</lastmod>
-  </url>
-  <url>
-    <loc>https://reditgrab.com/blog/reddit-gallery-post-explained</loc>
-    <lastmod>2026-09-12</lastmod>
-  </url>
-  <url>
-    <loc>https://reditgrab.com/blog/does-reddit-compress-images</loc>
-    <lastmod>2026-09-12</lastmod>
-  </url>
-  <url>
-    <loc>https://reditgrab.com/blog/is-it-legal-to-download-reddit-videos</loc>
-    <lastmod>2026-09-12</lastmod>
-  </url>
-
-  <url>
-    <loc>https://reditgrab.com/about</loc>
-    <lastmod>2026-09-12</lastmod>
-  </url>
-  <url>
-    <loc>https://reditgrab.com/contact</loc>
-    <lastmod>2026-09-12</lastmod>
-  </url>
-  <url>
-    <loc>https://reditgrab.com/developer</loc>
-    <lastmod>2026-09-12</lastmod>
-  </url>
-  <url>
-    <loc>https://reditgrab.com/privacy</loc>
-    <lastmod>2026-09-12</lastmod>
-  </url>
-  <url>
-    <loc>https://reditgrab.com/disclaimer</loc>
-    <lastmod>2026-09-12</lastmod>
-  </url>
-
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url><loc>https://reditgrab.com/</loc></url>
+  <url><loc>https://reditgrab.com/about</loc></url>
+  <url><loc>https://reditgrab.com/blog</loc><lastmod>2026-10-26</lastmod></url>
+  <url><loc>https://reditgrab.com/blog/can-you-download-reddit-videos-without-an-app</loc><lastmod>2026-10-26</lastmod></url>
+  <url><loc>https://reditgrab.com/blog/choosing-the-right-reddit-link</loc><lastmod>2026-10-26</lastmod></url>
+  <url><loc>https://reditgrab.com/blog/does-reddit-compress-images</loc><lastmod>2026-10-26</lastmod></url>
+  <url><loc>https://reditgrab.com/blog/download-reddit-images-and-galleries</loc><lastmod>2026-10-26</lastmod></url>
+  <url><loc>https://reditgrab.com/blog/how-to-download-reddit-profile-picture</loc><lastmod>2026-10-26</lastmod></url>
+  <url><loc>https://reditgrab.com/blog/how-to-download-reddit-video-mp4</loc><lastmod>2026-10-26</lastmod></url>
+  <url><loc>https://reditgrab.com/blog/how-to-save-reddit-images-on-mobile</loc><lastmod>2026-10-26</lastmod></url>
+  <url><loc>https://reditgrab.com/blog/how-to-save-reddit-video-on-android</loc><lastmod>2026-10-26</lastmod></url>
+  <url><loc>https://reditgrab.com/blog/how-to-save-reddit-video-on-iphone</loc><lastmod>2026-10-26</lastmod></url>
+  <url><loc>https://reditgrab.com/blog/is-it-legal-to-download-reddit-videos</loc><lastmod>2026-10-26</lastmod></url>
+  <url><loc>https://reditgrab.com/blog/reddit-avatar-types-explained</loc><lastmod>2026-10-26</lastmod></url>
+  <url><loc>https://reditgrab.com/blog/reddit-gallery-post-explained</loc><lastmod>2026-10-26</lastmod></url>
+  <url><loc>https://reditgrab.com/blog/reddit-video-vs-gif-whats-the-difference</loc><lastmod>2026-10-26</lastmod></url>
+  <url><loc>https://reditgrab.com/blog/understanding-reddit-video-resolutions</loc><lastmod>2026-10-26</lastmod></url>
+  <url><loc>https://reditgrab.com/blog/what-public-reddit-media-means</loc><lastmod>2026-10-26</lastmod></url>
+  <url><loc>https://reditgrab.com/blog/why-reddit-videos-have-no-sound</loc><lastmod>2026-10-26</lastmod></url>
+  <url><loc>https://reditgrab.com/contact</loc></url>
+  <url><loc>https://reditgrab.com/developer</loc></url>
+  <url><loc>https://reditgrab.com/disclaimer</loc></url>
+  <url><loc>https://reditgrab.com/evidence</loc></url>
+  <url><loc>https://reditgrab.com/image-evidence</loc></url>
+  <url><loc>https://reditgrab.com/privacy</loc></url>
+  <url><loc>https://reditgrab.com/reddit-dp-downloader</loc></url>
+  <url><loc>https://reditgrab.com/reddit-image-downloader</loc></url>
 </urlset>

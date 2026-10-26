@@ -53,6 +53,7 @@ const API_BASE_URL = (typeof window !== 'undefined' && window.location && (
   const resultFormatPill = document.getElementById('result-format-pill');
   const resultUpdatedTimestamp = document.getElementById('result-timestamp');
   const downloadBtn = document.getElementById('download-btn');
+  const downloadStatusEl = document.getElementById('download-status');
   const openOriginalBtn = document.getElementById('open-original-btn');
   const avatarPreviewWrap = document.getElementById('avatar-preview-wrap');
   const avatarImgLoader = document.getElementById('avatar-img-loader');
@@ -111,6 +112,7 @@ const API_BASE_URL = (typeof window !== 'undefined' && window.location && (
   function applyTheme(theme) {
     if (document && document.documentElement) {
       document.documentElement.setAttribute('data-theme', theme);
+      if (document.body) document.body.setAttribute('data-theme', theme);
     }
     setSafeStorage('reddit_downloader_theme', theme);
     updateThemeIcon(theme);
@@ -293,7 +295,7 @@ const API_BASE_URL = (typeof window !== 'undefined' && window.location && (
     }
 
     // Avatar preview with multi-tier loading & resilient fallback
-    const activeBase = (typeof apiBase === 'string' && apiBase !== '') ? apiBase : WORKER_DEPLOYMENT_URL;
+    const activeBase = typeof apiBase === 'string' ? apiBase : WORKER_DEPLOYMENT_URL;
     const directUrl = data.avatar.url;
     const proxyUrl = data.avatar.proxyUrl
       ? (activeBase ? `${activeBase}${data.avatar.proxyUrl}` : data.avatar.proxyUrl)
@@ -340,7 +342,7 @@ const API_BASE_URL = (typeof window !== 'undefined' && window.location && (
         resultDimensionPill.textContent = `${data.avatar.width} × ${data.avatar.height} px`;
         resultDimensionPill.style.display = 'inline-block';
       } else {
-        resultDimensionPill.textContent = 'Original Aspect';
+        resultDimensionPill.textContent = 'Size unavailable';
         resultDimensionPill.style.display = 'inline-block';
       }
     }
@@ -424,26 +426,28 @@ const API_BASE_URL = (typeof window !== 'undefined' && window.location && (
      5. Safe Image Download Handler with Direct Fallback
      ========================================================================== */
   async function triggerDownload(downloadUrl, username, format, btnEl, directUrl) {
-    const ext = format ? format.toLowerCase() : 'png';
+    const rawFormat = String(format || '').toLowerCase().replace(/^image\//, '');
+    const extensions = { png: 'png', jpg: 'jpg', jpeg: 'jpg', webp: 'webp', gif: 'gif', avif: 'avif' };
+    const ext = extensions[rawFormat] || 'jpg';
     const safeName = `reddit-dp-${(username || 'user').replace(/[^a-zA-Z0-9_-]/g, '')}.${ext}`;
     const originalBtnHtml = btnEl ? btnEl.innerHTML : null;
+    let downloadStarted = false;
+    let directUnavailable = false;
 
+    if (downloadStatusEl) {
+      downloadStatusEl.textContent = '';
+      downloadStatusEl.hidden = true;
+    }
     if (btnEl) {
       btnEl.disabled = true;
-      btnEl.innerHTML = `
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" class="spinner" aria-hidden="true" style="width:16px;height:16px;margin:0;border-width:2px;"></svg>
-        <span>Downloading...</span>
-      `;
+      btnEl.innerHTML = '<span>Preparing download...</span>';
     }
 
-    let downloadSucceeded = false;
-
-    // Strategy 1: Fetch through worker download endpoint as a Blob
     try {
-      const response = await fetch(downloadUrl);
+      const response = await fetch(downloadUrl, { signal: AbortSignal.timeout(12000) });
       if (response.ok) {
         const blob = await response.blob();
-        if (blob && blob.size > 0) {
+        if (blob && blob.size > 0 && (!blob.type || blob.type.startsWith('image/'))) {
           const objectUrl = URL.createObjectURL(blob);
           const link = document.createElement('a');
           link.href = objectUrl;
@@ -452,54 +456,51 @@ const API_BASE_URL = (typeof window !== 'undefined' && window.location && (
           link.click();
           document.body.removeChild(link);
           setTimeout(() => URL.revokeObjectURL(objectUrl), 2000);
-          downloadSucceeded = true;
+          downloadStarted = true;
         }
       }
-    } catch (e) {
-      console.warn('[RedditDP] Proxy download failed, falling back to direct URL:', e);
+    } catch (error) {
+      console.warn('[RedditDP] Proxy download failed; trying the direct image URL.', error);
     }
 
-    // Strategy 2: Direct image download via Blob or programmatic link
-    if (!downloadSucceeded && directUrl) {
+    if (!downloadStarted && directUrl) {
       try {
-        const res = await fetch(directUrl, { mode: 'cors' });
-        if (res.ok) {
-          const blob = await res.blob();
-          const objectUrl = URL.createObjectURL(blob);
-          const link = document.createElement('a');
-          link.href = objectUrl;
-          link.download = safeName;
-          document.body.appendChild(link);
-          link.click();
-          document.body.removeChild(link);
-          setTimeout(() => URL.revokeObjectURL(objectUrl), 2000);
-          downloadSucceeded = true;
+        const response = await fetch(directUrl, { mode: 'cors', signal: AbortSignal.timeout(12000) });
+        if (response.ok) {
+          const blob = await response.blob();
+          if (blob && blob.size > 0 && (!blob.type || blob.type.startsWith('image/'))) {
+            const objectUrl = URL.createObjectURL(blob);
+            const link = document.createElement('a');
+            link.href = objectUrl;
+            link.download = safeName;
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+            setTimeout(() => URL.revokeObjectURL(objectUrl), 2000);
+            downloadStarted = true;
+          }
         }
-      } catch {
-        // Browser fallback: direct anchor navigation
-        const link = document.createElement('a');
-        link.href = directUrl;
-        link.download = safeName;
-        link.target = '_blank';
-        link.rel = 'noopener noreferrer';
-        document.body.appendChild(link);
-        link.click();
-        document.body.removeChild(link);
-        downloadSucceeded = true;
+      } catch (error) {
+        console.info('[RedditDP] Direct image fetch was blocked.', error);
+        directUnavailable = true;
       }
+    }
+
+    if (downloadStatusEl) {
+      downloadStatusEl.textContent = downloadStarted
+        ? 'Download started. Check your browser’s downloads.'
+        : directUnavailable
+          ? 'Direct download is unavailable here. Select Open Original, then use your browser’s Save image option.'
+          : 'The download could not start. Try Open Original or try again shortly.';
+      downloadStatusEl.hidden = false;
     }
 
     if (btnEl) {
-      btnEl.innerHTML = `
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-          <polyline points="20 6 9 17 4 12"></polyline>
-        </svg>
-        <span>Saved!</span>
-      `;
+      btnEl.innerHTML = `<span>${downloadStarted ? 'Download started' : 'Try again'}</span>`;
       setTimeout(() => {
         btnEl.disabled = false;
         btnEl.innerHTML = originalBtnHtml;
-      }, 2000);
+      }, 2500);
     }
   }
 
@@ -542,9 +543,8 @@ const API_BASE_URL = (typeof window !== 'undefined' && window.location && (
       try {
         console.log(`[RedditDP] Querying endpoint: ${item.url}`);
         const response = await fetch(item.url, {
-          headers: {
-            'Accept': 'application/json'
-          }
+          headers: { 'Accept': 'application/json' },
+          signal: AbortSignal.timeout(10000)
         });
 
         resultStatus = response.status;
@@ -557,9 +557,13 @@ const API_BASE_URL = (typeof window !== 'undefined' && window.location && (
         }
 
         const json = await response.json();
+        if (response.status === 429 || response.status >= 500) {
+          console.warn(`[RedditDP] Endpoint ${item.url} returned ${response.status}; trying the next service.`);
+          continue;
+        }
         resultJson = json;
         workingBase = item.base;
-        break; // Valid JSON received
+        break; // Valid, non-transient JSON response received
       } catch (err) {
         console.warn(`[RedditDP] Endpoint ${item.url} network error:`, err);
         lastNetworkError = err;
@@ -568,16 +572,21 @@ const API_BASE_URL = (typeof window !== 'undefined' && window.location && (
 
     if (!resultJson) {
       console.error('[RedditDP] All endpoints failed. Last network error:', lastNetworkError);
-      showError('Unable to connect to the profile service. Please check your network connection or ad-blocker and try again.');
+      if (resultStatus === 429 || resultStatus >= 500) {
+        showError('The profile service is temporarily unavailable. Please wait a moment and try again.');
+      } else {
+        showError('Unable to connect to the profile service. Please check your network connection or ad-blocker and try again.');
+      }
       return;
     }
 
-    if (resultStatus === 404 || (resultJson && resultJson.error && resultJson.error.toLowerCase().includes('not be found'))) {
+    const errorText = typeof resultJson.error === 'string' ? resultJson.error.toLowerCase() : '';
+    if (resultStatus === 404 || errorText.includes('not be found')) {
       showError('That Reddit profile could not be found.');
       return;
     }
 
-    if (resultStatus === 410 || (resultJson && resultJson.error && resultJson.error.toLowerCase().includes('no longer be available'))) {
+    if (resultStatus === 410 || errorText.includes('no longer be available')) {
       showError('This Reddit profile may no longer be available.');
       return;
     }
@@ -630,8 +639,12 @@ const API_BASE_URL = (typeof window !== 'undefined' && window.location && (
   /* ==========================================================================
      7. Click-to-Enlarge Modal
      ========================================================================== */
+  let previousModalFocus = null;
+
   function openModal() {
     if (!previewModal) return;
+    previousModalFocus = document.activeElement;
+    previewModal.hidden = false;
     previewModal.style.display = 'flex';
     document.body.classList.add('modal-open');
     if (modalCloseBtn) modalCloseBtn.focus();
@@ -640,29 +653,46 @@ const API_BASE_URL = (typeof window !== 'undefined' && window.location && (
   function closeModal() {
     if (!previewModal) return;
     previewModal.style.display = 'none';
+    previewModal.hidden = true;
     document.body.classList.remove('modal-open');
+    if (previousModalFocus && typeof previousModalFocus.focus === 'function') previousModalFocus.focus();
   }
 
   if (avatarPreviewWrap) {
     avatarPreviewWrap.addEventListener('click', openModal);
-  }
-
-  if (modalCloseBtn) {
-    modalCloseBtn.addEventListener('click', closeModal);
-  }
-
-  if (previewModal) {
-    previewModal.addEventListener('click', (e) => {
-      if (e.target === previewModal) {
-        closeModal();
+    avatarPreviewWrap.addEventListener('keydown', (event) => {
+      if (event.key === 'Enter' || event.key === ' ') {
+        event.preventDefault();
+        openModal();
       }
     });
   }
 
-  window.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape' && previewModal && previewModal.style.display === 'flex') {
-      closeModal();
-    }
+  if (modalCloseBtn) modalCloseBtn.addEventListener('click', closeModal);
+
+  if (previewModal) {
+    previewModal.addEventListener('click', (event) => {
+      if (event.target === previewModal) closeModal();
+    });
+    previewModal.addEventListener('keydown', (event) => {
+      if (event.key !== 'Tab') return;
+      const focusable = Array.from(previewModal.querySelectorAll('a[href], button:not([disabled]), [tabindex]:not([tabindex="-1"])'))
+        .filter((element) => element.offsetParent !== null);
+      if (!focusable.length) return;
+      const first = focusable[0];
+      const last = focusable[focusable.length - 1];
+      if (event.shiftKey && (document.activeElement === first || !previewModal.contains(document.activeElement))) {
+        event.preventDefault();
+        last.focus();
+      } else if (!event.shiftKey && (document.activeElement === last || !previewModal.contains(document.activeElement))) {
+        event.preventDefault();
+        first.focus();
+      }
+    });
+  }
+
+  window.addEventListener('keydown', (event) => {
+    if (event.key === 'Escape' && previewModal && previewModal.style.display === 'flex') closeModal();
   });
 
   /* ==========================================================================
@@ -673,15 +703,16 @@ const API_BASE_URL = (typeof window !== 'undefined' && window.location && (
     if (questionBtn) {
       questionBtn.addEventListener('click', () => {
         const wasActive = item.classList.contains('active');
-        // Close all other items for neat accordion feel
+        // Keep the visual state and screen-reader state in sync.
         document.querySelectorAll('.faq-item').forEach(other => {
-          if (other !== item) other.classList.remove('active');
+          if (other !== item) {
+            other.classList.remove('active');
+            const otherButton = other.querySelector('.faq-question');
+            if (otherButton) otherButton.setAttribute('aria-expanded', 'false');
+          }
         });
-        if (!wasActive) {
-          item.classList.add('active');
-        } else {
-          item.classList.remove('active');
-        }
+        item.classList.toggle('active', !wasActive);
+        questionBtn.setAttribute('aria-expanded', String(!wasActive));
       });
     }
   });

@@ -3,7 +3,7 @@
  * 
  * Vanilla JavaScript implementation for Cloudflare Pages / Static Hosting.
  * Coordinates with the Cloudflare Worker API to extract, preview, inspect,
- * and download high-resolution Reddit images and multi-image galleries.
+ * and download available Reddit images and multi-image galleries.
  */
 
 // ==========================================================================
@@ -39,6 +39,7 @@ const state = {
   currentPostUrl: '',
   currentPostTitle: '',
   modalActiveIndex: 0,
+  modalReturnFocus: null,
   isFetching: false,
   isDownloadingAll: false,
   loadingInterval: null,
@@ -122,7 +123,7 @@ function toggleTheme() {
 const loadingMessages = [
   'Checking Reddit post metadata...',
   'Finding image attachments...',
-  'Resolving highest original quality...',
+  'Finding available images...',
   'Preparing preview grid...',
 ];
 
@@ -201,11 +202,15 @@ function resolveDirectRedditImage(rawUrl) {
       if (innerUrl) return resolveDirectRedditImage(innerUrl);
     }
 
-    // 2. preview.redd.it or external-preview.redd.it -> upgrade to full-res i.redd.it master
+    // 2. Reddit preview URLs; only preview.redd.it maps to a matching i.redd.it filename
     if (host === 'preview.redd.it' || host === 'external-preview.redd.it') {
       const parts = parsed.pathname.split('/').filter(Boolean);
       const filename = parts.pop() || 'reddit-image.jpg';
-      const cleanUrl = `https://i.redd.it/${filename}`;
+      // Only Reddit's own preview host maps to the same-named i.redd.it original.
+      // external-preview can represent a different source, so keep that URL intact.
+      const cleanUrl = host === 'preview.redd.it'
+        ? `https://i.redd.it/${filename}`
+        : parsed.toString();
       const format = filename.split('.').pop()?.toLowerCase() || 'jpg';
       return {
         masterUrl: cleanUrl,
@@ -278,6 +283,14 @@ function validateClientUrl(input) {
 }
 
 // ==========================================================================
+function isRedditDefaultIcon(imageUrl) {
+  try {
+    const parsed = new URL(imageUrl);
+    return parsed.hostname === 'www.redditstatic.com' && parsed.pathname === '/new-icon.png';
+  } catch (_) {
+    return false;
+  }
+}
 // Media Extraction API Call (With Instant Direct Image & Multi-Tier Fallback)
 // ==========================================================================
 async function fetchRedditImages(redditUrl) {
@@ -387,14 +400,23 @@ async function fetchRedditImages(redditUrl) {
         return;
       }
 
-      if (!data.images || data.images.length === 0) {
+      // Ignore Reddit's generic community icon when it appears as post metadata.
+      const postImages = (Array.isArray(data.images) ? data.images : []).filter((image) => {
+        try {
+          const parsed = new URL(image.url || image.originalUrl || '');
+          return !(parsed.hostname === 'www.redditstatic.com' && parsed.pathname === '/new-icon.png');
+        } catch (_) {
+          return false;
+        }
+      });
+      if (postImages.length === 0) {
         showError('No downloadable images were found in this Reddit post.');
         stopLoading('error');
         return;
       }
 
       // Success with images!
-      state.currentImages = data.images;
+      state.currentImages = postImages;
       state.currentPostUrl = data.postUrl || redditUrl;
       state.currentPostTitle = data.postTitle || '';
 
@@ -416,7 +438,7 @@ async function fetchRedditImages(redditUrl) {
       if (oembedResp.ok) {
         const oembed = await oembedResp.json();
         if (oembed && (oembed.title || oembed.html)) {
-          if (oembed.thumbnail_url) {
+          if (oembed.thumbnail_url && !isRedditDefaultIcon(oembed.thumbnail_url)) {
             const upgraded = resolveDirectRedditImage(oembed.thumbnail_url);
             const imgMaster = upgraded ? upgraded.masterUrl : oembed.thumbnail_url;
             state.currentImages = [
@@ -536,9 +558,9 @@ function renderResults() {
     card.className = 'image-card';
     card.id = `image-card-${index + 1}`;
 
-    const resolutionText = img.width && img.height 
-      ? `${img.width} × ${img.height}` 
-      : 'Original Size';
+    const resolutionText = img.width && img.height
+      ? `Preview ${img.width} × ${img.height}`
+      : 'Checking dimensions…';
 
     const formatText = (img.format || 'IMG').toUpperCase();
     const downloadUrl = `${API_BASE_URL}/api/reddit-image-download?url=${encodeURIComponent(img.url)}&index=${img.index || index + 1}`;
@@ -574,7 +596,7 @@ function renderResults() {
           <span class="meta-pill">${escapeHtml(formatText)}</span>
         </div>
         <div class="card-actions">
-          <button type="button" class="card-download-btn" data-url="${escapeHtml(downloadUrl)}" data-filename="reddit-image-${index + 1}.${img.format || 'jpg'}" title="Download high-resolution image to device">
+          <button type="button" class="card-download-btn" data-url="${escapeHtml(downloadUrl)}" data-filename="reddit-image-${index + 1}.${img.format || 'jpg'}" title="Download this image to your device">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
               <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
               <polyline points="7 10 12 15 17 10"/>
@@ -605,7 +627,7 @@ function renderResults() {
         img.width = cardImg.naturalWidth;
         img.height = cardImg.naturalHeight;
         if (resPill) {
-          resPill.textContent = `${cardImg.naturalWidth} × ${cardImg.naturalHeight}`;
+          resPill.textContent = `Preview ${cardImg.naturalWidth} × ${cardImg.naturalHeight}`;
         }
       }
     });
@@ -617,6 +639,7 @@ function renderResults() {
         cardImg.src = fallback;
       } else {
         if (skeleton) skeleton.classList.add('hidden');
+        if (resPill) resPill.textContent = 'Dimensions unavailable';
       }
     });
 
@@ -805,6 +828,7 @@ async function handleDownloadAll() {
 // ==========================================================================
 function openModal(index) {
   if (!state.currentImages[index]) return;
+  state.modalReturnFocus = document.getElementById(`image-card-${index + 1}`)?.querySelector('.image-preview-container') || document.activeElement;
   state.modalActiveIndex = index;
   updateModalContent();
   elements.previewModal.classList.remove('hidden');
@@ -815,6 +839,9 @@ function openModal(index) {
 function closeModal() {
   elements.previewModal.classList.add('hidden');
   document.body.classList.remove('modal-open');
+  const returnFocus = state.modalReturnFocus;
+  state.modalReturnFocus = null;
+  if (returnFocus && returnFocus.isConnected) returnFocus.focus();
 }
 
 function updateModalContent() {
@@ -829,6 +856,7 @@ function updateModalContent() {
   if (elements.modalSpinner) elements.modalSpinner.classList.remove('hidden');
   elements.modalImage.classList.remove('loaded');
   elements.modalImage.referrerPolicy = 'no-referrer';
+  elements.modalImage.alt = `Reddit image ${state.modalActiveIndex + 1} preview`;
   elements.modalImage.src = previewUrl;
 
   elements.modalImage.onload = () => {
@@ -837,7 +865,7 @@ function updateModalContent() {
     if (elements.modalImage.naturalWidth && elements.modalImage.naturalHeight) {
       current.width = elements.modalImage.naturalWidth;
       current.height = elements.modalImage.naturalHeight;
-      elements.modalResolution.textContent = `${elements.modalImage.naturalWidth} × ${elements.modalImage.naturalHeight}`;
+      elements.modalResolution.textContent = `Preview ${elements.modalImage.naturalWidth} × ${elements.modalImage.naturalHeight}`;
     }
   };
 
@@ -847,14 +875,15 @@ function updateModalContent() {
       elements.modalImage.src = directFallback;
     } else {
       if (elements.modalSpinner) elements.modalSpinner.classList.add('hidden');
+      elements.modalResolution.textContent = 'Preview unavailable';
     }
   };
 
   elements.modalCounter.textContent = `${state.modalActiveIndex + 1} of ${total}`;
 
   const resText = current.width && current.height 
-    ? `${current.width} × ${current.height}` 
-    : 'Original Resolution';
+    ? `Preview ${current.width} × ${current.height}`
+    : 'Checking dimensions…';
   elements.modalResolution.textContent = resText;
   elements.modalFormat.textContent = (current.format || 'IMG').toUpperCase();
 
@@ -1034,6 +1063,22 @@ function setupEventListeners() {
     if (!elements.previewModal.classList.contains('hidden')) {
       if (e.key === 'Escape') {
         closeModal();
+      } else if (e.key === 'Tab') {
+        const focusable = Array.from(elements.previewModal.querySelectorAll('a[href], button:not([disabled]), [tabindex]:not([tabindex="-1"])'))
+          .filter((item) => item.getClientRects().length > 0);
+        if (focusable.length) {
+          const first = focusable[0];
+          const last = focusable[focusable.length - 1];
+          if (e.shiftKey && (document.activeElement === first || !elements.previewModal.contains(document.activeElement))) {
+            e.preventDefault();
+            last.focus();
+          } else if (!e.shiftKey && document.activeElement === last) {
+            e.preventDefault();
+            first.focus();
+          }
+        } else {
+          e.preventDefault();
+        }
       } else if (e.key === 'ArrowLeft') {
         prevModalImage();
       } else if (e.key === 'ArrowRight') {
