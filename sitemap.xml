@@ -1,6 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url><loc>https://reditgrab.com/</loc></url>
+  <url><loc>https://reditgrab.com/hi/</loc></url>
+  <url><loc>https://reditgrab.com/de/</loc></url>
+  <url><loc>https://reditgrab.com/es-mx/</loc></url>
+  <url><loc>https://reditgrab.com/pt-br/</loc></url>
+  <url><loc>https://reditgrab.com/fr/</loc></url>
+  <url><loc>https://reditgrab.com/sv/</loc></url>
+  <url><loc>https://reditgrab.com/uk/</loc></url>
   <url><loc>https://reditgrab.com/about</loc></url>
   <url><loc>https://reditgrab.com/blog</loc><lastmod>2026-10-26</lastmod></url>
   <url><loc>https://reditgrab.com/blog/can-you-download-reddit-videos-without-an-app</loc><lastmod>2026-10-26</lastmod></url>

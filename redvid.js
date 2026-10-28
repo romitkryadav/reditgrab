@@ -74,7 +74,7 @@
   // ---------------------------------------------------------------------------
   const WORKER_POOL = [
     'https://whdp.romitkr361.workers.dev',
-    'https://redvid.ajeetkr0920.workers.dev/',  
+    'https://redvid.ajeetkr0920.workers.dev',  
     // 'https://worker3.yourdomain.workers.dev',
   ];
 

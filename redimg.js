@@ -15,7 +15,7 @@
 // to the same-origin /api/* endpoint; the pool is only used as fallback.
 const WORKER_POOL = [
   'https://reimg.romitkr5539.workers.dev',
-  'https://redimg2.ajeetkr0920.workers.dev/',  
+  'https://redimg2.ajeetkr0920.workers.dev',  
   // 'https://reimg-worker3.yourdomain.workers.dev',
 ];
 
@@ -347,37 +347,32 @@ async function fetchRedditImages(redditUrl) {
 
   try {
     let result = null;
+    let lastResult = null;
     let lastError = null;
+    const candidates = [];
+    candidates.push(String(API_BASE_URL || '').replace(/\/+$/, ''));
+    WORKER_POOL.forEach((workerUrl) => {
+      const normalizedWorker = workerUrl.replace(/\/+$/, '');
+      if (!candidates.includes(normalizedWorker) && normalizedWorker !== API_BASE_URL) {
+        candidates.push(normalizedWorker);
+      }
+    });
 
-    // ------------------------------------------------------------------------
-    // Tier 1: Try same-origin endpoint (works on Cloudflare Pages / any server)
-    // ------------------------------------------------------------------------
-    if (API_BASE_URL === '') {
+    for (const base of candidates) {
       try {
-        result = await fetchCandidate('');
+        const candidate = await fetchCandidate(base);
+        if (candidate.ok && candidate.data && candidate.data.success) {
+          result = candidate;
+          break;
+        }
+        lastResult = candidate;
+        lastError = new Error(candidate.data?.error || 'Image service did not return a successful result.');
       } catch (err) {
-        console.warn('Same-origin endpoint failed:', err.message);
+        console.warn('Image service candidate failed:', err.message);
         lastError = err;
       }
     }
-
-    // ------------------------------------------------------------------------
-    // Tier 2: Try each worker in the (shuffled) pool until one succeeds
-    // ------------------------------------------------------------------------
-    if (!result) {
-      for (let wi = 0; wi < WORKER_POOL.length; wi++) {
-        const workerUrl = WORKER_POOL[wi];
-        // Skip if it's the same as API_BASE_URL (already tried above)
-        if (workerUrl === API_BASE_URL) continue;
-        try {
-          result = await fetchCandidate(workerUrl);
-          break; // got a valid response — stop trying
-        } catch (err) {
-          console.warn(`Worker [${wi + 1}/${WORKER_POOL.length}] ${workerUrl} failed:`, err.message);
-          lastError = err;
-        }
-      }
-    }
+    if (!result && lastResult) result = lastResult;
 
     // Process successful backend response
     if (result) {
@@ -703,11 +698,36 @@ async function triggerDownload(url, filename, buttonEl, directImgUrl) {
 
   try {
     // 1. Fetch image binary through our CORS-enabled proxy worker
-    const response = await fetch(url);
-    if (!response.ok) {
-      throw new Error(`Proxy responded with status ${response.status}`);
+    const candidateUrls = [url];
+    try {
+      const parsedUrl = new URL(url, window.location.href);
+      if (parsedUrl.pathname.endsWith('/api/reddit-image-download')) {
+        WORKER_POOL.forEach((worker) => {
+          const workerUrl = worker.replace(/\/$/, '') + parsedUrl.pathname + parsedUrl.search;
+          if (!candidateUrls.includes(workerUrl)) candidateUrls.push(workerUrl);
+        });
+      }
+    } catch (_) {}
+
+    let blob = null;
+    let lastDownloadError = null;
+    for (const candidateUrl of candidateUrls) {
+      for (let attempt = 0; attempt < 2; attempt++) {
+        try {
+          const response = await fetch(candidateUrl, { signal: AbortSignal.timeout(15000) });
+          if (!response.ok) throw new Error('Download service returned ' + response.status);
+          const candidateBlob = await response.blob();
+          if (!candidateBlob.size) throw new Error('The download was empty.');
+          blob = candidateBlob;
+          break;
+        } catch (downloadError) {
+          lastDownloadError = downloadError;
+          if (attempt === 0) await new Promise((resolve) => setTimeout(resolve, 350));
+        }
+      }
+      if (blob) break;
     }
-    const blob = await response.blob();
+    if (!blob) throw lastDownloadError || new Error('Download service is unavailable.');
 
     // 2. Generate local same-origin Blob URL (modern browsers strictly require
     // same-origin target for <a download="filename">)

@@ -7,7 +7,7 @@
 // The pool is shuffled on load so each session hits a different worker first.
 const WORKER_POOL = [
   "https://reddp.romitkr361.workers.dev",
-  "https://reddp2.ajeetkr0920.workers.dev/",  
+  "https://reddp2.ajeetkr0920.workers.dev",  
   // "https://reddp-worker3.yourdomain.workers.dev",
 ];
 
@@ -444,20 +444,41 @@ const API_BASE_URL = (typeof window !== 'undefined' && window.location && (
     }
 
     try {
-      const response = await fetch(downloadUrl, { signal: AbortSignal.timeout(12000) });
-      if (response.ok) {
-        const blob = await response.blob();
-        if (blob && blob.size > 0 && (!blob.type || blob.type.startsWith('image/'))) {
-          const objectUrl = URL.createObjectURL(blob);
-          const link = document.createElement('a');
-          link.href = objectUrl;
-          link.download = safeName;
-          document.body.appendChild(link);
-          link.click();
-          document.body.removeChild(link);
-          setTimeout(() => URL.revokeObjectURL(objectUrl), 2000);
-          downloadStarted = true;
+      const primaryUrl = new URL(downloadUrl, window.location.href);
+      const candidates = [downloadUrl];
+      WORKER_POOL.forEach((worker) => {
+        const candidate = worker.replace(/\/$/, '') + primaryUrl.pathname + primaryUrl.search;
+        if (!candidates.includes(candidate)) candidates.push(candidate);
+      });
+      let downloadedBlob = null;
+      for (const candidate of candidates) {
+        for (let attempt = 0; attempt < 2; attempt++) {
+          try {
+            const response = await fetch(candidate, { signal: AbortSignal.timeout(12000) });
+            if (!response.ok) throw new Error('Download service returned ' + response.status);
+            const blob = await response.blob();
+            if (!blob || !blob.size || (blob.type && !blob.type.startsWith('image/'))) {
+              throw new Error('The download response was not a valid image.');
+            }
+            downloadedBlob = blob;
+            break;
+          } catch (error) {
+            console.warn('[RedditDP] Download attempt ' + (attempt + 1) + ' failed.', error);
+            if (attempt === 0) await new Promise((resolve) => setTimeout(resolve, 350));
+          }
         }
+        if (downloadedBlob) break;
+      }
+      if (downloadedBlob) {
+        const objectUrl = URL.createObjectURL(downloadedBlob);
+        const link = document.createElement('a');
+        link.href = objectUrl;
+        link.download = safeName;
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+        setTimeout(() => URL.revokeObjectURL(objectUrl), 2000);
+        downloadStarted = true;
       }
     } catch (error) {
       console.warn('[RedditDP] Proxy download failed; trying the direct image URL.', error);
@@ -538,6 +559,8 @@ const API_BASE_URL = (typeof window !== 'undefined' && window.location && (
     let resultStatus = 0;
     let workingBase = WORKER_DEPLOYMENT_URL;
     let lastNetworkError = null;
+    let lastHttpJson = null;
+    let lastHttpStatus = 0;
 
     for (const item of endpointsToTry) {
       try {
@@ -557,17 +580,24 @@ const API_BASE_URL = (typeof window !== 'undefined' && window.location && (
         }
 
         const json = await response.json();
-        if (response.status === 429 || response.status >= 500) {
-          console.warn(`[RedditDP] Endpoint ${item.url} returned ${response.status}; trying the next service.`);
+        if (!response.ok) {
+          console.warn('[RedditDP] Endpoint ' + item.url + ' returned ' + response.status + '; trying the next service.');
+          lastHttpJson = json;
+          lastHttpStatus = response.status;
           continue;
         }
         resultJson = json;
         workingBase = item.base;
-        break; // Valid, non-transient JSON response received
+        break; // Valid, non-error JSON response received
       } catch (err) {
         console.warn(`[RedditDP] Endpoint ${item.url} network error:`, err);
         lastNetworkError = err;
       }
+    }
+
+    if (!resultJson && lastHttpJson) {
+      resultJson = lastHttpJson;
+      resultStatus = lastHttpStatus;
     }
 
     if (!resultJson) {
