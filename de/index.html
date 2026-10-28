@@ -1,0 +1,505 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Reddit Downloader – Videos, Bilder und Profilbilder herunterladen | ReditGrab</title>
+  <meta name="description" content="Lade Reddit-Videos als MP4, Bilder, Galerien und öffentliche Profilbilder herunter. Füge einen Link oder Benutzernamen in das gemeinsame Feld ein.">
+  <meta name="author" content="Romit Kr Yadav">
+  <meta name="robots" content="index, follow">
+  <link rel="alternate" hreflang="de" href="https://reditgrab.com/de/">
+  <link rel="alternate" hreflang="es-MX" href="https://reditgrab.com/es-mx/">
+  <link rel="alternate" hreflang="fr" href="https://reditgrab.com/fr/">
+  <link rel="alternate" hreflang="hi" href="https://reditgrab.com/hi/">
+  <link rel="alternate" hreflang="pt-BR" href="https://reditgrab.com/pt-br/">
+  <link rel="alternate" hreflang="sv" href="https://reditgrab.com/sv/">
+  <link rel="alternate" hreflang="uk" href="https://reditgrab.com/uk/">
+  <link rel="alternate" hreflang="en" href="https://reditgrab.com/">
+  <link rel="alternate" hreflang="x-default" href="https://reditgrab.com/">
+  <link rel="canonical" href="https://reditgrab.com/de/">
+
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://reditgrab.com/de/">
+  <meta property="og:title" content="Reddit Downloader – Videos, Bilder und Profilbilder herunterladen | ReditGrab">
+  <meta property="og:description" content="Lade Reddit-Videos als MP4, Bilder, Galerien und öffentliche Profilbilder über ein gemeinsames Feld herunter.">
+  <meta property="og:image" content="https://reditgrab.com/preview-card.png">
+  <meta property="og:site_name" content="Reddit Downloader">
+  <meta property="og:locale" content="de_DE">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Reddit Downloader – Videos, Bilder und Profilbilder herunterladen | ReditGrab">
+  <meta name="twitter:description" content="Lade Reddit-Videos als MP4, Bilder, Galerien und öffentliche Profilbilder über ein gemeinsames Feld herunter.">
+  <meta name="twitter:image" content="https://reditgrab.com/preview-card.png">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="https://reditgrab.com/reditgrab.svg">
+
+  <!-- Stylesheet -->
+  <link rel="stylesheet" href="/rvideo.css">
+
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "WebSite",
+        "@id": "https://reditgrab.com/#website",
+        "name": "ReditGrab",
+        "url": "https://reditgrab.com/"
+      },
+      {
+        "@type": "WebPage",
+        "@id": "https://reditgrab.com/de/#webpage",
+        "url": "https://reditgrab.com/de/",
+        "name": "Reddit Downloader – Videos, Bilder und Profilbilder",
+        "inLanguage": "de",
+        "isPartOf": { "@id": "https://reditgrab.com/#website" }
+      },
+      {
+        "@type": "WebApplication",
+        "@id": "https://reditgrab.com/de/#downloader",
+        "name": "Reddit Downloader – Videos, Bilder und Profilbilder",
+        "url": "https://reditgrab.com/de/",
+        "applicationCategory": "UtilitiesApplication",
+        "operatingSystem": "Any",
+        "isAccessibleForFree": true
+      },
+      {
+        "@type": "FAQPage",
+        "@id": "https://reditgrab.com/de/#faq",
+        "mainEntity": [
+          { "@type": "Question", "name": "Wie lade ich ein Reddit-Video als MP4 herunter?", "acceptedAnswer": { "@type": "Answer", "text": "Kopiere den Teilen-Link des Videobeitrags, füge ihn in das Eingabefeld ein und prüfe die verfügbaren Qualitätsstufen. Wähle eine Version und lade die MP4-Datei herunter." } },
+          { "@type": "Question", "name": "Kann ich Reddit-Videos mit Ton herunterladen?", "acceptedAnswer": { "@type": "Answer", "text": "Wenn Reddit die Audiospur separat bereitstellt, versucht das Tool, sie mit dem Video zu verbinden. Fehlt der Ton im Original oder ist der Audiostream nicht verfügbar, kann die Datei stumm sein." } },
+          { "@type": "Question", "name": "Wie lade ich ein Reddit-Bild oder eine ganze Galerie herunter?", "acceptedAnswer": { "@type": "Answer", "text": "Füge den Link zu einem öffentlichen Bildbeitrag oder einer Galerie ein. Prüfe die Vorschau und lade ein Bild oder alle verfügbaren Galeriebilder herunter, wenn die Galerie unterstützt wird." } },
+          { "@type": "Question", "name": "Was brauche ich, um ein Reddit-Profilbild herunterzuladen?", "acceptedAnswer": { "@type": "Answer", "text": "Gib den Benutzernamen, u/username oder die Adresse eines öffentlichen Reddit-Profils ein. Wenn das Bild verfügbar ist, erscheinen eine Vorschau und die Downloadoption." } },
+          { "@type": "Question", "name": "Funktioniert dasselbe Eingabefeld für Videos, Bilder und Profilfotos?", "acceptedAnswer": { "@type": "Answer", "text": "Ja. Über einen Beitragslink erkennt die Seite ein Video, ein Bild oder eine Galerie. Mit einem Benutzernamen oder einer Profiladresse wird nach einem Avatar gesucht. Der Inhaltstyp wird automatisch erkannt." } },
+          { "@type": "Question", "name": "Was kann ich tun, wenn nur das Thumbnail des Videos erscheint?", "acceptedAnswer": { "@type": "Answer", "text": "Das Thumbnail ist nur eine Vorschau und nicht die Videodatei. Öffne den ursprünglichen Videobeitrag auf Reddit und kopiere den Link über Teilen, statt die direkte Thumbnail-Adresse zu verwenden." } },
+          { "@type": "Question", "name": "Kann ich private oder entfernte Reddit-Beiträge herunterladen?", "acceptedAnswer": { "@type": "Answer", "text": "Nein. Der Downloader funktioniert nur mit öffentlichen und unterstützten Inhalten. Private, entfernte, eingeschränkte oder nicht verfügbare Beiträge lassen sich nicht herunterladen." } }
+        ]
+      }
+    ]
+  }
+  </script>
+
+  <link rel="stylesheet" href="/analytics-consent.css">
+<style>
+.unified-status{max-width:760px;margin:14px auto;padding:14px 18px;display:flex;align-items:center;gap:12px;border:1px solid var(--border-color);border-radius:14px;background:var(--bg-card);color:var(--text-secondary);box-shadow:var(--shadow-md);animation:unified-in .22s ease-out}
+.new-search-button{display:none;margin:10px auto 0;padding:11px 20px;border:1px solid var(--border-color);border-radius:10px;background:var(--bg-card);color:var(--text-primary);font:inherit;font-weight:650;cursor:pointer}.new-search-button.visible{display:block;animation:unified-in .22s ease-out}.downloader-glow-wrap.is-result-hidden{display:none!important}.unified-status[hidden]{display:none!important}.unified-status-text{font-size:.95rem}.unified-spinner{width:20px;height:20px;flex:0 0 20px;border:2px solid rgba(255,255,255,.18);border-top-color:var(--reddit-orange);border-radius:50%;animation:unified-spin .8s linear infinite}.unified-status.is-error{border-color:rgba(239,68,68,.55);color:#fecaca}.unified-status.is-error .unified-spinner{border-top-color:#ef4444}.unified-results{scroll-margin-top:24px;margin-top:12px}.unified-results>div{scroll-margin-top:24px}
+@keyframes unified-spin{to{transform:rotate(360deg)}}@keyframes unified-in{from{opacity:0;transform:translateY(-5px)}to{opacity:1;transform:translateY(0)}}
+@media(prefers-reduced-motion:reduce){.unified-spinner{animation-duration:1.8s}.unified-status{animation:none}}
+.seo-section{border-top:1px solid var(--border-color)}
+.seo-tool-grid{display:grid;grid-template-columns:1fr;gap:1.25rem;max-width:1040px;margin:0 auto}
+.seo-tool-card{padding:1.75rem;background:var(--bg-card);border:1px solid var(--border-color);border-radius:var(--radius-xl);box-shadow:var(--shadow-md);transition:border-color var(--transition-fast),transform var(--transition-fast)}
+.seo-tool-card:hover{border-color:var(--text-subtle);transform:translateY(-2px)}
+.seo-tool-card h3{margin:0 0 .8rem;color:var(--text-primary);font-size:1.15rem;line-height:1.4;font-weight:750}
+.seo-tool-card p{margin:0 0 .8rem;color:var(--text-muted);font-size:.98rem;line-height:1.65}
+.seo-tool-card p:last-child{margin-bottom:0}
+.seo-responsible-note{max-width:900px;margin:2rem auto 0;text-align:center}
+.faq-section .faq-question{text-align:left}
+@media(min-width:768px){.seo-tool-grid{grid-template-columns:repeat(3,minmax(0,1fr));gap:1.25rem}.seo-tool-card{padding:1.5rem}}</style>
+</head>
+<body data-theme="dark">
+
+  <!-- ── Header ── -->
+  <header class="site-header" id="site-header">
+    <div class="header-inner container">
+      <a href="/" class="brand-link" id="brand-link">
+        <div class="brand-icon" aria-hidden="true">
+          <img src="https://reditgrab.com/reditgrab.svg" alt="ReditGrab logo" width="48" height="48">
+        </div>
+        <span class="brand-text">ReditGrab</span>
+      </a>
+
+      <nav class="nav-desktop" aria-label="Hauptnavigation">
+        <a href="/about" class="nav-anchor-link">Über uns</a>
+        <a href="/contact" class="nav-anchor-link">Kontakt</a>
+        <button type="button" class="btn-icon" id="theme-toggle" aria-label="Toggle dark/light theme" title="Toggle theme">
+          <svg class="sun-icon" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="12" cy="12" r="5"></circle>
+            <line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line>
+            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+            <line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line>
+            <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+          </svg>
+          <svg class="moon-icon" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+          </svg>
+        </button>
+      </nav>
+
+      <button class="nav-hamburger" id="nav-hamburger" aria-expanded="false" aria-controls="nav-mobile-panel" aria-label="Menü öffnen">
+        <span class="bar"></span><span class="bar"></span><span class="bar"></span>
+      </button>
+    </div>
+
+    <nav class="nav-mobile-panel" id="nav-mobile-panel" aria-label="Mobile navigation">
+      <a href="/about">Über uns</a>
+      <a href="/contact">Kontakt</a>
+    </nav>
+  </header>
+
+  <script>
+    (function () {
+      var btn = document.getElementById('nav-hamburger');
+      var panel = document.getElementById('nav-mobile-panel');
+      btn.addEventListener('click', function () {
+        var open = panel.classList.toggle('open');
+        btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+      });
+      panel.querySelectorAll('a').forEach(function (a) {
+        a.addEventListener('click', function () {
+          panel.classList.remove('open');
+          btn.setAttribute('aria-expanded', 'false');
+        });
+      });
+    })();
+  </script>
+
+  <main class="main-content" id="main-content">
+
+    <!-- ── Hero / Downloader ── -->
+    <section class="hero-section" id="hero-section">
+      <div class="container hero-container">
+        <div class="hero-header">
+          <h1 class="hero-title" id="hero-heading">Reddit Downloader – Videos, Bilder und Profilbilder</h1>
+          <p class="hero-desc">Lade Reddit-Videos als MP4, Fotos und ganze Galerien sowie Profilbilder öffentlicher Konten herunter. Füge den Link zum Beitrag oder einen Benutzernamen in das gemeinsame Feld ein; die Seite erkennt den Inhalt und zeigt passende Downloadoptionen.</p>
+
+        </div>
+
+        <!-- Downloader Card -->
+        <div class="downloader-glow-wrap" id="downloader-glow-wrap">
+          <div class="downloader-card" id="downloader-box">
+            <form id="download-form" class="download-form" novalidate aria-label="Ein Feld für Reddit-Videos, Bilder und Profilfotos">
+              <div class="input-field-wrapper" id="url-input-container">
+                <span class="input-icon" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path>
+                    <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path>
+                  </svg>
+                </span>
+                <input
+                  type="text"
+                  id="reddit-url-input"
+                  class="reddit-input"
+                  placeholder="Füge einen Reddit-Link ein oder gib einen Benutzernamen ein"
+                  aria-label="Reddit-Link oder Benutzername"
+                  autocomplete="off"
+                  spellcheck="false"
+                  required
+                >
+                <div class="input-buttons">
+                  <button type="button" class="btn-input-action" id="btn-paste" title="Paste from clipboard">
+                    <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2">
+                      <rect x="8" y="2" width="8" height="4" rx="1" ry="1"></rect>
+                      <path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"></path>
+                    </svg>
+                    <span>Einfügen</span>
+                  </button>
+                  <button type="button" class="btn-input-action hidden" id="btn-clear" aria-label="Clear Reddit URL input" title="Clear input">
+                    <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2">
+                      <line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line>
+                    </svg>
+                  </button>
+                </div>
+              </div>
+              <div class="form-submit-row">
+                <button type="submit" class="btn-submit" id="btn-submit-download">
+                  <svg class="download-icon" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                    <polyline points="7 10 12 15 17 10"></polyline>
+                    <line x1="12" y1="15" x2="12" y2="3"></line>
+                  </svg>
+                  <span class="btn-text">Suchen und herunterladen</span>
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+
+<div class="unified-status" id="unified-status" role="status" aria-live="polite" hidden><span class="unified-spinner" aria-hidden="true"></span><span id="unified-status-text" class="unified-status-text">Link wird geprüft…</span></div>
+    <div class="container unified-results"><div id="images-mount"></div><div id="profile-mount"></div></div>
+    <button class="new-search-button" id="new-search-button" type="button">Neue Suche</button>
+        <!-- Status / Loading -->
+        <div class="status-container hidden" id="status-container">
+          <div class="loading-spinner"></div>
+          <div class="status-content">
+            <p class="status-message" id="status-message">Finding Reddit video...</p>
+            <div class="progress-track"><div class="progress-bar" id="progress-bar"></div></div>
+          </div>
+        </div>
+
+        <!-- Error Banner -->
+        <div class="error-banner hidden" id="error-banner" role="alert">
+          <div class="error-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2">
+              <circle cx="12" cy="12" r="10"></circle>
+              <line x1="12" y1="8" x2="12" y2="12"></line>
+              <line x1="12" y1="16" x2="12.01" y2="16"></line>
+            </svg>
+          </div>
+          <div class="error-text" id="error-text">An error occurred.</div>
+          <button type="button" class="error-close-btn" id="error-close-btn" aria-label="Dismiss error">×</button>
+        </div>
+
+        <!-- Result Card -->
+        <div class="result-card hidden" id="result-card">
+          <div class="result-media-side">
+            <div class="video-container" id="video-container">
+              <video
+                id="video-player"
+                class="video-player"
+                controls
+                playsinline
+                preload="metadata"
+                controlslist="nodownload"
+                referrerpolicy="no-referrer"
+              >Your browser does not support HTML5 video preview.</video>
+              <audio id="audio-synced" preload="auto" playsinline referrerpolicy="no-referrer"></audio>
+
+              <button type="button" class="btn-enable-audio hidden" id="btn-enable-audio" title="Click to unmute video audio">
+                <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2">
+                  <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon>
+                  <path d="M19.07 4.93a10 10 0 0 1 0 14.14M15.54 8.46a5 5 0 0 1 0 7.07"></path>
+                </svg>
+                <span>Click to Unmute Audio</span>
+              </button>
+
+              <div class="video-error-overlay hidden" id="video-error-overlay">
+                <div class="video-error-icon">
+                  <svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="2">
+                    <circle cx="12" cy="12" r="10"></circle>
+                    <line x1="12" y1="8" x2="12" y2="12"></line>
+                    <line x1="12" y1="16" x2="12.01" y2="16"></line>
+                  </svg>
+                </div>
+                <h4 class="video-error-title">Browser Playback Restriction</h4>
+                <p class="video-error-desc" id="video-error-desc">Your browser blocked direct media loading from Reddit CDN. Toggle Worker Stream or use direct download.</p>
+                <div class="video-error-actions">
+                  <button type="button" class="btn-video-fallback" id="btn-switch-stream-mode">
+                    <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2">
+                      <path d="M23 4v6h-6M1 20v-6h6"></path>
+                      <path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"></path>
+                    </svg>
+                    <span id="label-switch-stream">Switch to Worker Proxy</span>
+                  </button>
+                  <button type="button" class="btn-video-fallback" id="btn-retry-player">
+                    <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2">
+                      <path d="M21.5 2v6h-6M2.5 22v-6h6"></path>
+                      <path d="M19.07 4.93A10 10 0 0 0 3 12M4.93 19.07A10 10 0 0 0 21 12"></path>
+                    </svg>
+                    <span>Reload Player</span>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="result-info-side">
+            <div class="result-top-bar" id="result-top-bar">
+              <button type="button" class="btn-back-input" id="btn-another-video-top" title="Download another video">
+                <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.2">
+                  <line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline>
+                </svg>
+                <span>Download Another Video</span>
+              </button>
+            </div>
+
+            <div class="result-header hidden">
+              <div class="badges-row">
+                <span class="badge-sub" id="result-subreddit">r/example</span>
+                <span class="badge-author" id="result-author">u/user</span>
+                <span class="badge-audio-status" id="badge-audio-status">Merged Video + Audio</span>
+              </div>
+              <h2 class="result-title" id="result-title">Example Reddit Post</h2>
+            </div>
+
+            <div class="metadata-grid hidden">
+              <div class="meta-item">
+                <span class="meta-label">Resolution</span>
+                <span class="meta-val" id="result-resolution">1080 × 1920</span>
+              </div>
+              <div class="meta-item">
+                <span class="meta-label">Duration</span>
+                <span class="meta-val" id="result-duration">30 seconds</span>
+              </div>
+              <div class="meta-item">
+                <span class="meta-label">File Type</span>
+                <span class="meta-val">MP4</span>
+              </div>
+              <div class="meta-item">
+                <span class="meta-label">Media Source</span>
+                <span class="meta-val" id="result-source">Reddit Video</span>
+              </div>
+            </div>
+
+            <div class="quality-selector-group hidden" id="quality-selector-group">
+              <span class="selector-label">Available Qualities:</span>
+              <div class="quality-buttons-row" id="quality-buttons-row"></div>
+            </div>
+
+            <div class="download-actions" id="download-actions">
+              <button type="button" class="btn-download primary" id="btn-download-video">
+                <svg class="dl-icon-normal" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                  <polyline points="7 10 12 15 17 10"></polyline>
+                  <line x1="12" y1="15" x2="12" y2="3"></line>
+                </svg>
+                <span class="spinner-inline hidden" id="dl-spinner-primary" aria-hidden="true"></span>
+                <span id="label-download-video">Download</span>
+              </button>
+
+              <button type="button" class="btn-download secondary hidden" id="btn-download-merged-backup" title="RapidSave backup download">
+                <svg class="dl-icon-normal" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                  <polyline points="7 10 12 15 17 10"></polyline>
+                  <line x1="12" y1="15" x2="12" y2="3"></line>
+                </svg>
+                <span class="spinner-inline hidden" id="dl-spinner-backup" aria-hidden="true"></span>
+                <span id="label-download-backup">Backup</span>
+              </button>
+
+              <button type="button" class="btn-download another-video" id="btn-another-video" title="Download another Reddit video">
+                <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.2">
+                  <polyline points="1 4 1 10 7 10"></polyline>
+                  <path d="M3.51 15a9 9 0 1 0 2.13-9.36L1 10"></path>
+                </svg>
+                <span>Download Another Video</span>
+              </button>
+
+              <button type="button" class="btn-permalink" id="btn-copy-post-link" title="Copy original Reddit post link to clipboard">
+                <span id="label-copy-link">Copy Post Link</span>
+                <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2">
+                  <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                  <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                </svg>
+              </button>
+
+              <iframe id="hidden-download-iframe" style="display:none;width:0;height:0;border:0;" aria-hidden="true"></iframe>
+            </div>
+
+            <div class="stream-notice" id="stream-notice">
+              <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+                <polyline points="22 4 12 14.01 9 11.01"></polyline>
+              </svg>
+              <span id="stream-notice-text">When an audio track is available, the video and audio can be combined into a single MP4.</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+
+    <section class="steps-section seo-section" id="tool-info" aria-labelledby="tool-info-heading">
+      <div class="container">
+        <div class="section-header"><h2 class="section-title" id="tool-info-heading">Reddit Downloader – Videos, Bilder und Profilbilder</h2><p class="section-subtitle">Füge den Link zu einem öffentlichen Reddit-Beitrag oder den Benutzernamen eines Profils in ein gemeinsames Feld ein. Die Seite erkennt Videos, Bilder, Galerien oder Profilfotos und zeigt passende Downloadoptionen.</p></div>
+        <div class="seo-tool-grid">
+  <article class="seo-tool-card"><h3>Reddit Video Downloader: Reddit-Videos als MP4 herunterladen</h3><p>Öffne einen öffentlichen Reddit-Beitrag mit Video. Wähle <strong>Teilen → Link kopieren</strong> und füge den Link in das gemeinsame Eingabefeld ein. Sobald der Beitrag erkannt wurde, siehst du eine Vorschau und die verfügbaren Qualitätsstufen. Wähle eine unterstützte Version und speichere die MP4-Datei.</p><p>Die Qualität hängt vom Originalvideo ab. Reddit kann Audio und Video getrennt übertragen. Wenn eine Audiospur verfügbar ist, versucht der Downloader, sie mit dem Video zu verbinden. Fehlenden Ton oder eine höhere Auflösung kann das Tool nicht erzeugen.</p></article>
+  <article class="seo-tool-card"><h3>Reddit Image Downloader: ein Bild oder eine Galerie speichern</h3><p>Füge den Link zu einem öffentlichen Reddit-Beitrag mit einem Bild oder zu einer Galerie ein. Prüfe die Vorschau und lade ein einzelnes Bild oder alle verfügbaren Galeriebilder herunter, sofern diese Option unterstützt wird.</p><p>Das Vorschaubild neben einem Videobeitrag ist nur ein Thumbnail und nicht die Videodatei. Um das Video herunterzuladen, füge den Link zum ursprünglichen Reddit-Beitrag ein und nicht die direkte Bildadresse.</p></article>
+  <article class="seo-tool-card"><h3>Reddit DP Downloader: Profilbild oder Avatar herunterladen</h3><p>Gib einen Benutzernamen, <code>u/username</code> oder die Adresse eines öffentlichen Reddit-Profils ein. DP steht für display picture, also Profilbild. Der Downloader zeigt den verfügbaren öffentlichen Avatar und bietet den Download an, wenn das Bild abgerufen werden kann.</p><p>Dieses Tool lädt Profilbilder und keine Bilder aus Beiträgen herunter. Private Profile, entfernte Avatare oder nicht verfügbare Bilder können nicht geladen werden.</p></article>
+</div><p class="section-subtitle seo-responsible-note">Lade nur öffentliche Inhalte herunter, die du speichern darfst, und beachte die Rechte der Urheber sowie die Reddit-Regeln.</p>
+      </div>
+    </section>
+
+    <section class="content-section" id="how-to-download-reddit-media" aria-labelledby="reddit-media-guide-heading">
+      <div class="container">
+        <div class="section-header"><h2 class="section-title" id="reddit-media-guide-heading">So lädst du Reddit-Videos, Bilder und Profilfotos herunter</h2><p class="section-subtitle">Füge den Link zu einem öffentlichen Beitrag oder den Benutzernamen eines Profils ein. Ein Feld erkennt den Inhalt und zeigt die passende Downloadoption.</p></div>
+        <div class="content-cols">
+          <article class="content-block"><h2>Reddit-Videos als MP4 herunterladen</h2><p><strong>Schritt 1.</strong> Öffne einen öffentlichen Reddit-Beitrag mit Video und kopiere den Link über <strong>Teilen → Link kopieren</strong>. <strong>Schritt 2.</strong> Füge den vollständigen Link in das Feld auf dieser Seite ein und starte die Suche. <strong>Schritt 3.</strong> Prüfe die Vorschau und die verfügbaren Auflösungen, wähle eine Version und speichere die MP4-Datei.</p><p>Der Downloader erhöht die Auflösung des Originalvideos nicht. Wenn Reddit eine separate Audiospur bereitstellt, versucht der Dienst, sie mit dem Video zu verbinden. Das Ergebnis hängt von den verfügbaren Mediendateien des Beitrags ab.</p></article>
+          <article class="content-block"><h2>Ein Reddit-Bild oder eine ganze Galerie herunterladen</h2><p>Für ein einzelnes Bild fügst du den Link zum öffentlichen Beitrag ein. Für mehrere Bilder verwendest du den Link zum Galeriebeitrag. Prüfe die gefundenen Bilder und lade ein Bild oder alle verfügbaren Galeriebilder herunter, sofern die Galerie unterstützt wird.</p><p>Wenn nur ein kleines Vorschaubild erscheint, gehört es möglicherweise zu einem Videobeitrag. Öffne den ursprünglichen Reddit-Beitrag und kopiere den Teilen-Link, statt die direkte Adresse des Thumbnails zu verwenden.</p></article>
+        </div>
+        <div class="content-cols">
+          <article class="content-block"><h2>Einen Reddit-Avatar oder ein Profilbild herunterladen</h2><p>Gib einen Benutzernamen, <code>u/username</code> oder die Adresse eines öffentlichen Profils ein. Die Seite leitet die Anfrage an den Reddit DP Downloader weiter, der eine Vorschau und eine Downloadoption anzeigt, wenn der Avatar verfügbar ist.</p><p>Für einen Avatar brauchst du Profildaten. Für ein Bild aus einem Reddit-Beitrag fügst du den Link zu diesem Beitrag ein. Private oder entfernte Profile und nicht verfügbare Bilder können nicht abgerufen werden.</p></article>
+          <article class="content-block"><h2>Ein Eingabefeld für Videos, Bilder und Profilfotos</h2><p>Du musst nicht zwischen mehreren Formularen wechseln. Füge den Link zu einem öffentlichen Reddit-Beitrag ein, damit die Seite ein Video, ein Bild oder eine Galerie erkennt. Für ein Profilbild gibst du einen Benutzernamen oder eine Profiladresse ein.</p><p>Wenn der Link nicht funktioniert, prüfe, ob sich der Beitrag auf Reddit öffnen lässt und ob du den vollständigen Beitragslink kopiert hast, nicht den Link zu einer Suche oder Community. Private, entfernte, eingeschränkte oder nicht unterstützte externe Medien sind nicht verfügbar.</p></article>
+        </div>
+        <p class="section-subtitle" style="text-align:center">Lade nur öffentliche Inhalte herunter, die du speichern darfst. Die Rechte an den Medien liegen bei den jeweiligen Urhebern.</p>
+      </div>
+    </section>
+    <section class="faq-section" id="faq-section" aria-labelledby="faq-heading"><div class="container"><h2 class="faq-heading" id="faq-heading">Häufige Fragen zum Reddit Downloader</h2><div class="faq-list">
+      <div class="faq-item"><button type="button" class="faq-question" aria-expanded="false"><span>Wie lade ich ein Reddit-Video als MP4 herunter?</span><svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="6 9 12 15 18 9"></polyline></svg></button><div class="faq-answer"><p>Kopiere den Teilen-Link des Videobeitrags, füge ihn in das Eingabefeld ein und prüfe die verfügbaren Qualitätsstufen. Wähle eine Version und lade die MP4-Datei herunter.</p></div></div>
+      <div class="faq-item"><button type="button" class="faq-question" aria-expanded="false"><span>Kann ich Reddit-Videos mit Ton herunterladen?</span><svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="6 9 12 15 18 9"></polyline></svg></button><div class="faq-answer"><p>Wenn Reddit die Audiospur separat bereitstellt, versucht das Tool, sie mit dem Video zu verbinden. Fehlt der Ton im Original oder ist der Audiostream nicht verfügbar, kann die Datei stumm sein.</p></div></div>
+      <div class="faq-item"><button type="button" class="faq-question" aria-expanded="false"><span>Wie lade ich ein Reddit-Bild oder eine ganze Galerie herunter?</span><svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="6 9 12 15 18 9"></polyline></svg></button><div class="faq-answer"><p>Füge den Link zu einem öffentlichen Bildbeitrag oder einer Galerie ein. Prüfe die Vorschau und lade ein Bild oder alle verfügbaren Galeriebilder herunter, wenn die Galerie unterstützt wird.</p></div></div>
+      <div class="faq-item"><button type="button" class="faq-question" aria-expanded="false"><span>Was brauche ich, um ein Reddit-Profilbild herunterzuladen?</span><svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="6 9 12 15 18 9"></polyline></svg></button><div class="faq-answer"><p>Gib den Benutzernamen, u/username oder die Adresse eines öffentlichen Reddit-Profils ein. Wenn das Bild verfügbar ist, erscheinen eine Vorschau und die Downloadoption.</p></div></div>
+      <div class="faq-item"><button type="button" class="faq-question" aria-expanded="false"><span>Funktioniert dasselbe Eingabefeld für Videos, Bilder und Profilfotos?</span><svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="6 9 12 15 18 9"></polyline></svg></button><div class="faq-answer"><p>Ja. Über einen Beitragslink erkennt die Seite ein Video, ein Bild oder eine Galerie. Mit einem Benutzernamen oder einer Profiladresse wird nach einem Avatar gesucht. Der Inhaltstyp wird automatisch erkannt.</p></div></div>
+      <div class="faq-item"><button type="button" class="faq-question" aria-expanded="false"><span>Was kann ich tun, wenn nur das Thumbnail des Videos erscheint?</span><svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="6 9 12 15 18 9"></polyline></svg></button><div class="faq-answer"><p>Das Thumbnail ist nur eine Vorschau und nicht die Videodatei. Öffne den ursprünglichen Videobeitrag auf Reddit und kopiere den Link über Teilen, statt die direkte Thumbnail-Adresse zu verwenden.</p></div></div>
+      <div class="faq-item"><button type="button" class="faq-question" aria-expanded="false"><span>Kann ich private oder entfernte Reddit-Beiträge herunterladen?</span><svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="6 9 12 15 18 9"></polyline></svg></button><div class="faq-answer"><p>Nein. Der Downloader funktioniert nur mit öffentlichen und unterstützten Inhalten. Private, entfernte, eingeschränkte oder nicht verfügbare Beiträge lassen sich nicht herunterladen.</p></div></div>
+    </div></div></section>
+  </main>
+
+  <!-- ── Footer ── -->
+  <footer class="site-footer" id="site-footer">
+    <div class="container footer-inner">
+      <div class="footer-links-grid">
+        <div class="footer-link-group">
+          <h3 class="footer-link-title">Weitere Tools</h3>
+          <a href="https://threadsgrab.com" rel="noopener noreferrer">Threads Video Downloader</a>
+          <a href="https://fbviddl.com" rel="noopener noreferrer">Facebook Video Downloader</a>
+          <a href="https://twitterdownloader.threadsgrab.com" rel="noopener noreferrer">Twitter Video Downloader</a>
+          <a href="https://pinviddl.com/" rel="noopener noreferrer">Pinterest Video Downloader</a>
+        </div>
+        <div class="footer-link-group">
+          <h3 class="footer-link-title">Rechtliches</h3>
+          <a href="/privacy">Datenschutz</a>
+          <a href="/disclaimer">Aviso legal</a>
+        </div>
+        <div class="footer-link-group">
+          <h3 class="footer-link-title">Unternehmen</h3>
+          <a href="/about">Über uns</a>
+          <a href="/contact">Kontakt</a>
+          <a href="/developer">Entwickler</a>
+          <a href="/evidence">Kompatibilitätstests</a>
+          <a href="/blog">Blog</a>
+        </div>
+      </div>
+      <div class="footer-bottom-row">
+        <p class="footer-copy">&copy; 2026 <strong>ReditGrab</strong>. Alle Rechte vorbehalten.</p>
+        <p class="footer-disclaimer" id="footer-disclaimer">
+          Hinweis: Dieses Tool ist nicht mit Reddit, Inc. verbunden. Marken und Medien gehören den jeweiligen Rechteinhabern. Es werden nur öffentliche Inhalte verarbeitet.
+        </p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+  window.__redditToolsReady=(async()=>{const ms=[{id:"images-mount",p:"/reddit-image-downloader.html",c:"/redimg.css",j:"/redimg.js",q:["#hero-section","#results-container","#embed-container","#preview-modal"]},{id:"profile-mount",p:"/reddit-dp-downloader.html",c:"/reddp.css",j:"/reddp.js",q:["#hero-section",".interactive-zone","#preview-modal"]}];for(const m of ms){const host=document.getElementById(m.id);try{const d=new DOMParser().parseFromString(await(await fetch(m.p)).text(),"text/html"),r=host.attachShadow({mode:"open"}),b=document.createElement("body");b.dataset.theme="dark";r.append(b);const l=document.createElement("link");l.rel="stylesheet";l.href=m.c;b.append(l);const st=document.createElement("style");st.textContent=":host{display:block}body{margin:0;min-height:0;height:auto;display:block;background:transparent}.interactive-zone{margin:0 auto}.hero-section{display:none!important}.result-card,.results-section,.embed-section{animation:module-reveal .28s ease-out}@keyframes module-reveal{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}";b.append(st);m.q.forEach(q=>{const n=d.querySelector(q);if(n)b.append(document.importNode(n,true))});if(m.id==="images-mount"){for(const id of ["loading-container","error-banner"]){const node=r.getElementById(id);if(node)b.append(node)}}const code=await fetch(m.j).then(x=>x.text()),doc=new Proxy(document,{get(t,k){if(k==="body"||k==="documentElement")return b;if(k==="getElementById")return i=>r.getElementById(i);if(k==="querySelector")return q=>r.querySelector(q);if(k==="querySelectorAll")return q=>r.querySelectorAll(q);if(k==="addEventListener")return(e,f,o)=>e==="DOMContentLoaded"?f(new Event(e)):t.addEventListener(e,f,o);if(k==="removeEventListener")return t.removeEventListener.bind(t);const v=Reflect.get(t,k,t);return typeof v==="function"?v.bind(t):v}});new Function("document",code)(doc)}catch{host.textContent="Der Downloader konnte nicht geöffnet werden."}}})();
+  </script>
+  <script>
+  (function(){
+    const form=document.getElementById("download-form"),input=document.getElementById("reddit-url-input"),button=document.getElementById("btn-submit-download");let passVideo=false;
+    function isImageUrl(url){const host=url.hostname.toLowerCase(),path=url.pathname.toLowerCase();return host.endsWith("i.redd.it")||host.endsWith("preview.redd.it")||path.includes("/gallery/")||[".jpg",".jpeg",".png",".gif",".webp"].some(ext=>path.endsWith(ext))}
+    async function detectFallback(value){const videoBases=["","https://whdp.romitkr361.workers.dev","https://redvid.ajeetkr0920.workers.dev"];for(const base of videoBases){try{const response=await fetch(base+"/api/reddit-video?url="+encodeURIComponent(value),{headers:{Accept:"application/json"},signal:AbortSignal.timeout(7000)});const data=await response.json();if(response.ok&&data.success)return"video"}catch{}}const imageBases=["","https://reimg.romitkr5539.workers.dev","https://redimg2.ajeetkr0920.workers.dev"];for(const base of imageBases){try{const response=await fetch(base+"/api/reddit-images?url="+encodeURIComponent(value),{headers:{Accept:"application/json"},signal:AbortSignal.timeout(7000)});const data=await response.json();if(response.ok&&data.success&&Array.isArray(data.images)&&data.images.length)return"image"}catch{}}return"video"}
+async function detect(value){const text=value.trim();if(!text.startsWith("http://")&&!text.startsWith("https://"))return"profile";let url;try{url=new URL(text)}catch{return"profile"}const path=url.pathname.toLowerCase(),host=url.hostname.toLowerCase();if(isImageUrl(url))return"image";if(path.includes("/user/")||path.includes("/u/"))return"profile";const parts=path.split("/").filter(Boolean),commentAt=parts.indexOf("comments");let jsonUrl="";if(commentAt>=0&&parts[commentAt+1])jsonUrl="https://www.reddit.com/comments/"+parts[commentAt+1]+".json?raw_json=1";else if(host==="redd.it"&&parts[0])jsonUrl="https://www.reddit.com/comments/"+parts[0]+".json?raw_json=1";else if(path.includes("/s/")&&(host==="reddit.com"||host.endsWith(".reddit.com")))jsonUrl="https://www.reddit.com"+url.pathname+".json?raw_json=1";else return"video";try{const response=await fetch(jsonUrl,{headers:{Accept:"application/json"},signal:AbortSignal.timeout(9000)});if(!response.ok)return await detectFallback(text);const json=await response.json(),post=json&&json[0]&&json[0].data&&json[0].data.children&&json[0].data.children[0]&&json[0].data.children[0].data;if(!post)return await detectFallback(text);if(post.is_video||(post.media&&post.media.reddit_video))return"video";if(post.gallery_data||post.post_hint==="image"||String(post.url||"").includes("i.redd.it")||String(post.url||"").includes("preview.redd.it"))return"image";return await detectFallback(text)}catch{return await detectFallback(text)}}async function dispatch(kind,value){await window.__redditToolsReady;const host=document.getElementById(kind==="image"?"images-mount":"profile-mount"),root=host&&host.shadowRoot;if(!root)throw Error("tool unavailable");const form=root.getElementById(kind==="image"?"reddit-form":"search-form"),field=root.getElementById(kind==="image"?"reddit-url-input":"reddit-input");if(!form||!field)throw Error("form unavailable");field.value=value;form.requestSubmit();return{host,root}}
+    window.__redditToolsReady.then(()=>{for(const [hostId,formId] of [["images-mount","reddit-form"],["profile-mount","search-form"]]){const root=document.getElementById(hostId).shadowRoot;const hiddenForm=root&&root.getElementById(formId);if(hiddenForm)hiddenForm.style.display="none";root&&root.querySelectorAll(".hero-header").forEach(el=>el.style.display="none")}});
+    const status=document.getElementById("unified-status"),statusText=document.getElementById("unified-status-text"),inputCard=document.getElementById("downloader-glow-wrap"),newSearch=document.getElementById("new-search-button");
+    newSearch.addEventListener("click",()=>{inputCard.classList.remove("is-result-hidden");newSearch.classList.remove("visible");input.value="";input.focus();document.getElementById("hero-section").scrollIntoView({behavior:"smooth",block:"start"})});
+    function waitForMedia(root,kind){return new Promise(resolve=>{let elapsed=0;const timer=setInterval(()=>{elapsed+=250;const loaded=kind==="image"?[root.getElementById("results-container"),root.getElementById("embed-container")].some(el=>el&&!el.classList.contains("hidden")):(()=>{const el=root.getElementById("result-container");return el&&el.style.display!=="none"})();const error=kind==="image"?root.getElementById("error-banner"):root.getElementById("error-container");const failed=kind==="image"?error&&!error.classList.contains("hidden"):error&&error.style.display!=="none";if(loaded||failed||elapsed>=60000){clearInterval(timer);resolve(loaded?"success":failed?"error":"timeout")}},250)})}
+    form.addEventListener("submit",async event=>{if(passVideo)return;const value=input.value.trim();if(!value)return;event.preventDefault();event.stopImmediatePropagation();document.getElementById("error-banner").classList.add("hidden");button.disabled=true;status.classList.remove("is-error");statusText.textContent="Inhalt wird erkannt…";status.hidden=false;newSearch.classList.remove("visible");inputCard.classList.remove("is-result-hidden");try{const kind=await detect(value);if(kind==="video"){status.hidden=true;button.disabled=false;passVideo=true;form.requestSubmit();passVideo=false;return}statusText.textContent=kind==="image"?"Bild oder Galerie wird geladen…":"Profilbild wird gesucht…";const target=await dispatch(kind,value);const result=await waitForMedia(target.root,kind);if(result==="success"){status.hidden=true;inputCard.classList.add("is-result-hidden");newSearch.classList.add("visible");target.host.scrollIntoView({behavior:"smooth",block:"nearest"})}else{statusText.textContent=result==="error"?"Der Inhalt konnte nicht geladen werden. Prüfe den Link und versuche es erneut.":"Das Laden dauert länger als erwartet. Versuche es erneut.";status.classList.add("is-error")}}catch{statusText.textContent="Der Downloader konnte nicht geöffnet werden. Versuche es erneut.";status.classList.add("is-error")}finally{button.disabled=false}},true)
+  })();
+  </script>
+  <script src="/rvideo.js"></script>
+  <script src="/analytics-consent.js"></script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
